@@ -19,8 +19,6 @@ public:
     Fecha(const Fecha& fecha);
     Fecha();
     Fecha(const std::string& fecha);
-    Fecha& operator=(const Fecha& fecha);
-    bool operator==(const Fecha& fecha);
 
     void comprobarFecha(int year, int month, int day);
     void print() const;

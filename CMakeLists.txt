@@ -11,4 +11,4 @@ add_executable(TFG
         Stakeholder.h
         Stakeholder.cpp
         Trackeable.cpp
-        Trackeable.h)
+        Trackeable.h Organization.h)

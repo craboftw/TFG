@@ -45,3 +45,33 @@
             }
         }
     }
+
+Fecha::Fecha(const Fecha &fecha) {
+    this->year = fecha.year;
+    this->month = fecha.month;
+    this->day = fecha.day;
+
+}
+
+Fecha::Fecha(int year, int month, int day) {
+    comprobarFecha(year, month, day);
+    this->year = year;
+    this->month = month;
+    this->day = day;
+}
+
+Fecha::Fecha() {
+    //fecha actual con mktime
+    time_t t = time(0);
+    struct tm * now = localtime( & t );
+    this->year = now->tm_year + 1900;
+    this->month = now->tm_mon + 1;
+    this->day = now->tm_mday;
+
+}
+
+void Fecha::print() const {
+    std::cout << this->year << "/" << this->month << "/" << this->day << std::endl;
+}
+
+

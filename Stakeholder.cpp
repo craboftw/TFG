@@ -7,21 +7,6 @@
 #include "Stakeholder.h"
 
 
-class Stakeholder;
-
-class Cambios {
-private:
-    std::string version;
-    Fecha date;
-    std::string comments;
-
-public:
-    Cambios(const std::string& version, const Fecha& date, const std::string& comments)
-            : version(version), date(date), comments(comments) {}
-
-};
-
-
 class Organization :public Trackeable {
 private:
     std::string contactInfo;
@@ -33,7 +18,7 @@ public:
             : Trackeable("", company, description, "", "", Fecha(), comments),
               contactInfo(contactInfo) {}
 
-    void print() {
+    void print() const {
         std::cout << "Name: " << name << std::endl;
         std::cout << "Contact info: " << contactInfo << std::endl;
     }
@@ -72,13 +57,14 @@ public:
               worksForOrganization(objWorksForOrganization) {}
 
 
-    void print() {
+    void print() const {
         std::cout << "Name: " << name << std::endl;
         std::cout << "Email: " << email << std::endl;
         std::cout << "Phone: " << phone << std::endl;
         std::cout << "Stakeholder role: " << stakeholderRole->name << std::endl;
         std::cout << "Works for organization: ";
         worksForOrganization.print();
+        Trackeable::print();
     }
 };
 
@@ -92,6 +78,11 @@ void pruebaStakeHolder() {
     Rol_Stakeholder stakeholderRole("Stakeholder role");
      Stakeholder stakeholder("Stakeholder", "Stakeholder", "Description", "", "", Fecha(), "Comments",
                             "Email", "Phone", "Address", &stakeholderRole, org);
+    stakeholder.print();
+
+    std::cout << "\nPRUEBA DE CAMBIOS" << std::endl;
+    stakeholder.setName("Miriam");
+    stakeholder.setName("Pakito");
     stakeholder.print();
 }
 

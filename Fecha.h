@@ -29,6 +29,16 @@ public:
         this->day = fecha.day;
     }
 
+    //Constructor vacio que ponga la fecha del dia actual
+    Fecha(){
+        time_t t = time(0);
+        struct tm * now = localtime( & t );
+        this->year = now->tm_year + 1900;
+        this->month = now->tm_mon + 1;
+        this->day = now->tm_mday;
+
+    }
+
     Fecha& operator=(const Fecha& fecha){
         this->year = fecha.year;
         this->month = fecha.month;

@@ -1,3 +1,0 @@
-/home/craboftw/TFG/cmake-build-debug/CMakeFiles/TFG.dir
-/home/craboftw/TFG/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/craboftw/TFG/cmake-build-debug/CMakeFiles/rebuild_cache.dir

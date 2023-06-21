@@ -50,7 +50,6 @@ Fecha::Fecha(const Fecha &fecha) {
     this->year = fecha.year;
     this->month = fecha.month;
     this->day = fecha.day;
-
 }
 
 Fecha::Fecha(int year, int month, int day) {
@@ -67,11 +66,21 @@ Fecha::Fecha() {
     this->year = now->tm_year + 1900;
     this->month = now->tm_mon + 1;
     this->day = now->tm_mday;
-
+    //std::string fechaformal = "19:12:2013T16:30:00.000"
 }
 
-void Fecha::print() const {
-    std::cout << this->year << "/" << this->month << "/" << this->day << std::endl;
+Fecha::Fecha(const std::string &fecha) {
+    int parseyear = std::stoi(fecha.substr(0, 4));
+    int parsemonth = std::stoi(fecha.substr(5,2));
+    int parseday = std::stoi(fecha.substr(8,2));
+    comprobarFecha(parseyear, parsemonth, parseday);
+    this->year = parseyear;
+    this->month = parsemonth;
+    this->day = parseday;
+}
+
+std::string Fecha::toString() {
+    return std::to_string(this->year) + "-" + std::to_string(this->month) + "-" + std::to_string(this->day);
 }
 
 

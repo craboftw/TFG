@@ -20,8 +20,10 @@ public:
     Fecha();
     Fecha(const std::string& fecha);
 
+    std::string toString();
+
+private:
     void comprobarFecha(int year, int month, int day);
-    void print() const;
 };
 
 #endif //TFG_FECHA_H

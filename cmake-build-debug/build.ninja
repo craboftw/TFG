@@ -49,26 +49,40 @@ cmake_ninja_workdir = /home/craboftw/TFG/cmake-build-debug/
 
 build cmake_object_order_depends_target_TFG: phony || CMakeFiles/TFG.dir
 
-build CMakeFiles/TFG.dir/Fecha.cpp.o: CXX_COMPILER__TFG_Debug /home/craboftw/TFG/Fecha.cpp || cmake_object_order_depends_target_TFG
-  DEP_FILE = CMakeFiles/TFG.dir/Fecha.cpp.o.d
+build CMakeFiles/TFG.dir/Trackeable/Fecha.cpp.o: CXX_COMPILER__TFG_Debug /home/craboftw/TFG/Trackeable/Fecha.cpp || cmake_object_order_depends_target_TFG
+  DEP_FILE = CMakeFiles/TFG.dir/Trackeable/Fecha.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu++14
   INCLUDES = -I/home/craboftw/TFG/.
   OBJECT_DIR = CMakeFiles/TFG.dir
-  OBJECT_FILE_DIR = CMakeFiles/TFG.dir
+  OBJECT_FILE_DIR = CMakeFiles/TFG.dir/Trackeable
 
-build CMakeFiles/TFG.dir/Stakeholder.cpp.o: CXX_COMPILER__TFG_Debug /home/craboftw/TFG/Stakeholder.cpp || cmake_object_order_depends_target_TFG
-  DEP_FILE = CMakeFiles/TFG.dir/Stakeholder.cpp.o.d
+build CMakeFiles/TFG.dir/Trackeable/Stakeholder.cpp.o: CXX_COMPILER__TFG_Debug /home/craboftw/TFG/Trackeable/Stakeholder.cpp || cmake_object_order_depends_target_TFG
+  DEP_FILE = CMakeFiles/TFG.dir/Trackeable/Stakeholder.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu++14
   INCLUDES = -I/home/craboftw/TFG/.
   OBJECT_DIR = CMakeFiles/TFG.dir
-  OBJECT_FILE_DIR = CMakeFiles/TFG.dir
+  OBJECT_FILE_DIR = CMakeFiles/TFG.dir/Trackeable
 
-build CMakeFiles/TFG.dir/Trackeable.cpp.o: CXX_COMPILER__TFG_Debug /home/craboftw/TFG/Trackeable.cpp || cmake_object_order_depends_target_TFG
-  DEP_FILE = CMakeFiles/TFG.dir/Trackeable.cpp.o.d
+build CMakeFiles/TFG.dir/Trackeable/Trackeable.cpp.o: CXX_COMPILER__TFG_Debug /home/craboftw/TFG/Trackeable/Trackeable.cpp || cmake_object_order_depends_target_TFG
+  DEP_FILE = CMakeFiles/TFG.dir/Trackeable/Trackeable.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu++14
   INCLUDES = -I/home/craboftw/TFG/.
   OBJECT_DIR = CMakeFiles/TFG.dir
-  OBJECT_FILE_DIR = CMakeFiles/TFG.dir
+  OBJECT_FILE_DIR = CMakeFiles/TFG.dir/Trackeable
+
+build CMakeFiles/TFG.dir/Trackeable/Organization.cpp.o: CXX_COMPILER__TFG_Debug /home/craboftw/TFG/Trackeable/Organization.cpp || cmake_object_order_depends_target_TFG
+  DEP_FILE = CMakeFiles/TFG.dir/Trackeable/Organization.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu++14
+  INCLUDES = -I/home/craboftw/TFG/.
+  OBJECT_DIR = CMakeFiles/TFG.dir
+  OBJECT_FILE_DIR = CMakeFiles/TFG.dir/Trackeable
+
+build CMakeFiles/TFG.dir/SystemObjetive/SystemObjetive.cpp.o: CXX_COMPILER__TFG_Debug /home/craboftw/TFG/SystemObjetive/SystemObjetive.cpp || cmake_object_order_depends_target_TFG
+  DEP_FILE = CMakeFiles/TFG.dir/SystemObjetive/SystemObjetive.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu++14
+  INCLUDES = -I/home/craboftw/TFG/.
+  OBJECT_DIR = CMakeFiles/TFG.dir
+  OBJECT_FILE_DIR = CMakeFiles/TFG.dir/SystemObjetive
 
 
 # =============================================================================
@@ -78,7 +92,7 @@ build CMakeFiles/TFG.dir/Trackeable.cpp.o: CXX_COMPILER__TFG_Debug /home/craboft
 #############################################
 # Link the executable TFG
 
-build TFG: CXX_EXECUTABLE_LINKER__TFG_Debug CMakeFiles/TFG.dir/Fecha.cpp.o CMakeFiles/TFG.dir/Stakeholder.cpp.o CMakeFiles/TFG.dir/Trackeable.cpp.o
+build TFG: CXX_EXECUTABLE_LINKER__TFG_Debug CMakeFiles/TFG.dir/Trackeable/Fecha.cpp.o CMakeFiles/TFG.dir/Trackeable/Stakeholder.cpp.o CMakeFiles/TFG.dir/Trackeable/Trackeable.cpp.o CMakeFiles/TFG.dir/Trackeable/Organization.cpp.o CMakeFiles/TFG.dir/SystemObjetive/SystemObjetive.cpp.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/TFG.dir
   POST_BUILD = :

@@ -6,9 +6,9 @@ set(CMAKE_CXX_STANDARD 14)
 include_directories(.)
 
 add_executable(TFG
-        Fecha.cpp
-        Fecha.h
-        Stakeholder.h
-        Stakeholder.cpp
-        Trackeable.cpp
-        Trackeable.h Organization.h)
+        Trackeable/Fecha.cpp
+        Trackeable/Fecha.h
+        Trackeable/Stakeholder.h
+        Trackeable/Stakeholder.cpp
+        Trackeable/Trackeable.cpp
+        Trackeable/Trackeable.h Trackeable/Organization.h Trackeable/Organization.cpp SystemObjetive/SystemObjetive.h SystemObjetive/SystemObjetive.cpp)

@@ -1,0 +1,15 @@
+# ninja log v5
+2043	2248	1687264504173596807	TFG	d47e20e962ed8380
+1415	2043	1687264503969591972	CMakeFiles/TFG.dir/Trackeable/Organization.cpp.o	e0b511c8701bd7d3
+604	1415	1687264503341577067	CMakeFiles/TFG.dir/Trackeable/Trackeable.cpp.o	278e96fec89f54dd
+1	604	1687264502529557776	CMakeFiles/TFG.dir/Trackeable/Stakeholder.cpp.o	2987b00cbc13e0c9
+0	468	1687258242918327639	CMakeFiles/TFG.dir/Trackeable/Fecha.cpp.o	cc0c67a1de38509f
+1	637	1687289659648630659	CMakeFiles/TFG.dir/Trackeable/Stakeholder.cpp.o	2987b00cbc13e0c9
+0	643	1687289702868969784	CMakeFiles/TFG.dir/Trackeable/Stakeholder.cpp.o	2987b00cbc13e0c9
+643	1516	1687289703740976680	CMakeFiles/TFG.dir/Trackeable/Trackeable.cpp.o	278e96fec89f54dd
+1	636	1687289814073864718	CMakeFiles/TFG.dir/Trackeable/Stakeholder.cpp.o	2987b00cbc13e0c9
+636	1483	1687289814921871654	CMakeFiles/TFG.dir/Trackeable/Trackeable.cpp.o	278e96fec89f54dd
+1483	2021	1687289815457876039	CMakeFiles/TFG.dir/Trackeable/Organization.cpp.o	e0b511c8701bd7d3
+2021	2559	1687289815997880457	CMakeFiles/TFG.dir/SystemObjetive/SystemObjetive.cpp.o	ffafe09eaa0a2d02
+0	636	1687289839854076277	CMakeFiles/TFG.dir/Trackeable/Stakeholder.cpp.o	2987b00cbc13e0c9
+636	767	1687289839986077363	TFG	68cc94281aaf1d0f

@@ -5,8 +5,7 @@
 #ifndef TFG_PRIORITY_H
 #define TFG_PRIORITY_H
 
-#include "../Trackeable/Trackeable.h"
-
+#include <string>
 
 class Priority{
 

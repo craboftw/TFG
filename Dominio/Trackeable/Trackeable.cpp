@@ -3,31 +3,69 @@
 
 
 void Trackeable::setName(const std::string objName) {
-    this->name = objName;
+    if (!name.empty() or name != objName) {
+        addChange(Cambios(changeName, Fecha(), changeName + name + "->" + objName));
+        this->name = objName;
+    }
 }
 
 void Trackeable::setVersionMajor(std::string versionMaj) {
-    this->versionMajor = versionMaj;
+    if (versionMajor != defaultVersionMajor or versionMajor != versionMaj) {
+        addChange(Cambios(changeVersionMajor, Fecha(), changeVersionMajor + versionMajor + "->" + versionMaj));
+        this->versionMajor = versionMaj;
+    }
 }
 
 void Trackeable::setVersionMinor(std::string versionMin) {
-    this->versionMinor = versionMin;
+    if (versionMinor != defaultVersionMinor or versionMinor != versionMin) {
+        addChange(Cambios(changeVersionMinor, Fecha(), changeVersionMinor + versionMinor + "->" + versionMin));
+        this->versionMinor = versionMin;
+    }
 
 }
 
 void Trackeable::setDate(Fecha objDate) {
-    this->date_init = objDate;
+    if (date_init != defaultDate or date_init != objDate) {
+        addChange(Cambios(changeDate, Fecha(), changeDate + date_init.toString() + "->" + objDate.toString()));
+        this->date_init = objDate;
+    }
 }
 
 void Trackeable::setComments(std::string objComments) {
-    this->comments = objComments;
+        this->comments = objComments;
 }
 
 void Trackeable::setAuthors(std::set<std::string>& setauthors) {
-    this->authors = setauthors;
+    if (authors != defaultAuthors or authors != setauthors) {
+        std::string aux;
+        for (auto &author : authors) {
+            aux += author + ",";
+        }
+        aux += "->";
+        for (auto &author : setauthors) {
+            aux += author + ",";
+        }
+        addChange(Cambios(changeAuthors, Fecha(), changeAuthors + aux+"."));
+        this->authors = setauthors;
+    }
 }
 
-std::string Trackeable::getId() const {
+void Trackeable::addAuthor(std::string author) {
+    if (authors.find(author) == authors.end()) {
+        addChange(Cambios(addingAuthor, Fecha(), addingAuthor + author + "."));
+        authors.insert(author);
+    }
+}
+
+void Trackeable::removeAuthor(std::string author) {
+    if (authors.find(author) != authors.end()) {
+        addChange(Cambios(removingAuthor, Fecha(), removingAuthor + author + "."));
+        authors.erase(author);
+    }
+}
+
+
+OID Trackeable::getId() const {
     return this->id;
 }
 
@@ -52,17 +90,53 @@ std::string Trackeable::getComments() const {
     return this->comments;
 }
 
-std::set<std::string> Trackeable::getAuthors() const {
+std::set<OID> Trackeable::getAuthors() const {
     return this->authors;
 }
 
-void Trackeable::addAuthor(std::string author) {
-    authors.insert(author);
+
+
+void Trackeable::setTracesFrom(std::list<OID> &objtracesFrom) {
+    tracesFrom = objtracesFrom;
+}
+
+void Trackeable::addTraceFrom(OID objtraceFrom) {
+    //add a objTraceFrom to the list
+    tracesFrom.push_back(objtraceFrom);
 
 }
 
-void Trackeable::removeAuthor(std::string author) {
-    authors.erase(author);
+void Trackeable::removeTraceFrom(OID objtraceFrom) {
+    //remove a objTraceFrom from the list
+    tracesFrom.remove(objtraceFrom);
+}
+
+void Trackeable::setTracesTo(std::list<OID> &objtracesTo) {
+    tracesTo = objtracesTo;
+}
+
+void Trackeable::addTraceTo(OID objtraceTo) {
+    //add a objTraceTo to the list
+    tracesTo.push_back(objtraceTo);
+}
+
+void Trackeable::removeTraceTo(OID objtraceTo) {
+
+}
+
+void Trackeable::setdefaultVersionMajor(std::string objversionMajor) {
+
+}
+
+void Trackeable::setdefaultVersionMinor(std::string objversionMinor) {
+
+}
+
+void Trackeable::setdefaultDate(Fecha objdate) {
+
+}
+
+void Trackeable::setdefaultAuthors(std::set<std::string> &objauthors) {
 
 }
 
@@ -82,3 +156,7 @@ void ListaCambios::addChange(Cambios change) {
 std::list<Cambios> ListaCambios::getChanges() const {
     return this->cambios;
 }
+
+
+
+

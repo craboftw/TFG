@@ -3,3 +3,7 @@
 //
 
 #include "Generic.h"
+
+void SystemObjective::accept(Visitor visitor) {
+
+}

@@ -6,42 +6,35 @@
 #define TFG_GENERIC_H
 
 
-#include <utility>
+#include "./Priority/Priority.h"
+#include "./Trackeable/Trackeable.h"
 
-#include "Priority/Priority.h"
-#include "Trackeable/Trackeable.h"
 
-class Generic : public Trackeable, public Priority, public ListaCambios{
-private:
-    std::string description;
-
+class SystemObjective : public Trackeable, public Priority, virtual public ListaCambios {
 public:
-
-    Generic(OID id): Trackeable(std::move(id)), Priority(), ListaCambios() {}
-
-    void setDescription(std::string description);
-
-
-
+    explicit SystemObjective(OID id) : Trackeable(std::move(id)), Priority(), ListaCambios() {}
+    void accept(Visitor visitor) override;
 };
 
-typedef Generic SystemObjective;
-typedef Generic RestrictionRequirement;
-typedef Generic FunctionalRequirement;
-typedef Generic NonFunctionalRequirement;
-
-class GenericTC : public Trackeable, public ListaCambios {
-private:
-    std::string description;
-
+class RestrictionRequirement : public Trackeable, public Priority, virtual public ListaCambios {
 public:
-    GenericTC (OID id): Trackeable(std::move(id)), ListaCambios() {}
-
-    void setDescription(std::string _description) {description = std::move(_description);}
-    std::string getDescription() const {return description;}
+    explicit RestrictionRequirement(OID id) : Trackeable(std::move(id)), Priority(), ListaCambios() {}
+    void accept(Visitor visitor) override;
 };
 
-typedef GenericTC ActorUC;
+class FunctionalRequirement : public Trackeable, public Priority, virtual public ListaCambios {
+public:
+    explicit FunctionalRequirement(OID id) : Trackeable(std::move(id)), Priority(), ListaCambios() {}
+};
 
+class NonFunctionalRequirement : public Trackeable, public Priority, virtual public ListaCambios {
+public:
+    explicit NonFunctionalRequirement(OID id) : Trackeable(std::move(id)), Priority(), ListaCambios() {}
+};
 
-#endif //TFG_SYSTEMOBJETIVE_H
+class ActorUC : public Trackeable, virtual public ListaCambios {
+public:
+    // Agrega el cierre de llave que falta
+};
+
+#endif //TFG_GENERIC_H

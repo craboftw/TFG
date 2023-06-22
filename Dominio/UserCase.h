@@ -11,25 +11,10 @@
 #include "Trackeable/Trackeable.h"
 #include "Priority/Priority.h"
 
-class TimeQuantity{
-    enum Unit {MONTH, YEAR};
-
-    unsigned quantity;
-    Unit unit;
-
-public: TimeQuantity() : quantity(0), unit(MONTH) {}
-    TimeQuantity(unsigned _quantity, Unit _unit) : quantity(_quantity), unit(_unit) {}
-
-    unsigned getQuantity() const {return quantity;}
-    Unit getUnit() const {return unit;}
-
-    void setQuantity(unsigned _quantity) {quantity = _quantity;}
-    void setUnit(Unit _unit) {unit = _unit;}
-};
+typedef std::string OID;
 
 
-
-class UserCase : public Trackeable , public ListaCambios , public Priority{
+class UserCase : public Trackeable , virtual public ListaCambios , public Priority {
     bool abstract;
     std::string description;
     std::string precondition;
@@ -46,8 +31,6 @@ void setAbstract(bool _abstract) {abstract = _abstract;}
 
 void setDescription(std::string _description) {description = std::move(_description);}
 
-void setName(std::string _name) {name = std::move(_name);}
-
 void setPrecondition(std::string _precondition) {precondition = std::move(_precondition);}
 
 void setPostcondition(std::string _postcondition) {postcondition = std::move(_postcondition);}
@@ -60,10 +43,6 @@ void addActor(OID actor) {actors.push_back(actor);}
 
 bool isAbstract() const {return abstract;}
 
-std::string getDescription() const {return description;}
-
-std::string getName() const {return name;}
-
 std::string getPrecondition() const {return precondition;}
 
 std::string getPostcondition() const {return postcondition;}
@@ -74,12 +53,20 @@ std::list<OID> getActors() const {return actors;}
 };
 
 
-class Step : public Trackeable , public ListaCambios , public Priority{
+class Step {
+    bool abstract;
     std::string description;
     std::string comments;
+
+public:
+    Step(): abstract(false), description(""), comments("") {}
+
+    void setComments(std::string _comments) {comments = std::move(_comments);}
+
+    std::string getComments() const {return comments;}
 };
 
-class IncludeExtend : public Step{
+class IncludeExtend : public Step {
     OID useCase;
 };
 

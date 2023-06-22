@@ -84,3 +84,10 @@ std::string Fecha::toString() {
 }
 
 
+bool Fecha::operator==(const Fecha &fecha) {
+    return this->year == fecha.year && this->month == fecha.month && this->day == fecha.day;
+}
+
+bool Fecha::operator!=(const Fecha &fecha) {
+    return this->year != fecha.year || this->month != fecha.month || this->day != fecha.day;
+}

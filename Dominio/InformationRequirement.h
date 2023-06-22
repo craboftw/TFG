@@ -10,14 +10,22 @@
 #include "Trackeable/Trackeable.h"
 #include "Priority/Priority.h"
 
-class InformationRequirement : public Trackeable , public ListaCambios , public Priority{
-    std::string description;
+
+class InformationRequirement : public Trackeable, virtual public ListaCambios, public Priority {
     unsigned int maxSimultaneousOccurrence;
     unsigned int avgSimultaneousOccurrence;
+    TimeQuantity lifeMaxEstimate;
+    TimeQuantity lifeAvgEstimate;
 
 public:
-    InformationRequirement(OID id): Trackeable(std::move(id)), ListaCambios(), Priority(), description(""), maxSimultaneousOccurrence(0), avgSimultaneousOccurrence(0) {}
-
+    explicit InformationRequirement(OID id)
+            : Trackeable(std::move(id)),
+              ListaCambios(),
+              Priority(),
+              maxSimultaneousOccurrence(0),
+              avgSimultaneousOccurrence(0),
+              lifeMaxEstimate(TimeQuantity()),
+              lifeAvgEstimate(TimeQuantity()) {}
 };
 
 

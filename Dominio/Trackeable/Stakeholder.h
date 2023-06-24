@@ -4,8 +4,7 @@
 #include <string>
 #include <iostream>
 #include "Trackeable.h"
-#include "Organization.h"
-#include "../../Repository/Visitor.h"
+#include "../Repository/Visitor.h"
 
 class Rol_Stakeholder : public Trackeable {
 public:
@@ -39,9 +38,9 @@ public:
     void setAddress(std::string _address) {address = std::move(_address);}
     void setStakeholderRole(OID _stakeholderRole) {stakeholderRole = std::move(_stakeholderRole);}
     void setWorksForOrganization(OID _worksForOrganization) {worksForOrganization = std::move(_worksForOrganization);}
-    void accept(Visitor visitor) override;
+    void accept(Visitor* visitor) override;
 };
 
-void pruebaStakeHolder();
+
 
 #endif  // STAKEHOLDER_H

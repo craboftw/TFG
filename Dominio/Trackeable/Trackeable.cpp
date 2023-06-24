@@ -2,6 +2,10 @@
 #include "Stakeholder.h"
 
 
+
+
+
+
 void Trackeable::setName(const std::string objName) {
     if (!name.empty() or name != objName) {
         addChange(Cambios(changeName, Fecha(), changeName + name + "->" + objName));
@@ -38,11 +42,11 @@ void Trackeable::setComments(std::string objComments) {
 void Trackeable::setAuthors(std::set<std::string>& setauthors) {
     if (authors != defaultAuthors or authors != setauthors) {
         std::string aux;
-        for (auto &author : authors) {
+        for (auto author : authors) {
             aux += author + ",";
         }
         aux += "->";
-        for (auto &author : setauthors) {
+        for (auto author : setauthors) {
             aux += author + ",";
         }
         addChange(Cambios(changeAuthors, Fecha(), changeAuthors + aux+"."));
@@ -67,6 +71,10 @@ void Trackeable::removeAuthor(std::string author) {
 
 OID Trackeable::getId() const {
     return this->id;
+}
+
+std::string Trackeable::getDescription() const {
+    return this->description;
 }
 
 std::string Trackeable::getName() const {
@@ -125,20 +133,30 @@ void Trackeable::removeTraceTo(OID objtraceTo) {
 }
 
 void Trackeable::setdefaultVersionMajor(std::string objversionMajor) {
-
+    defaultVersionMajor = objversionMajor;
 }
 
 void Trackeable::setdefaultVersionMinor(std::string objversionMinor) {
-
+    defaultVersionMinor = objversionMinor;
 }
 
 void Trackeable::setdefaultDate(Fecha objdate) {
-
+    defaultDate = objdate;
 }
 
 void Trackeable::setdefaultAuthors(std::set<std::string> &objauthors) {
+    defaultAuthors = objauthors;
+}
+
+void Trackeable::accept(Visitor* visitor) {
 
 }
+
+void Trackeable::setDescription(std::string objDescription) {
+    this->description = objDescription;
+}
+
+
 
 
 //    void setChanges(std::list<Cambios> changes);

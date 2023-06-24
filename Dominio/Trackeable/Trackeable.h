@@ -1,3 +1,4 @@
+
 #ifndef TFG_TRACKEABLE_H
 #define TFG_TRACKEABLE_H
 
@@ -6,15 +7,11 @@
 #include <utility>
 #include <iostream>
 #include <list>
-#include "Fecha.h"
-#include "../../Repository/Visitor.h"
-//#include "../../Repository/Visitor.h"
+#include "./Fecha.h"
 
-
+class Visitor;
 
 typedef std::string OID;
-
-class Stakeholder; // Declaración adelantada para evitar problemas de dependencia circular
 
 class Cambios {
 private:
@@ -48,12 +45,9 @@ std::string defaultComments = "";
 std::set<OID> defaultAuthors = std::set<OID>();
 */
 
-class Trackeable : virtual public ListaCambios {
+class Trackeable : public ListaCambios {
 private:
-    static std::string defaultVersionMajor;
-    static std::string defaultVersionMinor;
-    static Fecha defaultDate;
-    static std::set<OID> defaultAuthors;
+
 
 
     // Constantes para los mensajes de cambio
@@ -69,6 +63,7 @@ private:
 protected:
     OID id;
     std::string name;
+    std::string description;
     std::string versionMajor;
     std::string versionMinor;
     Fecha date_init;
@@ -79,10 +74,11 @@ protected:
 
 public:
     explicit Trackeable(std::string id):
-            id(std::move(id)), name(""), versionMajor(""), versionMinor(""), date_init(Fecha()), comments(""), authors(std::set<std::string>()), tracesFrom(std::list<std::string>()), tracesTo(std::list<std::string>()) {}
+            id(std::move(id)), name(""), versionMajor(""), versionMinor(""), date_init(Fecha()), comments(""), authors(std::set<std::string>()), tracesFrom(std::list<std::string>()), tracesTo(std::list<std::string>()),ListaCambios() {}
 
 
     void setName(std::string objName);
+    void setDescription(std::string objDescription);
     void setVersionMajor(std::string versionMaj);
     void setVersionMinor(std::string versionMin);
     void setDate(Fecha objDate);
@@ -97,20 +93,26 @@ public:
     void addTraceTo(OID traceTo);
     void removeTraceTo(OID traceTo);
 
-    void setdefaultVersionMajor(std::string versionMajor);
-    void setdefaultVersionMinor(std::string versionMinor);
-    void setdefaultDate(Fecha date);
-    void setdefaultAuthors(std::set<std::string>& authors);
+     void setdefaultVersionMajor(std::string versionMajor);
+     void setdefaultVersionMinor(std::string versionMinor);
+     void setdefaultDate(Fecha date);
+     void setdefaultAuthors(std::set<std::string>& authors);
 
-    virtual void accept(Visitor visitor) = 0;
+    virtual void accept(Visitor* visitor);
+
+    virtual ~Trackeable() = default;
 
 
-
+     std::string defaultVersionMajor = "1";
+     std::string defaultVersionMinor = "0";
+     Fecha defaultDate = Fecha();
+     std::set<OID> defaultAuthors = std::set<std::string>();
 
 
 
     OID getId() const;
     std::string getName() const;
+    std::string getDescription() const;
     std::string getVersionMajor() const;
     std::string getVersionMinor() const;
     Fecha getDate() const;

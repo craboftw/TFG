@@ -2,11 +2,9 @@
 // Created by Fran- on 22/06/2023.
 //
 
-#include "Dominio/Trackeable/Stakeholder.h"
+#include <iostream>
+#include "./Dominio/Generic.h"
+#include "./Dominio/Trackeable/Trackeable.h"
 
-int main() {
-//PROBAR TODO EL SISTEMA
 
-Stakeholder* stakeholder = new Stakeholder("1");
 
-}

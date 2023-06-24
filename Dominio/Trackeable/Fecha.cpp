@@ -91,3 +91,15 @@ bool Fecha::operator==(const Fecha &fecha) {
 bool Fecha::operator!=(const Fecha &fecha) {
     return this->year != fecha.year || this->month != fecha.month || this->day != fecha.day;
 }
+
+int Fecha::getYear() const {
+    return 0;
+}
+
+int Fecha::getMonth() const {
+    return 0;
+}
+
+int Fecha::getDay() const {
+    return 0;
+}

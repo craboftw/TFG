@@ -4,37 +4,44 @@
 
 #ifndef TFG_GENERIC_H
 #define TFG_GENERIC_H
+#include "Priority/Priority.h"
+#include "Trackeable/Trackeable.h"
+#include "Repository//Visitor.h"
 
 
-#include "./Priority/Priority.h"
-#include "./Trackeable/Trackeable.h"
+class Stakeholder;
+
+typedef std::string OID;
 
 
-class SystemObjective : public Trackeable, public Priority, virtual public ListaCambios {
+class SystemObjective : public Trackeable , public Priority {
 public:
-    explicit SystemObjective(OID id) : Trackeable(std::move(id)), Priority(), ListaCambios() {}
-    void accept(Visitor visitor) override;
+    explicit SystemObjective(OID id) : Trackeable(std::move(id)), Priority() {}
+    void accept(Visitor* visitor) override ;
 };
 
-class RestrictionRequirement : public Trackeable, public Priority, virtual public ListaCambios {
+class RestrictionRequirement : public Trackeable, public Priority {
 public:
-    explicit RestrictionRequirement(OID id) : Trackeable(std::move(id)), Priority(), ListaCambios() {}
-    void accept(Visitor visitor) override;
+    explicit RestrictionRequirement(OID id) : Trackeable(std::move(id)), Priority() {}
+    void accept(Visitor* visitor) override ;
 };
 
-class FunctionalRequirement : public Trackeable, public Priority, virtual public ListaCambios {
+class FunctionalRequirement : public Trackeable, public Priority {
 public:
-    explicit FunctionalRequirement(OID id) : Trackeable(std::move(id)), Priority(), ListaCambios() {}
+    explicit FunctionalRequirement(OID id) : Trackeable(std::move(id)), Priority() {}
+    void accept(Visitor* visitor) ;
 };
 
-class NonFunctionalRequirement : public Trackeable, public Priority, virtual public ListaCambios {
+class NonFunctionalRequirement : public Trackeable, public Priority {
 public:
-    explicit NonFunctionalRequirement(OID id) : Trackeable(std::move(id)), Priority(), ListaCambios() {}
+    explicit NonFunctionalRequirement(OID id) : Trackeable(std::move(id)), Priority() {}
+    void accept(Visitor* visitor) override ;
 };
 
-class ActorUC : public Trackeable, virtual public ListaCambios {
+class ActorUC : public Trackeable {
 public:
-    // Agrega el cierre de llave que falta
+    explicit ActorUC(OID id) : Trackeable(std::move(id)) {}
+    void accept(Visitor* visitor) override ;
 };
 
 #endif //TFG_GENERIC_H

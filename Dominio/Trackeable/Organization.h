@@ -12,7 +12,7 @@ private:
 
 public:
 
-   Organization(OID id): Trackeable(std::move(id)), contactInfo("") {}
+   Organization(OID id): Trackeable(std::move(id)) {}
 };
 
 #endif  // ORGANIZATION_H

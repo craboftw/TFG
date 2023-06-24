@@ -62,8 +62,8 @@ public:
         UrgencyLevel = urgencyLevel;
     }
 
-    void setPhase(Development_phase phase) {
-        Priority::phase = phase;
+    void setPhase(Development_phase _phase) {
+        Priority::phase = _phase;
     }
 
     void setEstability(Estability estability) {

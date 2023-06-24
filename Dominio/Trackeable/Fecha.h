@@ -8,12 +8,11 @@
 #include <stdexcept>
 #include <iostream>
 #include <string>
+#include <ctime>
 
 class Fecha {
 public:
-    int year;
-    int month;
-    int day;
+
 
     Fecha(int year, int month, int day);
     Fecha(const Fecha& fecha);
@@ -21,11 +20,17 @@ public:
     bool operator==(const Fecha& fecha);
     bool operator!=(const Fecha& fecha);
     Fecha(const std::string& fecha);
+    int getYear() const;
+    int getMonth() const;
+    int getDay() const;
 
     std::string toString();
 
 private:
     void comprobarFecha(int year, int month, int day);
+    int year;
+    int month;
+    int day;
 };
 
 

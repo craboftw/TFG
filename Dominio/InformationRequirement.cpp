@@ -3,3 +3,8 @@
 //
 
 #include "InformationRequirement.h"
+
+
+void InformationRequirement::accept(Visitor *visitor) {
+    Trackeable::accept(visitor);
+}

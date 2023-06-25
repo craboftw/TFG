@@ -6,7 +6,7 @@
 
 /*
 ${workspaceFolder}/**
-${workspaceFolder}/Repository
+${workspaceFolder}/Visitor
 ${workspaceFolder}/Dominio/Trackeable
 ${workspaceFolder}/Dominio/Priority
 ${workspaceFolder}/Dominio/

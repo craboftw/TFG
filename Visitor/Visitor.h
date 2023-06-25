@@ -6,7 +6,8 @@
 #define TFG_VISITOR_H
 
 
-class Generic;
+#include "TFG/Dominio/UserCase.h"
+
 class InformationRequirement;
 class ActorUC;
 class SystemObjective;
@@ -26,6 +27,8 @@ public:
     virtual void visit(FunctionalRequirement functionalRequirement) = 0;
     virtual void visit(NonFunctionalRequirement nonFunctionalRequirement) = 0;
     virtual void visit(Stakeholder stakeholder) = 0;
+    virtual void visit(UserCase userCase) = 0;
+    virtual void visit(Change change) =0;
     virtual ~Visitor() = default;
 
 

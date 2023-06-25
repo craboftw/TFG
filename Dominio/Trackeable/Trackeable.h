@@ -13,39 +13,29 @@ class Visitor;
 
 typedef std::string OID;
 
-class Cambios {
+class Change {
 private:
     std::string version;
     Fecha date;
     std::string comments;
 
 public:
-    Cambios(std::string version, const Fecha& date, std::string comments)
+    Change(std::string version = "", const Fecha& date = Fecha(), std::string comments = "")
             : version(std::move(version)), date(date), comments(std::move(comments)) {}
 
+    std::string getVersion() const;
+    Fecha getDate() const;
+    std::string getComments() const;
+
+    void setVersion(std::string version);
+    void setDate(Fecha date);
+    void setComments(std::string comments);
+
 };
 
-class ListaCambios  {
 
-protected:
-    std::list<Cambios> cambios;
-public:
-    explicit ListaCambios(std::list<Cambios> cambios = std::list<Cambios>()) : cambios(std::move(cambios)) {}
 
-    void setChanges(std::list<Cambios> changes);
-    void addChange(Cambios change);
-    std::list<Cambios> getChanges() const;
-};
-
-/*
-std::string defaultVersionMajor = "";
-std::string defaultVersionMinor = "";
-Fecha defaultDate = Fecha();
-std::string defaultComments = "";
-std::set<OID> defaultAuthors = std::set<OID>();
-*/
-
-class Trackeable : public ListaCambios {
+class Trackeable  {
 private:
 
 
@@ -71,10 +61,11 @@ protected:
     std::set<OID> authors;
     std::list<OID> tracesFrom;
     std::list<OID> tracesTo;
+    std::list<Change> changes;
 
 public:
     explicit Trackeable(std::string id):
-            id(std::move(id)), name(""), versionMajor(""), versionMinor(""), date_init(Fecha()), comments(""), authors(std::set<std::string>()), tracesFrom(std::list<std::string>()), tracesTo(std::list<std::string>()),ListaCambios() {}
+            id(std::move(id)), name(""), versionMajor(defaultVersionMajor), versionMinor(defaultVersionMinor), date_init(defaultDate), comments(""), authors(defaultAuthors), tracesFrom(std::list<std::string>()), tracesTo(std::list<std::string>()), changes(std::list<Change>()) {}
 
 
     void setName(std::string objName);
@@ -102,11 +93,12 @@ public:
 
     virtual ~Trackeable() = default;
 
+     static std::string prueba;
 
-     std::string defaultVersionMajor = "1";
-     std::string defaultVersionMinor = "0";
-     Fecha defaultDate = Fecha();
-     std::set<OID> defaultAuthors = std::set<std::string>();
+     inline static std::string defaultVersionMajor = "0";
+     inline static std::string defaultVersionMinor = "0";
+     inline static Fecha defaultDate = Fecha();
+     inline static std::set<OID> defaultAuthors = std::set<std::string>();
 
 
 
@@ -122,6 +114,11 @@ public:
     std::list<OID> getTracesTo() const;
 
 
+    void setChanges(std::list<Change> changes);
+
+    void addChange(Change change);
+
+    std::list<Change> getChanges() const;
 };
 
 #endif // TFG_TRACKEABLE_H

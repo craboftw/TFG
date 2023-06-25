@@ -13,18 +13,30 @@
 
 typedef std::string OID;
 
+enum class ImportanceLevel {
+    PRIMARY, SECUNDARY, OPTIONAL
+};
 
-class UserCase : public Trackeable , virtual public ListaCambios , public Priority {
+enum class DetailQuantity {
+    LOW, MEDIUM, HIGH
+};
+
+
+class UserCase : public Trackeable , public Priority {
     bool abstract;
+    std::string objective;
+
     std::string description;
     std::string precondition;
     std::string postcondition;
-    TimeQuantity estimatedTime;
+    TimeQuantity frequency;
     std::vector<OID> steps;
     std::list<OID> actors;
+    std::list <OID> objectives;
+
 
 public:
-    UserCase(std::string id): Trackeable(std::move(id)), abstract(false), description(""), precondition(""), postcondition("") , estimatedTime() {}
+    UserCase(std::string id): Trackeable(std::move(id)), abstract(false), description(""), precondition(""), postcondition("") , frequency() {}
 
 
 void setAbstract(bool _abstract) {abstract = _abstract;}
@@ -57,6 +69,7 @@ class Step {
     bool abstract;
     std::string description;
     std::string comments;
+    TimeQuantity estimatedTime;
 
 public:
     Step(): abstract(false), description(""), comments("") {}

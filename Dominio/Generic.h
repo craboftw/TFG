@@ -6,7 +6,7 @@
 #define TFG_GENERIC_H
 #include "Priority/Priority.h"
 #include "Trackeable/Trackeable.h"
-#include "Repository//Visitor.h"
+#include "TFG/Visitor/Visitor.h"
 
 
 class Stakeholder;

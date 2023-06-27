@@ -1,13 +1,9 @@
-//
-// Created by Fran- on 21/06/2023.
-//
-
 #ifndef TFG_USERCASE_H
 #define TFG_USERCASE_H
 
-
 #include <string>
 #include <vector>
+#include <list>
 #include "Trackeable/Trackeable.h"
 #include "Priority/Priority.h"
 
@@ -21,68 +17,41 @@ enum class DetailQuantity {
     LOW, MEDIUM, HIGH
 };
 
-
-class UserCase : public Trackeable , public Priority {
+class UserCase : public Trackeable, public Priority {
     bool abstract;
-    std::string objective;
-
-    std::string description;
     std::string precondition;
     std::string postcondition;
     TimeQuantity frequency;
     std::vector<OID> steps;
     std::list<OID> actors;
-    std::list <OID> objectives;
-
-
-public:
-    UserCase(std::string id): Trackeable(std::move(id)), abstract(false), description(""), precondition(""), postcondition("") , frequency() {}
-
-
-void setAbstract(bool _abstract) {abstract = _abstract;}
-
-void setDescription(std::string _description) {description = std::move(_description);}
-
-void setPrecondition(std::string _precondition) {precondition = std::move(_precondition);}
-
-void setPostcondition(std::string _postcondition) {postcondition = std::move(_postcondition);}
-
-void addStep(OID step) {steps.push_back(step);}
-
-void addStep(OID step, int pos) {steps.insert(steps.begin()+pos, step);}
-
-void addActor(OID actor) {actors.push_back(actor);}
-
-bool isAbstract() const {return abstract;}
-
-std::string getPrecondition() const {return precondition;}
-
-std::string getPostcondition() const {return postcondition;}
-
-std::vector<OID> getSteps() const {return steps;}
-
-std::list<OID> getActors() const {return actors;}
-};
-
-
-class Step {
-    bool abstract;
-    std::string description;
-    std::string comments;
-    TimeQuantity estimatedTime;
+    std::list<OID> objectives;
+    inline static std::string prefixID = "UC-";
 
 public:
-    Step(): abstract(false), description(""), comments("") {}
+    UserCase(std::string id) : Trackeable(prefixID + id), abstract(false), precondition(""), postcondition(""), frequency() {}
 
-    void setComments(std::string _comments) {comments = std::move(_comments);}
+    void setAbstract(bool _abstract);
+    void setPrecondition(std::string _precondition);
+    void setPostcondition(std::string _postcondition);
+    void setObjectives(std::list<OID> _objectives);
+    void setFrequency(TimeQuantity _frequency);
+    void setSteps(std::vector<OID> _steps);
+    void setActors(std::list<OID> _actors);
 
-    std::string getComments() const {return comments;}
+
+    void addStep(OID step);
+    void addStep(OID step, int pos);
+    void addActor(OID actor);
+
+    bool isAbstract() const;
+    bool getAbstract() const;
+    std::string getPrecondition() const;
+    std::string getPostcondition() const;
+    TimeQuantity getFrequency() const;
+    std::vector<OID> getSteps() const;
+    std::list<OID> getActors() const;
+    std::list<OID> getObjectives() const;
+
 };
 
-class IncludeExtend : public Step {
-    OID useCase;
-};
-
-
-
-#endif //TFG_USERCASE_H
+#endif // TFG_USERCASE_H

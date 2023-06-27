@@ -42,6 +42,7 @@ private:
 
     // Constantes para los mensajes de cambio
     std::string changeName = "Nombre modificado.";
+    std::string changeDescription = "Descripción modificada.";
     std::string changeVersionMajor = "Versión mayor modificada.";
     std::string changeVersionMinor = "Versión menor modificada.";
     std::string changeDate = "Fecha modificada.";

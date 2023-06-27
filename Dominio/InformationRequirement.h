@@ -31,7 +31,19 @@ public:
               avgSimultaneousOccurrence(0),
               lifeMaxEstimate(TimeQuantity()),
               lifeAvgEstimate(TimeQuantity()) {}
+
+    unsigned int getMaxSimultaneousOccurrence() const;
+    unsigned int getAvgSimultaneousOccurrence() const;
+    TimeQuantity getLifeMaxEstimate() const;
+    TimeQuantity getLifeAvgEstimate() const;
+
+    void setMaxSimultaneousOccurrence(unsigned int maxSimultaneousOccurrence);
+    void setAvgSimultaneousOccurrence(unsigned int avgSimultaneousOccurrence);
+    void setLifeMaxEstimate(const TimeQuantity &lifeMaxEstimate);
+    void setLifeAvgEstimate(const TimeQuantity &lifeAvgEstimate);
     void accept(Visitor* visitor) override ;
+private:
+    inline static std::string prefixID = "IR-";
 };
 
 

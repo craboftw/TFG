@@ -5,7 +5,6 @@
 #ifndef TFG_VISITOR_H
 #define TFG_VISITOR_H
 
-
 #include "TFG/Dominio/UserCase.h"
 
 class InformationRequirement;
@@ -15,6 +14,8 @@ class RestrictionRequirement;
 class FunctionalRequirement;
 class NonFunctionalRequirement;
 class Stakeholder;
+class Rol_Stakeholder;
+class UserCase;
 
 
 
@@ -28,7 +29,7 @@ public:
     virtual void visit(NonFunctionalRequirement nonFunctionalRequirement) = 0;
     virtual void visit(Stakeholder stakeholder) = 0;
     virtual void visit(UserCase userCase) = 0;
-    virtual void visit(Change change) =0;
+    virtual void visit(Rol_Stakeholder rolStakeholder) = 0;
     virtual ~Visitor() = default;
 
 

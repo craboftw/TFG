@@ -14,7 +14,12 @@ void Change::setComments(std::string _comments){
     comments = _comments;
 }
 
-
+void Trackeable::setDescription(std::string objDescription) {
+    if (description != objDescription and !description.empty()) {
+        addChange(Change(changeDescription, Fecha(), changeDescription + description + "->" + objDescription));
+        this->description = objDescription;
+    }
+}
 
 void Trackeable::setName(const std::string objName) {
     if (!name.empty() or name != objName) {
@@ -170,9 +175,6 @@ void Trackeable::accept(Visitor* visitor) {
 
 }
 
-void Trackeable::setDescription(std::string objDescription) {
-    this->description = objDescription;
-}
 
 
 

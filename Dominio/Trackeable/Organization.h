@@ -9,10 +9,18 @@
 class Organization : public Trackeable {
 private:
     std::string contactInfo;
+    inline static std::string prefixID = "OR-";
 
 public:
 
-   Organization(OID id): Trackeable(std::move(id)) {}
+   explicit Organization(OID id): Trackeable(prefixID+id) {}
+
+        //Getters
+        std::string getContactInfo() const;
+
+        //Setters
+        void setContactInfo(std::string _contactInfo);
+        void accept(Visitor* visitor) override;
 };
 
 #endif  // ORGANIZATION_H

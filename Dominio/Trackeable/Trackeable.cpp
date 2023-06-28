@@ -197,7 +197,7 @@ std::list<Change> Trackeable::getChanges() const {
 
 
 std::string Change::getVersion() const {
-    return std::string();
+    return version;
 }
 
 Fecha Change::getDate() const {
@@ -205,5 +205,5 @@ Fecha Change::getDate() const {
 }
 
 std::string Change::getComments() const {
-    return std::string();
+    return comments;
 }

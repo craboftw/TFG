@@ -5,7 +5,7 @@
 #ifndef TFG_FILEJSONMANAGER_H
 #define TFG_FILEJSONMANAGER_H
 
-#include "TFG/nlohmann/json.hpp"
+#include "nlohmann/json.hpp"
 #include <fstream>
 #include <iostream>
 #include <string>

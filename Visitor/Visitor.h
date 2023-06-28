@@ -5,7 +5,7 @@
 #ifndef TFG_VISITOR_H
 #define TFG_VISITOR_H
 
-#include "TFG/Dominio/UserCase.h"
+#include "Dominio/UserCase.h"
 
 class InformationRequirement;
 class ActorUC;

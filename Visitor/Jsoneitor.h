@@ -4,7 +4,7 @@
 
 #ifndef TFG_JSONEITOR_H
 #define TFG_JSONEITOR_H
-#include "TFG/nlohmann/json.hpp"
+#include "nlohmann/json.hpp"
 #include "Visitor.h"
 #include "FileJsonManager.h"
 

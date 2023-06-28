@@ -366,7 +366,8 @@ NLOHMANN_JSON_NAMESPACE_END
 #define JSON_HEDLEY_CONCAT3(a,b,c) JSON_HEDLEY_CONCAT3_EX(a,b,c)
 
 #if defined(JSON_HEDLEY_VERSION_ENCODE)
-    #undef JSON_HEDLEY_VERSION_ENCODE
+    #undef     explicit NonFunctionalRequirement(OID id) : Trackeable(prefixID+id), Priority() {}
+JSON_HEDLEY_VERSION_ENCODE
 #endif
 #define JSON_HEDLEY_VERSION_ENCODE(major,minor,revision) (((major) * 1000000) + ((minor) * 1000) + (revision))
 

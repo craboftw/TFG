@@ -1,9 +1,9 @@
 #include <iostream>
 #include <fstream>
-#include "TFG/Dominio/Generic.h"
-#include "TFG/Visitor/Jsoneitor.h"
-#include "TFG/Dominio/Trackeable/Stakeholder.h"
-#include "TFG/nlohmann/json.hpp"
+#include "Dominio/Generic.h"
+#include "Visitor/Jsoneitor.h"
+#include "Dominio/Trackeable/Stakeholder.h"
+#include "nlohmann/json.hpp"
 
 // for convenience
 using json = nlohmann::json;
@@ -36,13 +36,14 @@ Stakeholder crearStakeholder(){
     stakeholder.setAddress(address);
     stakeholder.setStakeholderRole(stakeholderRole);
     stakeholder.setWorksForOrganization(worksForOrganization);
-    stakeholder.setEmail("cambioforzado")   ;00
-
+    stakeholder.setEmail("cambioforzado")   ;
     return stakeholder;
 }
 
 int main() {
 auto stakeholder = crearStakeholder();
+stakeholder.addChange(Change("0",Fecha(),"Que locura"));
+stakeholder.addChange(Change("0",Fecha(),"Dos locuras"));
 Jsoneitor jsoneitor;
 jsoneitor.visit(stakeholder);
 

@@ -21,12 +21,35 @@ class Stakeholder;
 typedef std::string OID;
 
 
+typedef struct TrackeableDTO{
+    OID id;
+    std::string name;
+    std::string description;
+    std::string versionMajor;
+    std::string versionMinor;
+    Fecha date;
+    std::string comments;
+    std::set<OID> authors;
+    std::list<OID> tracesFrom;
+    std::list<OID> tracesTo;
+    std::list<Change> listOfChanges;
+};
+
+typedef struct PriorityDTO{
+    Priority::Importance urgencyLevel;
+    Priority::Importance importanceLevel;
+    Priority::Estability estibility;
+    Priority::Development_phase phase;
+};
+
+
 
 json serializeListOfChanges(const std::list<Change>& listOfChanges) {
     json j;
 
     // Serializar cada cambio en la lista
     if (listOfChanges.empty()) {
+        j = std::list<int>();
     }
     for (const Change& cambio : listOfChanges) {
         json cambioJson;
@@ -35,6 +58,36 @@ json serializeListOfChanges(const std::list<Change>& listOfChanges) {
         cambioJson["comments"] = cambio.getComments();
         j.push_back(cambioJson);
     }
+    return j;
+}
+
+
+json trackeablePart(Trackeable* objeto,json& j)
+{
+    j["id"] = objeto->getId();
+    j["name"] = objeto->getName();
+    j["description"] = objeto->getDescription();
+    j["versionMajor"] = objeto->getVersionMajor();
+    j["versionMinor"] = objeto->getVersionMinor();
+    j["date_init"] = objeto->getDate().toString();
+    j["comments"] = objeto->getComments();
+    j["authors"] = objeto->getAuthors();
+    j["tracesFrom"] = objeto->getTracesFrom();
+    j["tracesTo"] = objeto->getTracesTo();
+    j["changes"] = serializeListOfChanges(objeto->getChanges());
+
+    return j;
+}
+
+
+
+json priorityPart(Priority* objeto,json& j)
+{
+    j["importanceLevel"] = objeto->getImportanceLevel();
+    j["urgencyLevel"] = objeto->getUrgencyLevel();
+    j["phase"] = objeto->getPhase();
+    j["estability"] = objeto->getEstability();
+
     return j;
 }
 
@@ -54,6 +107,31 @@ std::list<Change> deserializeListOfChanges(const json& j) {
     return listOfChanges;
 }
 
+TrackeableDTO deserializeTrackeableDTO(const json& j) {
+    TrackeableDTO trackeableDTO;
+    trackeableDTO.id = j["id"];
+    trackeableDTO.name = j["name"];
+    trackeableDTO.description = j["description"];
+    trackeableDTO.versionMajor = j["versionMajor"];
+    trackeableDTO.versionMinor = j["versionMinor"];
+    trackeableDTO.date = Fecha(j["date_init"]);
+    trackeableDTO.comments = j["comments"];
+    trackeableDTO.authors = j["authors"];
+    trackeableDTO.tracesFrom = j["tracesFrom"];
+    trackeableDTO.tracesTo = j["tracesTo"];
+    trackeableDTO.listOfChanges = deserializeListOfChanges(j["changes"]);
+    return trackeableDTO;
+}
+
+PriorityDTO deserializePriorityDTO(const json& j) {
+    PriorityDTO priorityDTO;
+    priorityDTO.importanceLevel = j["importanceLevel"];
+    priorityDTO.urgencyLevel = j["urgencyLevel"];
+    priorityDTO.phase = j["phaseestability"];
+    priorityDTO.estibility = j["estability"];
+    return priorityDTO;
+}
+
 json serializeTimeQuantity(const TimeQuantity& timeQuantity) {
     json j;
     j["quantity"] = timeQuantity.getQuantity();
@@ -68,6 +146,18 @@ TimeQuantity deserializeTimeQuantity(const json& j) {
     return timeQuantity;
 }
 
+void setTrackeablePart(TrackeableDTO trackeableDTO, Trackeable* trackeable) {
+    trackeable->setName(trackeableDTO.name);
+    trackeable->setDescription(trackeableDTO.description);
+    trackeable->setVersionMajor(trackeableDTO.versionMajor);
+    trackeable->setVersionMinor(trackeableDTO.versionMinor);
+    trackeable->setDate(trackeableDTO.date);
+    trackeable->setComments(trackeableDTO.comments);
+    trackeable->setAuthors(trackeableDTO.authors);
+    trackeable->setTracesFrom(trackeableDTO.tracesFrom);
+    trackeable->setTracesTo(trackeableDTO.tracesTo);
+    trackeable->setChanges(trackeableDTO.listOfChanges);
+}
 
 
 void Jsoneitor::visit(InformationRequirement informationRequirement) {
@@ -75,23 +165,10 @@ void Jsoneitor::visit(InformationRequirement informationRequirement) {
     json j;
 
 /*｡o°✥✤✣TRACKEABLE PART✣✤✥°o｡*/
-    j["id"] = informationRequirement.getId();
-    j["name"] = informationRequirement.getName();
-    j["description"] = informationRequirement.getDescription();
-    j["versionMajor"] = informationRequirement.getVersionMajor();
-    j["versionMinor"] = informationRequirement.getVersionMinor();
-    j["date_init"] = informationRequirement.getDate().toString();
-    j["comments"] = informationRequirement.getComments();
-    j["authors"] = informationRequirement.getAuthors();
-    j["tracesFrom"] = informationRequirement.getTracesFrom();
-    j["tracesTo"] = informationRequirement.getTracesTo();
-    j["changes"] = serializeListOfChanges(informationRequirement.getChanges());
+    trackeablePart(&informationRequirement,j);
 
 /*｡o°✥✤✣PRIORITY PART✣✤✥°o｡*/
-    j["importanceLevel"] = informationRequirement.getImportanceLevel();
-    j["urgencyLevel"] = informationRequirement.getUrgencyLevel();
-    j["phase"] = informationRequirement.getPhase();
-    j["estability"] = informationRequirement.getEstability();
+    priorityPart(&informationRequirement,j);
 
 /*｡o°✥✤✣INFORMATION REQUIREMENT PART✣✤✥°o｡*/
     j["maxSimultaneousOccurrence"] = informationRequirement.getMaxSimultaneousOccurrence();
@@ -109,24 +186,11 @@ InformationRequirement Jsoneitor::deserializeInformationRequirement(json j) {
     /*DESERIALIZATION OF THE INFORMATION REQUIREMENT*/
     /*----------------------------------------------*/
 /*｡o°✥✤✣TRACKEABLE PART✣✤✥°o｡*/
-    OID id = j["id"];
-    std::string name = j["name"];
-    std::string description = j["description"];
-    std::string versionMajor = j["versionMajor"];
-    std::string versionMinor = j["versionMinor"];
-    std::string date_init = j["date_init"];
-    Fecha date = Fecha(date_init);
-    std::string comments = j["comments"];
-    std::set<std::string> authors = j["authors"];
-    std::list<OID> tracesFrom = j["tracesFrom"];
-    std::list<OID> tracesTo = j["tracesTo"];
-    std::list<Change> changes = deserializeListOfChanges(j["changes"]);
+    TrackeableDTO trackeableDTO = deserializeTrackeableDTO(j);
+
 
 /*｡o°✥✤✣PRIORITY PART✣✤✥°o｡*/
-    Priority::Importance importanceLevel = j["importanceLevel"];
-    Priority::Importance urgencyLevel = j["urgencyLevel"];
-    Priority::Development_phase phase = j["phase"];
-    Priority::Estability estability = j["estability"];
+    PriorityDTO priorityDTO = deserializePriorityDTO(j);
 
 /*｡o°✥✤✣INFORMATION REQUIREMENT PART✣✤✥°o｡*/
     unsigned int maxSimultaneousOccurrence = j["maxSimultaneousOccurrence"];
@@ -138,17 +202,19 @@ InformationRequirement Jsoneitor::deserializeInformationRequirement(json j) {
     /*CREATION OF THE INFORMATION REQUIREMENT*/
     /*---------------------------------------*/
 /*｡o°✥✤✣TRACKEABLE PART✣✤✥°o｡*/
-    InformationRequirement i(id);
-    i.setName(name);
-    i.setDescription(description);
-    i.setVersionMajor(versionMajor);
-    i.setVersionMinor(versionMinor);
-    i.setDate(date);
-    i.setComments(comments);
-    i.setAuthors(authors);
-    i.setTracesFrom(tracesFrom);
-    i.setTracesTo(tracesTo);
-    i.setChanges(changes);
+    InformationRequirement o(trackeableDTO.id);
+    o.setName(trackeableDTO.name);
+    o.setDescription(trackeableDTO.description);
+    o.setVersionMajor(trackeableDTO.versionMajor);
+    o.setVersionMinor(trackeableDTO.versionMinor);
+    o.setDate(trackeableDTO.date);
+    o.setComments(trackeableDTO.comments);
+    o.setAuthors(trackeableDTO.authors);
+    o.setTracesFrom(trackeableDTO.tracesFrom);
+    o.setTracesTo(trackeableDTO.tracesTo);
+    o.setChanges(trackeableDTO.listOfChanges);
+
+
 
 /*｡o°✥✤✣PRIORITY PART✣✤✥°o｡*/
     i.setImportanceLevel(importanceLevel);
@@ -228,6 +294,7 @@ ActorUC Jsoneitor::deserializeActorUC(json j) {
 
     return a;
 }
+
 
 void Jsoneitor::visit(RestrictionRequirement restrictionRequirement) {
 
@@ -315,32 +382,13 @@ RestrictionRequirement Jsoneitor::deserializeRestrictionRequirement(json j) {
 
 void Jsoneitor::visit(FunctionalRequirement functionalRequirement) {
 
-        /*----------------------------------------------*/
-        /*DESERIALIZATION OF THE FUNCTIONAL REQUIREMENT */
-        /*----------------------------------------------*/
-
-        json j;
+    json j;
 
     /*｡o°✥✤✣TRACKEABLE PART✣✤✥°o｡*/
-        j["id"] = functionalRequirement.getId();
-        j["name"] = functionalRequirement.getName();
-        j["description"] = functionalRequirement.getDescription();
-        j["versionMajor"] = functionalRequirement.getVersionMajor();
-        j["versionMinor"] = functionalRequirement.getVersionMinor();
-        j["date_init"] = functionalRequirement.getDate().toString();
-        j["comments"] = functionalRequirement.getComments();
-        j["authors"] = functionalRequirement.getAuthors();
-        j["tracesFrom"] = functionalRequirement.getTracesFrom();
-        j["tracesTo"] = functionalRequirement.getTracesTo();
-        j["changes"] = serializeListOfChanges(functionalRequirement.getChanges());
+    trackeablePart(&functionalRequirement, j);
 
     /*｡o°✥✤✣PRIORITY PART✣✤✥°o｡*/
-        j["importanceLevel"] = functionalRequirement.getImportanceLevel();
-        j["urgencyLevel"] = functionalRequirement.getUrgencyLevel();
-        j["phase"] = functionalRequirement.getPhase();
-        j["estability"] = functionalRequirement.getEstability();
-
-    //no tiene parte de Functional Requirement
+    priorityPart(&functionalRequirement, j);
 
 }
 
@@ -351,6 +399,9 @@ FunctionalRequirement Jsoneitor::deserializeFunctionalRequirement(json j) {
         /*----------------------------------------------*/
 
     /*｡o°✥✤✣TRACKEABLE PART✣✤✥°o｡*/
+    FunctionalRequirement(j["id"]);
+    TrackeableDTO trackeableDTO = trackeablePart(
+
         OID id = j["id"];
         std::string name = j["name"];
         std::string description = j["description"];
@@ -684,17 +735,7 @@ void Jsoneitor::visit(Stakeholder stakeholder) {
     json j;
 
     /*｡o°✥✤✣TRACKEABLE PART✣✤✥°o｡*/
-    j["id"] = stakeholder.getId();
-    j["name"] = stakeholder.getName();
-    j["description"] = stakeholder.getDescription();
-    j["versionMajor"] = stakeholder.getVersionMajor();
-    j["versionMinor"] = stakeholder.getVersionMinor();
-    j["date_init"] = stakeholder.getDate().toString();
-    j["comments"] = stakeholder.getComments();
-    j["authors"] = stakeholder.getAuthors();
-    j["tracesFrom"] = stakeholder.getTracesFrom();
-    j["tracesTo"] = stakeholder.getTracesTo();
-    j["changes"] = serializeListOfChanges(stakeholder.getChanges());
+    trackeablePart(&stakeholder,j);
 
     /*｡o°✥✤✣STAKEHOLDER PART✣✤✥°o｡*/
     j["email"] = stakeholder.getEmail();

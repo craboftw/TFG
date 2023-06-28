@@ -11,7 +11,8 @@
   </component>
   <component name="CMakeRunConfigurationManager">
     <generated>
-      <config projectName="TFG" targetName="TFG" />
+      <config projectName="TFG" targetName="TFG_Executable" />
+      <config projectName="TFG" targetName="TFG_Library" />
     </generated>
   </component>
   <component name="CMakeSettings" AUTO_RELOAD="true">
@@ -21,13 +22,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="717b5343-998e-4acd-bfc6-e19a8feecd69" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Dominio/Generic.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/Generic.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Dominio/Generic.h" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/Generic.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dominio/Trackeable/Organization.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/Trackeable/Organization.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dominio/Trackeable/Stakeholder.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/Trackeable/Stakeholder.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Dominio/Trackeable/Stakeholder.h" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/Trackeable/Stakeholder.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Dominio/Trackeable/Trackeable.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/Trackeable/Trackeable.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dominio/Trackeable/Trackeable.h" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/Trackeable/Trackeable.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Visitor/FileJsonManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/Visitor/FileJsonManager.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Visitor/Jsoneitor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Visitor/Jsoneitor.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Visitor/Jsoneitor.h" beforeDir="false" afterPath="$PROJECT_DIR$/Visitor/Jsoneitor.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Visitor/Visitor.h" beforeDir="false" afterPath="$PROJECT_DIR$/Visitor/Visitor.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nlohmann/json.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/nlohmann/json.hpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +43,13 @@
     <option name="formatViaClangd" value="false" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CMakeLists.txt" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -74,12 +86,18 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/" />
       <recent name="$PROJECT_DIR$/Trackeable" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration name="TFG" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="TFG" TARGET_NAME="TFG" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="TFG" RUN_TARGET_NAME="TFG">
+  <component name="RunManager" selected="CMake Application.TFG_Executable">
+    <configuration name="TFG_Executable" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="TFG" TARGET_NAME="TFG_Executable" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="TFG" RUN_TARGET_NAME="TFG_Executable">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TFG_Library" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="TFG" TARGET_NAME="TFG_Library" CONFIG_NAME="Debug">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -89,6 +107,10 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="CMake Application.TFG_Executable" />
+      <item itemvalue="CMake Application.TFG_Library" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -105,7 +127,9 @@
       <workItem from="1687187362227" duration="6151000" />
       <workItem from="1687248772144" duration="10286000" />
       <workItem from="1687270791254" duration="6084000" />
-      <workItem from="1687880071246" duration="3000" />
+      <workItem from="1687880071246" duration="132000" />
+      <workItem from="1687880247935" duration="6476000" />
+      <workItem from="1687975790422" duration="4112000" />
     </task>
     <servers />
   </component>

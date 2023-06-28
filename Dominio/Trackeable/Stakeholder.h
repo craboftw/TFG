@@ -4,7 +4,7 @@
 #include <string>
 #include <iostream>
 #include "Trackeable.h"
-#include "TFG/Visitor/Visitor.h"
+#include "Visitor/Visitor.h"
 
 class Rol_Stakeholder : public Trackeable {
 public:

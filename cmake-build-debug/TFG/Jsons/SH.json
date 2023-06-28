@@ -1,0 +1,55 @@
+{
+    "SH-001": {
+        "address": "004",
+        "authors": [],
+        "changes": [
+            {
+                "comments": "Que locura",
+                "date": "2023-6-28",
+                "version": "0"
+            },
+            {
+                "comments": "Dos locuras",
+                "date": "2023-6-28",
+                "version": "0"
+            }
+        ],
+        "comments": "",
+        "date_init": "2023-6-28",
+        "description": "",
+        "email": "cambioforzado",
+        "id": "SH-001",
+        "name": "",
+        "phone": "003",
+        "stakeholderRole": "005",
+        "tracesFrom": [],
+        "tracesTo": [],
+        "versionMajor": "0",
+        "versionMinor": "0",
+        "worksForOrganization": "006"
+    },
+    "SH-002": {
+        "address": "030",
+        "authors": [],
+        "changes": [
+            {
+                "comments": "",
+                "date": "2023-6-28",
+                "version": ""
+            }
+        ],
+        "comments": "",
+        "date_init": "2023-6-28",
+        "description": "",
+        "email": "cambioforzado",
+        "id": "SH-002",
+        "name": "",
+        "phone": "030",
+        "stakeholderRole": "030",
+        "tracesFrom": [],
+        "tracesTo": [],
+        "versionMajor": "0",
+        "versionMinor": "0",
+        "worksForOrganization": "030"
+    }
+}

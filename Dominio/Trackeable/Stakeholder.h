@@ -9,9 +9,9 @@
 class Rol_Stakeholder : public Trackeable {
 public:
 
-    explicit Rol_Stakeholder(std::string id) : Trackeable(prefixID+id) {};
+    explicit Rol_Stakeholder(unsigned id) : Trackeable(prefixID,id) {};
 private:
-    inline static std::string prefixID = "RS-";
+    inline static std::string prefixID = "RS";
 };
 
 class Stakeholder : public Trackeable {
@@ -21,10 +21,10 @@ private:
     std::string address;
     OID stakeholderRole;
     OID worksForOrganization;
-    inline static std::string prefixID = "SH-";
+    inline static std::string prefixID = "SH";
 
 public:
-    explicit Stakeholder(std::string id): Trackeable(prefixID+id), email(""),  phone("") , address(""), worksForOrganization("")  {}
+    explicit Stakeholder(unsigned id): Trackeable(prefixID,id), email(""),  phone("") , address(""), worksForOrganization()  {}
 
     //Getters
     std::string getEmail() const {return email;}

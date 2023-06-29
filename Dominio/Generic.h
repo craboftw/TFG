@@ -4,55 +4,59 @@
 
 #ifndef TFG_GENERIC_H
 #define TFG_GENERIC_H
-#include "Priority/Priority.h"
-#include "Trackeable/Trackeable.h"
+
+#include "Dominio/Priority/Priority.h"
+#include "Dominio/Trackeable/Trackeable.h"
 #include "Visitor/Visitor.h"
 
 
 class Stakeholder;
 
-typedef std::string OID;
-
 
 class SystemObjective : public Trackeable , public Priority {
 public:
-    explicit SystemObjective(OID id) : Trackeable(prefixID+id), Priority() {}
+    explicit SystemObjective(unsigned id) : Trackeable(prefixID,id), Priority() {}
     void accept(Visitor* visitor) override ;
 
 private:
-    inline static std::string prefixID = "SO-";
+    inline static std::string prefixID = "SO";
 };
 
 class RestrictionRequirement : public Trackeable, public Priority {
 public:
-    explicit RestrictionRequirement(OID id) : Trackeable(prefixID+id), Priority() {}
+    explicit RestrictionRequirement(unsigned id) : Trackeable(prefixID,id), Priority() {}
     void accept(Visitor* visitor) override ;
 private:
-    inline static std::string prefixID = "RR-";
+    inline static std::string prefixID = "RR";
 };
 
 class FunctionalRequirement : public Trackeable, public Priority {
 public:
-    explicit FunctionalRequirement(OID id) : Trackeable(prefixID+id), Priority() {}
+    explicit FunctionalRequirement(unsigned id) : Trackeable(prefixID,id), Priority() {}
     void accept(Visitor* visitor) ;
 private:
-    inline static std::string prefixID = "FR-";
+    inline static std::string prefixID = "FR";
 };
 
 class NonFunctionalRequirement : public Trackeable, public Priority {
 public:
-    explicit NonFunctionalRequirement(OID id) : Trackeable(prefixID+id), Priority() {}
+    explicit NonFunctionalRequirement(unsigned id) : Trackeable(prefixID,id), Priority() {}
     void accept(Visitor* visitor) override ;
 private:
-    inline static std::string prefixID = "NF-";
+    inline static std::string prefixID = "NF";
 };
 
 class ActorUC : public Trackeable {
 public:
-    explicit ActorUC(OID id) : Trackeable(prefixID+id) {}
+    explicit ActorUC(unsigned id) : Trackeable(prefixID,id), package("") {}
     void accept(Visitor* visitor) override ;
+    std::string getPackage();
+
+    void setPackage(std::string reference);
+
 private:
-    inline static std::string prefixID = "AC-";
+    inline static std::string prefixID = "AC";
+    std::string package;
 };
 
 #endif //TFG_GENERIC_H

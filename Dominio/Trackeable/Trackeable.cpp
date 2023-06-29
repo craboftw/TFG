@@ -22,24 +22,30 @@ void Trackeable::setDescription(std::string objDescription) {
 }
 
 void Trackeable::setName(const std::string objName) {
-    if (!name.empty() or name != objName) {
+    if (!name.empty() and name != objName) {
         addChange(Change(changeName, Fecha(), changeName + name + "->" + objName));
         this->name = objName;
     }
+    else
+        this->name = objName;
 }
 
 void Trackeable::setVersionMajor(std::string versionMaj) {
-    if (versionMajor != defaultVersionMajor or versionMajor != versionMaj) {
+    if (versionMajor != defaultVersionMajor and versionMajor != versionMaj) {
         addChange(Change(changeVersionMajor, Fecha(), changeVersionMajor + versionMajor + "->" + versionMaj));
         this->versionMajor = versionMaj;
     }
+    else
+        this->versionMajor = versionMaj;
 }
 
 void Trackeable::setVersionMinor(std::string versionMin) {
-    if (versionMinor != defaultVersionMinor or versionMinor != versionMin) {
+    if (versionMinor != defaultVersionMinor and versionMinor != versionMin) {
         addChange(Change(changeVersionMinor, Fecha(), changeVersionMinor + versionMinor + "->" + versionMin));
         this->versionMinor = versionMin;
     }
+    else
+        this->versionMinor = versionMin;
 
 }
 
@@ -48,37 +54,39 @@ void Trackeable::setDate(Fecha objDate) {
         addChange(Change(changeDate, Fecha(), changeDate + date_init.toString() + "->" + objDate.toString()));
         this->date_init = objDate;
     }
+    else
+        this->date_init = objDate;
 }
 
 void Trackeable::setComments(std::string objComments) {
         this->comments = objComments;
 }
 
-void Trackeable::setAuthors(std::set<std::string>& setauthors) {
-    if (authors != defaultAuthors or authors != setauthors) {
+void Trackeable::setAuthors(std::set<OID>& setauthors) {
+    if (authors != setauthors) {
         std::string aux;
         for (auto author : authors) {
-            aux += author + ",";
+            aux += author.operator std::string() + ",";
         }
         aux += "->";
         for (auto author : setauthors) {
-            aux += author + ",";
+            aux += author.operator std::string() + ",";
         }
         addChange(Change(changeAuthors, Fecha(), changeAuthors + aux + "."));
         this->authors = setauthors;
     }
 }
 
-void Trackeable::addAuthor(std::string author) {
+void Trackeable::addAuthor(OID author) {
     if (authors.find(author) == authors.end()) {
-        addChange(Change(addingAuthor, Fecha(), addingAuthor + author + "."));
+        addChange(Change(addingAuthor, Fecha(), addingAuthor + author.operator std::string() + "."));
         authors.insert(author);
     }
 }
 
-void Trackeable::removeAuthor(std::string author) {
+void Trackeable::removeAuthor(OID author) {
     if (authors.find(author) != authors.end()) {
-        addChange(Change(removingAuthor, Fecha(), removingAuthor + author + "."));
+        addChange(Change(removingAuthor, Fecha(), removingAuthor + author.operator std::string() + "."));
         authors.erase(author);
     }
 }
@@ -167,7 +175,7 @@ void Trackeable::setdefaultDate(Fecha objdate) {
     defaultDate = objdate;
 }
 
-void Trackeable::setdefaultAuthors(std::set<std::string> &objauthors) {
+void Trackeable::setdefaultAuthors(std::set<OID> &objauthors) {
     defaultAuthors = objauthors;
 }
 
@@ -207,3 +215,41 @@ Fecha Change::getDate() const {
 std::string Change::getComments() const {
     return comments;
 }
+
+
+std::string OID::getPrefix() const {
+    return this->prefixID;
+}
+
+unsigned OID::getId() const {
+    return this->id;
+}
+
+bool OID::operator<(const OID& rhs) const {
+    return this->id < rhs.id;
+}
+
+bool OID::operator>(const OID& rhs) const {
+    return this->id > rhs.id;
+}
+
+bool OID::operator==(const OID& rhs) const {
+    return this->id == rhs.id;
+}
+
+bool OID::operator!=(const OID& rhs) const {
+    return this->id != rhs.id;
+}
+
+bool OID::operator<=(const OID& rhs) const {
+    return this->id <= rhs.id;
+}
+
+bool OID::operator>=(const OID& rhs) const {
+    return this->id >= rhs.id;
+}
+
+
+
+
+

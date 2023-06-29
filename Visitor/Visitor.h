@@ -6,18 +6,18 @@
 #define TFG_VISITOR_H
 
 #include "Dominio/UserCase.h"
+#include "Dominio/Trackeable/Organization.h"
+#include "Dominio/InformationRequirement.h"
+#include "Dominio/Generic.h"
+#include "Dominio/Trackeable/Stakeholder.h"
 
-class InformationRequirement;
+
 class ActorUC;
-class SystemObjective;
 class RestrictionRequirement;
-class FunctionalRequirement;
+class SystemObjective;
 class NonFunctionalRequirement;
-class Stakeholder;
+class FunctionalRequirement;
 class Rol_Stakeholder;
-class UserCase;
-
-
 
 class Visitor{
 public:
@@ -30,6 +30,7 @@ public:
     virtual void visit(Stakeholder stakeholder) = 0;
     virtual void visit(UserCase userCase) = 0;
     virtual void visit(Rol_Stakeholder rolStakeholder) = 0;
+    virtual void visit(Organization organization) = 0;
     virtual ~Visitor() = default;
 
 

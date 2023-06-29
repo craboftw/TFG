@@ -5,15 +5,10 @@
 #ifndef TFG_INFORMATION_REQUIREMENT_H
 #define TFG_INFORMATION_REQUIREMENT_H
 
-#include "./Trackeable/Trackeable.h"
-#include "Priority/Priority.h"
+#include "Dominio/Trackeable/Trackeable.h"
+#include "Dominio/Priority/Priority.h"
 #include <string>
-class TimeQuantity;
-class Visitor;
-class Priority;
 
-
-typedef std::string OID;
 
 //En la siguiente linea se haya un error: "expected class-name before ',' token"
 //La solucion es incluir la clase Priority.h en este archivo
@@ -24,8 +19,8 @@ class InformationRequirement : public Trackeable , public Priority {
     TimeQuantity lifeAvgEstimate;
 
 public:
-    explicit InformationRequirement(OID id)
-            : Trackeable(std::move(id)),
+    explicit InformationRequirement(unsigned id)
+            : Trackeable(prefixID,id),
               Priority(),
               maxSimultaneousOccurrence(0),
               avgSimultaneousOccurrence(0),
@@ -43,7 +38,7 @@ public:
     void setLifeAvgEstimate(const TimeQuantity &lifeAvgEstimate);
     void accept(Visitor* visitor) override ;
 private:
-    inline static std::string prefixID = "IR-";
+    inline static std::string prefixID = "IR";
 };
 
 

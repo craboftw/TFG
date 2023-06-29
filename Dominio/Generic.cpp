@@ -22,6 +22,14 @@ void ActorUC::accept(Visitor* visitor)
     return;
 }
 
+std::string ActorUC::getPackage() {
+    return this->package;
+}
+
+void ActorUC::setPackage(std::string reference) {
+    this->package = reference;
+}
+
 void NonFunctionalRequirement::accept(Visitor* visitor)
 {
     

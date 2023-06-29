@@ -2,7 +2,7 @@
 
 
 std::string Organization::getContactInfo() const {
-    return std::string();
+    return contactInfo;
 }
 
 void Organization::setContactInfo(std::string _contactInfo) {

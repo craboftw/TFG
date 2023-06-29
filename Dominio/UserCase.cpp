@@ -16,11 +16,11 @@ void UserCase::setPostcondition(std::string _postcondition) {
     postcondition = std::move(_postcondition);
 }
 
-void UserCase::addStep(OID step) {
+void UserCase::addStep(Step step) {
     steps.push_back(step);
 }
 
-void UserCase::addStep(OID step, int pos) {
+void UserCase::addStep(Step step, int pos) {
     steps.insert(steps.begin() + pos, step);
 }
 
@@ -49,7 +49,7 @@ TimeQuantity UserCase::getFrequency() const {
     return frequency;
 }
 
-std::vector<OID> UserCase::getSteps() const {
+std::vector<Step> UserCase::getSteps() const {
     return steps;
 }
 
@@ -68,7 +68,7 @@ void UserCase::setFrequency(TimeQuantity _frequency) {
 
 }
 
-void UserCase::setSteps(std::vector<OID> _steps) {
+void UserCase::setSteps(std::vector<Step> _steps) {
     steps = std::move(_steps);
 
 }
@@ -79,4 +79,73 @@ void UserCase::setActors(std::list<OID> _actors) {
 
 std::list<OID> UserCase::getObjectives() const {
     return std::list<OID>();
+}
+
+void UserCase::addObjective(OID objective) {
+    objectives.push_back(objective);
+}
+
+void UserCase::removeObjective(OID objective) {
+    objectives.remove(objective);
+}
+
+void UserCase::setPackage(std::string _package) {
+    package = std::move(_package);
+}
+
+std::string UserCase::getPackage() const {
+    return package;
+}
+
+OID UserCase::getGeneralization() const {
+    return generalization;
+}
+
+bool Step::getAbstract() const {
+    return abstract;
+}
+
+std::string Step::getCondition() const {
+    return condition;
+}
+
+std::string Step::getComments() const {
+    return comments;
+}
+
+void Step::setAbstract(bool _abstract) {
+    abstract = _abstract;
+}
+
+void Step::setCondition(std::string _condition) {
+    condition = std::move(_condition);
+}
+
+void Step::setComments(std::string _comments) {
+    comments = std::move(_comments);
+}
+
+std::string Step::getDescription() const {
+    return description;
+}
+
+OID Step::getReference() const {
+    return reference;
+}
+
+void Step::setDescription(std::string _description) {
+    description = std::move(_description);
+
+}
+
+void Step::setType(Step::type _type) {
+    this->stepType = _type;
+}
+
+void Step::setReference(OID _reference) {
+    reference = _reference;
+}
+
+Step::type Step::getType() const {
+    return stepType;
 }

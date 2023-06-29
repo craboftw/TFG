@@ -11,7 +11,6 @@
 
 class Visitor;
 
-typedef std::string OID;
 
 class Change {
 private:
@@ -33,12 +32,40 @@ public:
 
 };
 
+class OID {
+private:
+    std::string prefixID;
+    unsigned id;
+
+public:
+    OID(std::string prefixID, unsigned id): prefixID(std::move(prefixID)), id(id) {}
+
+    OID(): prefixID(""), id(0) {}
+
+    std::string getPrefix() const;
+    unsigned getId() const;
+    bool operator<(const OID& rhs) const;
+    bool operator>(const OID& rhs) const;
+    bool operator<=(const OID& rhs) const;
+    bool operator>=(const OID& rhs) const;
+    bool operator==(const OID& rhs) const;
+    bool operator!=(const OID& rhs) const;
+    operator std::string () const {
+        return prefixID + std::to_string(id);
+    }
+
+
+
+
+};
+
+OID operator+(const std::string& rhs, unsigned lhs);
+
+
 
 
 class Trackeable  {
 private:
-
-
 
     // Constantes para los mensajes de cambio
     std::string changeName = "Nombre modificado.";
@@ -65,8 +92,8 @@ protected:
     std::list<Change> changes;
 
 public:
-    explicit Trackeable(std::string id):
-            id(std::move(id)), name(""), versionMajor(defaultVersionMajor), versionMinor(defaultVersionMinor), date_init(defaultDate), comments(""), authors(defaultAuthors), tracesFrom(std::list<std::string>()), tracesTo(std::list<std::string>()), changes(std::list<Change>()) {}
+    explicit Trackeable(std::string prefix = "XX",unsigned id =-1):
+            id(prefix,id), name(""), versionMajor(defaultVersionMajor), versionMinor(defaultVersionMinor), date_init(defaultDate), comments(""), authors(defaultAuthors), tracesFrom(std::list<OID>()), tracesTo(std::list<OID>()), changes(std::list<Change>()) {}
 
 
     void setName(std::string objName);
@@ -88,7 +115,8 @@ public:
      void setdefaultVersionMajor(std::string versionMajor);
      void setdefaultVersionMinor(std::string versionMinor);
      void setdefaultDate(Fecha date);
-     void setdefaultAuthors(std::set<std::string>& authors);
+     void setdefaultAuthors(std::set<OID>& authors);
+
 
     virtual void accept(Visitor* visitor);
 
@@ -99,7 +127,7 @@ public:
      inline static std::string defaultVersionMajor = "0";
      inline static std::string defaultVersionMinor = "0";
      inline static Fecha defaultDate = Fecha();
-     inline static std::set<OID> defaultAuthors = std::set<std::string>();
+     inline static std::set<OID> defaultAuthors = std::set<OID>();
 
 
 

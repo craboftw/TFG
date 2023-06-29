@@ -35,8 +35,10 @@ private:
 
 
 class TimeQuantity{
+public:
     enum Unit {YEAR, MONTH, WEEK, DAY, HOUR, MINUTE, SECOND, MILLISECOND};
 
+private:
     unsigned quantity;
     Unit unit;
 

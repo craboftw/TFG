@@ -29,8 +29,6 @@ void FileJsonManager::save(json singlejson) {
         std::ofstream o(path);
     }
 
-    std::string fullPath = std::filesystem::absolute(path).string();
-    std::cout << "fullPath: " << fullPath << std::endl;
 
 // Add the new json object to the listaj
 
@@ -42,8 +40,13 @@ void FileJsonManager::save(json singlejson) {
 
 }
 
+
+
 json FileJsonManager::load(OID oid) {
     std::string typeOfTrackeable = oid.getPrefix() ;
+    if (typeOfTrackeable == "XX") {
+        return json();
+    }
     std::string path = "TFG/Jsons/" + typeOfTrackeable + ".json";
     unsigned id = oid.getId();
 // Open the file in input mode to check if it exists
@@ -56,20 +59,15 @@ json FileJsonManager::load(OID oid) {
     }
     else
     {
-        //create the file if it doesn't exist
         std::ofstream o(path);
     }
-
-    std::string fullPath = std::filesystem::absolute(path).string();
-    std::cout << "fullPath: " << fullPath << std::endl;
-
-// Add the new json object to the listaj
 
     return listaj [std::to_string(id)];
 }
 
 json FileJsonManager::loadAll(std::string prefix) {
     std::string path = "TFG/Jsons/" + prefix + ".json";
+
     std::ifstream i(path);
     json listaj;
 
@@ -79,17 +77,30 @@ json FileJsonManager::loadAll(std::string prefix) {
     }
     else
     {
-        //create the file if it doesn't exist
         std::ofstream o(path);
     }
-
-    std::string fullPath = std::filesystem::absolute(path).string();
-    std::cout << "fullPath: " << fullPath << std::endl;
 
 // Add the new json object to the listaj
 
     return listaj;
 }
+
+bool FileJsonManager::exist(OID oid) {
+    if (oid.getPrefix() == "XX") {
+        return false;
+    }
+
+    json lista = loadAll(oid.getPrefix());
+
+    for (auto& element : lista) {
+        if (element["id"]["id"] == oid.getId()) {
+            return true;
+        }
+    }
+    return false;
+}
+
+
 
 Stakeholder FileJsonManager::loadStakeholder(OID id) {
     json j = load(id);
@@ -101,7 +112,7 @@ std::list<Stakeholder> FileJsonManager::loadAllStakeholder() {
     std::list<Stakeholder> stakeholders;
     json j = loadAll("SH");
     Jsoneitor jsoneitor;
-    for (auto& element : j) {
+    for (json element : j) {
         stakeholders.push_back(jsoneitor.deserializeStakeholder(element));
     }
     return stakeholders;
@@ -251,9 +262,226 @@ std::list<UserCase> FileJsonManager::loadAllUserCase() {
     return userCases;
 }
 
+unsigned FileJsonManager::lastStakeholder() {
+    json j = loadAll("UC");
+    unsigned last = 0;
+    for (auto& element : j) {
+        if (last < element["id"]["id"])
+            last = element["id"]["id"];
+    }
+    return last;
+}
 
+unsigned FileJsonManager::lastRestrictionRequirement() {
+    json j = loadAll("RR");
+    unsigned last = 0;
+    for (auto& element : j) {
+        if (last < element["id"]["id"])
+            last = element["id"]["id"];
+    }
+    return last;
+}
 
+unsigned FileJsonManager::lastFunctionalRequirement() {
+    json j = loadAll("FR");
+    unsigned last = 0;
+    for (auto& element : j) {
+        if (last < element["id"]["id"])
+            last = element["id"]["id"];
+    }
+    return last;
+}
 
+unsigned FileJsonManager::lastNonFunctionalRequirement() {
+    json j = loadAll("NF");
+    unsigned last = 0;
+    for (auto& element : j) {
+        if (last < element["id"]["id"])
+            last = element["id"]["id"];
+    }
+    return last;
+}
+
+unsigned FileJsonManager::lastActorUC() {
+    json j = loadAll("AC");
+    unsigned last = 0;
+    for (auto& element : j) {
+        if (last < element["id"]["id"])
+            last = element["id"]["id"];
+    }
+    return last;
+}
+
+unsigned FileJsonManager::lastInformationRequirement() {
+    json j = loadAll("IR");
+    unsigned last = 0;
+    for (auto& element : j) {
+        if (last < element["id"]["id"])
+            last = element["id"]["id"];
+    }
+    return last;
+}
+
+unsigned FileJsonManager::lastOrganization() {
+    json j = loadAll("OR");
+    unsigned last = 0;
+    for (auto& element : j) {
+        if (last < element["id"]["id"])
+            last = element["id"]["id"];
+    }
+    return last;
+}
+
+unsigned FileJsonManager::lastRolStakeholder() {
+    json j = loadAll("RS");
+    unsigned last = 0;
+    for (auto& element : j) {
+        if (last < element["id"]["id"])
+            last = element["id"]["id"];
+    }
+    return last;
+}
+
+unsigned FileJsonManager::lastSystemObjective() {
+    json j = loadAll("SO");
+    unsigned last = 0;
+    for (auto& element : j) {
+        if (last < element["id"]["id"])
+            last = element["id"]["id"];
+    }
+    return last;
+}
+
+unsigned FileJsonManager::lastUserCase() {
+    json j = loadAll("UC");
+    unsigned last = 0;
+    for (auto& element : j) {
+        if (last < element["id"]["id"]) {
+            last = element["id"]["id"];
+        }
+    }
+    return last;
+}
+
+void FileJsonManager::save(Stakeholder stakeholder) {
+    Jsoneitor jsoneitor;
+    jsoneitor.visit(stakeholder);
+}
+
+void FileJsonManager::save(RestrictionRequirement restrictionRequirement) {
+    Jsoneitor jsoneitor;
+    jsoneitor.visit(restrictionRequirement);
+}
+
+void FileJsonManager::save(FunctionalRequirement functionalRequirement) {
+    Jsoneitor jsoneitor;
+    jsoneitor.visit(functionalRequirement);
+}
+
+void FileJsonManager::save(NonFunctionalRequirement nonFunctionalRequirement) {
+    Jsoneitor jsoneitor;
+    jsoneitor.visit(nonFunctionalRequirement);
+}
+
+void FileJsonManager::save(ActorUC actorUC) {
+    Jsoneitor jsoneitor;
+    jsoneitor.visit(actorUC);
+}
+
+void FileJsonManager::save(InformationRequirement informationRequirement) {
+    Jsoneitor jsoneitor;
+    jsoneitor.visit(informationRequirement);
+}
+
+void FileJsonManager::save(Organization organization) {
+    Jsoneitor jsoneitor;
+    jsoneitor.visit(organization);
+}
+
+void FileJsonManager::save(Rol_Stakeholder rol_stakeholder) {
+    Jsoneitor jsoneitor;
+    jsoneitor.visit(rol_stakeholder);
+}
+
+void FileJsonManager::save(SystemObjective systemObjective) {
+    Jsoneitor jsoneitor;
+    jsoneitor.visit(systemObjective);
+}
+
+void FileJsonManager::save(UserCase userCase) {
+    Jsoneitor jsoneitor;
+    jsoneitor.visit(userCase);
+}
+
+void FileJsonManager::saveAll(std::list<Stakeholder> stakeholders) {
+    Jsoneitor jsoneitor;
+    for (auto& stakeholder : stakeholders) {
+        jsoneitor.visit(stakeholder);
+    }
+}
+
+void FileJsonManager::saveAll(std::list<RestrictionRequirement> restrictionRequirements) {
+    Jsoneitor jsoneitor;
+    for (auto& restrictionRequirement : restrictionRequirements) {
+        jsoneitor.visit(restrictionRequirement);
+    }
+}
+
+void FileJsonManager::saveAll(std::list<FunctionalRequirement> functionalRequirements) {
+    Jsoneitor jsoneitor;
+    for (auto& functionalRequirement : functionalRequirements) {
+        jsoneitor.visit(functionalRequirement);
+    }
+}
+
+void FileJsonManager::saveAll(std::list<NonFunctionalRequirement> nonFunctionalRequirements) {
+    Jsoneitor jsoneitor;
+    for (auto& nonFunctionalRequirement : nonFunctionalRequirements) {
+        jsoneitor.visit(nonFunctionalRequirement);
+    }
+}
+
+void FileJsonManager::saveAll(std::list<ActorUC> actorUCs) {
+    Jsoneitor jsoneitor;
+    for (auto& actorUC : actorUCs) {
+        jsoneitor.visit(actorUC);
+    }
+}
+
+void FileJsonManager::saveAll(std::list<InformationRequirement> informationRequirements) {
+    Jsoneitor jsoneitor;
+    for (auto& informationRequirement : informationRequirements) {
+        jsoneitor.visit(informationRequirement);
+    }
+}
+
+void FileJsonManager::saveAll(std::list<Organization> organizations) {
+    Jsoneitor jsoneitor;
+    for (auto& organization : organizations) {
+        jsoneitor.visit(organization);
+    }
+}
+
+void FileJsonManager::saveAll(std::list<Rol_Stakeholder> rol_stakeholders) {
+    Jsoneitor jsoneitor;
+    for (auto& rol_stakeholder : rol_stakeholders) {
+        jsoneitor.visit(rol_stakeholder);
+    }
+}
+
+void FileJsonManager::saveAll(std::list<SystemObjective> systemObjectives) {
+    Jsoneitor jsoneitor;
+    for (auto& systemObjective : systemObjectives) {
+        jsoneitor.visit(systemObjective);
+    }
+}
+
+void FileJsonManager::saveAll(std::list<UserCase> userCases) {
+    Jsoneitor jsoneitor;
+    for (auto& userCase : userCases) {
+        jsoneitor.visit(userCase);
+    }
+}
 
 
 

@@ -29,8 +29,9 @@ using json = nlohmann::json;
 class FileJsonManager {
 private:
     json loadAll(std::string prefix);
+
     std::map<unsigned , std::string > prefixes = { {STAKEHOLDER,"SH",},{RESTRICTION_REQUIREMENT,"RR"},{FUNCTIONAL_REQUIREMENT,"FR"},{NON_FUNCTIONAL_REQUIREMENT,"NF"},{ACTOR_UC,"AC"},{INFORMATION_REQUIREMENT,"IR"},{ORGANIZATION,"OR"},{ROL_STAKEHOLDER,"RS"},{SYSTEM_OBJECTIVE,"SO"},{USER_CASE,"UC"}};
-    public:
+public:
 
 
     Stakeholder loadStakeholder(OID id);
@@ -55,10 +56,44 @@ private:
     std::list<SystemObjective> loadAllSystemObjective();
     std::list<UserCase> loadAllUserCase();
 
+    unsigned lastStakeholder();
+    unsigned lastRestrictionRequirement();
+    unsigned lastFunctionalRequirement();
+    unsigned lastNonFunctionalRequirement();
+    unsigned lastActorUC();
+    unsigned lastInformationRequirement();
+    unsigned lastOrganization();
+    unsigned lastRolStakeholder();
+    unsigned lastSystemObjective();
+    unsigned lastUserCase();
 
     static void save(json singlejson);
-    json load(OID id);
 
+    void save(Stakeholder stakeholder);
+    void save(RestrictionRequirement restrictionRequirement);
+    void save(FunctionalRequirement functionalRequirement);
+    void save(NonFunctionalRequirement nonFunctionalRequirement);
+    void save(ActorUC actorUC);
+    void save(InformationRequirement informationRequirement);
+    void save(Organization organization);
+    void save(Rol_Stakeholder rolStakeholder);
+    void save(SystemObjective systemObjective);
+    void save(UserCase userCase);
+
+    void saveAll(std::list<Stakeholder> stakeholders);
+    void saveAll(std::list<RestrictionRequirement> restrictionRequirements);
+    void saveAll(std::list<FunctionalRequirement> functionalRequirements);
+    void saveAll(std::list<NonFunctionalRequirement> nonFunctionalRequirements);
+    void saveAll(std::list<ActorUC> actorUCs);
+    void saveAll(std::list<InformationRequirement> informationRequirements);
+    void saveAll(std::list<Organization> organizations);
+    void saveAll(std::list<Rol_Stakeholder> rolStakeholders);
+    void saveAll(std::list<SystemObjective> systemObjectives);
+    void saveAll(std::list<UserCase> userCases);
+    bool exist(OID id);
+
+
+    json load(OID id);
 };
 
 

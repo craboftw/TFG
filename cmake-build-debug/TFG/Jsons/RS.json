@@ -1,0 +1,29 @@
+{
+    "1": {
+        "authors": [
+            {
+                "id": 1,
+                "prefix": "SH"
+            }
+        ],
+        "changes": [
+            {
+                "comments": "Autor añadido.SH1.",
+                "date": "2023-6-29",
+                "version": "Autor añadido."
+            }
+        ],
+        "comments": "",
+        "date_init": "2023-6-29",
+        "description": "",
+        "id": {
+            "id": 1,
+            "prefix": "RS"
+        },
+        "name": "Programador",
+        "tracesFrom": null,
+        "tracesTo": null,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    }
+}

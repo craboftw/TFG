@@ -40,7 +40,7 @@ private:
 public:
     OID(std::string prefixID, unsigned id): prefixID(std::move(prefixID)), id(id) {}
 
-    OID(): prefixID(""), id(0) {}
+    OID(): prefixID("XX"), id(0) {}
 
     std::string getPrefix() const;
     unsigned getId() const;

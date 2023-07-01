@@ -30,6 +30,10 @@ void ActorUC::setPackage(std::string reference) {
     this->package = reference;
 }
 
+std::string ActorUC::getPrefixID() {
+    return prefixID;
+}
+
 void NonFunctionalRequirement::accept(Visitor* visitor)
 {
     
@@ -41,4 +45,24 @@ void RestrictionRequirement::accept(Visitor* visitor) {
 
 void SystemObjective::accept(Visitor* visitor) {
     visitor->visit(*this);
+}
+
+std::string SystemObjective::getPrefixID() {
+    return prefixID;
+}
+
+std::string RestrictionRequirement::getPrefixID() {
+    return prefixID;
+}
+
+std::string FunctionalRequirement::getPrefixID() {
+    return prefixID;
+}
+
+std::string NonFunctionalRequirement::getPrefixID() {
+    return prefixID;
+}
+
+std::string Step::getDescription() const {
+    return description;
 }

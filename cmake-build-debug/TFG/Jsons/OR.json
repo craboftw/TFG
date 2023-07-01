@@ -1,0 +1,30 @@
+{
+    "1": {
+        "authors": [
+            {
+                "id": 1,
+                "prefix": "SH"
+            }
+        ],
+        "changes": [
+            {
+                "comments": "Autor añadido.SH1.",
+                "date": "2023-6-29",
+                "version": "Autor añadido."
+            }
+        ],
+        "comments": "Comunicacion por correo electronico",
+        "contactInfo": "Nombre de la empresa: Megacorp\nTipo de empresa: Megacorp es una empresa ficticia especializada en tecnología y servicios innovadores.\nDirección: Avenida Tecnológica 1234, Ciudad Futura, País Imaginario.\nTeléfono: +1 (555) 123-4567\nCorreo electrónico: info@megacorp.com\nSitio web: www.megacorp.com\nRedes sociales:\nFacebook: www.facebook.com/megacorp\nTwitter: www.twitter.com/megacorp\nInstagram: www.instagram.com/megacorp\nHorario de atención al cliente: \nLunes a viernes: 9:00 a.m. - 6:00 p.m.\nSábados: 9:00 a.m. - 1:00 p.m.\n\nNota: Esta información es completamente ficticia y no corresponde a ninguna empresa real.",
+        "date_init": "2023-6-29",
+        "description": "",
+        "id": {
+            "id": 1,
+            "prefix": "OR"
+        },
+        "name": "Megacorp",
+        "tracesFrom": null,
+        "tracesTo": null,
+        "versionMajor": "1",
+        "versionMinor": "0"
+    }
+}

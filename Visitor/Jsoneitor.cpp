@@ -464,7 +464,7 @@ void Jsoneitor::visit(UserCase userCase) {
     j["actors"] = serializeListOfOID(userCase.getActors());
     j["objectives"] = serializeListOfOID(userCase.getObjectives());
     j["package"] = userCase.getPackage();
-    j["generalization"] = userCase.getGeneralization();
+    j["generalization"] = serializeOID(userCase.getGeneralization());
 
     FileJsonManager::save(j);
 

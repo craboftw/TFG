@@ -101,6 +101,18 @@ OID UserCase::getGeneralization() const {
     return generalization;
 }
 
+void UserCase::setGeneralization(OID _generalization) {
+    generalization = _generalization;
+}
+
+std::string UserCase::getPrefixID() {
+    return prefixID;
+}
+
+void UserCase::removeStep(int pos) {
+    steps.erase(steps.begin() + pos);
+}
+
 bool Step::getAbstract() const {
     return abstract;
 }
@@ -123,10 +135,6 @@ void Step::setCondition(std::string _condition) {
 
 void Step::setComments(std::string _comments) {
     comments = std::move(_comments);
-}
-
-std::string Step::getDescription() const {
-    return description;
 }
 
 OID Step::getReference() const {

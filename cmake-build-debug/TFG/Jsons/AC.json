@@ -1,0 +1,19 @@
+{
+    "1": {
+        "authors": null,
+        "changes": [],
+        "comments": "Que rico",
+        "date_init": "2023-07-1",
+        "description": "",
+        "id": {
+            "id": 1,
+            "prefix": "AC"
+        },
+        "name": "Cocinero",
+        "package": "Cocina",
+        "tracesFrom": null,
+        "tracesTo": null,
+        "versionMajor": "1",
+        "versionMinor": "0"
+    }
+}

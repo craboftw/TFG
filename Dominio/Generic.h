@@ -17,6 +17,7 @@ class SystemObjective : public Trackeable , public Priority {
 public:
     explicit SystemObjective(unsigned id) : Trackeable(prefixID,id), Priority() {}
     void accept(Visitor* visitor) override ;
+    static std::string getPrefixID();
 
 private:
     inline static std::string prefixID = "SO";
@@ -26,6 +27,8 @@ class RestrictionRequirement : public Trackeable, public Priority {
 public:
     explicit RestrictionRequirement(unsigned id) : Trackeable(prefixID,id), Priority() {}
     void accept(Visitor* visitor) override ;
+    static std::string getPrefixID();
+
 private:
     inline static std::string prefixID = "RR";
 };
@@ -34,6 +37,8 @@ class FunctionalRequirement : public Trackeable, public Priority {
 public:
     explicit FunctionalRequirement(unsigned id) : Trackeable(prefixID,id), Priority() {}
     void accept(Visitor* visitor) ;
+    static std::string getPrefixID();
+
 private:
     inline static std::string prefixID = "FR";
 };
@@ -42,6 +47,8 @@ class NonFunctionalRequirement : public Trackeable, public Priority {
 public:
     explicit NonFunctionalRequirement(unsigned id) : Trackeable(prefixID,id), Priority() {}
     void accept(Visitor* visitor) override ;
+    static std::string getPrefixID();
+
 private:
     inline static std::string prefixID = "NF";
 };
@@ -51,6 +58,7 @@ public:
     explicit ActorUC(unsigned id) : Trackeable(prefixID,id), package("") {}
     void accept(Visitor* visitor) override ;
     std::string getPackage();
+    static std::string getPrefixID();
 
     void setPackage(std::string reference);
 

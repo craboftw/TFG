@@ -1,0 +1,32 @@
+{
+    "1": {
+        "authors": null,
+        "avgSimultaneousOccurrence": 1,
+        "changes": [],
+        "comments": "Comentarios",
+        "date_init": "2023-6-29",
+        "description": "",
+        "estability": 1,
+        "id": {
+            "id": 1,
+            "prefix": "IR"
+        },
+        "importanceLevel": 3,
+        "lifeAvgEstimate": {
+            "quantity": 1,
+            "unit": 3
+        },
+        "lifeMaxEstimate": {
+            "quantity": 1,
+            "unit": 2
+        },
+        "maxSimultaneousOccurrence": 1,
+        "name": "Nombre",
+        "phase": 1,
+        "tracesFrom": null,
+        "tracesTo": null,
+        "urgencyLevel": 3,
+        "versionMajor": "1",
+        "versionMinor": "1"
+    }
+}

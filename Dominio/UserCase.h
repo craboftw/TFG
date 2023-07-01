@@ -74,9 +74,11 @@ public:
     void setSteps(std::vector<Step> _steps);
     void setActors(std::list<OID> _actors);
     void setPackage(std::string _package);
+    void setGeneralization(OID _generalization);
 
     void addStep(Step step);
     void addStep(Step step, int pos);
+    void removeStep(int pos);
     void addActor(OID actor);
 
     bool isAbstract() const;
@@ -89,6 +91,7 @@ public:
     std::list<OID> getObjectives() const;
     std::string getPackage() const;
     OID getGeneralization() const;
+    static std::string getPrefixID();
 
 };
 

@@ -7,6 +7,7 @@
 #include "Dominio/Trackeable/Organization.h"
 #include "Dominio/InformationRequirement.h"
 #include "Visitor/DiagramManager.h"
+#include "Servicio/ServicioUserCase.h"
 
 // for convenience
 using json = nlohmann::json;
@@ -370,21 +371,101 @@ void crearRestrictionRequirement()
 
 }
 
+void pruebaServicioUserCase()
+{
+        ServicioUserCase servicio;
+
+        // Crear un UserCase y obtener su ID
+        OID id = servicio.createUserCase();
+        std::cout << "ID del UserCase creado: " << id.operator std::string() << std::endl;
+
+        // Establecer propiedades del UserCase
+        servicio.setAbstract(id, true);
+        servicio.setPrecondition(id, "Precondición del UserCase");
+        servicio.setPostcondition(id, "Postcondición del UserCase");
+
+        servicio.setFrequency(id, TimeQuantity(5, TimeQuantity::DAY));
+        std::vector<Step> steps = {Step(true, "Descripción del paso 1"), Step(false, "Descripción del paso 2")};
+        servicio.setSteps(id, steps);
+        Step newStep(false, "Nuevo paso");
+        servicio.addStep(id, newStep);
+
+        // Obtener propiedades del UserCase
+        bool isAbstract = servicio.getAbstract(id);
+        std::cout << "Abstracto: " << std::boolalpha << isAbstract << std::endl;
+        std::string precondition = servicio.getPrecondition(id);
+        std::cout << "Precondición: " << precondition << std::endl;
+        std::string postcondition = servicio.getPostcondition(id);
+        std::cout << "Postcondición: " << postcondition << std::endl;
+        std::list<OID> retrievedObjectives = servicio.getObjectives(id);
+        std::cout << "Objetivos:";
+        for (const auto& objective : retrievedObjectives) {
+            std::cout << " " << objective.operator std::string();
+        }
+        std::cout << std::endl;
+        TimeQuantity frequency = servicio.getFrequency(id);
+        std::cout << "Frecuencia: " << frequency.getQuantity() << " " << frequency.getUnit() << std::endl;
+        std::vector<Step> retrievedSteps = servicio.getSteps(id);
+        std::cout << "Pasos:";
+        for (const auto& step : retrievedSteps) {
+            std::cout << " " << step.getDescription();
+        }
+        std::cout << std::endl;
+        std::list<OID> retrievedActors = servicio.getActors(id);
+        std::cout << "Actores:";
+        for (const auto& actor : retrievedActors) {
+            std::cout << " " << actor.operator std::string();
+        }
+        std::cout << std::endl;
+        std::string package = servicio.getPackage(id);
+        std::cout << "Paquete: " << package << std::endl;
+        OID generalization = servicio.getGeneralization(id);
+        std::cout << "Generalización: " << generalization.operator std::string() << std::endl;
+
+        // Modificar propiedades de un paso específico
+        servicio.setAbstract(id, 1, true);
+        servicio.setCondition(id, 0, "Condición modificada");
+        servicio.setComments(id, 1, "Comentarios modificados");
+        servicio.setDescription(id, 1, "Descripción modificada");
+
+
+        servicio.setType(id, 0, Step::type::INCLUDE);
+        OID id2 = {"UC",id.getId()-1};
+        servicio.setReference(id, 0, OID(id2));
+
+    OID id3 = {"UC",id.getId()-2};
+        servicio.setType(id, 1, Step::type::EXTEND);
+        servicio.setReference(id, 1, OID(id3));
+
+
+        // Obtener propiedades de un paso específico
+        bool isAbstractStep = servicio.getAbstract(id, 1);
+        std::cout << "Abstracto: " << std::boolalpha << isAbstractStep << std::endl;
+        std::string condition = servicio.getCondition(id, 0);
+        std::cout << "Condición: " << condition << std::endl;
+        std::string comments = servicio.getComments(id, 1);
+        std::cout << "Comentarios: " << comments << std::endl;
+        std::string description = servicio.getDescription(id, 1);
+        std::cout << "Descripción: " << description << std::endl;
+        Step::type type = servicio.getType(id, 0);
+        std::cout << "Tipo: " << type << std::endl;
+        OID reference = servicio.getReference(id, 0);
+        std::cout << "Referencia: " << reference.operator std::string() << std::endl;
+
+        // Eliminar propiedades de un paso específico
+        DiagramManager diagramManager;
+        FileJsonManager fileJsonManager;
+        std::list<UserCase> userCases = fileJsonManager.loadAllUserCase();
+        diagramManager.visit(userCases);
+
+
+    }
 
 
 
 int main() {
     setlocale(LC_ALL, "spanish");
+    crearUserCase();
+        pruebaServicioUserCase();
 
-std::string prefix = "IR";
-unsigned id = 1;
-//crearInformationRequirement();
-FileJsonManager fileJsonManager;
-Jsoneitor jsoneitor;
-//crearUserCase();
-auto lista = fileJsonManager.loadAllStakeholder();
-//print
-for (auto s : lista) {
-    print(s);
-    std::cout<<std::endl;
-}}
+}

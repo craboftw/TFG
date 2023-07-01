@@ -80,7 +80,10 @@ Fecha::Fecha(const std::string &fecha) {
 }
 
 std::string Fecha::toString() {
-    return std::to_string(this->year) + "-" + std::to_string(this->month) + "-" + std::to_string(this->day);
+    if (month < 10)
+        return std::to_string(this->year) + "-0" + std::to_string(this->month) + "-" + std::to_string(this->day);
+    else
+        return std::to_string(this->year) + "-" + std::to_string(this->month) + "-" + std::to_string(this->day);
 }
 
 

@@ -111,7 +111,7 @@ void ServicioUserCase::setPackage(OID id, std::string _package) {
 void ServicioUserCase::setGeneralization(OID id, OID _generalization) {
     if (id.getPrefix() == "XX" and id.getPrefix() !=  UserCase::getPrefixID()) throw std::invalid_argument("El id a modificar no corresponde a un UserCrCase, setGeneralization");
     if (!fileJsonManager.exist(id)) throw std::invalid_argument("El id a modificar no existe, setGeneralization");
-    if (_generalization.getPrefix() != ActorUC::getPrefixID()) throw std::invalid_argument("El id de la generalizacion no corresponde a un UserCase, setGeneralization");
+    if (_generalization.getPrefix() != UserCase::getPrefixID()) throw std::invalid_argument("El id de la generalizacion no corresponde a un UserCase, setGeneralization");
     if (!fileJsonManager.exist(_generalization)) throw std::invalid_argument("El id de la generalizacion no existe, setGeneralization");
     UserCase userCase = fileJsonManager.loadUserCase(id);
     userCase.setGeneralization(_generalization);
@@ -222,11 +222,15 @@ OID ServicioUserCase::getGeneralization(OID id) {
         throw std::invalid_argument("El id a modificar no corresponde a un UserCase, getAbstract");
     if (!fileJsonManager.exist(id)) throw std::invalid_argument("El id a modificar no existe, getAbstract");
     UserCase userCase = fileJsonManager.loadUserCase(id);
+    std::cout<<"\n"<<userCase.getGeneralization().getPrefix()<<std::endl;
     auto generalization = userCase.getGeneralization();
-    if (fileJsonManager.exist(generalization)) return generalization;
-    userCase.setGeneralization(OID());
-    fileJsonManager.save(userCase);
-    return OID();
+    if (fileJsonManager.exist(generalization))
+    return generalization;
+    else {
+        userCase.setGeneralization(OID());
+        fileJsonManager.save(userCase);
+        return OID();
+    }
 }
 
 void ServicioUserCase::removeStep(OID id, int pos) {

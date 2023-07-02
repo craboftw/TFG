@@ -14,12 +14,14 @@ ${workspaceFolder}/Dominio/
 
 void FunctionalRequirement::accept(Visitor* visitor)
 {
+    visitor->visit(*this);
 
 }
 
 void ActorUC::accept(Visitor* visitor)
 {
-    return;
+    visitor->visit(*this);
+
 }
 
 std::string ActorUC::getPackage() {
@@ -34,12 +36,22 @@ std::string ActorUC::getPrefixID() {
     return prefixID;
 }
 
+OID ActorUC::getGeneralization() const {
+    return generalization;
+}
+
+void ActorUC::setGeneralization(OID generalization) {
+    this->generalization = generalization;
+}
+
 void NonFunctionalRequirement::accept(Visitor* visitor)
 {
-    
+    visitor->visit(*this);
+
 }
 
 void RestrictionRequirement::accept(Visitor* visitor) {
+    visitor->visit(*this);
 
 }
 

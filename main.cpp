@@ -9,6 +9,83 @@
 #include "Visitor/DiagramManager.h"
 #include "Servicio/ServicioUserCase.h"
 
+std::string generateHTML(InformationRequirement& requirement) {
+    std::string html;
+
+    // Estilos CSS para la tabla
+    html += "<style>";
+    html += "table { width: 100%; border-collapse: collapse; }";
+    html += "th, td { padding: 10px; text-align: left; }";
+    html += "th { background-color: #333; color: #fff; }";
+    html += "td { background-color: #f1f1f1; }";
+    html += "</style>";
+
+    // Abrir la tabla
+    html += "<table>";
+
+    // Agregar el ID del requerimiento en una fila de encabezado
+    html += "<tr>";
+    html += "<th style='font-family: Arial, sans-serif;'>ID</th>";
+    html += "<td colspan='3' style='font-family: Arial, sans-serif;'>" + static_cast<std::string>(requirement.getId()) + "</td>";
+    html += "</tr>";
+
+    // Agregar el nombre del requerimiento en una fila
+    html += "<tr>";
+    html += "<th style='font-family: Arial, sans-serif;'>Nombre</th>";
+    html += "<td colspan='3' style='font-family: Arial, sans-serif;'>" + requirement.getName() + "</td>";
+    html += "</tr>";
+
+    // Agregar la descripción del requerimiento en una fila
+    html += "<tr>";
+    html += "<th style='font-family: Arial, sans-serif;'>Descripción</th>";
+    html += "<td colspan='3' style='font-family: Arial, sans-serif;'>" + requirement.getDescription() + "</td>";
+    html += "</tr>";
+    // Agregar Max Simultaneous Occurrence y Avg Simultaneous Occurrence en la misma fila
+    html += "<tr>";
+    html += "<th style='font-family: Arial, sans-serif;'>Max Simultaneous Occurrence</th>";
+    html += "<td colspan='3' style='font-family: Arial, sans-serif;'>" + std::to_string(requirement.getMaxSimultaneousOccurrence()) + "</td>";
+    html += "</tr>";
+
+    // Agregar Tiempo estimado máximo de vida y Tiempo estimado promedio de vida en la misma fila
+    html += "<tr>";
+    html += "<th style='font-family: Arial, sans-serif;'>Tiempo estimado máximo de vida</th>";
+    html += "<td colspan='3' style='font-family: Arial, sans-serif;'>" + requirement.strLifeMaxEstimate() + "</td>";
+    html += "</tr>";
+
+    html += "<tr>";
+    html += "<th style='font-family: Arial, sans-serif;'>Tiempo estimado promedio de vida</th>";
+    html += "<td colspan='3' style='font-family: Arial, sans-serif;'>" + requirement.strLifeAvgEstimate() + "</td>";
+    html += "</tr>";
+
+    // Agregar la importancia y urgencia del requerimiento en una fila
+    html += "<tr>";
+    html += "<th style='font-family: Arial, sans-serif;'>Importancia</th>";
+    html += "<td style='font-family: Arial, sans-serif;'>" + requirement.strImportanceLevel() + "</td>";
+    html += "<th style='font-family: Arial, sans-serif;'>Urgencia</th>";
+    html += "<td style='font-family: Arial, sans-serif;'>" + requirement.strUrgencyLevel() + "</td>";
+    html += "</tr>";
+
+    // Agregar la fase de desarrollo y estabilidad del requerimiento en una fila
+    html += "<tr>";
+    html += "<th style='font-family: Arial, sans-serif;'>Fase de desarrollo</th>";
+    html += "<td style='font-family: Arial, sans-serif;'>" + requirement.strPhase() + "</td>";
+    html += "<th style='font-family: Arial, sans-serif;'>Estabilidad</th>";
+    html += "<td style='font-family: Arial, sans-serif;'>" + requirement.strEstability() + "</td>";
+    html += "</tr>";
+
+
+
+    // Cerrar la tabla
+    html += "</table>";
+
+    return html;
+}
+
+
+
+
+
+
 // for convenience
 using json = nlohmann::json;
 
@@ -256,8 +333,7 @@ void crearUserCase(){
     userCases.push_back(userCase);
     userCases.push_back(userCase2);
 
-    DiagramManager diagramManager;
-    diagramManager.visit(userCases);
+
 
 };
 
@@ -416,7 +492,10 @@ void pruebaServicioUserCase()
         for (const auto& actor : retrievedActors) {
             std::cout << " " << actor.operator std::string();
         }
-        std::cout << std::endl;
+        OID id4 = {"UC",id.getId()-3};
+        servicio.setGeneralization(id, id4);
+
+    std::cout << std::endl;
         std::string package = servicio.getPackage(id);
         std::cout << "Paquete: " << package << std::endl;
         OID generalization = servicio.getGeneralization(id);
@@ -456,16 +535,41 @@ void pruebaServicioUserCase()
         DiagramManager diagramManager;
         FileJsonManager fileJsonManager;
         std::list<UserCase> userCases = fileJsonManager.loadAllUserCase();
-        diagramManager.visit(userCases);
+        auto actores = fileJsonManager.loadAllActorUC();
+        diagramManager.visit(userCases,actores);
 
 
     }
 
+    void pruebaInformationRequirement()
+    {
+        InformationRequirement requirement(1);
+        requirement.setName("Requerimiento de prueba");
+        requirement.setDescription("Este es un requerimiento de prueba");
+        requirement.setImportanceLevel(Priority::HIGH);
+        requirement.setUrgencyLevel(Priority::MEDIUM);
+        requirement.setPhase(Priority::IMPLEMENTATION);
+        requirement.setEstability(Priority::STABLE);
+        requirement.setMaxSimultaneousOccurrence(5);
+        requirement.setAvgSimultaneousOccurrence(3);
+        requirement.setLifeMaxEstimate(TimeQuantity(10, TimeQuantity::DAY));
+        requirement.setLifeAvgEstimate(TimeQuantity(5, TimeQuantity::DAY));
+    }
 
 
 int main() {
     setlocale(LC_ALL, "spanish");
-    crearUserCase();
-        pruebaServicioUserCase();
+    ServicioUserCase servicio;
+    auto id = servicio.createUserCase();
+    servicio.setImportanceLevel(id,Priority::HIGH);
+    std::cout<<servicio.strImportanceLevel(id) << std::endl;
+    std::cout<<servicio.getName(id)<< std::endl;
+    std::cout<<servicio.getAbstract(id)<< std::endl;
+
+
+
+
+
+
 
 }

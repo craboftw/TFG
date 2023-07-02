@@ -53,6 +53,11 @@ public:
     operator std::string () const {
         return prefixID + std::to_string(id);
     }
+    OID operator = (const OID& rhs) {
+        prefixID = rhs.prefixID;
+        id = rhs.id;
+        return *this;
+    }
 
 
 

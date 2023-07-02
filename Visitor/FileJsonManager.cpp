@@ -32,7 +32,14 @@ void FileJsonManager::save(json singlejson) {
 
 // Add the new json object to the listaj
 
-    listaj [std::to_string(id)] = singlejson;
+    json elemento = listaj [std::to_string(id)];
+
+    //update elemento only with the fields in singlejson
+    for (auto& element : singlejson.items()) {
+        elemento[element.key()] = element.value();
+    }
+    listaj [std::to_string(id)] = elemento;
+
 
 // Open the file in output mode to save the updated json
     std::ofstream o(path);
@@ -252,6 +259,20 @@ UserCase FileJsonManager::loadUserCase(OID id) {
     return jsoneitor.deserializeUserCase(j);
 }
 
+Trackeable *FileJsonManager::loadTrackeable(OID id) {
+    json j = load(id);
+    Jsoneitor jsoneitor;
+    return jsoneitor.deserializeTrackeable(j);
+}
+
+Priority *FileJsonManager::loadPriority(OID id) {
+    json j = load(id);
+    Jsoneitor jsoneitor;
+    Priority* p = jsoneitor.deserializePriority(j);
+    p->setID(id);
+    return p;
+}
+
 std::list<UserCase> FileJsonManager::loadAllUserCase() {
     std::list<UserCase> userCases;
     json j = loadAll("UC");
@@ -408,9 +429,19 @@ void FileJsonManager::save(SystemObjective systemObjective) {
     jsoneitor.visit(systemObjective);
 }
 
-void FileJsonManager::save(UserCase userCase) {
+void FileJsonManager::save(UserCase& userCase) {
     Jsoneitor jsoneitor;
     jsoneitor.visit(userCase);
+}
+
+void FileJsonManager::save(Trackeable *pTrackeable) {
+    Jsoneitor jsoneitor;
+    jsoneitor.visit(pTrackeable);
+}
+
+void FileJsonManager::save(Priority* pPriority) {
+    Jsoneitor jsoneitor;
+    jsoneitor.visit(pPriority);
 }
 
 void FileJsonManager::saveAll(std::list<Stakeholder> stakeholders) {
@@ -482,7 +513,6 @@ void FileJsonManager::saveAll(std::list<UserCase> userCases) {
         jsoneitor.visit(userCase);
     }
 }
-
 
 
 template <class T>

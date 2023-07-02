@@ -8,8 +8,10 @@
 
 #include "Dominio/Trackeable/Trackeable.h"
 #include "Visitor/FileJsonManager.h"
+#include "ServicioTrackeable.h"
+#include "ServicioPriority.h"
 
-class ServicioUserCase {
+class ServicioUserCase : public ServicioTrackeable, public ServicioPriority{
 public:
     OID createUserCase(std::string name="");
     void setAbstract(OID id,bool _abstract);

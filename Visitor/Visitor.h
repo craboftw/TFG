@@ -28,9 +28,10 @@ public:
     virtual void visit(FunctionalRequirement functionalRequirement) = 0;
     virtual void visit(NonFunctionalRequirement nonFunctionalRequirement) = 0;
     virtual void visit(Stakeholder stakeholder) = 0;
-    virtual void visit(UserCase userCase) = 0;
+    virtual void visit(UserCase& userCase) = 0;
     virtual void visit(Rol_Stakeholder rolStakeholder) = 0;
     virtual void visit(Organization organization) = 0;
+    virtual void visit(Trackeable* trackeable) = 0;
     virtual ~Visitor() = default;
 
 

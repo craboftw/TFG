@@ -8,7 +8,7 @@
 #include "Jsoneitor.h"
 #include "Dominio/Generic.h"
 
-void DiagramManager::visit(std::list<UserCase> userCaseList) {
+void DiagramManager::visit(std::list<UserCase> userCaseList, std::list<ActorUC> actorUCList) {
     //Create a new file
     std::ofstream file("TFG/Diagrams/UseCaseDiagram.txt");
     FileJsonManager fileJsonManager;
@@ -17,7 +17,7 @@ void DiagramManager::visit(std::list<UserCase> userCaseList) {
     file << "@startuml" << std::endl;
     file << "left to right direction" << std::endl;
     //Find the actors
-    std::string actor = "";
+    std::string actor;
     std::map<std::string,std::set<OID>> packagesUC;
     std::map<std::string,std::set<OID>> packagesActor;
     std::set<std::string > packages;
@@ -28,19 +28,19 @@ void DiagramManager::visit(std::list<UserCase> userCaseList) {
         packagesUC[userCase.getPackage()].insert(userCase.getId());
         packages.insert(userCase.getPackage());
         nombres[userCase.getId()] = userCase.getName();
-        for (auto &actorUC : userCase.getActors()) {
-            auto actor = jsoneitor.deserializeActorUC(fileJsonManager.load(actorUC));
-            packagesActor[actor.getPackage()].insert(actorUC);
-            packages.insert(actor.getPackage());
-            nombres[actorUC] = actor.getName();
-    }
 
+    }
+    for (auto &actorUC : actorUCList) {
+        //return the one that the OID is equal to the actorUC
+        packagesActor[actorUC.getPackage()].insert(actorUC.getId());
+        packages.insert(actorUC.getPackage());
+        nombres[actorUC.getId()] = actorUC.getName();
     }
 
 
     //Imprimimos los paquetes con sus alias
     for (auto &package : packages) {
-        if (package != "") {
+        if (package.empty()) {
             file << "package \"" << package << "\" {" << std::endl;
             for (auto &userCase: packagesUC[package]) {
                 file << "usecase \"" << nombres[userCase] << "\" as " << userCase.operator std::string() << std::endl;
@@ -79,7 +79,11 @@ void DiagramManager::visit(std::list<UserCase> userCaseList) {
             }
         }
         if (userCase.getGeneralization() != OID())
-        file << userCase.getGeneralization().operator std::string() << " <|-- " << userCase.getId().operator std::string() << std::endl;
+            file << userCase.getGeneralization().operator std::string() << " <|-- " << userCase.getId().operator std::string() << std::endl;
+    }
+    for (auto &actorUC : actorUCList) {
+        if (actorUC.getId().getPrefix() == ActorUC::getPrefixID() and actorUC.getGeneralization() != OID())
+            file << actorUC.getGeneralization().operator std::string() << " <|-- " << actorUC.getId().operator std::string() << std::endl;
     }
     file << "@enduml" << std::endl;
     file.close();

@@ -3,13 +3,38 @@
         "authors": null,
         "changes": [],
         "comments": "Que rico",
-        "date_init": "2023-07-1",
+        "date_init": "2023-07-2",
         "description": "",
+        "generalization": {
+            "id": 0,
+            "prefix": "XX"
+        },
         "id": {
             "id": 1,
             "prefix": "AC"
         },
         "name": "Cocinero",
+        "package": "Cocina",
+        "tracesFrom": null,
+        "tracesTo": null,
+        "versionMajor": "1",
+        "versionMinor": "0"
+    },
+    "2": {
+        "authors": null,
+        "changes": [],
+        "comments": "Que rico",
+        "date_init": "2023-07-2",
+        "description": "",
+        "generalization": {
+            "id": 1,
+            "prefix": "AC"
+        },
+        "id": {
+            "id": 0,
+            "prefix": "XX"
+        },
+        "name": "Pakito",
         "package": "Cocina",
         "tracesFrom": null,
         "tracesTo": null,

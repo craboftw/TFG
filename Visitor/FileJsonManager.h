@@ -44,6 +44,7 @@ public:
     Rol_Stakeholder loadRolStakeholder(OID id);
     SystemObjective loadSystemObjective(OID id);
     UserCase loadUserCase(OID id);
+    Trackeable* loadTrackeable(OID id);
 
     std::list<Stakeholder> loadAllStakeholder();
     std::list<RestrictionRequirement> loadAllRestrictionRequirement();
@@ -78,7 +79,8 @@ public:
     void save(Organization organization);
     void save(Rol_Stakeholder rolStakeholder);
     void save(SystemObjective systemObjective);
-    void save(UserCase userCase);
+    void save(UserCase& userCase);
+    void save(Trackeable* trackeable);
 
     void saveAll(std::list<Stakeholder> stakeholders);
     void saveAll(std::list<RestrictionRequirement> restrictionRequirements);
@@ -94,6 +96,10 @@ public:
 
 
     json load(OID id);
+
+    Priority *loadPriority(OID oid);
+
+    void save(Priority *pPriority);
 };
 
 

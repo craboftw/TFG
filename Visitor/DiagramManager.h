@@ -11,7 +11,7 @@
 class DiagramManager {
 
 public:
-    void visit(std::list<UserCase> userCaseList);
+    void visit(std::list<UserCase> userCaseList, std::list<ActorUC> actorList);
 };
 
 

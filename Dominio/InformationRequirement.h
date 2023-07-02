@@ -12,7 +12,7 @@
 
 //En la siguiente linea se haya un error: "expected class-name before ',' token"
 //La solucion es incluir la clase Priority.h en este archivo
-class InformationRequirement : public Trackeable , public Priority {
+class InformationRequirement : virtual public Trackeable , public Priority {
     unsigned int maxSimultaneousOccurrence;
     unsigned int avgSimultaneousOccurrence;
     TimeQuantity lifeMaxEstimate;
@@ -27,10 +27,17 @@ public:
               lifeMaxEstimate(TimeQuantity()),
               lifeAvgEstimate(TimeQuantity()) {}
 
+              static std::string getPrefixID();
+
     unsigned int getMaxSimultaneousOccurrence() const;
     unsigned int getAvgSimultaneousOccurrence() const;
     TimeQuantity getLifeMaxEstimate() const;
     TimeQuantity getLifeAvgEstimate() const;
+
+    std::string strMaxSimultaneousOccurrence() const;
+    std::string strAvgSimultaneousOccurrence() const;
+    std::string strLifeMaxEstimate() const;
+    std::string strLifeAvgEstimate() const;
 
     void setMaxSimultaneousOccurrence(unsigned int maxSimultaneousOccurrence);
     void setAvgSimultaneousOccurrence(unsigned int avgSimultaneousOccurrence);

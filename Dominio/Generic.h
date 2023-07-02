@@ -13,7 +13,7 @@
 class Stakeholder;
 
 
-class SystemObjective : public Trackeable , public Priority {
+class SystemObjective : virtual public Trackeable , public Priority {
 public:
     explicit SystemObjective(unsigned id) : Trackeable(prefixID,id), Priority() {}
     void accept(Visitor* visitor) override ;
@@ -23,7 +23,7 @@ private:
     inline static std::string prefixID = "SO";
 };
 
-class RestrictionRequirement : public Trackeable, public Priority {
+class RestrictionRequirement : virtual public Trackeable, public Priority {
 public:
     explicit RestrictionRequirement(unsigned id) : Trackeable(prefixID,id), Priority() {}
     void accept(Visitor* visitor) override ;
@@ -33,7 +33,7 @@ private:
     inline static std::string prefixID = "RR";
 };
 
-class FunctionalRequirement : public Trackeable, public Priority {
+class FunctionalRequirement : virtual public Trackeable, public Priority {
 public:
     explicit FunctionalRequirement(unsigned id) : Trackeable(prefixID,id), Priority() {}
     void accept(Visitor* visitor) ;
@@ -43,7 +43,7 @@ private:
     inline static std::string prefixID = "FR";
 };
 
-class NonFunctionalRequirement : public Trackeable, public Priority {
+class NonFunctionalRequirement : virtual public Trackeable, public Priority {
 public:
     explicit NonFunctionalRequirement(unsigned id) : Trackeable(prefixID,id), Priority() {}
     void accept(Visitor* visitor) override ;
@@ -58,12 +58,16 @@ public:
     explicit ActorUC(unsigned id) : Trackeable(prefixID,id), package("") {}
     void accept(Visitor* visitor) override ;
     std::string getPackage();
+    OID getGeneralization() const;
     static std::string getPrefixID();
 
     void setPackage(std::string reference);
+    void setGeneralization(OID generalization);
+
 
 private:
     inline static std::string prefixID = "AC";
+    OID generalization;
     std::string package;
 };
 

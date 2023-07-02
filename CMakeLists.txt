@@ -17,7 +17,7 @@ add_library(TFG_Library
        Dominio/Trackeable/Organization.cpp
        Visitor/FileJsonManager.cpp
        Servicio/ServicioUserCase.cpp
-        Visitor/DiagramManager.cpp)
+        Visitor/DiagramManager.cpp Servicio/ServicioInformationRequirement.cpp Servicio/ServicioInformationRequirement.h Servicio/ServicioTrackeable.cpp Servicio/ServicioTrackeable.h Servicio/ServicioPriority.cpp Servicio/ServicioPriority.h)
 
 add_executable(TFG_Executable main.cpp)
 

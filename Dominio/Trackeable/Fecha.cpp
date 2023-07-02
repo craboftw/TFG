@@ -95,6 +95,90 @@ bool Fecha::operator!=(const Fecha &fecha) {
     return this->year != fecha.year || this->month != fecha.month || this->day != fecha.day;
 }
 
+bool Fecha::operator<(const Fecha &fecha) {
+    if (this->year < fecha.year)
+        return true;
+    else if (this->year == fecha.year)
+    {
+        if (this->month < fecha.month)
+            return true;
+        else if (this->month == fecha.month)
+        {
+            if (this->day < fecha.day)
+                return true;
+            else
+                return false;
+        }
+        else
+            return false;
+    }
+    else
+        return false;
+}
+
+bool Fecha::operator>(const Fecha &fecha) {
+    if (this->year > fecha.year)
+        return true;
+    else if (this->year == fecha.year)
+    {
+        if (this->month > fecha.month)
+            return true;
+        else if (this->month == fecha.month)
+        {
+            if (this->day > fecha.day)
+                return true;
+            else
+                return false;
+        }
+        else
+            return false;
+    }
+    else
+        return false;
+}
+
+bool Fecha::operator<=(const Fecha &fecha) {
+    if (this->year < fecha.year)
+        return true;
+    else if (this->year == fecha.year)
+    {
+        if (this->month < fecha.month)
+            return true;
+        else if (this->month == fecha.month)
+        {
+            if (this->day <= fecha.day)
+                return true;
+            else
+                return false;
+        }
+        else
+            return false;
+    }
+    else
+        return false;
+}
+
+bool Fecha::operator>=(const Fecha &fecha) {
+    if (this->year > fecha.year)
+        return true;
+    else if (this->year == fecha.year)
+    {
+        if (this->month > fecha.month)
+            return true;
+        else if (this->month == fecha.month)
+        {
+            if (this->day >= fecha.day)
+                return true;
+            else
+                return false;
+        }
+        else
+            return false;
+    }
+    else
+        return false;
+}
+
 int Fecha::getYear() const {
     return 0;
 }

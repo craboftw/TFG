@@ -48,7 +48,7 @@ public:
 
 
 
-class UserCase : public Trackeable, public Priority {
+class UserCase : virtual public Trackeable, public Priority {
     bool abstract;
     std::string precondition;
     std::string postcondition;

@@ -2,26 +2,15 @@
     "1": {
         "abstract": false,
         "actors": null,
-        "authors": [
-            {
-                "id": 1,
-                "prefix": "SH"
-            }
-        ],
-        "changes": [
-            {
-                "comments": "Autor añadido.SH1.",
-                "date": "2023-07-1",
-                "version": "Autor añadido."
-            }
-        ],
-        "comments": "Que util",
-        "date_init": "2023-07-1",
+        "authors": null,
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-2",
         "description": "",
-        "estability": 0,
+        "estability": 2,
         "frequency": {
-            "quantity": 1,
-            "unit": 4
+            "quantity": 0,
+            "unit": 1
         },
         "generalization": {
             "id": 0,
@@ -31,324 +20,14 @@
             "id": 1,
             "prefix": "UC"
         },
-        "importanceLevel": 3,
-        "name": "Hervir agua",
-        "objectives": null,
-        "package": "Cocina",
-        "phase": 6,
-        "postcondition": "Postcondiciones",
-        "precondition": "Precondiciones",
-        "steps": [
-            {
-                "abstract": false,
-                "comments": "No se puede encender la cocina si esta encendida",
-                "condition": "La cocina esta apagada",
-                "description": "Encender la cocina",
-                "reference": {
-                    "id": 0,
-                    "prefix": "XX"
-                },
-                "stepType": 1
-            },
-            {
-                "abstract": false,
-                "comments": "No se puede poner la cacerola si ya hay una",
-                "condition": "La cacerola esta vacia",
-                "description": "Poner la cacerola con agua",
-                "reference": {
-                    "id": 0,
-                    "prefix": "XX"
-                },
-                "stepType": 1
-            },
-            {
-                "abstract": false,
-                "comments": "",
-                "condition": "",
-                "description": "Esperar a que hierva",
-                "reference": {
-                    "id": 0,
-                    "prefix": "XX"
-                },
-                "stepType": 0
-            }
-        ],
-        "tracesFrom": null,
-        "tracesTo": null,
-        "urgencyLevel": 3,
-        "versionMajor": "1",
-        "versionMinor": "0"
-    },
-    "10": {
-        "abstract": true,
-        "actors": null,
-        "authors": null,
-        "changes": [],
-        "comments": "",
-        "date_init": "2023-07-1",
-        "description": "",
-        "estability": 2,
-        "frequency": {
-            "quantity": 5,
-            "unit": 3
-        },
-        "generalization": {
-            "id": 0,
-            "prefix": "XX"
-        },
-        "id": {
-            "id": 10,
-            "prefix": "UC"
-        },
-        "importanceLevel": 3,
-        "name": "UC10",
+        "importanceLevel": 2,
+        "name": "UC1",
         "objectives": null,
         "package": "",
         "phase": 6,
-        "postcondition": "Postcondición del UserCase",
-        "precondition": "Precondición del UserCase",
-        "steps": [
-            {
-                "abstract": true,
-                "comments": "",
-                "condition": "Condición modificada",
-                "description": "",
-                "reference": {
-                    "id": 9,
-                    "prefix": "UC"
-                },
-                "stepType": 2
-            },
-            {
-                "abstract": true,
-                "comments": "Comentarios modificados",
-                "condition": "Descripción del paso 2",
-                "description": "Descripción modificada",
-                "reference": {
-                    "id": 8,
-                    "prefix": "UC"
-                },
-                "stepType": 3
-            },
-            {
-                "abstract": false,
-                "comments": "",
-                "condition": "Nuevo paso",
-                "description": "",
-                "reference": {
-                    "id": 0,
-                    "prefix": "XX"
-                },
-                "stepType": 20
-            }
-        ],
-        "tracesFrom": null,
-        "tracesTo": null,
-        "urgencyLevel": 3,
-        "versionMajor": "0",
-        "versionMinor": "0"
-    },
-    "11": {
-        "abstract": true,
-        "actors": null,
-        "authors": null,
-        "changes": [],
-        "comments": "",
-        "date_init": "2023-07-1",
-        "description": "",
-        "estability": 2,
-        "frequency": {
-            "quantity": 5,
-            "unit": 3
-        },
-        "generalization": {
-            "id": 0,
-            "prefix": "XX"
-        },
-        "id": {
-            "id": 11,
-            "prefix": "UC"
-        },
-        "importanceLevel": 3,
-        "name": "UC11",
-        "objectives": null,
-        "package": "",
-        "phase": 6,
-        "postcondition": "Postcondición del UserCase",
-        "precondition": "Precondición del UserCase",
-        "steps": [
-            {
-                "abstract": true,
-                "comments": "",
-                "condition": "Condición modificada",
-                "description": "",
-                "reference": {
-                    "id": 10,
-                    "prefix": "UC"
-                },
-                "stepType": 2
-            },
-            {
-                "abstract": true,
-                "comments": "Comentarios modificados",
-                "condition": "Descripción del paso 2",
-                "description": "Descripción modificada",
-                "reference": {
-                    "id": 9,
-                    "prefix": "UC"
-                },
-                "stepType": 3
-            },
-            {
-                "abstract": false,
-                "comments": "",
-                "condition": "Nuevo paso",
-                "description": "",
-                "reference": {
-                    "id": 0,
-                    "prefix": "XX"
-                },
-                "stepType": 20
-            }
-        ],
-        "tracesFrom": null,
-        "tracesTo": null,
-        "urgencyLevel": 3,
-        "versionMajor": "0",
-        "versionMinor": "0"
-    },
-    "12": {
-        "abstract": true,
-        "actors": null,
-        "authors": null,
-        "changes": [],
-        "comments": "",
-        "date_init": "2023-07-1",
-        "description": "",
-        "estability": 2,
-        "frequency": {
-            "quantity": 5,
-            "unit": 3
-        },
-        "generalization": {
-            "id": 0,
-            "prefix": "XX"
-        },
-        "id": {
-            "id": 12,
-            "prefix": "UC"
-        },
-        "importanceLevel": 3,
-        "name": "UC12",
-        "objectives": null,
-        "package": "",
-        "phase": 6,
-        "postcondition": "Postcondición del UserCase",
-        "precondition": "Precondición del UserCase",
-        "steps": [
-            {
-                "abstract": true,
-                "comments": "",
-                "condition": "Condición modificada",
-                "description": "",
-                "reference": {
-                    "id": 11,
-                    "prefix": "UC"
-                },
-                "stepType": 2
-            },
-            {
-                "abstract": true,
-                "comments": "Comentarios modificados",
-                "condition": "Descripción del paso 2",
-                "description": "Descripción modificada",
-                "reference": {
-                    "id": 10,
-                    "prefix": "UC"
-                },
-                "stepType": 3
-            },
-            {
-                "abstract": false,
-                "comments": "",
-                "condition": "Nuevo paso",
-                "description": "",
-                "reference": {
-                    "id": 0,
-                    "prefix": "XX"
-                },
-                "stepType": 20
-            }
-        ],
-        "tracesFrom": null,
-        "tracesTo": null,
-        "urgencyLevel": 3,
-        "versionMajor": "0",
-        "versionMinor": "0"
-    },
-    "13": {
-        "abstract": true,
-        "actors": null,
-        "authors": null,
-        "changes": [],
-        "comments": "",
-        "date_init": "2023-07-1",
-        "description": "",
-        "estability": 2,
-        "frequency": {
-            "quantity": 5,
-            "unit": 3
-        },
-        "generalization": {
-            "id": 0,
-            "prefix": "XX"
-        },
-        "id": {
-            "id": 13,
-            "prefix": "UC"
-        },
-        "importanceLevel": 3,
-        "name": "UC13",
-        "objectives": null,
-        "package": "",
-        "phase": 6,
-        "postcondition": "Postcondición del UserCase",
-        "precondition": "Precondición del UserCase",
-        "steps": [
-            {
-                "abstract": true,
-                "comments": "",
-                "condition": "Condición modificada",
-                "description": "",
-                "reference": {
-                    "id": 12,
-                    "prefix": "UC"
-                },
-                "stepType": 2
-            },
-            {
-                "abstract": true,
-                "comments": "Comentarios modificados",
-                "condition": "Descripción del paso 2",
-                "description": "Descripción modificada",
-                "reference": {
-                    "id": 11,
-                    "prefix": "UC"
-                },
-                "stepType": 3
-            },
-            {
-                "abstract": false,
-                "comments": "",
-                "condition": "Nuevo paso",
-                "description": "",
-                "reference": {
-                    "id": 0,
-                    "prefix": "XX"
-                },
-                "stepType": 20
-            }
-        ],
+        "postcondition": "",
+        "precondition": "",
+        "steps": [],
         "tracesFrom": null,
         "tracesTo": null,
         "urgencyLevel": 3,
@@ -357,32 +36,16 @@
     },
     "2": {
         "abstract": false,
-        "actors": [
-            {
-                "id": 1,
-                "prefix": "AC"
-            }
-        ],
-        "authors": [
-            {
-                "id": 1,
-                "prefix": "SH"
-            }
-        ],
-        "changes": [
-            {
-                "comments": "Autor añadido.SH1.",
-                "date": "2023-07-1",
-                "version": "Autor añadido."
-            }
-        ],
-        "comments": "Que rico",
-        "date_init": "2023-07-1",
+        "actors": null,
+        "authors": null,
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-2",
         "description": "",
-        "estability": 0,
+        "estability": 2,
         "frequency": {
-            "quantity": 1,
-            "unit": 2
+            "quantity": 0,
+            "unit": 1
         },
         "generalization": {
             "id": 0,
@@ -392,110 +55,32 @@
             "id": 2,
             "prefix": "UC"
         },
-        "importanceLevel": 3,
-        "name": "Cocinar espaguetis con tomate",
+        "importanceLevel": 2,
+        "name": "UC2",
         "objectives": null,
-        "package": "Menu",
+        "package": "",
         "phase": 6,
-        "postcondition": "Postcondiciones",
-        "precondition": "Precondiciones",
-        "steps": [
-            {
-                "abstract": false,
-                "comments": "No se puede hervir agua sin agua",
-                "condition": "Tener agua",
-                "description": "Poner a hervir agua",
-                "reference": {
-                    "id": 1,
-                    "prefix": "UC"
-                },
-                "stepType": 2
-            },
-            {
-                "abstract": false,
-                "comments": "No se puede agregar sal sin sal",
-                "condition": "Tener sal",
-                "description": "Agregar sal",
-                "reference": {
-                    "id": 0,
-                    "prefix": "XX"
-                },
-                "stepType": 1
-            },
-            {
-                "abstract": false,
-                "comments": "No se puede agregar spaghetti sin spaghetti",
-                "condition": "Tener spaghetti",
-                "description": "Agregar spaghetti",
-                "reference": {
-                    "id": 0,
-                    "prefix": "XX"
-                },
-                "stepType": 1
-            },
-            {
-                "abstract": false,
-                "comments": "No se puede esperar sin tiempo",
-                "condition": "Tener tiempo",
-                "description": "Esperar 10 minutos",
-                "reference": {
-                    "id": 0,
-                    "prefix": "XX"
-                },
-                "stepType": 1
-            },
-            {
-                "abstract": false,
-                "comments": "No se puede colar sin colador",
-                "condition": "Tener colador",
-                "description": "Colar spaghetti",
-                "reference": {
-                    "id": 0,
-                    "prefix": "XX"
-                },
-                "stepType": 1
-            },
-            {
-                "abstract": false,
-                "comments": "No se puede agregar salsa de tomate sin salsa de tomate",
-                "condition": "Tener salsa de tomate",
-                "description": "Agregar salsa de tomate",
-                "reference": {
-                    "id": 0,
-                    "prefix": "XX"
-                },
-                "stepType": 1
-            },
-            {
-                "abstract": false,
-                "comments": "No se puede servir sin plato",
-                "condition": "Tener plato",
-                "description": "Servir",
-                "reference": {
-                    "id": 0,
-                    "prefix": "XX"
-                },
-                "stepType": 1
-            }
-        ],
+        "postcondition": "",
+        "precondition": "",
+        "steps": [],
         "tracesFrom": null,
         "tracesTo": null,
         "urgencyLevel": 3,
-        "versionMajor": "1",
+        "versionMajor": "0",
         "versionMinor": "0"
     },
     "3": {
-        "abstract": true,
+        "abstract": false,
         "actors": null,
         "authors": null,
         "changes": [],
         "comments": "",
-        "date_init": "2023-07-1",
+        "date_init": "2023-07-2",
         "description": "",
         "estability": 2,
         "frequency": {
-            "quantity": 5,
-            "unit": 3
+            "quantity": 0,
+            "unit": 1
         },
         "generalization": {
             "id": 0,
@@ -505,48 +90,14 @@
             "id": 3,
             "prefix": "UC"
         },
-        "importanceLevel": 3,
+        "importanceLevel": 2,
         "name": "UC3",
         "objectives": null,
-        "package": "Paquete del UserCase",
+        "package": "",
         "phase": 6,
-        "postcondition": "Postcondición del UserCase",
-        "precondition": "Precondición del UserCase",
-        "steps": [
-            {
-                "abstract": true,
-                "comments": "",
-                "condition": "Condición modificada",
-                "description": "",
-                "reference": {
-                    "id": 1,
-                    "prefix": "UC"
-                },
-                "stepType": 2
-            },
-            {
-                "abstract": true,
-                "comments": "Comentarios modificados",
-                "condition": "Descripción del paso 2",
-                "description": "Descripción modificada",
-                "reference": {
-                    "id": 0,
-                    "prefix": "XX"
-                },
-                "stepType": 0
-            },
-            {
-                "abstract": false,
-                "comments": "",
-                "condition": "Nuevo paso",
-                "description": "",
-                "reference": {
-                    "id": 0,
-                    "prefix": "XX"
-                },
-                "stepType": 0
-            }
-        ],
+        "postcondition": "",
+        "precondition": "",
+        "steps": [],
         "tracesFrom": null,
         "tracesTo": null,
         "urgencyLevel": 3,
@@ -554,17 +105,17 @@
         "versionMinor": "0"
     },
     "4": {
-        "abstract": true,
+        "abstract": false,
         "actors": null,
         "authors": null,
         "changes": [],
         "comments": "",
-        "date_init": "2023-07-1",
+        "date_init": "2023-07-2",
         "description": "",
         "estability": 2,
         "frequency": {
-            "quantity": 5,
-            "unit": 3
+            "quantity": 0,
+            "unit": 1
         },
         "generalization": {
             "id": 0,
@@ -574,48 +125,14 @@
             "id": 4,
             "prefix": "UC"
         },
-        "importanceLevel": 3,
+        "importanceLevel": 2,
         "name": "UC4",
         "objectives": null,
         "package": "",
         "phase": 6,
-        "postcondition": "Postcondición del UserCase",
-        "precondition": "Precondición del UserCase",
-        "steps": [
-            {
-                "abstract": true,
-                "comments": "",
-                "condition": "Condición modificada",
-                "description": "",
-                "reference": {
-                    "id": 1,
-                    "prefix": "UC"
-                },
-                "stepType": 2
-            },
-            {
-                "abstract": true,
-                "comments": "Comentarios modificados",
-                "condition": "Descripción del paso 2",
-                "description": "Descripción modificada",
-                "reference": {
-                    "id": 0,
-                    "prefix": "XX"
-                },
-                "stepType": 1703380352
-            },
-            {
-                "abstract": false,
-                "comments": "",
-                "condition": "Nuevo paso",
-                "description": "",
-                "reference": {
-                    "id": 0,
-                    "prefix": "XX"
-                },
-                "stepType": 1
-            }
-        ],
+        "postcondition": "",
+        "precondition": "",
+        "steps": [],
         "tracesFrom": null,
         "tracesTo": null,
         "urgencyLevel": 3,
@@ -623,17 +140,17 @@
         "versionMinor": "0"
     },
     "5": {
-        "abstract": true,
+        "abstract": false,
         "actors": null,
         "authors": null,
         "changes": [],
         "comments": "",
-        "date_init": "2023-07-1",
+        "date_init": "2023-07-2",
         "description": "",
         "estability": 2,
         "frequency": {
-            "quantity": 5,
-            "unit": 3
+            "quantity": 0,
+            "unit": 1
         },
         "generalization": {
             "id": 0,
@@ -643,48 +160,14 @@
             "id": 5,
             "prefix": "UC"
         },
-        "importanceLevel": 3,
+        "importanceLevel": 2,
         "name": "UC5",
         "objectives": null,
         "package": "",
         "phase": 6,
-        "postcondition": "Postcondición del UserCase",
-        "precondition": "Precondición del UserCase",
-        "steps": [
-            {
-                "abstract": true,
-                "comments": "",
-                "condition": "Condición modificada",
-                "description": "",
-                "reference": {
-                    "id": 1,
-                    "prefix": "UC"
-                },
-                "stepType": 2
-            },
-            {
-                "abstract": true,
-                "comments": "Comentarios modificados",
-                "condition": "Descripción del paso 2",
-                "description": "Descripción modificada",
-                "reference": {
-                    "id": 0,
-                    "prefix": "XX"
-                },
-                "stepType": 131368320
-            },
-            {
-                "abstract": false,
-                "comments": "",
-                "condition": "Nuevo paso",
-                "description": "",
-                "reference": {
-                    "id": 0,
-                    "prefix": "XX"
-                },
-                "stepType": 1
-            }
-        ],
+        "postcondition": "",
+        "precondition": "",
+        "steps": [],
         "tracesFrom": null,
         "tracesTo": null,
         "urgencyLevel": 3,
@@ -692,17 +175,17 @@
         "versionMinor": "0"
     },
     "6": {
-        "abstract": true,
+        "abstract": false,
         "actors": null,
         "authors": null,
         "changes": [],
         "comments": "",
-        "date_init": "2023-07-1",
+        "date_init": "2023-07-2",
         "description": "",
         "estability": 2,
         "frequency": {
-            "quantity": 5,
-            "unit": 3
+            "quantity": 0,
+            "unit": 1
         },
         "generalization": {
             "id": 0,
@@ -712,255 +195,14 @@
             "id": 6,
             "prefix": "UC"
         },
-        "importanceLevel": 3,
+        "importanceLevel": 2,
         "name": "UC6",
         "objectives": null,
         "package": "",
         "phase": 6,
-        "postcondition": "Postcondición del UserCase",
-        "precondition": "Precondición del UserCase",
-        "steps": [
-            {
-                "abstract": true,
-                "comments": "",
-                "condition": "Condición modificada",
-                "description": "",
-                "reference": {
-                    "id": 1,
-                    "prefix": "UC"
-                },
-                "stepType": 2
-            },
-            {
-                "abstract": true,
-                "comments": "Comentarios modificados",
-                "condition": "Descripción del paso 2",
-                "description": "Descripción modificada",
-                "reference": {
-                    "id": 0,
-                    "prefix": "XX"
-                },
-                "stepType": 455771520
-            },
-            {
-                "abstract": false,
-                "comments": "",
-                "condition": "Nuevo paso",
-                "description": "",
-                "reference": {
-                    "id": 0,
-                    "prefix": "XX"
-                },
-                "stepType": 1
-            }
-        ],
-        "tracesFrom": null,
-        "tracesTo": null,
-        "urgencyLevel": 3,
-        "versionMajor": "0",
-        "versionMinor": "0"
-    },
-    "7": {
-        "abstract": true,
-        "actors": null,
-        "authors": null,
-        "changes": [],
-        "comments": "",
-        "date_init": "2023-07-1",
-        "description": "",
-        "estability": 2,
-        "frequency": {
-            "quantity": 5,
-            "unit": 3
-        },
-        "generalization": {
-            "id": 0,
-            "prefix": "XX"
-        },
-        "id": {
-            "id": 7,
-            "prefix": "UC"
-        },
-        "importanceLevel": 3,
-        "name": "UC7",
-        "objectives": null,
-        "package": "",
-        "phase": 6,
-        "postcondition": "Postcondición del UserCase",
-        "precondition": "Precondición del UserCase",
-        "steps": [
-            {
-                "abstract": true,
-                "comments": "",
-                "condition": "Condición modificada",
-                "description": "",
-                "reference": {
-                    "id": 1,
-                    "prefix": "UC"
-                },
-                "stepType": 2
-            },
-            {
-                "abstract": true,
-                "comments": "Comentarios modificados",
-                "condition": "Descripción del paso 2",
-                "description": "Descripción modificada",
-                "reference": {
-                    "id": 0,
-                    "prefix": "XX"
-                },
-                "stepType": 466191744
-            },
-            {
-                "abstract": false,
-                "comments": "",
-                "condition": "Nuevo paso",
-                "description": "",
-                "reference": {
-                    "id": 0,
-                    "prefix": "XX"
-                },
-                "stepType": 1
-            }
-        ],
-        "tracesFrom": null,
-        "tracesTo": null,
-        "urgencyLevel": 3,
-        "versionMajor": "0",
-        "versionMinor": "0"
-    },
-    "8": {
-        "abstract": true,
-        "actors": null,
-        "authors": null,
-        "changes": [],
-        "comments": "",
-        "date_init": "2023-07-1",
-        "description": "",
-        "estability": 2,
-        "frequency": {
-            "quantity": 5,
-            "unit": 3
-        },
-        "generalization": {
-            "id": 0,
-            "prefix": "XX"
-        },
-        "id": {
-            "id": 8,
-            "prefix": "UC"
-        },
-        "importanceLevel": 3,
-        "name": "UC8",
-        "objectives": null,
-        "package": "",
-        "phase": 6,
-        "postcondition": "Postcondición del UserCase",
-        "precondition": "Precondición del UserCase",
-        "steps": [
-            {
-                "abstract": true,
-                "comments": "",
-                "condition": "Condición modificada",
-                "description": "",
-                "reference": {
-                    "id": 7,
-                    "prefix": "UC"
-                },
-                "stepType": 2
-            },
-            {
-                "abstract": true,
-                "comments": "Comentarios modificados",
-                "condition": "Descripción del paso 2",
-                "description": "Descripción modificada",
-                "reference": {
-                    "id": 6,
-                    "prefix": "UC"
-                },
-                "stepType": 3
-            },
-            {
-                "abstract": false,
-                "comments": "",
-                "condition": "Nuevo paso",
-                "description": "",
-                "reference": {
-                    "id": 0,
-                    "prefix": "XX"
-                },
-                "stepType": 20
-            }
-        ],
-        "tracesFrom": null,
-        "tracesTo": null,
-        "urgencyLevel": 3,
-        "versionMajor": "0",
-        "versionMinor": "0"
-    },
-    "9": {
-        "abstract": true,
-        "actors": null,
-        "authors": null,
-        "changes": [],
-        "comments": "",
-        "date_init": "2023-07-1",
-        "description": "",
-        "estability": 2,
-        "frequency": {
-            "quantity": 5,
-            "unit": 3
-        },
-        "generalization": {
-            "id": 0,
-            "prefix": "XX"
-        },
-        "id": {
-            "id": 9,
-            "prefix": "UC"
-        },
-        "importanceLevel": 3,
-        "name": "UC9",
-        "objectives": null,
-        "package": "",
-        "phase": 6,
-        "postcondition": "Postcondición del UserCase",
-        "precondition": "Precondición del UserCase",
-        "steps": [
-            {
-                "abstract": true,
-                "comments": "",
-                "condition": "Condición modificada",
-                "description": "",
-                "reference": {
-                    "id": 8,
-                    "prefix": "UC"
-                },
-                "stepType": 2
-            },
-            {
-                "abstract": true,
-                "comments": "Comentarios modificados",
-                "condition": "Descripción del paso 2",
-                "description": "Descripción modificada",
-                "reference": {
-                    "id": 7,
-                    "prefix": "UC"
-                },
-                "stepType": 3
-            },
-            {
-                "abstract": false,
-                "comments": "",
-                "condition": "Nuevo paso",
-                "description": "",
-                "reference": {
-                    "id": 0,
-                    "prefix": "XX"
-                },
-                "stepType": 20
-            }
-        ],
+        "postcondition": "",
+        "precondition": "",
+        "steps": [],
         "tracesFrom": null,
         "tracesTo": null,
         "urgencyLevel": 3,

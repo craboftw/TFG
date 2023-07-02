@@ -335,6 +335,7 @@ void Jsoneitor::visit(ActorUC actorUC) {
 /*｡o°✥✤✣TRACKEABLE GET✣✤✥°o｡*/
     j = trackeablePart(&actorUC,j);
     j ["package"] = actorUC.getPackage();
+    j ["generalization"] = serializeOID(actorUC.getGeneralization());
 
     FileJsonManager::save(j);
 }
@@ -344,10 +345,12 @@ ActorUC Jsoneitor::deserializeActorUC(json j) {
     TrackeableDTO trackeableDTO = deserializeTrackeableDTO(j);
 
     std::string package = j["package"];
+    OID generalization = deserializeOID(j["generalization"]);
 /*｡o°✥✤✣TRACKEABLE SET✣✤✥°o｡*/
     ActorUC o(trackeableDTO.id.getId());
     setTrackeablePart(trackeableDTO, &o);
     o.setPackage(package);
+    o.setGeneralization(generalization);
     return o;
 }
 
@@ -448,7 +451,7 @@ SystemObjective Jsoneitor::deserializeSystemObjective(json j) {
     return o;
 }
 
-void Jsoneitor::visit(UserCase userCase) {
+void Jsoneitor::visit(UserCase& userCase) {
 
     json j;
 /*｡o°✥✤✣TRACKEABLE PRIORITY GET✣✤✥°o｡*/
@@ -465,7 +468,6 @@ void Jsoneitor::visit(UserCase userCase) {
     j["objectives"] = serializeListOfOID(userCase.getObjectives());
     j["package"] = userCase.getPackage();
     j["generalization"] = serializeOID(userCase.getGeneralization());
-
     FileJsonManager::save(j);
 
 }
@@ -502,6 +504,7 @@ UserCase Jsoneitor::deserializeUserCase(json j) {
         u.setActors(actors);
         u.setObjectives(objectives);
         u.setPackage(package);
+        u.setGeneralization(generalization);
 
         return u;
 }
@@ -523,6 +526,21 @@ void Jsoneitor::visit(Stakeholder stakeholder) {
     FileJsonManager::save(j);
 }
 
+Trackeable* Jsoneitor::deserializeTrackeable(json j) {
+
+    TrackeableDTO trackeableDTO = deserializeTrackeableDTO(j);
+    Trackeable* t = new Trackeable(trackeableDTO.id.getPrefix(), trackeableDTO.id.getId());
+    setTrackeablePart(trackeableDTO, t);
+    return t;
+}
+
+Priority* Jsoneitor::deserializePriority(json j) {
+
+    PriorityDTO priorityDTO = deserializePriorityDTO(j);
+    Priority* p = new Priority();
+    setPriorityPart(priorityDTO, p);
+    return p;
+}
 
 Stakeholder Jsoneitor::deserializeStakeholder(json j) {
 
@@ -601,6 +619,27 @@ Organization Jsoneitor::deserializeOrganization(json j) {
     o.setContactInfo(contactInfo);
 
     return o;
+}
+
+void Jsoneitor::visit(Trackeable *trackeable) {
+
+    json j;
+
+    /*｡o°✥✤✣TRACKEABLE PART✣✤✥°o｡*/
+    j= trackeablePart(trackeable,j);
+
+    FileJsonManager::save(j);
+}
+
+void Jsoneitor::visit(Priority* priority)
+{
+    json j;
+
+    /*｡o°✥✤✣PRIORITY PART✣✤✥°o｡*/
+    j= priorityPart(priority,j);
+    j["id"] = serializeOID(priority->getId());
+
+    FileJsonManager::save(j);
 }
 
 

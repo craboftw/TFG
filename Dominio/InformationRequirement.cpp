@@ -40,3 +40,24 @@ void InformationRequirement::setLifeMaxEstimate(const TimeQuantity &_lifeMaxEsti
 void InformationRequirement::setLifeAvgEstimate(const TimeQuantity &_lifeAvgEstimate) {
     InformationRequirement::lifeAvgEstimate = _lifeAvgEstimate;
 }
+
+std::string InformationRequirement::strMaxSimultaneousOccurrence() const {
+    return "WIP";
+}
+
+std::string InformationRequirement::strAvgSimultaneousOccurrence() const {
+    return "WIP";
+}
+
+std::string InformationRequirement::strLifeMaxEstimate() const {
+    return "WIP";
+}
+
+std::string InformationRequirement::strLifeAvgEstimate() const {
+    return "WIP";
+}
+
+std::string InformationRequirement::getPrefixID(){
+    return prefixID;
+}
+

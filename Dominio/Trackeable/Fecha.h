@@ -19,6 +19,10 @@ public:
     Fecha();
     bool operator==(const Fecha& fecha);
     bool operator!=(const Fecha& fecha);
+    bool operator<(const Fecha& fecha);
+    bool operator>(const Fecha& fecha);
+    bool operator<=(const Fecha& fecha);
+    bool operator>=(const Fecha& fecha);
     Fecha(const std::string& fecha);
     int getYear() const;
     int getMonth() const;

@@ -78,3 +78,15 @@ std::string NonFunctionalRequirement::getPrefixID() {
 std::string Step::getDescription() const {
     return description;
 }
+
+void Text::accept(Visitor *visitor) {
+    visitor->visit(*this);
+}
+
+bool Text::getIndexable() const {
+    return indexable;
+}
+
+void Text::setIndexable(bool indexable) {
+    this->indexable = indexable;
+}

@@ -18,6 +18,8 @@ class SystemObjective;
 class NonFunctionalRequirement;
 class FunctionalRequirement;
 
+class Text;
+
 class Visitor{
 public:
     virtual void visit(InformationRequirement informationRequirement) = 0;
@@ -29,7 +31,9 @@ public:
     virtual void visit(Stakeholder stakeholder) = 0;
     virtual void visit(UserCase& userCase) = 0;
     virtual void visit(Organization organization) = 0;
+    virtual void visit(Text text) = 0;
     virtual void visit(Trackeable* trackeable) = 0;
+    virtual void visit(Priority* priority) = 0;
     virtual ~Visitor() = default;
 
 

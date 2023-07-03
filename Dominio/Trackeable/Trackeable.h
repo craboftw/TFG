@@ -14,17 +14,19 @@ class Visitor;
 
 class Change {
 private:
+    unsigned id;
     std::string version;
     Fecha date;
     std::string comments;
 
 public:
-    Change(std::string version = "", const Fecha& date = Fecha(), std::string comments = "")
-            : version(std::move(version)), date(date), comments(std::move(comments)) {}
+    Change(unsigned _id,std::string version = "", const Fecha& date = Fecha(), std::string comments = "")
+            : id(_id),version(std::move(version)), date(date), comments(std::move(comments)) {}
 
     std::string getVersion() const;
     Fecha getDate() const;
     std::string getComments() const;
+    unsigned getId() const;
 
     void setVersion(std::string version);
     void setDate(Fecha date);
@@ -151,6 +153,7 @@ public:
     void setChanges(std::list<Change> changes);
 
     void addChange(Change change);
+    void removeChange(Change change);
 
     std::list<Change> getChanges() const;
 };

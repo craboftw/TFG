@@ -43,7 +43,9 @@ public:
     Organization loadOrganization(OID id);
     SystemObjective loadSystemObjective(OID id);
     UserCase loadUserCase(OID id);
+    Text loadText(OID id);
     Trackeable* loadTrackeable(OID id);
+    Priority *loadPriority(OID oid);
 
     std::list<Stakeholder> loadAllStakeholder();
     std::list<RestrictionRequirement> loadAllRestrictionRequirement();
@@ -54,6 +56,8 @@ public:
     std::list<Organization> loadAllOrganization();
     std::list<SystemObjective> loadAllSystemObjective();
     std::list<UserCase> loadAllUserCase();
+    std::list<Text> loadAllText();
+    std::list<Trackeable*> loadAllTrackeable();
 
     unsigned lastStakeholder();
     unsigned lastRestrictionRequirement();
@@ -65,6 +69,7 @@ public:
     unsigned lastRolStakeholder();
     unsigned lastSystemObjective();
     unsigned lastUserCase();
+    unsigned lastText();
 
     static void save(json singlejson);
 
@@ -77,6 +82,8 @@ public:
     void save(Organization organization);
     void save(SystemObjective systemObjective);
     void save(UserCase& userCase);
+    void save(Text text);
+    void save(Priority* priority);
     void save(Trackeable* trackeable);
 
     void saveAll(std::list<Stakeholder> stakeholders);
@@ -88,14 +95,13 @@ public:
     void saveAll(std::list<Organization> organizations);
     void saveAll(std::list<SystemObjective> systemObjectives);
     void saveAll(std::list<UserCase> userCases);
+    void saveAll(std::list<Text> texts);
     bool exist(OID id);
 
 
     json load(OID id);
 
-    Priority *loadPriority(OID oid);
 
-    void save(Priority *pPriority);
 };
 
 

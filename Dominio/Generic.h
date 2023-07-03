@@ -53,6 +53,19 @@ private:
     inline static std::string prefixID = "NF";
 };
 
+class Text : virtual public Trackeable {
+    public:
+    explicit Text(unsigned id) : Trackeable(prefixID,id) {}
+    void accept(Visitor* visitor) override ;
+    bool getIndexable() const;
+    void setIndexable(bool indexable);
+    static std::string getPrefixID() {return prefixID;}
+
+private:
+    inline static std::string prefixID = "TX";
+    bool indexable;
+};
+
 class ActorUC : public Trackeable {
 public:
     explicit ActorUC(unsigned id) : Trackeable(prefixID,id), package("") {}

@@ -245,6 +245,12 @@ UserCase FileJsonManager::loadUserCase(OID id) {
     return jsoneitor.deserializeUserCase(j);
 }
 
+Text FileJsonManager::loadText(OID id) {
+    json j = load(id);
+    Jsoneitor jsoneitor;
+    return jsoneitor.deserializeText(j);
+}
+
 Trackeable *FileJsonManager::loadTrackeable(OID id) {
     json j = load(id);
     Jsoneitor jsoneitor;
@@ -267,6 +273,16 @@ std::list<UserCase> FileJsonManager::loadAllUserCase() {
         userCases.push_back(jsoneitor.deserializeUserCase(element));
     }
     return userCases;
+}
+
+std::list<Text> FileJsonManager::loadAllText() {
+    std::list<Text> texts;
+    json j = loadAll("TX");
+    Jsoneitor jsoneitor;
+    for (auto& element : j) {
+        texts.push_back(jsoneitor.deserializeText(element));
+    }
+    return texts;
 }
 
 unsigned FileJsonManager::lastStakeholder() {
@@ -370,6 +386,18 @@ unsigned FileJsonManager::lastUserCase() {
     return last;
 }
 
+unsigned FileJsonManager::lastText() {
+    json j = loadAll("TX");
+    unsigned last = 0;
+    for (auto& element : j) {
+        if (last < element["id"]["id"]) {
+            last = element["id"]["id"];
+        }
+    }
+    return last;
+}
+
+
 void FileJsonManager::save(Stakeholder stakeholder) {
     Jsoneitor jsoneitor;
     jsoneitor.visit(stakeholder);
@@ -414,6 +442,13 @@ void FileJsonManager::save(UserCase& userCase) {
     Jsoneitor jsoneitor;
     jsoneitor.visit(userCase);
 }
+
+
+void FileJsonManager::save(Text text) {
+    Jsoneitor jsoneitor;
+    jsoneitor.visit(text);
+}
+
 
 void FileJsonManager::save(Trackeable *pTrackeable) {
     Jsoneitor jsoneitor;
@@ -488,6 +523,8 @@ void FileJsonManager::saveAll(std::list<UserCase> userCases) {
         jsoneitor.visit(userCase);
     }
 }
+
+
 
 
 template <class T>

@@ -276,7 +276,7 @@ std::string ServicioUserCase::getComments(OID id, unsigned int pos) {
 
 }
 
-Step::type ServicioUserCase::getType(OID id, unsigned int pos) {
+type ServicioUserCase::getType(OID id, unsigned int pos) {
     if (id.getPrefix() !=  UserCase::getPrefixID()) throw std::invalid_argument("El id a modificar no corresponde a un UserCase, getType");
     if (!fileJsonManager.exist(id)) throw std::invalid_argument("El id a leer no existe, getType");
     //pos must be betwenn 0 and steps.size() + 1
@@ -347,7 +347,7 @@ void ServicioUserCase::setDescription(OID id, unsigned int pos, std::string _des
         fileJsonManager.save(userCase);
 }
 
-void ServicioUserCase::setType(OID id, unsigned int pos, Step::type _type) {
+void ServicioUserCase::setType(OID id, unsigned int pos, type _type) {
     if (id.getPrefix() !=  UserCase::getPrefixID()) throw std::invalid_argument("El id a modificar no corresponde a un UserCase, setType");
     if (!fileJsonManager.exist(id)) throw std::invalid_argument("El id a modificar no existe, setType");
 

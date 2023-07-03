@@ -40,28 +40,29 @@ void DiagramManager::visit(std::list<UserCase> userCaseList, std::list<ActorUC> 
 
     //Imprimimos los paquetes con sus alias
     for (auto &package : packages) {
-        if (package.empty()) {
+        if (!package.empty()) {
             file << "package \"" << package << "\" {" << std::endl;
             for (auto &userCase: packagesUC[package]) {
                 file << "usecase \"" << nombres[userCase] << "\" as " << userCase.operator std::string() << std::endl;
             }
 
-        for (auto &actorUC : packagesActor[package]) {
-            if (actorUC.getPrefix() == ActorUC::getPrefixID())
-            file << "actor \"" << nombres[actorUC] <<"\" as " << actorUC.operator std::string()<< std::endl;
+            for (auto &actorUC: packagesActor[package]) {
+                if (actorUC.getPrefix() == ActorUC::getPrefixID())
+                    file << "actor \"" << nombres[actorUC] << "\" as " << actorUC.operator std::string() << std::endl;
+            }
+            file << "}" << std::endl;
+        } else {
+            for (auto &userCase: packagesUC[package]) {
+                file << "usecase \"" << nombres[userCase] << "\" as " << userCase.operator std::string() << std::endl;
+            }
+
+            for (auto &actorUC: packagesActor[package]) {
+                if (actorUC.getPrefix() == ActorUC::getPrefixID())
+                    file << "actor \"" << nombres[actorUC] << "\" as " << actorUC.operator std::string() << std::endl;
+            }
         }
-        file << "}" << std::endl;
-    }}
-    //Ahora los que no tienen paquete
-    auto package="";
-    for (auto &userCase: packagesUC[package]) {
-        file << "usecase \"" << nombres[userCase] << "\" as " << userCase.operator std::string() << std::endl;
     }
 
-    for (auto &actorUC : packagesActor[package]) {
-        if (actorUC.getPrefix() == ActorUC::getPrefixID())
-            file << "actor \"" << nombres[actorUC] <<"\" as " << actorUC.operator std::string()<< std::endl;
-    }
 
 
     for (auto &userCase : userCaseList) {
@@ -69,11 +70,11 @@ void DiagramManager::visit(std::list<UserCase> userCaseList, std::list<ActorUC> 
             file << actorUC.operator std::string() << " --> " << userCase.getId().operator std::string() << std::endl;
         }
         for (auto step : userCase.getSteps()) {
-            if (step.getType() == Step::INCLUDE and step.getReference() != OID()) {
+            if (step.getType() == INCLUDE and step.getReference() != OID()) {
                 file << userCase.getId().operator std::string() << " ..> " << step.getReference().operator std::string()
                      << " : <<include>>" << std::endl;
             }
-            if (step.getType() == Step::EXTEND and step.getReference() != OID()) {
+            if (step.getType() == EXTEND and step.getReference() != OID()) {
                 file << userCase.getId().operator std::string() << " ..> " << step.getReference().operator std::string()
                      << " : <<extend>>" << std::endl;
             }

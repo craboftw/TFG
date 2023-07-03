@@ -61,3 +61,49 @@ std::string InformationRequirement::getPrefixID(){
     return prefixID;
 }
 
+std::list<SpecificInformation> InformationRequirement::getSpecificInformation() const {
+    return specificInformation;
+}
+
+void InformationRequirement::setSpecificInformation(const std::list<SpecificInformation> &specificInformation) {
+    InformationRequirement::specificInformation = specificInformation;
+}
+
+void InformationRequirement::addSpecificInformation(const std::string name, const std::string description) {
+    //find last id
+    unsigned int id = 0;
+    for(auto it = specificInformation.begin(); it != specificInformation.end(); ++it){
+        if(it->id > id){
+            id = it->id;
+        }
+    }
+    specificInformation.push_back({id+1,name,description});
+}
+
+void InformationRequirement::removeSpecificInformation(const unsigned id) {
+    for(auto it = specificInformation.begin(); it != specificInformation.end(); ++it){
+        if(it->id == id){
+            specificInformation.erase(it);
+            break;
+        }
+    }
+}
+
+void InformationRequirement::setSpecificInformationName(const unsigned int id, const std::string &name) {
+    for(auto it = specificInformation.begin(); it != specificInformation.end(); ++it){
+        if(it->id == id){
+            it->name = name;
+            break;
+        }
+    }
+}
+
+void InformationRequirement::setSpecificInformationDescription(const unsigned int id, const std::string &description) {
+    for(auto it = specificInformation.begin(); it != specificInformation.end(); ++it){
+        if(it->id == id){
+            it->description = description;
+            break;
+        }
+    }
+}
+

@@ -42,14 +42,15 @@ struct PriorityDTO{
 };
 
 
-json serializeOID(OID oid) {
+
+json Jsoneitor::serializeOID(OID oid) {
     json j;
     j ["prefix"] = oid.getPrefix();
     j ["id"] = oid.getId();
     return j;
 }
 
-OID deserializeOID(const json& j) {
+OID Jsoneitor::deserializeOID( json j) {
     OID oid(j["prefix"], j["id"]);
     return oid;
 }
@@ -61,7 +62,7 @@ std::list<Change> deserializeListOfChanges(const json& j) {
 
     // Deserializar cada cambio en la lista
     for (const json& cambioJson : j) {
-        Change cambio;
+        Change cambio(cambioJson["id"]);
         cambio.setVersion(cambioJson["version"]);
         std::string date = cambioJson["date"];
         cambio.setDate(Fecha(date));
@@ -73,18 +74,19 @@ std::list<Change> deserializeListOfChanges(const json& j) {
 
 
 //Deserializar la lista de autores
-std::set<OID> deserializeSetOfOID(const json& j) {
+std::set<OID> Jsoneitor::deserializeSetOfOID(const json& j) {
     std::set<OID> listOfOID;
 
     // Deserializar cada autor en la lista
-    for (auto authorJson : j) {
+    for (json authorJson : j) {
         OID author = deserializeOID(authorJson);
         listOfOID.insert(author);
     }
     return listOfOID;
 }
 
-json serializeSetOfOID(const std::set<OID>& setOfOID) {
+
+json Jsoneitor::serializeSetOfOID(const std::set<OID>& setOfOID) {
     json j;
 
     // Serializar cada autor en la lista
@@ -95,18 +97,18 @@ json serializeSetOfOID(const std::set<OID>& setOfOID) {
     return j;
 }
 
-std::vector<OID> deserializeVectorOfOID(const json& j) {
+std::vector<OID> Jsoneitor::deserializeVectorOfOID(const json& j) {
     std::vector<OID> listOfOID;
 
     // Deserializar cada autor en la lista
-    for (auto authorJson : j) {
+    for (json authorJson : j) {
         OID author = deserializeOID(authorJson);
         listOfOID.push_back(author);
     }
     return listOfOID;
 }
 
-json serializeVectorOfOID(const std::vector<OID>& vectorOfOID) {
+json Jsoneitor::serializeVectorOfOID(const std::vector<OID>& vectorOfOID) {
     json j;
 
     // Serializar cada autor en la lista
@@ -118,7 +120,7 @@ json serializeVectorOfOID(const std::vector<OID>& vectorOfOID) {
 }
 
 //Deserializar la lista de OID
-std::list<OID> deserializeListOfOID(const json& j) {
+std::list<OID> Jsoneitor::deserializeListOfOID(const json& j) {
     std::list<OID> listOfOID;
 
     // Deserializar cada OID en la lista
@@ -130,7 +132,7 @@ std::list<OID> deserializeListOfOID(const json& j) {
 }
 
 //Serializar la lista de OID
-json serializeListOfOID(const std::list<OID>& listOfOID) {
+json Jsoneitor::serializeListOfOID(const std::list<OID>& listOfOID) {
     json j;
 
     // Serializar cada OID en la lista
@@ -141,8 +143,52 @@ json serializeListOfOID(const std::list<OID>& listOfOID) {
     return j;
 }
 
+json Jsoneitor::serializeListOfExceptions(std::list<Exception> listOfExceptions) {
+    json j;
 
-json serializeListOfChanges(const std::list<Change>& listOfChanges) {
+    // Serializar cada excepcion en la lista
+    for (const Exception& exception : listOfExceptions) {
+        json exceptionJson;
+        /*struct Exception{
+    unsigned id;
+    unsigned step;
+    type stepType;
+    std::string description;
+    std::string condition;
+    std::string comments;
+};*/
+        exceptionJson["id"] = exception.id;
+        exceptionJson["step"] = exception.step;
+        exceptionJson["stepType"] = exception.stepType;
+        exceptionJson["description"] = exception.description;
+        exceptionJson["condition"] = exception.condition;
+        exceptionJson["comments"] = exception.comments;
+        exceptionJson["reference"] = serializeOID(exception.reference);
+        j.push_back(exceptionJson);
+    }
+    return j;
+}
+
+std::list<Exception> Jsoneitor::deserializeListOfExceptions(const json& j) {
+    std::list<Exception> listOfExceptions;
+
+    // Deserializar cada excepcion en la lista
+    for (const json& exceptionJson : j) {
+        Exception exception;
+        exception.id = exceptionJson["id"];
+        exception.step = exceptionJson["step"];
+        exception.stepType = exceptionJson["stepType"];
+        exception.description = exceptionJson["description"];
+        exception.condition = exceptionJson["condition"];
+        exception.comments = exceptionJson["comments"];
+        exception.reference = deserializeOID(exceptionJson["reference"]);
+        listOfExceptions.push_back(exception);
+    }
+    return listOfExceptions;
+}
+
+
+json Jsoneitor::serializeListOfChanges(const std::list<Change>& listOfChanges) {
     json j;
 
     // Serializar cada cambio en la lista
@@ -151,6 +197,7 @@ json serializeListOfChanges(const std::list<Change>& listOfChanges) {
     }
     for (const Change& cambio : listOfChanges) {
         json cambioJson;
+        cambioJson["id"] = cambio.getId();
         cambioJson["version"] = cambio.getVersion();
         cambioJson["date"] = cambio.getDate().toString();
         cambioJson["comments"] = cambio.getComments();
@@ -162,7 +209,7 @@ json serializeListOfChanges(const std::list<Change>& listOfChanges) {
 
 
 
-json serializeVectorOfSteps(const std::vector<Step>& vectorOfSteps) {
+json Jsoneitor::serializeVectorOfSteps(const std::vector<Step>& vectorOfSteps) {
     json j = std::list<int>();
     int i = 0;
     for (const Step& step : vectorOfSteps) {
@@ -173,12 +220,14 @@ json serializeVectorOfSteps(const std::vector<Step>& vectorOfSteps) {
         stepJson["comments"] = step.getComments();
         stepJson["stepType"] = step.getType();
         stepJson["reference"] = serializeOID(step.getReference());
+        stepJson["exceptions"] = serializeListOfExceptions(step.getExceptions());
+
         j.push_back(stepJson);
     }
     return j;
 }
 
-std::vector<Step> deserializeVectorOfSteps(json reference) {
+std::vector<Step> Jsoneitor::deserializeVectorOfSteps(json reference) {
     std::vector<Step> vectorOfSteps;
     for (auto stepJson : reference) {
         Step step;
@@ -188,12 +237,36 @@ std::vector<Step> deserializeVectorOfSteps(json reference) {
         step.setComments(stepJson["comments"]);
         step.setType(stepJson["stepType"]);
         step.setReference(deserializeOID(stepJson["reference"]));
+        step.setExceptions(deserializeListOfExceptions(stepJson["exceptions"]));
         vectorOfSteps.push_back(step);
     }
     return vectorOfSteps;
 }
 
-json trackeablePart(Trackeable* objeto,json& j)
+
+std::list<SpecificInformation> Jsoneitor::deserializeListOfSpecificInformation(json j) {
+    std::list<SpecificInformation> listOfSpecificInformation;
+    for (auto specificInformationJson : j) {
+        SpecificInformation specificInformation{j["id"],j["name"],j["description"]};
+        listOfSpecificInformation.push_back(specificInformation);
+    }
+    return listOfSpecificInformation;
+
+}
+json Jsoneitor::serializeListOfSpecificInformation(std::list<SpecificInformation> lista)
+{
+    json j;
+    for (auto specificInformation : lista) {
+        json specificInformationJson;
+        specificInformationJson["id"] = specificInformation.id;
+        specificInformationJson["name"] = specificInformation.name;
+        specificInformationJson["description"] = specificInformation.description;
+        j.push_back(specificInformationJson);
+    }
+    return j;
+}
+
+json Jsoneitor::trackeablePart(Trackeable* objeto,json& j)
 {
     j["id"] = serializeOID(objeto->getId());
     j["name"] = objeto->getName();
@@ -212,7 +285,7 @@ json trackeablePart(Trackeable* objeto,json& j)
 
 
 
-json priorityPart(Priority* objeto,json& j)
+json Jsoneitor::priorityPart(Priority* objeto,json& j)
 {
     j["importanceLevel"] = objeto->getImportanceLevel();
     j["urgencyLevel"] = objeto->getUrgencyLevel();
@@ -224,7 +297,7 @@ json priorityPart(Priority* objeto,json& j)
 
 
 
-TrackeableDTO deserializeTrackeableDTO(const json& j) {
+TrackeableDTO Jsoneitor::deserializeTrackeableDTO(const json& j) {
     TrackeableDTO trackeableDTO;
     trackeableDTO.id = deserializeOID(j["id"]);
     trackeableDTO.name = j["name"];
@@ -240,7 +313,7 @@ TrackeableDTO deserializeTrackeableDTO(const json& j) {
     return trackeableDTO;
 }
 
-PriorityDTO deserializePriorityDTO(const json& j) {
+PriorityDTO Jsoneitor::deserializePriorityDTO(const json& j) {
     PriorityDTO priorityDTO;
     priorityDTO.importanceLevel = j["importanceLevel"];
     priorityDTO.urgencyLevel = j["urgencyLevel"];
@@ -249,21 +322,21 @@ PriorityDTO deserializePriorityDTO(const json& j) {
     return priorityDTO;
 }
 
-json serializeTimeQuantity(const TimeQuantity& timeQuantity) {
+json Jsoneitor::serializeTimeQuantity(const TimeQuantity& timeQuantity) {
     json j;
     j["quantity"] = timeQuantity.getQuantity();
     j["unit"] = timeQuantity.getUnit();
     return j;
 }
 
-TimeQuantity deserializeTimeQuantity(const json& j) {
+TimeQuantity Jsoneitor::deserializeTimeQuantity(const json& j) {
     TimeQuantity timeQuantity;
     timeQuantity.setQuantity(j["quantity"]);
     timeQuantity.setUnit(j["unit"]);
     return timeQuantity;
 }
 
-void setTrackeablePart(TrackeableDTO trackeableDTO, Trackeable* trackeable) {
+void Jsoneitor::setTrackeablePart(TrackeableDTO trackeableDTO, Trackeable* trackeable) {
     trackeable->setName(trackeableDTO.name);
     trackeable->setDescription(trackeableDTO.description);
     trackeable->setVersionMajor(trackeableDTO.versionMajor);
@@ -276,7 +349,7 @@ void setTrackeablePart(TrackeableDTO trackeableDTO, Trackeable* trackeable) {
     trackeable->setChanges(trackeableDTO.listOfChanges);
 }
 
-void setPriorityPart(PriorityDTO priorityDTO, Priority* priority) {
+void Jsoneitor::setPriorityPart(PriorityDTO priorityDTO, Priority* priority) {
     priority->setImportanceLevel(priorityDTO.importanceLevel);
     priority->setUrgencyLevel(priorityDTO.urgencyLevel);
     priority->setPhase(priorityDTO.phase);
@@ -312,6 +385,7 @@ InformationRequirement Jsoneitor::deserializeInformationRequirement(json j) {
     unsigned int avgSimultaneousOccurrence = j["avgSimultaneousOccurrence"];
     TimeQuantity lifeMaxEstimate = deserializeTimeQuantity(j["lifeMaxEstimate"]);
     TimeQuantity lifeAvgEstimate = deserializeTimeQuantity(j["lifeAvgEstimate"]);
+    std::list<SpecificInformation> specificInformation = deserializeListOfSpecificInformation(j["specificInformation"]);
 
 /*｡o°✥✤✣TRACKEABLE PRIORITY SET✣✤✥°o｡*/
     InformationRequirement o(trackeableDTO.id.getId());
@@ -619,6 +693,38 @@ void Jsoneitor::visit(Priority* priority)
 
     FileJsonManager::save(j);
 }
+
+void Jsoneitor::visit(Text text) {
+
+        json j;
+
+        /*｡o°✥✤✣TRACKEABLE PART✣✤✥°o｡*/
+        j= trackeablePart(&text,j);
+
+        /*｡o°✥✤✣TEXT PART✣✤✥°o｡*/
+        j["indexable"] = text.getIndexable();
+
+        FileJsonManager::save(j);
+}
+
+Text Jsoneitor::deserializeText(json j) {
+
+        /*｡o°✥✤✣TRACKEABLE PART✣✤✥°o｡*/
+        TrackeableDTO trackeableDTO = deserializeTrackeableDTO(j);
+
+        /*｡o°✥✤✣TEXT GET✣✤✥°o｡*/
+        bool indexable = j["indexable"];
+
+        /*｡o°✥✤✣TRACKEABLE SET✣✤✥°o｡*/
+        Text t(trackeableDTO.id.getId());
+        setTrackeablePart(trackeableDTO, &t);
+
+        /*｡o°✥✤✣TEXT SET✣✤✥°o｡*/
+        t.setIndexable(indexable);
+
+        return t;
+}
+
 
 
 

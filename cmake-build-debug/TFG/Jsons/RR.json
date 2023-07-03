@@ -1,0 +1,22 @@
+{
+    "1": {
+        "authors": null,
+        "changes": [],
+        "comments": "Comentarios",
+        "date_init": "2023-07-3",
+        "description": "",
+        "estability": 1,
+        "id": {
+            "id": 1,
+            "prefix": "RR"
+        },
+        "importanceLevel": 1,
+        "name": "Nombre",
+        "phase": 1,
+        "tracesFrom": null,
+        "tracesTo": null,
+        "urgencyLevel": 1,
+        "versionMajor": "1",
+        "versionMinor": "1"
+    }
+}

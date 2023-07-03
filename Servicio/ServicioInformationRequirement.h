@@ -17,11 +17,17 @@ public:
     void setAvgSimultaneousOccurrence(OID id, unsigned int avgSimultaneousOccurrence);
     void setLifeMaxEstimate(OID id, const TimeQuantity &lifeMaxEstimate);
     void setLifeAvgEstimate(OID id, const TimeQuantity &lifeAvgEstimate);
+    void setSpecificInformation(OID id,const std::list<SpecificInformation> &specificInformation);
+    void addSpecificInformation(OID idconst ,const std::string name, const std::string description);
+    void removeSpecificInformation(OID id,const unsigned idSpecificInformation);
+    void setSpecificInformationName(OID id,const unsigned idSpecificInformation, const std::string &name);
+    void setSpecificInformationDescription(OID id,const unsigned idSpecificInformation, const std::string &description);
 
     unsigned int getMaxSimultaneousOccurrence(OID id) ;
     unsigned int getAvgSimultaneousOccurrence(OID id) ;
     TimeQuantity getLifeMaxEstimate(OID id) ;
     TimeQuantity getLifeAvgEstimate(OID id) ;
+    std::list<SpecificInformation> getSpecificInformation(OID id) ;
 
     std::string strMaxSimultaneousOccurrence(OID id) ;
     std::string strAvgSimultaneousOccurrence(OID id) ;

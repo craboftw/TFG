@@ -8,6 +8,7 @@
 #include "Dominio/InformationRequirement.h"
 #include "Visitor/DiagramManager.h"
 #include "Servicio/ServicioUserCase.h"
+#include "Visitor/HtmlManager.h"
 
 std::string generateHTML(InformationRequirement& requirement) {
     std::string html;
@@ -72,8 +73,6 @@ std::string generateHTML(InformationRequirement& requirement) {
     html += "<th style='font-family: Arial, sans-serif;'>Estabilidad</th>";
     html += "<td style='font-family: Arial, sans-serif;'>" + requirement.strEstability() + "</td>";
     html += "</tr>";
-
-
 
     // Cerrar la tabla
     html += "</table>";
@@ -179,158 +178,6 @@ void print(Organization a){
     //prueba de los set y list
 }
 
-void crearUserCase(){
-    UserCase userCase2(1);
-    userCase2.setName("Hervir agua");
-    userCase2.setDescription("Hervir agua en una cacerola");
-    userCase2.setVersionMajor("1");
-    userCase2.setVersionMinor("0");
-    userCase2.setComments("Que util");
-    userCase2.setPrecondition("Precondiciones");
-    userCase2.setPostcondition("Postcondiciones");
-    userCase2.setEstability(Priority::STABLE);
-    userCase2.setUrgencyLevel(Priority::HIGH);
-    userCase2.setImportanceLevel(Priority::MEDIUM);
-    userCase2.setEstability(Priority::STABLE);
-
-    //UserCasePart
-    userCase2.setAbstract(false);
-    userCase2.setPrecondition("Precondiciones");
-    userCase2.setPostcondition("Postcondiciones");
-    userCase2.addObjective({"OS",1});
-    userCase2.addAuthor({"SH",1});
-
-    userCase2.setPackage("Cocina");
-    userCase2.setFrequency({1,TimeQuantity::HOUR});
-
-    Step stp1;
-    stp1.setDescription("Encender la cocina");
-    stp1.setCondition("La cocina esta apagada");
-    stp1.setComments("No se puede encender la cocina si esta encendida");
-    stp1.setType(Step::ACTOR);
-
-    Step stp2;
-    stp2.setDescription("Poner la cacerola con agua");
-    stp2.setCondition("La cacerola esta vacia");
-    stp2.setComments("No se puede poner la cacerola si ya hay una");
-    stp2.setType(Step::ACTOR);
-
-    Step stp3;
-    stp3.setDescription("Esperar a que hierva");
-    stp3.setCondition("");
-    stp3.setComments("");
-    stp3.setType(Step::SYSTEM);
-
-    userCase2.addStep(stp1);
-    userCase2.addStep(stp2);
-    userCase2.addStep(stp3);
-
-
-
-
-
-    UserCase userCase(2);
-    userCase.setName("Cocinar espaguetis con tomate");
-    userCase.setDescription("Realizacion culinaria de un plato de pasta con la salsa de tomate");
-    userCase.setVersionMajor("1");
-    userCase.setVersionMinor("0");
-    userCase.setComments("Que rico");
-    userCase.setPrecondition("Precondiciones");
-    userCase.setPostcondition("Postcondiciones");
-    userCase.setEstability(Priority::STABLE);
-    userCase.setUrgencyLevel(Priority::HIGH);
-    userCase.setImportanceLevel(Priority::MEDIUM);
-    userCase.setEstability(Priority::STABLE);
-
-    //UserCasePart
-    userCase.setAbstract(false);
-    userCase.setPrecondition("Precondiciones");
-    userCase.setPostcondition("Postcondiciones");
-    userCase.addObjective({"OS",1});
-    userCase.addAuthor({"SH",1});
-    userCase.addActor({"AC",1});
-    userCase.setPackage("Menu");
-    userCase.setFrequency({1,TimeQuantity::WEEK});
-
-    Step step1;
-    step1.setAbstract(false);
-    step1.setDescription("Poner a hervir agua");
-    step1.setCondition("Tener agua");
-    step1.setComments("No se puede hervir agua sin agua");
-    step1.setType(Step::INCLUDE);
-    step1.setReference({"UC",1});
-
-    Step step2;
-    step2.setAbstract(false);
-    step2.setDescription("Agregar sal");
-    step2.setCondition("Tener sal");
-    step2.setComments("No se puede agregar sal sin sal");
-    step2.setType(Step::ACTOR);
-
-    Step step3;
-    step3.setAbstract(false);
-    step3.setDescription("Agregar spaghetti");
-    step3.setCondition("Tener spaghetti");
-    step3.setComments("No se puede agregar spaghetti sin spaghetti");
-    step3.setType(Step::ACTOR);
-
-    Step step4;
-    step4.setAbstract(false);
-    step4.setDescription("Esperar 10 minutos");
-    step4.setCondition("Tener tiempo");
-    step4.setComments("No se puede esperar sin tiempo");
-    step4.setType(Step::ACTOR);
-
-    Step step5;
-    step5.setAbstract(false);
-    step5.setDescription("Colar spaghetti");
-    step5.setCondition("Tener colador");
-    step5.setComments("No se puede colar sin colador");
-    step5.setType(Step::ACTOR);
-
-    Step step6;
-    step6.setAbstract(false);
-    step6.setDescription("Agregar salsa de tomate");
-    step6.setCondition("Tener salsa de tomate");
-    step6.setComments("No se puede agregar salsa de tomate sin salsa de tomate");
-    step6.setType(Step::ACTOR);
-
-    Step step7;
-    step7.setAbstract(false);
-    step7.setDescription("Servir");
-    step7.setCondition("Tener plato");
-    step7.setComments("No se puede servir sin plato");
-    step7.setType(Step::ACTOR);
-
-    userCase.addStep(step1);
-    userCase.addStep(step2);
-    userCase.addStep(step3);
-    userCase.addStep(step4);
-    userCase.addStep(step5);
-    userCase.addStep(step6);
-    userCase.addStep(step7);
-
-    ActorUC actorUC(1);
-    actorUC.setName("Cocinero");
-    actorUC.setDescription("Persona que cocina");
-    actorUC.setVersionMajor("1");
-    actorUC.setVersionMinor("0");
-    actorUC.setComments("Que rico");
-    actorUC.setPackage("Cocina");
-
-
-    Jsoneitor jsoneitor;
-    jsoneitor.visit(actorUC);
-    jsoneitor.visit(userCase2) ;
-    jsoneitor.visit(userCase);
-
-    std::list<UserCase> userCases;
-    userCases.push_back(userCase);
-    userCases.push_back(userCase2);
-
-
-
-};
 
 void print(UserCase userCase)
 {
@@ -439,6 +286,9 @@ void crearRestrictionRequirement()
     Jsoneitor jsoneitor;
     jsoneitor.visit(restrictionRequirement);
 
+    HtmlManager htmlManager;
+    Trackeable* html = &restrictionRequirement ;
+    std::cout<<htmlManager.generateTable(html)<<std::endl;
 
 }
 
@@ -502,13 +352,13 @@ void pruebaServicioUserCase()
         servicio.setComments(id, 1, "Comentarios modificados");
         servicio.setDescription(id, 1, "Descripción modificada");
 
-
-        servicio.setType(id, 0, Step::type::INCLUDE);
+        // Establecer propiedades de un paso específico
+        servicio.setType(id, 0, INCLUDE);
         OID id2 = {"UC",id.getId()-1};
         servicio.setReference(id, 0, OID(id2));
 
     OID id3 = {"UC",id.getId()-2};
-        servicio.setType(id, 1, Step::type::EXTEND);
+        servicio.setType(id, 1, EXTEND);
         servicio.setReference(id, 1, OID(id3));
 
 
@@ -521,7 +371,7 @@ void pruebaServicioUserCase()
         std::cout << "Comentarios: " << comments << std::endl;
         std::string description = servicio.getDescription(id, 1);
         std::cout << "Descripción: " << description << std::endl;
-        Step::type type = servicio.getType(id, 0);
+        type type = servicio.getType(id, 0);
         std::cout << "Tipo: " << type << std::endl;
         OID reference = servicio.getReference(id, 0);
         std::cout << "Referencia: " << reference.operator std::string() << std::endl;
@@ -533,14 +383,20 @@ void pruebaServicioUserCase()
         auto actores = fileJsonManager.loadAllActorUC();
         diagramManager.visit(userCases,actores);
 
-
     }
 
     void pruebaInformationRequirement()
     {
         InformationRequirement requirement(1);
         requirement.setName("Requerimiento de prueba");
-        requirement.setDescription("Este es un requerimiento de prueba");
+        requirement.setDescription("Este es un requerimiento de prueba")    ;
+        std::set<OID> authors = {OID{"SH", 1}};
+        requirement.setAuthors(authors);
+        requirement.setDescription("Poesia sobre la primavera\n"
+                                  "La primavera la sangre altera\n"
+                                  "y yo me altero cuando te veo\n"
+                                  "y tu te alteras cuando me ves\n"
+                                  "y nos alteramos porque nos queremos");
         requirement.setImportanceLevel(Priority::HIGH);
         requirement.setUrgencyLevel(Priority::MEDIUM);
         requirement.setPhase(Priority::IMPLEMENTATION);
@@ -549,22 +405,211 @@ void pruebaServicioUserCase()
         requirement.setAvgSimultaneousOccurrence(3);
         requirement.setLifeMaxEstimate(TimeQuantity(10, TimeQuantity::DAY));
         requirement.setLifeAvgEstimate(TimeQuantity(5, TimeQuantity::DAY));
+        requirement.addChange(Change(1,"Cambiado numero máximo de ocurrencias",Fecha(),"Se establece a 5 el número máximo de ocurrencias simultáneas"));
+        requirement.addSpecificInformation("Información específica de prueba", "Esta es la información específica de prueba");
+        requirement.addSpecificInformation("Información específica de prueba 2", "Esta es la información específica de prueba 2");
+        requirement.addSpecificInformation("Información específica de prueba 3", "Esta es la información específica de prueba 3");
+        HtmlManager htmlManager;
+        std::cout<<htmlManager.generateTable(requirement)<<std::endl;
+        //crea un fichero prueba html
+        std::ofstream file;
+        file.open("prueba.html");
+        file<<htmlManager.generateTable(requirement);
     }
 
 
+void crearUserCase(){
+    UserCase userCase2(1);
+    userCase2.setName("Hervir agua");
+    userCase2.setDescription("Hervir agua en una cacerola");
+    userCase2.setVersionMajor("1");
+    userCase2.setVersionMinor("0");
+    userCase2.setComments("Que util");
+    userCase2.setPrecondition("Precondiciones");
+    userCase2.setPostcondition("Postcondiciones");
+    userCase2.setEstability(Priority::STABLE);
+    userCase2.setUrgencyLevel(Priority::HIGH);
+    userCase2.setImportanceLevel(Priority::MEDIUM);
+    userCase2.setEstability(Priority::STABLE);
+
+    //UserCasePart
+    userCase2.setAbstract(false);
+    userCase2.setPrecondition("Precondiciones");
+    userCase2.setPostcondition("Postcondiciones");
+    userCase2.addObjective({"OS",1});
+    userCase2.addAuthor({"SH",1});
+
+    userCase2.setPackage("Cocina");
+    userCase2.setFrequency({1,TimeQuantity::HOUR});
+
+    Step stp1;
+    stp1.setDescription("Encender la cocina");
+    stp1.setCondition("La cocina esta apagada");
+    stp1.setComments("No se puede encender la cocina si esta encendida");
+    stp1.setType(ACTOR);
+
+    Step stp2;
+    stp2.setDescription("Poner la cacerola con agua");
+    stp2.setCondition("La cacerola esta vacia");
+    stp2.setComments("No se puede poner la cacerola si ya hay una");
+    stp2.setType(ACTOR);
+
+    Step stp3;
+    stp3.setDescription("Esperar a que hierva");
+    stp3.setCondition("");
+    stp3.setComments("");
+    stp3.setType(SYSTEM);
+
+    userCase2.addStep(stp1);
+    userCase2.addStep(stp2);
+    userCase2.addStep(stp3);
+
+
+
+
+
+    UserCase userCase(2);
+    userCase.setName("Cocinar espaguetis con tomate");
+    userCase.setDescription("Realizacion culinaria de un plato de pasta con la salsa de tomate");
+    userCase.setVersionMajor("1");
+    userCase.setVersionMinor("0");
+    userCase.setComments("Que rico");
+    userCase.setPrecondition("Precondiciones");
+    userCase.setPostcondition("Postcondiciones");
+    userCase.setEstability(Priority::STABLE);
+    userCase.setUrgencyLevel(Priority::HIGH);
+    userCase.setImportanceLevel(Priority::MEDIUM);
+    userCase.setEstability(Priority::STABLE);
+
+    //UserCasePart
+    userCase.setAbstract(false);
+    userCase.setPrecondition("Precondiciones");
+    userCase.setPostcondition("Postcondiciones");
+    userCase.addObjective({"OS",1});
+    userCase.addAuthor({"SH",1});
+    userCase.addActor({"AC",1});
+    userCase.setPackage("Menu");
+    userCase.setFrequency({1,TimeQuantity::WEEK});
+
+    Step step1;
+    step1.setAbstract(false);
+    step1.setDescription("Poner a hervir agua");
+    step1.setCondition("Tener agua");
+    step1.setComments("No se puede hervir agua sin agua");
+    step1.setType(INCLUDE);
+    step1.setReference({"UC",1});
+
+    Step step2;
+    step2.setAbstract(false);
+    step2.setDescription("Agregar sal");
+    step2.setCondition("Tener sal");
+    step2.setComments("No se puede agregar sal sin sal");
+    step2.setType(ACTOR);
+
+    Step step3;
+    step3.setAbstract(false);
+    step3.setDescription("Agregar spaghetti");
+    step3.setCondition("Tener spaghetti");
+    step3.setComments("No se puede agregar spaghetti sin spaghetti");
+    step3.setType(ACTOR);
+
+    Step step4;
+    step4.setAbstract(false);
+    step4.setDescription("Esperar 10 minutos");
+    step4.setCondition("Tener tiempo");
+    step4.setComments("No se puede esperar sin tiempo");
+    step4.setType(ACTOR);
+
+    Step step5;
+    step5.setAbstract(false);
+    step5.setDescription("Colar spaghetti");
+    step5.setCondition("Tener colador");
+    step5.setComments("No se puede colar sin colador");
+    step5.setType(ACTOR);
+
+    Step step6;
+    step6.setAbstract(false);
+    step6.setDescription("Agregar salsa de tomate");
+    step6.setCondition("Tener salsa de tomate");
+    step6.setComments("No se puede agregar salsa de tomate sin salsa de tomate");
+            step6.setType(ACTOR);
+
+    /*Add one exception of type Exception
+    struct Exception{
+        unsigned id;
+        unsigned step;
+        type stepType;
+        std::string description;
+        std::string condition;
+        std::string comments;
+        OID reference;
+    };*/
+
+    step6.addException({1,1,INCLUDE,"No hay agua","No hay agua","No hay agua",{"UC",1}});
+    step6.addException({2,2,EXTEND,"No hay sal","No hay sal","No hay sal",{"UC",1}});
+    step6.addException({3,3,ACTOR,"No hay spaghetti","No hay spaghetti","No hay spaghetti",{"UC",1}});
+    step6.addException({4,4,SYSTEM,"No hay tiempo","No hay tiempo","No hay tiempo",{"UC",1}});
+
+
+    Step step7;
+    step7.setAbstract(false);
+    step7.setDescription("Servir");
+    step7.setCondition("Tener plato");
+    step7.setComments("No se puede servir sin plato");
+    step7.setType(ACTOR);
+
+    userCase.addStep(step1);
+    userCase.addStep(step2);
+    userCase.addStep(step3);
+    userCase.addStep(step4);
+    userCase.addStep(step5);
+    userCase.addStep(step6);
+    userCase.addStep(step7);
+
+    ActorUC actorUC(1);
+    actorUC.setName("Cocinero");
+    actorUC.setDescription("Persona que cocina");
+    actorUC.setVersionMajor("1");
+    actorUC.setVersionMinor("0");
+    actorUC.setComments("Que rico");
+    actorUC.setPackage("Cocina");
+
+
+    Jsoneitor jsoneitor;
+    jsoneitor.visit(actorUC);
+    jsoneitor.visit(userCase2) ;
+    jsoneitor.visit(userCase);
+
+    std::list<UserCase> userCases;
+    userCases.push_back(userCase);
+    userCases.push_back(userCase2);
+
+    HtmlManager htmlManager;
+    //in file userCase.html htmlManager.generateTable(userCase)
+
+
+    std::ofstream file;
+    file.open("usercase.html");
+    file<<htmlManager.generateTable(userCase);
+
+
+
+
+
+
+
+
+};
+
 int main() {
-    setlocale(LC_ALL, "spanish");
-    ServicioUserCase servicio;
-    auto id = servicio.createUserCase();
-    servicio.setImportanceLevel(id,Priority::HIGH);
-    std::cout<<servicio.strImportanceLevel(id) << std::endl;
-    std::cout<<servicio.getName(id)<< std::endl;
-    std::cout<<servicio.getAbstract(id)<< std::endl;
-
-
-
-
-
-
+crearUserCase() ;
+    return 0;
 
 }
+
+
+
+
+
+
+

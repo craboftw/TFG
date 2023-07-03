@@ -2,15 +2,20 @@
     "1": {
         "abstract": false,
         "actors": null,
-        "authors": null,
+        "authors": [
+            {
+                "id": 1,
+                "prefix": "SH"
+            }
+        ],
         "changes": [],
-        "comments": "",
-        "date_init": "2023-07-2",
-        "description": "",
-        "estability": 2,
+        "comments": "Que util",
+        "date_init": "2023-07-3",
+        "description": "Hervir agua en una cacerola",
+        "estability": 0,
         "frequency": {
-            "quantity": 0,
-            "unit": 1
+            "quantity": 1,
+            "unit": 4
         },
         "generalization": {
             "id": 0,
@@ -20,32 +25,79 @@
             "id": 1,
             "prefix": "UC"
         },
-        "importanceLevel": 2,
-        "name": "UC1",
+        "importanceLevel": 1,
+        "name": "Hervir agua",
         "objectives": null,
-        "package": "",
+        "package": "Cocina",
         "phase": 6,
-        "postcondition": "",
-        "precondition": "",
-        "steps": [],
+        "postcondition": "Postcondiciones",
+        "precondition": "Precondiciones",
+        "steps": [
+            {
+                "abstract": false,
+                "comments": "No se puede encender la cocina si esta encendida",
+                "condition": "La cocina esta apagada",
+                "description": "Encender la cocina",
+                "exceptions": null,
+                "reference": {
+                    "id": 0,
+                    "prefix": "XX"
+                },
+                "stepType": 1
+            },
+            {
+                "abstract": false,
+                "comments": "No se puede poner la cacerola si ya hay una",
+                "condition": "La cacerola esta vacia",
+                "description": "Poner la cacerola con agua",
+                "exceptions": null,
+                "reference": {
+                    "id": 0,
+                    "prefix": "XX"
+                },
+                "stepType": 1
+            },
+            {
+                "abstract": false,
+                "comments": "",
+                "condition": "",
+                "description": "Esperar a que hierva",
+                "exceptions": null,
+                "reference": {
+                    "id": 0,
+                    "prefix": "XX"
+                },
+                "stepType": 0
+            }
+        ],
         "tracesFrom": null,
         "tracesTo": null,
-        "urgencyLevel": 3,
-        "versionMajor": "0",
+        "urgencyLevel": 2,
+        "versionMajor": "1",
         "versionMinor": "0"
     },
     "2": {
         "abstract": false,
-        "actors": null,
-        "authors": null,
+        "actors": [
+            {
+                "id": 1,
+                "prefix": "AC"
+            }
+        ],
+        "authors": [
+            {
+                "id": 1,
+                "prefix": "SH"
+            }
+        ],
         "changes": [],
-        "comments": "",
-        "date_init": "2023-07-2",
-        "description": "",
-        "estability": 2,
+        "comments": "Que rico",
+        "date_init": "2023-07-3",
+        "description": "Realizacion culinaria de un plato de pasta con la salsa de tomate",
+        "estability": 0,
         "frequency": {
-            "quantity": 0,
-            "unit": 1
+            "quantity": 1,
+            "unit": 2
         },
         "generalization": {
             "id": 0,
@@ -55,32 +107,166 @@
             "id": 2,
             "prefix": "UC"
         },
-        "importanceLevel": 2,
-        "name": "UC2",
+        "importanceLevel": 1,
+        "name": "Cocinar espaguetis con tomate",
         "objectives": null,
-        "package": "",
+        "package": "Menu",
         "phase": 6,
-        "postcondition": "",
-        "precondition": "",
-        "steps": [],
+        "postcondition": "Postcondiciones",
+        "precondition": "Precondiciones",
+        "steps": [
+            {
+                "abstract": false,
+                "comments": "No se puede hervir agua sin agua",
+                "condition": "Tener agua",
+                "description": "Poner a hervir agua",
+                "exceptions": null,
+                "reference": {
+                    "id": 1,
+                    "prefix": "UC"
+                },
+                "stepType": 2
+            },
+            {
+                "abstract": false,
+                "comments": "No se puede agregar sal sin sal",
+                "condition": "Tener sal",
+                "description": "Agregar sal",
+                "exceptions": null,
+                "reference": {
+                    "id": 0,
+                    "prefix": "XX"
+                },
+                "stepType": 1
+            },
+            {
+                "abstract": false,
+                "comments": "No se puede agregar spaghetti sin spaghetti",
+                "condition": "Tener spaghetti",
+                "description": "Agregar spaghetti",
+                "exceptions": null,
+                "reference": {
+                    "id": 0,
+                    "prefix": "XX"
+                },
+                "stepType": 1
+            },
+            {
+                "abstract": false,
+                "comments": "No se puede esperar sin tiempo",
+                "condition": "Tener tiempo",
+                "description": "Esperar 10 minutos",
+                "exceptions": null,
+                "reference": {
+                    "id": 0,
+                    "prefix": "XX"
+                },
+                "stepType": 1
+            },
+            {
+                "abstract": false,
+                "comments": "No se puede colar sin colador",
+                "condition": "Tener colador",
+                "description": "Colar spaghetti",
+                "exceptions": null,
+                "reference": {
+                    "id": 0,
+                    "prefix": "XX"
+                },
+                "stepType": 1
+            },
+            {
+                "abstract": false,
+                "comments": "No se puede agregar salsa de tomate sin salsa de tomate",
+                "condition": "Tener salsa de tomate",
+                "description": "Agregar salsa de tomate",
+                "exceptions": [
+                    {
+                        "comments": "No hay agua",
+                        "condition": "No hay agua",
+                        "description": "No hay agua",
+                        "id": 1,
+                        "reference": {
+                            "id": 1,
+                            "prefix": "UC"
+                        },
+                        "step": 1,
+                        "stepType": 2
+                    },
+                    {
+                        "comments": "No hay sal",
+                        "condition": "No hay sal",
+                        "description": "No hay sal",
+                        "id": 2,
+                        "reference": {
+                            "id": 1,
+                            "prefix": "UC"
+                        },
+                        "step": 2,
+                        "stepType": 3
+                    },
+                    {
+                        "comments": "No hay spaghetti",
+                        "condition": "No hay spaghetti",
+                        "description": "No hay spaghetti",
+                        "id": 3,
+                        "reference": {
+                            "id": 1,
+                            "prefix": "UC"
+                        },
+                        "step": 3,
+                        "stepType": 1
+                    },
+                    {
+                        "comments": "No hay tiempo",
+                        "condition": "No hay tiempo",
+                        "description": "No hay tiempo",
+                        "id": 4,
+                        "reference": {
+                            "id": 1,
+                            "prefix": "UC"
+                        },
+                        "step": 4,
+                        "stepType": 0
+                    }
+                ],
+                "reference": {
+                    "id": 0,
+                    "prefix": "XX"
+                },
+                "stepType": 1
+            },
+            {
+                "abstract": false,
+                "comments": "No se puede servir sin plato",
+                "condition": "Tener plato",
+                "description": "Servir",
+                "exceptions": null,
+                "reference": {
+                    "id": 0,
+                    "prefix": "XX"
+                },
+                "stepType": 1
+            }
+        ],
         "tracesFrom": null,
         "tracesTo": null,
-        "urgencyLevel": 3,
-        "versionMajor": "0",
+        "urgencyLevel": 2,
+        "versionMajor": "1",
         "versionMinor": "0"
     },
     "3": {
-        "abstract": false,
+        "abstract": true,
         "actors": null,
         "authors": null,
         "changes": [],
         "comments": "",
-        "date_init": "2023-07-2",
+        "date_init": "2023-07-3",
         "description": "",
         "estability": 2,
         "frequency": {
-            "quantity": 0,
-            "unit": 1
+            "quantity": 5,
+            "unit": 3
         },
         "generalization": {
             "id": 0,
@@ -90,14 +276,51 @@
             "id": 3,
             "prefix": "UC"
         },
-        "importanceLevel": 2,
+        "importanceLevel": 3,
         "name": "UC3",
         "objectives": null,
         "package": "",
         "phase": 6,
-        "postcondition": "",
-        "precondition": "",
-        "steps": [],
+        "postcondition": "Postcondición del UserCase",
+        "precondition": "Precondición del UserCase",
+        "steps": [
+            {
+                "abstract": true,
+                "comments": "",
+                "condition": "Descripción del paso 1",
+                "description": "",
+                "exceptions": null,
+                "reference": {
+                    "id": 0,
+                    "prefix": "XX"
+                },
+                "stepType": 0
+            },
+            {
+                "abstract": false,
+                "comments": "",
+                "condition": "Descripción del paso 2",
+                "description": "",
+                "exceptions": null,
+                "reference": {
+                    "id": 0,
+                    "prefix": "XX"
+                },
+                "stepType": 0
+            },
+            {
+                "abstract": false,
+                "comments": "",
+                "condition": "Nuevo paso",
+                "description": "",
+                "exceptions": null,
+                "reference": {
+                    "id": 0,
+                    "prefix": "XX"
+                },
+                "stepType": 108
+            }
+        ],
         "tracesFrom": null,
         "tracesTo": null,
         "urgencyLevel": 3,
@@ -105,174 +328,71 @@
         "versionMinor": "0"
     },
     "4": {
-        "abstract": false,
+        "abstract": true,
         "actors": null,
         "authors": null,
         "changes": [],
         "comments": "",
-        "date_init": "2023-07-2",
+        "date_init": "2023-07-3",
         "description": "",
         "estability": 2,
         "frequency": {
-            "quantity": 0,
-            "unit": 1
+            "quantity": 5,
+            "unit": 3
         },
         "generalization": {
-            "id": 0,
-            "prefix": "XX"
+            "id": 1,
+            "prefix": "UC"
         },
         "id": {
             "id": 4,
             "prefix": "UC"
         },
-        "importanceLevel": 2,
+        "importanceLevel": 3,
         "name": "UC4",
         "objectives": null,
         "package": "",
         "phase": 6,
-        "postcondition": "",
-        "precondition": "",
-        "steps": [],
-        "tracesFrom": null,
-        "tracesTo": null,
-        "urgencyLevel": 3,
-        "versionMajor": "0",
-        "versionMinor": "0"
-    },
-    "5": {
-        "abstract": false,
-        "actors": null,
-        "authors": null,
-        "changes": [],
-        "comments": "",
-        "date_init": "2023-07-2",
-        "description": "",
-        "estability": 2,
-        "frequency": {
-            "quantity": 0,
-            "unit": 1
-        },
-        "generalization": {
-            "id": 0,
-            "prefix": "XX"
-        },
-        "id": {
-            "id": 5,
-            "prefix": "UC"
-        },
-        "importanceLevel": 2,
-        "name": "UC5",
-        "objectives": null,
-        "package": "",
-        "phase": 6,
-        "postcondition": "",
-        "precondition": "",
-        "steps": [],
-        "tracesFrom": null,
-        "tracesTo": null,
-        "urgencyLevel": 3,
-        "versionMajor": "0",
-        "versionMinor": "0"
-    },
-    "6": {
-        "abstract": false,
-        "actors": null,
-        "authors": null,
-        "changes": [],
-        "comments": "",
-        "date_init": "2023-07-2",
-        "description": "",
-        "estability": 2,
-        "frequency": {
-            "quantity": 0,
-            "unit": 1
-        },
-        "generalization": {
-            "id": 0,
-            "prefix": "XX"
-        },
-        "id": {
-            "id": 6,
-            "prefix": "UC"
-        },
-        "importanceLevel": 2,
-        "name": "UC6",
-        "objectives": null,
-        "package": "",
-        "phase": 6,
-        "postcondition": "",
-        "precondition": "",
-        "steps": [],
-        "tracesFrom": null,
-        "tracesTo": null,
-        "urgencyLevel": 3,
-        "versionMajor": "0",
-        "versionMinor": "0"
-    },
-    "7": {
-        "abstract": false,
-        "actors": null,
-        "authors": null,
-        "changes": [],
-        "comments": "",
-        "date_init": "2023-07-3",
-        "description": "",
-        "estability": 2,
-        "frequency": {
-            "quantity": 0,
-            "unit": 1
-        },
-        "generalization": {
-            "id": 0,
-            "prefix": "XX"
-        },
-        "id": {
-            "id": 7,
-            "prefix": "UC"
-        },
-        "importanceLevel": 2,
-        "name": "UC7",
-        "objectives": null,
-        "package": "",
-        "phase": 6,
-        "postcondition": "",
-        "precondition": "",
-        "steps": [],
-        "tracesFrom": null,
-        "tracesTo": null,
-        "urgencyLevel": 3,
-        "versionMajor": "0",
-        "versionMinor": "0"
-    },
-    "8": {
-        "abstract": false,
-        "actors": null,
-        "authors": null,
-        "changes": [],
-        "comments": "",
-        "date_init": "2023-07-3",
-        "description": "",
-        "estability": 2,
-        "frequency": {
-            "quantity": 0,
-            "unit": 1
-        },
-        "generalization": {
-            "id": 0,
-            "prefix": "XX"
-        },
-        "id": {
-            "id": 8,
-            "prefix": "UC"
-        },
-        "importanceLevel": 2,
-        "name": "UC8",
-        "objectives": null,
-        "package": "",
-        "phase": 6,
-        "postcondition": "",
-        "precondition": "",
-        "steps": [],
+        "postcondition": "Postcondición del UserCase",
+        "precondition": "Precondición del UserCase",
+        "steps": [
+            {
+                "abstract": true,
+                "comments": "",
+                "condition": "Condición modificada",
+                "description": "",
+                "exceptions": null,
+                "reference": {
+                    "id": 3,
+                    "prefix": "UC"
+                },
+                "stepType": 2
+            },
+            {
+                "abstract": true,
+                "comments": "Comentarios modificados",
+                "condition": "Descripción del paso 2",
+                "description": "Descripción modificada",
+                "exceptions": null,
+                "reference": {
+                    "id": 2,
+                    "prefix": "UC"
+                },
+                "stepType": 3
+            },
+            {
+                "abstract": false,
+                "comments": "",
+                "condition": "Nuevo paso",
+                "description": "",
+                "exceptions": null,
+                "reference": {
+                    "id": 0,
+                    "prefix": "XX"
+                },
+                "stepType": 108
+            }
+        ],
         "tracesFrom": null,
         "tracesTo": null,
         "urgencyLevel": 3,

@@ -9,14 +9,19 @@
 #include "Dominio/Priority/Priority.h"
 #include <string>
 
+struct SpecificInformation
+{
+    unsigned int id;
+    std::string name;
+    std::string description;
+};
 
-//En la siguiente linea se haya un error: "expected class-name before ',' token"
-//La solucion es incluir la clase Priority.h en este archivo
 class InformationRequirement : virtual public Trackeable , public Priority {
     unsigned int maxSimultaneousOccurrence;
     unsigned int avgSimultaneousOccurrence;
     TimeQuantity lifeMaxEstimate;
     TimeQuantity lifeAvgEstimate;
+    std::list<SpecificInformation> specificInformation;
 
 public:
     explicit InformationRequirement(unsigned id)
@@ -33,6 +38,7 @@ public:
     unsigned int getAvgSimultaneousOccurrence() const;
     TimeQuantity getLifeMaxEstimate() const;
     TimeQuantity getLifeAvgEstimate() const;
+    std::list<SpecificInformation> getSpecificInformation() const;
 
     std::string strMaxSimultaneousOccurrence() const;
     std::string strAvgSimultaneousOccurrence() const;
@@ -43,9 +49,16 @@ public:
     void setAvgSimultaneousOccurrence(unsigned int avgSimultaneousOccurrence);
     void setLifeMaxEstimate(const TimeQuantity &lifeMaxEstimate);
     void setLifeAvgEstimate(const TimeQuantity &lifeAvgEstimate);
+    void setSpecificInformation(const std::list<SpecificInformation> &specificInformation);
+    void addSpecificInformation(const std::string name, const std::string description);
+
+    void removeSpecificInformation(const unsigned id);
+    void setSpecificInformationName(const unsigned id, const std::string &name);
+    void setSpecificInformationDescription(const unsigned id, const std::string &description);
     void accept(Visitor* visitor) override ;
 private:
     inline static std::string prefixID = "IR";
+
 };
 
 

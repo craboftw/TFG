@@ -58,5 +58,15 @@ private:
     FileJsonManager fileJsonManager;
 };
 
+class ServicioText : virtual public Trackeable {
+public:
+    OID createText(std::string name="");
+    bool getIndexable(OID id);
+    void setIndexable(OID id,bool indexable);
+    std::list<std::pair<OID,std::string>> getTexts();
+private:
+    FileJsonManager fileJsonManager;
+};
+
 
 #endif //TFG_SERVICIOGENERIC_H

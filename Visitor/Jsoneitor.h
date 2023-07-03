@@ -14,6 +14,10 @@
 // for convenience
 using json = nlohmann::json;
 
+class TrackeableDTO;
+
+class PriorityDTO;
+
 class Jsoneitor : public Visitor {
 private:
     int a;
@@ -30,10 +34,12 @@ public:
     void visit(Stakeholder stakeholder) override;
     void visit(UserCase& userCase) override;
     void visit(Organization organization) override;
+    void visit(Text text) override;
 
     void visit(Trackeable* trackeable) override;
     void visit(Priority *priority);
 
+    OID deserializeOID( json j);
 
     Stakeholder deserializeStakeholder(json j);
     UserCase deserializeUserCase(json j);
@@ -44,10 +50,39 @@ public:
     ActorUC deserializeActorUC(json j);
     InformationRequirement deserializeInformationRequirement(json j);
     Organization deserializeOrganization(json j);
+    Text deserializeText(json j);
 
     Trackeable *deserializeTrackeable(json j);
     Priority *deserializePriority(json j);
 
+    std::list<SpecificInformation> deserializeListOfSpecificInformation(json j);
+
+    json serializeListOfSpecificInformation(std::list<SpecificInformation> lista);
+    json serializeTimeQuantity(const TimeQuantity &timeQuantity);
+    json serializeVectorOfSteps(const std::vector<Step> &vectorOfSteps);
+    json serializeListOfOID(const std::list<OID> &listOfOID);
+    json serializeSetOfOID(const std::set<OID> &setOfOID);
+    json serializeOID(OID oid);
+    json serializeVectorOfOID(const std::vector<OID> &vectorOfOID);
+    json serializeListOfChanges(const std::list<Change> &listOfChanges);
+
+    std::set<OID> deserializeSetOfOID(const json &j);
+    std::vector<OID> deserializeVectorOfOID(const json &j);
+    std::list<OID> deserializeListOfOID(const json &j);
+    std::vector<Step> deserializeVectorOfSteps(json reference);
+    TrackeableDTO deserializeTrackeableDTO(const json &j);
+    PriorityDTO deserializePriorityDTO(const json &j);
+    TimeQuantity deserializeTimeQuantity(const json &j);
+
+    json trackeablePart(Trackeable *objeto, json &j);
+    json priorityPart(Priority *objeto, json &j);
+
+    void setTrackeablePart(TrackeableDTO trackeableDTO, Trackeable *trackeable);
+    void setPriorityPart(PriorityDTO priorityDTO, Priority *priority);
+
+    json serializeListOfExceptions(std::list<Exception> listOfExceptions);
+
+    std::list<Exception> deserializeListOfExceptions(const json &j);
 };
 
 

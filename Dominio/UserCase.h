@@ -16,17 +16,32 @@ enum class DetailQuantity {
     LOW, MEDIUM, HIGH
 };
 
+enum type {SYSTEM, ACTOR, INCLUDE, EXTEND};
+
+
+struct Exception{
+    unsigned id;
+    unsigned step;
+    type stepType;
+    std::string description;
+    std::string condition;
+    std::string comments;
+    OID reference;
+};
+
+
 
 class Step{
-public:
-    enum type {SYSTEM, ACTOR, INCLUDE, EXTEND};
 private:
+
     bool abstract;
     std::string description;
     std::string condition;
     std::string comments;
     type stepType;
     OID reference;
+    std::list<Exception> exceptions;
+
 
 
 public:
@@ -37,6 +52,7 @@ public:
     std::string getComments() const;
     type getType() const;
     OID getReference() const;
+    std::list<Exception> getExceptions() const;
 
     void setAbstract(bool _abstract);
     void setCondition(std::string _condition);
@@ -44,6 +60,11 @@ public:
     void setDescription(std::string _description);
     void setType(type _type);
     void setReference(OID _reference);
+    void addException(Exception exception);
+    void setException(Exception exception) ;
+    void removeException(unsigned pos);
+    void setExceptions(std::list<Exception> _exceptions);
+
 };
 
 

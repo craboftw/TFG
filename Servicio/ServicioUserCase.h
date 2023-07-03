@@ -44,14 +44,14 @@ public:
     std::string getDescription(OID id,unsigned pos);
     std::string getCondition(OID id,unsigned pos);
     std::string getComments(OID id,unsigned pos);
-    Step::type getType(OID id,unsigned pos);
+    type getType(OID id,unsigned pos);
     OID getReference(OID id,unsigned pos);
 
     void setAbstract(OID id,unsigned pos,bool _abstract);
     void setCondition(OID id,unsigned pos,std::string _condition);
     void setComments(OID id,unsigned pos,std::string _comments);
     void setDescription(OID id,unsigned pos,std::string _description);
-    void setType(OID id,unsigned pos,Step::type _type);
+    void setType(OID id,unsigned pos,type _type);
     void setReference(OID id,unsigned pos,OID _reference);
 
     std::list<std::pair<OID, std::string>> getUseCases();

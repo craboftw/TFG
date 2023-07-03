@@ -7,17 +7,25 @@ include_directories(${CMAKE_SOURCE_DIR})
 
 add_library(TFG_Library
         Dominio/Trackeable/Fecha.cpp
-       Dominio/Priority/Priority.cpp
-       Dominio/Trackeable/Stakeholder.cpp
-       Dominio/Trackeable/Trackeable.cpp
-       Dominio/Generic.cpp
-       Visitor/Jsoneitor.cpp
-       Dominio/UserCase.cpp
-       Dominio/InformationRequirement.cpp
-       Dominio/Trackeable/Organization.cpp
-       Visitor/FileJsonManager.cpp
-       Servicio/ServicioUserCase.cpp
-        Visitor/DiagramManager.cpp Servicio/ServicioInformationRequirement.cpp Servicio/ServicioInformationRequirement.h Servicio/ServicioTrackeable.cpp Servicio/ServicioTrackeable.h Servicio/ServicioPriority.cpp Servicio/ServicioPriority.h Servicio/ServicioGeneric.cpp Servicio/ServicioGeneric.h Servicio/ServicioStakeholder.cpp Servicio/ServicioStakeholder.h Servicio/ServicioOrganization.cpp Servicio/ServicioOrganization.h)
+        Dominio/Priority/Priority.cpp
+        Dominio/Trackeable/Stakeholder.cpp
+        Dominio/Trackeable/Trackeable.cpp
+        Dominio/Generic.cpp
+        Visitor/Jsoneitor.cpp
+        Dominio/UserCase.cpp
+        Dominio/InformationRequirement.cpp
+        Dominio/Trackeable/Organization.cpp
+        Visitor/FileJsonManager.cpp
+        Servicio/ServicioUserCase.cpp
+        Visitor/DiagramManager.cpp
+        Servicio/ServicioInformationRequirement.cpp
+        Servicio/ServicioTrackeable.cpp
+        Servicio/ServicioPriority.cpp
+        Servicio/ServicioGeneric.cpp
+        Servicio/ServicioStakeholder.cpp
+        Servicio/ServicioOrganization.cpp
+        Visitor/HtmlManager.cpp
+        )
 
 add_executable(TFG_Executable main.cpp)
 

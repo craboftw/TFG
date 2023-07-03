@@ -7,8 +7,9 @@
 
 
 #include "Visitor/FileJsonManager.h"
+#include "ServicioTrackeable.h"
 
-class ServicioStakeholder {
+class ServicioStakeholder : public ServicioTrackeable{
 public:
     OID createStakeholder(std::string name="");
 

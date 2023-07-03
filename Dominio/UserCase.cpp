@@ -146,7 +146,7 @@ void Step::setDescription(std::string _description) {
 
 }
 
-void Step::setType(Step::type _type) {
+void Step::setType(type _type) {
     this->stepType = _type;
 }
 
@@ -154,6 +154,44 @@ void Step::setReference(OID _reference) {
     reference = _reference;
 }
 
-Step::type Step::getType() const {
+type Step::getType() const {
     return stepType;
+}
+
+void Step::addException(Exception exception) {
+    exceptions.push_back(exception);
+}
+
+void Step::removeException(unsigned id) {
+    //find exception
+    auto lista = exceptions;
+    for (auto it = exceptions.begin(); it != exceptions.end(); ++it)
+    {
+        if (it->id == id)
+        {
+            exceptions.erase(it);
+            break;
+        }
+    }
+}
+
+std::list<Exception> Step::getExceptions() const {
+    return exceptions;
+}
+
+void Step::setExceptions(std::list<Exception> _exceptions) {
+     exceptions = std::move(_exceptions);
+}
+
+void Step::setException(Exception exception) {
+    //find exception
+    auto lista = exceptions;
+    for (auto it : exceptions)
+    {
+        if (it.id == exception.id)
+        {
+            it = exception;
+            break;
+        }
+    }
 }

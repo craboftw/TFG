@@ -22,61 +22,50 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="717b5343-998e-4acd-bfc6-e19a8feecd69" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Servicio/ServicioInformationRequirement.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Servicio/ServicioInformationRequirement.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Servicio/ServicioPriority.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Servicio/ServicioPriority.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Servicio/ServicioTrackeable.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Servicio/ServicioTrackeable.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Servicio/ServicioGeneric.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Servicio/ServicioGeneric.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Servicio/ServicioOrganization.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Servicio/ServicioOrganization.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Servicio/ServicioStakeholder.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Servicio/ServicioStakeholder.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dominio/Generic.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/Generic.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Dominio/Generic.h" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/Generic.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dominio/InformationRequirement.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/InformationRequirement.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dominio/InformationRequirement.h" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/InformationRequirement.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dominio/Priority/Priority.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/Priority/Priority.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dominio/Priority/Priority.h" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/Priority/Priority.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dominio/Trackeable/Fecha.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/Trackeable/Fecha.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dominio/Trackeable/Fecha.h" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/Trackeable/Fecha.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dominio/Trackeable/Trackeable.h" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/Trackeable/Trackeable.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dominio/UserCase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/UserCase.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dominio/Trackeable/Organization.h" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/Trackeable/Organization.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dominio/Trackeable/Stakeholder.h" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/Trackeable/Stakeholder.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Servicio/ServicioInformationRequirement.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Servicio/ServicioInformationRequirement.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Servicio/ServicioInformationRequirement.h" beforeDir="false" afterPath="$PROJECT_DIR$/Servicio/ServicioInformationRequirement.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Servicio/ServicioTrackeable.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Servicio/ServicioTrackeable.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Servicio/ServicioTrackeable.h" beforeDir="false" afterPath="$PROJECT_DIR$/Servicio/ServicioTrackeable.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Servicio/ServicioUserCase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Servicio/ServicioUserCase.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Servicio/ServicioUserCase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Servicio/ServicioUserCase.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Visitor/DiagramManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Visitor/DiagramManager.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Visitor/DiagramManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/Visitor/DiagramManager.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Visitor/FileJsonManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Visitor/FileJsonManager.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Visitor/FileJsonManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/Visitor/FileJsonManager.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Visitor/Jsoneitor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Visitor/Jsoneitor.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Visitor/Jsoneitor.h" beforeDir="false" afterPath="$PROJECT_DIR$/Visitor/Jsoneitor.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Visitor/Visitor.h" beforeDir="false" afterPath="$PROJECT_DIR$/Visitor/Visitor.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-99a3fd1cec86093d9b83.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2023-06-30T21-56-26-0874.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/target-TFG_Library-Debug-591534bff133aef8e2e5.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-d36478766a55c6910ebe.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2023-07-02T19-17-05-0109.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/target-TFG_Library-Debug-ffabb5bd40d5f0a3b5f1.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Executable.dir/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Executable.dir/main.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Dominio/Generic.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Dominio/Generic.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Dominio/InformationRequirement.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Dominio/InformationRequirement.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Dominio/Priority/Priority.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Dominio/Priority/Priority.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Dominio/Trackeable/Fecha.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Dominio/Trackeable/Fecha.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Dominio/Trackeable/Organization.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Dominio/Trackeable/Organization.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Dominio/Trackeable/Stakeholder.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Dominio/Trackeable/Stakeholder.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Dominio/Trackeable/Trackeable.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Dominio/Trackeable/Trackeable.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Dominio/UserCase.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Dominio/UserCase.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Servicio/ServicioInformationRequirement.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Servicio/ServicioInformationRequirement.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Servicio/ServicioPriority.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Servicio/ServicioPriority.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Servicio/ServicioTrackeable.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Servicio/ServicioTrackeable.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Servicio/ServicioUserCase.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Servicio/ServicioUserCase.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Visitor/DiagramManager.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Visitor/DiagramManager.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Visitor/FileJsonManager.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Visitor/FileJsonManager.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Visitor/Jsoneitor.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Visitor/Jsoneitor.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TFG/Diagrams/UseCaseDiagram.png" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/TFG/Diagrams/UseCaseDiagram.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TFG/Diagrams/UseCaseDiagram.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/TFG/Diagrams/UseCaseDiagram.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TFG/Jsons/AC.json" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/TFG/Jsons/AC.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TFG/Jsons/UC.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TFG/Jsons/UC.json" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/TFG/Jsons/UC.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/TFG_Executable.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/TFG_Executable.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/build.ninja" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/libTFG_Library.a" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/libTFG_Library.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/stP1kAlM" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -192,7 +181,7 @@
       <workItem from="1688299549258" duration="1838000" />
       <workItem from="1688305890531" duration="994000" />
       <workItem from="1688317116152" duration="4387000" />
-      <workItem from="1688322824006" duration="11428000" />
+      <workItem from="1688322824006" duration="21089000" />
     </task>
     <servers />
   </component>
@@ -225,7 +214,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/main.cpp</url>
-          <line>511</line>
+          <line>506</line>
           <option name="timeStamp" value="26" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
@@ -240,7 +229,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/main.cpp</url>
-          <line>563</line>
+          <line>558</line>
           <option name="timeStamp" value="30" />
         </line-breakpoint>
       </breakpoints>

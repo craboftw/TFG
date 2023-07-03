@@ -54,6 +54,8 @@ public:
     void setType(OID id,unsigned pos,Step::type _type);
     void setReference(OID id,unsigned pos,OID _reference);
 
+    std::list<std::pair<OID, std::string>> getUseCases();
+
 private:
     FileJsonManager fileJsonManager;
 

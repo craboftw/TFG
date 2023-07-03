@@ -40,6 +40,8 @@ public:
     std::string getVersionMinor(OID id);
     std::string getVersionMajor(OID id);
 
+
+
 protected:
     FileJsonManager fileJsonManager;
 

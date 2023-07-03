@@ -20,6 +20,7 @@ public:
 
         //Setters
         void setContactInfo(std::string _contactInfo);
+        static std::string getPrefixID () {return prefixID;}
         void accept(Visitor* visitor) override;
 };
 

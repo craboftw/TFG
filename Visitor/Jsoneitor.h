@@ -29,9 +29,10 @@ public:
     void visit(NonFunctionalRequirement nonFunctionalRequirement) override;
     void visit(Stakeholder stakeholder) override;
     void visit(UserCase& userCase) override;
-    void visit(Rol_Stakeholder rolStakeholder) override;
     void visit(Organization organization) override;
+
     void visit(Trackeable* trackeable) override;
+    void visit(Priority *priority);
 
 
     Stakeholder deserializeStakeholder(json j);
@@ -43,13 +44,10 @@ public:
     ActorUC deserializeActorUC(json j);
     InformationRequirement deserializeInformationRequirement(json j);
     Organization deserializeOrganization(json j);
-    Rol_Stakeholder deserializeRolStakeholder(json j);
 
     Trackeable *deserializeTrackeable(json j);
-
     Priority *deserializePriority(json j);
 
-    void visit(Priority *priority);
 };
 
 

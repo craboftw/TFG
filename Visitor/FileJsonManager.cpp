@@ -221,21 +221,7 @@ std::list<Organization> FileJsonManager::loadAllOrganization() {
     return organizations;
 }
 
-Rol_Stakeholder FileJsonManager::loadRolStakeholder(OID id) {
-    json j = load(id);
-    Jsoneitor jsoneitor;
-    return jsoneitor.deserializeRolStakeholder(j);
-}
 
-std::list<Rol_Stakeholder> FileJsonManager::loadAllRolStakeholder() {
-    std::list<Rol_Stakeholder> rol_stakeholders;
-    json j = loadAll("RS");
-    Jsoneitor jsoneitor;
-    for (auto& element : j) {
-        rol_stakeholders.push_back(jsoneitor.deserializeRolStakeholder(element));
-    }
-    return rol_stakeholders;
-}
 
 SystemObjective FileJsonManager::loadSystemObjective(OID id) {
     json j = load(id);
@@ -419,11 +405,6 @@ void FileJsonManager::save(Organization organization) {
     jsoneitor.visit(organization);
 }
 
-void FileJsonManager::save(Rol_Stakeholder rol_stakeholder) {
-    Jsoneitor jsoneitor;
-    jsoneitor.visit(rol_stakeholder);
-}
-
 void FileJsonManager::save(SystemObjective systemObjective) {
     Jsoneitor jsoneitor;
     jsoneitor.visit(systemObjective);
@@ -493,12 +474,6 @@ void FileJsonManager::saveAll(std::list<Organization> organizations) {
     }
 }
 
-void FileJsonManager::saveAll(std::list<Rol_Stakeholder> rol_stakeholders) {
-    Jsoneitor jsoneitor;
-    for (auto& rol_stakeholder : rol_stakeholders) {
-        jsoneitor.visit(rol_stakeholder);
-    }
-}
 
 void FileJsonManager::saveAll(std::list<SystemObjective> systemObjectives) {
     Jsoneitor jsoneitor;

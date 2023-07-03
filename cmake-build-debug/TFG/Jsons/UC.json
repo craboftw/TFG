@@ -208,5 +208,75 @@
         "urgencyLevel": 3,
         "versionMajor": "0",
         "versionMinor": "0"
+    },
+    "7": {
+        "abstract": false,
+        "actors": null,
+        "authors": null,
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-3",
+        "description": "",
+        "estability": 2,
+        "frequency": {
+            "quantity": 0,
+            "unit": 1
+        },
+        "generalization": {
+            "id": 0,
+            "prefix": "XX"
+        },
+        "id": {
+            "id": 7,
+            "prefix": "UC"
+        },
+        "importanceLevel": 2,
+        "name": "UC7",
+        "objectives": null,
+        "package": "",
+        "phase": 6,
+        "postcondition": "",
+        "precondition": "",
+        "steps": [],
+        "tracesFrom": null,
+        "tracesTo": null,
+        "urgencyLevel": 3,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    },
+    "8": {
+        "abstract": false,
+        "actors": null,
+        "authors": null,
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-3",
+        "description": "",
+        "estability": 2,
+        "frequency": {
+            "quantity": 0,
+            "unit": 1
+        },
+        "generalization": {
+            "id": 0,
+            "prefix": "XX"
+        },
+        "id": {
+            "id": 8,
+            "prefix": "UC"
+        },
+        "importanceLevel": 2,
+        "name": "UC8",
+        "objectives": null,
+        "package": "",
+        "phase": 6,
+        "postcondition": "",
+        "precondition": "",
+        "steps": [],
+        "tracesFrom": null,
+        "tracesTo": null,
+        "urgencyLevel": 3,
+        "versionMajor": "0",
+        "versionMinor": "0"
     }
 }

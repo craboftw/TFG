@@ -57,6 +57,7 @@ class ActorUC : public Trackeable {
 public:
     explicit ActorUC(unsigned id) : Trackeable(prefixID,id), package("") {}
     void accept(Visitor* visitor) override ;
+
     std::string getPackage();
     OID getGeneralization() const;
     static std::string getPrefixID();

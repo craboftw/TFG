@@ -154,6 +154,27 @@ build CMakeFiles/TFG_Library.dir/Servicio/ServicioPriority.cpp.obj: CXX_COMPILER
   OBJECT_DIR = CMakeFiles\TFG_Library.dir
   OBJECT_FILE_DIR = CMakeFiles\TFG_Library.dir\Servicio
 
+build CMakeFiles/TFG_Library.dir/Servicio/ServicioGeneric.cpp.obj: CXX_COMPILER__TFG_Library_Debug C$:/Users/Fran-/OneDrive/Documentos/GitHub/TFG/Servicio/ServicioGeneric.cpp || cmake_object_order_depends_target_TFG_Library
+  DEP_FILE = CMakeFiles\TFG_Library.dir\Servicio\ServicioGeneric.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/Fran-/OneDrive/Documentos/GitHub/TFG
+  OBJECT_DIR = CMakeFiles\TFG_Library.dir
+  OBJECT_FILE_DIR = CMakeFiles\TFG_Library.dir\Servicio
+
+build CMakeFiles/TFG_Library.dir/Servicio/ServicioStakeholder.cpp.obj: CXX_COMPILER__TFG_Library_Debug C$:/Users/Fran-/OneDrive/Documentos/GitHub/TFG/Servicio/ServicioStakeholder.cpp || cmake_object_order_depends_target_TFG_Library
+  DEP_FILE = CMakeFiles\TFG_Library.dir\Servicio\ServicioStakeholder.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/Fran-/OneDrive/Documentos/GitHub/TFG
+  OBJECT_DIR = CMakeFiles\TFG_Library.dir
+  OBJECT_FILE_DIR = CMakeFiles\TFG_Library.dir\Servicio
+
+build CMakeFiles/TFG_Library.dir/Servicio/ServicioOrganization.cpp.obj: CXX_COMPILER__TFG_Library_Debug C$:/Users/Fran-/OneDrive/Documentos/GitHub/TFG/Servicio/ServicioOrganization.cpp || cmake_object_order_depends_target_TFG_Library
+  DEP_FILE = CMakeFiles\TFG_Library.dir\Servicio\ServicioOrganization.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/Fran-/OneDrive/Documentos/GitHub/TFG
+  OBJECT_DIR = CMakeFiles\TFG_Library.dir
+  OBJECT_FILE_DIR = CMakeFiles\TFG_Library.dir\Servicio
+
 
 # =============================================================================
 # Link build statements for STATIC_LIBRARY target TFG_Library
@@ -162,7 +183,7 @@ build CMakeFiles/TFG_Library.dir/Servicio/ServicioPriority.cpp.obj: CXX_COMPILER
 #############################################
 # Link the static library libTFG_Library.a
 
-build libTFG_Library.a: CXX_STATIC_LIBRARY_LINKER__TFG_Library_Debug CMakeFiles/TFG_Library.dir/Dominio/Trackeable/Fecha.cpp.obj CMakeFiles/TFG_Library.dir/Dominio/Priority/Priority.cpp.obj CMakeFiles/TFG_Library.dir/Dominio/Trackeable/Stakeholder.cpp.obj CMakeFiles/TFG_Library.dir/Dominio/Trackeable/Trackeable.cpp.obj CMakeFiles/TFG_Library.dir/Dominio/Generic.cpp.obj CMakeFiles/TFG_Library.dir/Visitor/Jsoneitor.cpp.obj CMakeFiles/TFG_Library.dir/Dominio/UserCase.cpp.obj CMakeFiles/TFG_Library.dir/Dominio/InformationRequirement.cpp.obj CMakeFiles/TFG_Library.dir/Dominio/Trackeable/Organization.cpp.obj CMakeFiles/TFG_Library.dir/Visitor/FileJsonManager.cpp.obj CMakeFiles/TFG_Library.dir/Servicio/ServicioUserCase.cpp.obj CMakeFiles/TFG_Library.dir/Visitor/DiagramManager.cpp.obj CMakeFiles/TFG_Library.dir/Servicio/ServicioInformationRequirement.cpp.obj CMakeFiles/TFG_Library.dir/Servicio/ServicioTrackeable.cpp.obj CMakeFiles/TFG_Library.dir/Servicio/ServicioPriority.cpp.obj
+build libTFG_Library.a: CXX_STATIC_LIBRARY_LINKER__TFG_Library_Debug CMakeFiles/TFG_Library.dir/Dominio/Trackeable/Fecha.cpp.obj CMakeFiles/TFG_Library.dir/Dominio/Priority/Priority.cpp.obj CMakeFiles/TFG_Library.dir/Dominio/Trackeable/Stakeholder.cpp.obj CMakeFiles/TFG_Library.dir/Dominio/Trackeable/Trackeable.cpp.obj CMakeFiles/TFG_Library.dir/Dominio/Generic.cpp.obj CMakeFiles/TFG_Library.dir/Visitor/Jsoneitor.cpp.obj CMakeFiles/TFG_Library.dir/Dominio/UserCase.cpp.obj CMakeFiles/TFG_Library.dir/Dominio/InformationRequirement.cpp.obj CMakeFiles/TFG_Library.dir/Dominio/Trackeable/Organization.cpp.obj CMakeFiles/TFG_Library.dir/Visitor/FileJsonManager.cpp.obj CMakeFiles/TFG_Library.dir/Servicio/ServicioUserCase.cpp.obj CMakeFiles/TFG_Library.dir/Visitor/DiagramManager.cpp.obj CMakeFiles/TFG_Library.dir/Servicio/ServicioInformationRequirement.cpp.obj CMakeFiles/TFG_Library.dir/Servicio/ServicioTrackeable.cpp.obj CMakeFiles/TFG_Library.dir/Servicio/ServicioPriority.cpp.obj CMakeFiles/TFG_Library.dir/Servicio/ServicioGeneric.cpp.obj CMakeFiles/TFG_Library.dir/Servicio/ServicioStakeholder.cpp.obj CMakeFiles/TFG_Library.dir/Servicio/ServicioOrganization.cpp.obj
   LANGUAGE_COMPILE_FLAGS = -g
   OBJECT_DIR = CMakeFiles\TFG_Library.dir
   POST_BUILD = cd .

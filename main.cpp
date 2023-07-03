@@ -91,10 +91,6 @@ using json = nlohmann::json;
 
 void crearstakeholder(){
 
-    Rol_Stakeholder rol_stakeholder(1);
-    rol_stakeholder.setName("Programador");
-    rol_stakeholder.setDescription("Encargado de picar código");
-
 
     Stakeholder stakeholder(1);
     stakeholder.setName("Fran");
@@ -105,11 +101,10 @@ void crearstakeholder(){
     stakeholder.setEmail("fran.lo@pe.z");
     stakeholder.setPhone("123456789");
     stakeholder.setAddress("Calle falsa 123");
+    stakeholder.setStakeholderRole("Jefazo");
 
-    rol_stakeholder.addAuthor(stakeholder.getId());
 
     Jsoneitor jsoneitor;
-    jsoneitor.visit(rol_stakeholder);
     jsoneitor.visit(stakeholder);
 
 }
@@ -125,7 +120,7 @@ void print(Stakeholder a)
     std::cout << "Email: " << a.getEmail() << std::endl;
     std::cout << "Phone: " << a.getPhone() << std::endl;
     std::cout << "Address: " << a.getAddress() << std::endl;
-    std::cout << "Stakeholder Role: " << a.getStakeholderRole().operator std::string() << std::endl;
+    std::cout << "Stakeholder Role: " << a.getStakeholderRole() << std::endl;
     std::cout << "Works for Organization: " << a.getWorksForOrganization().operator std::string() << std::endl;
     //prueba de los set y list
 auto set1 = a.getTracesFrom();

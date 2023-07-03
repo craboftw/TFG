@@ -104,4 +104,13 @@ std::string ServicioInformationRequirement::strLifeAvgEstimate(OID id) {
 
 }
 
+std::list<std::pair<OID, std::string>> ServicioInformationRequirement::getInformationRequirements() {
+    std::list<std::pair<OID, std::string>> list;
+    auto lista = fileJsonManager.loadAllInformationRequirement();
+    for (auto ir : lista) {
+            list.push_back(std::make_pair(ir.getId(), ir.getName()));
+        }
+    return list;
+}
+
 

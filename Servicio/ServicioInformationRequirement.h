@@ -28,7 +28,7 @@ public:
     std::string strLifeMaxEstimate(OID id) ;
     std::string strLifeAvgEstimate(OID id) ;
 
-
+    std::list<std::pair<OID,std::string>> getInformationRequirements();
 
 
 private:

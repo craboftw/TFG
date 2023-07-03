@@ -259,3 +259,4 @@ std::list<Change> ServicioTrackeable::getChanges(OID id)
     return obj->getChanges();
 }
 
+

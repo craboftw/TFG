@@ -520,7 +520,7 @@ void Jsoneitor::visit(Stakeholder stakeholder) {
     j["email"] = stakeholder.getEmail();
     j["phone"] = stakeholder.getPhone();
     j["address"] = stakeholder.getAddress();
-    j["stakeholderRole"] = serializeOID(stakeholder.getStakeholderRole());
+    j["stakeholderRole"] = stakeholder.getStakeholderRole();
     j["worksForOrganization"] = serializeOID(stakeholder.getWorksForOrganization());
 
     FileJsonManager::save(j);
@@ -568,28 +568,6 @@ Stakeholder Jsoneitor::deserializeStakeholder(json j) {
     return s;
 }
 
-    void Jsoneitor::visit(Rol_Stakeholder rolStakeholder) {
-    json j;
-
-    /*｡o°✥✤✣TRACKEABLE GET✣✤✥°o｡*/
-    j= trackeablePart(&rolStakeholder,j);
-
-
-        FileJsonManager::save(j);
-
-    }
-
-    Rol_Stakeholder Jsoneitor::deserializeRolStakeholder(json j) {
-        /*｡o°✥✤✣TRACKEABLE  GET✣✤✥°o｡*/
-        TrackeableDTO trackeableDTO = deserializeTrackeableDTO(j);
-
-        /*｡o°✥✤✣TRACKEABLE  SET✣✤✥°o｡*/
-        Rol_Stakeholder o(trackeableDTO.id.getId());
-        setTrackeablePart(trackeableDTO, &o);
-
-        return o;
-
-}
 
 void Jsoneitor::visit(Organization organization) {
 

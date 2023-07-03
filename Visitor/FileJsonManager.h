@@ -41,7 +41,6 @@ public:
     ActorUC loadActorUC(OID id);
     InformationRequirement loadInformationRequirement(OID id);
     Organization loadOrganization(OID id);
-    Rol_Stakeholder loadRolStakeholder(OID id);
     SystemObjective loadSystemObjective(OID id);
     UserCase loadUserCase(OID id);
     Trackeable* loadTrackeable(OID id);
@@ -53,7 +52,6 @@ public:
     std::list<ActorUC> loadAllActorUC();
     std::list<InformationRequirement> loadAllInformationRequirement();
     std::list<Organization> loadAllOrganization();
-    std::list<Rol_Stakeholder> loadAllRolStakeholder();
     std::list<SystemObjective> loadAllSystemObjective();
     std::list<UserCase> loadAllUserCase();
 
@@ -77,7 +75,6 @@ public:
     void save(ActorUC actorUC);
     void save(InformationRequirement informationRequirement);
     void save(Organization organization);
-    void save(Rol_Stakeholder rolStakeholder);
     void save(SystemObjective systemObjective);
     void save(UserCase& userCase);
     void save(Trackeable* trackeable);
@@ -89,7 +86,6 @@ public:
     void saveAll(std::list<ActorUC> actorUCs);
     void saveAll(std::list<InformationRequirement> informationRequirements);
     void saveAll(std::list<Organization> organizations);
-    void saveAll(std::list<Rol_Stakeholder> rolStakeholders);
     void saveAll(std::list<SystemObjective> systemObjectives);
     void saveAll(std::list<UserCase> userCases);
     bool exist(OID id);

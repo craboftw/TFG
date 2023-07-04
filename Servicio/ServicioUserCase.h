@@ -29,6 +29,12 @@ public:
     void addStep(OID id,Step step,int pos);
     void addActor(OID id,OID actor);
     void removeStep(OID id,int pos);
+    void removeActor(OID id,OID actor);
+    void setException(OID id,Exception exception);
+    void setExceptions(OID id,std::list<Exception> exceptions);
+    void addException(OID id,Exception exception);
+
+
 
     bool getAbstract(OID id);
     std::string getPrecondition(OID id);
@@ -56,9 +62,10 @@ public:
 
     std::list<std::pair<OID, std::string>> getUseCases();
 
+    std::list<Exception> getExceptions(OID oid);
+
 private:
     FileJsonManager fileJsonManager;
-
 
 
 };

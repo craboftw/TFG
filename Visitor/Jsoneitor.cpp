@@ -220,7 +220,6 @@ json Jsoneitor::serializeVectorOfSteps(const std::vector<Step>& vectorOfSteps) {
         stepJson["comments"] = step.getComments();
         stepJson["stepType"] = step.getType();
         stepJson["reference"] = serializeOID(step.getReference());
-        stepJson["exceptions"] = serializeListOfExceptions(step.getExceptions());
 
         j.push_back(stepJson);
     }
@@ -237,7 +236,6 @@ std::vector<Step> Jsoneitor::deserializeVectorOfSteps(json reference) {
         step.setComments(stepJson["comments"]);
         step.setType(stepJson["stepType"]);
         step.setReference(deserializeOID(stepJson["reference"]));
-        step.setExceptions(deserializeListOfExceptions(stepJson["exceptions"]));
         vectorOfSteps.push_back(step);
     }
     return vectorOfSteps;
@@ -542,6 +540,8 @@ void Jsoneitor::visit(UserCase& userCase) {
     j["objectives"] = serializeListOfOID(userCase.getObjectives());
     j["package"] = userCase.getPackage();
     j["generalization"] = serializeOID(userCase.getGeneralization());
+    j["exceptions"] = serializeListOfExceptions(userCase.getExceptions());
+
     FileJsonManager::save(j);
 
 }
@@ -561,6 +561,7 @@ UserCase Jsoneitor::deserializeUserCase(json j) {
         std::list<OID> actors = deserializeListOfOID(j["actors"]);
         std::list <OID> objectives = deserializeListOfOID(j["objectives"]);
         std::string package = j["package"];
+        std::list<Exception> exceptions = deserializeListOfExceptions(j["exceptions"]);
         OID generalization = deserializeOID(j["generalization"]);
 
 
@@ -579,6 +580,7 @@ UserCase Jsoneitor::deserializeUserCase(json j) {
         u.setObjectives(objectives);
         u.setPackage(package);
         u.setGeneralization(generalization);
+        u.setExceptions(exceptions);
 
         return u;
 }

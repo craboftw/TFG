@@ -224,7 +224,8 @@ OID ServicioUserCase::getGeneralization(OID id) {
     UserCase userCase = fileJsonManager.loadUserCase(id);
     std::cout<<"\n"<<userCase.getGeneralization().getPrefix()<<std::endl;
     auto generalization = userCase.getGeneralization();
-    if (fileJsonManager.exist(generalization))
+
+    if (id != OID() and fileJsonManager.exist(generalization))
     return generalization;
     else {
         userCase.setGeneralization(OID());
@@ -386,6 +387,13 @@ std::list<std::pair<OID, std::string>> ServicioUserCase::getUseCases() {
     }
     return listaOID;
 
+}
+
+std::list<Exception> ServicioUserCase::getExceptions(OID oid) {
+    if (oid.getPrefix() !=  UserCase::getPrefixID()) throw std::invalid_argument("El id a modificar no corresponde a un UserCase, getExceptions");
+    if (!fileJsonManager.exist(oid)) throw std::invalid_argument("El id a modificar no existe, getExceptions");
+    UserCase userCase = fileJsonManager.loadUserCase(oid);
+    return userCase.getExceptions();
 }
 
 

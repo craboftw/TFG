@@ -2,17 +2,13 @@
     "1": {
         "abstract": false,
         "actors": null,
-        "authors": [
-            {
-                "id": 1,
-                "prefix": "SH"
-            }
-        ],
+        "authors": null,
         "changes": [],
         "comments": "Que util",
-        "date_init": "2023-07-3",
+        "date_init": "2023-07-4",
         "description": "Hervir agua en una cacerola",
         "estability": 0,
+        "exceptions": null,
         "frequency": {
             "quantity": 1,
             "unit": 4
@@ -38,10 +34,9 @@
                 "comments": "No se puede encender la cocina si esta encendida",
                 "condition": "La cocina esta apagada",
                 "description": "Encender la cocina",
-                "exceptions": null,
                 "reference": {
-                    "id": 0,
-                    "prefix": "XX"
+                    "id": 1,
+                    "prefix": "AC"
                 },
                 "stepType": 1
             },
@@ -50,19 +45,17 @@
                 "comments": "No se puede poner la cacerola si ya hay una",
                 "condition": "La cacerola esta vacia",
                 "description": "Poner la cacerola con agua",
-                "exceptions": null,
                 "reference": {
                     "id": 0,
                     "prefix": "XX"
                 },
-                "stepType": 1
+                "stepType": 0
             },
             {
                 "abstract": false,
                 "comments": "",
                 "condition": "",
                 "description": "Esperar a que hierva",
-                "exceptions": null,
                 "reference": {
                     "id": 0,
                     "prefix": "XX"
@@ -84,17 +77,62 @@
                 "prefix": "AC"
             }
         ],
-        "authors": [
-            {
-                "id": 1,
-                "prefix": "SH"
-            }
-        ],
+        "authors": null,
         "changes": [],
         "comments": "Que rico",
-        "date_init": "2023-07-3",
+        "date_init": "2023-07-4",
         "description": "Realizacion culinaria de un plato de pasta con la salsa de tomate",
         "estability": 0,
+        "exceptions": [
+            {
+                "comments": "No hay agua",
+                "condition": "No hay agua",
+                "description": "No hay agua",
+                "id": 1,
+                "reference": {
+                    "id": 1,
+                    "prefix": "UC"
+                },
+                "step": 1,
+                "stepType": 2
+            },
+            {
+                "comments": "No hay sal",
+                "condition": "No hay sal",
+                "description": "No hay sal",
+                "id": 2,
+                "reference": {
+                    "id": 1,
+                    "prefix": "UC"
+                },
+                "step": 2,
+                "stepType": 3
+            },
+            {
+                "comments": "No hay spaghetti",
+                "condition": "No hay spaghetti",
+                "description": "No hay spaghetti",
+                "id": 3,
+                "reference": {
+                    "id": 1,
+                    "prefix": "AC"
+                },
+                "step": 3,
+                "stepType": 1
+            },
+            {
+                "comments": "No hay tiempo",
+                "condition": "No hay tiempo",
+                "description": "No hay tiempo",
+                "id": 4,
+                "reference": {
+                    "id": 1,
+                    "prefix": "UC"
+                },
+                "step": 4,
+                "stepType": 0
+            }
+        ],
         "frequency": {
             "quantity": 1,
             "unit": 2
@@ -120,7 +158,6 @@
                 "comments": "No se puede hervir agua sin agua",
                 "condition": "Tener agua",
                 "description": "Poner a hervir agua",
-                "exceptions": null,
                 "reference": {
                     "id": 1,
                     "prefix": "UC"
@@ -132,107 +169,53 @@
                 "comments": "No se puede agregar sal sin sal",
                 "condition": "Tener sal",
                 "description": "Agregar sal",
-                "exceptions": null,
                 "reference": {
                     "id": 0,
                     "prefix": "XX"
                 },
-                "stepType": 1
+                "stepType": 0
             },
             {
                 "abstract": false,
                 "comments": "No se puede agregar spaghetti sin spaghetti",
                 "condition": "Tener spaghetti",
                 "description": "Agregar spaghetti",
-                "exceptions": null,
                 "reference": {
                     "id": 0,
                     "prefix": "XX"
                 },
-                "stepType": 1
+                "stepType": 0
             },
             {
                 "abstract": false,
                 "comments": "No se puede esperar sin tiempo",
                 "condition": "Tener tiempo",
                 "description": "Esperar 10 minutos",
-                "exceptions": null,
                 "reference": {
                     "id": 0,
                     "prefix": "XX"
                 },
-                "stepType": 1
+                "stepType": 0
             },
             {
                 "abstract": false,
                 "comments": "No se puede colar sin colador",
                 "condition": "Tener colador",
                 "description": "Colar spaghetti",
-                "exceptions": null,
                 "reference": {
                     "id": 0,
                     "prefix": "XX"
                 },
-                "stepType": 1
+                "stepType": 0
             },
             {
                 "abstract": false,
                 "comments": "No se puede agregar salsa de tomate sin salsa de tomate",
                 "condition": "Tener salsa de tomate",
                 "description": "Agregar salsa de tomate",
-                "exceptions": [
-                    {
-                        "comments": "No hay agua",
-                        "condition": "No hay agua",
-                        "description": "No hay agua",
-                        "id": 1,
-                        "reference": {
-                            "id": 1,
-                            "prefix": "UC"
-                        },
-                        "step": 1,
-                        "stepType": 2
-                    },
-                    {
-                        "comments": "No hay sal",
-                        "condition": "No hay sal",
-                        "description": "No hay sal",
-                        "id": 2,
-                        "reference": {
-                            "id": 1,
-                            "prefix": "UC"
-                        },
-                        "step": 2,
-                        "stepType": 3
-                    },
-                    {
-                        "comments": "No hay spaghetti",
-                        "condition": "No hay spaghetti",
-                        "description": "No hay spaghetti",
-                        "id": 3,
-                        "reference": {
-                            "id": 1,
-                            "prefix": "UC"
-                        },
-                        "step": 3,
-                        "stepType": 1
-                    },
-                    {
-                        "comments": "No hay tiempo",
-                        "condition": "No hay tiempo",
-                        "description": "No hay tiempo",
-                        "id": 4,
-                        "reference": {
-                            "id": 1,
-                            "prefix": "UC"
-                        },
-                        "step": 4,
-                        "stepType": 0
-                    }
-                ],
                 "reference": {
-                    "id": 0,
-                    "prefix": "XX"
+                    "id": 1,
+                    "prefix": "AC"
                 },
                 "stepType": 1
             },
@@ -241,10 +224,9 @@
                 "comments": "No se puede servir sin plato",
                 "condition": "Tener plato",
                 "description": "Servir",
-                "exceptions": null,
                 "reference": {
-                    "id": 0,
-                    "prefix": "XX"
+                    "id": 1,
+                    "prefix": "AC"
                 },
                 "stepType": 1
             }

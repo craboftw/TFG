@@ -8,11 +8,9 @@
 #include "Jsoneitor.h"
 #include "Dominio/Generic.h"
 
-void DiagramManager::visit(std::list<UserCase> userCaseList, std::list<ActorUC> actorUCList) {
+void DiagramManager::visit(std::list<OID> userCaseList, std::list<OID> actorUCList) {
     //Create a new file
     std::ofstream file("TFG/Diagrams/UseCaseDiagram.txt");
-    FileJsonManager fileJsonManager;
-    Jsoneitor jsoneitor;
     //Write the header of the file
     file << "@startuml" << std::endl;
     file << "left to right direction" << std::endl;
@@ -25,16 +23,16 @@ void DiagramManager::visit(std::list<UserCase> userCaseList, std::list<ActorUC> 
 
     //Categorizamos los actores y los casos de uso por paquetes
     for (auto &userCase : userCaseList) {
-        packagesUC[userCase.getPackage()].insert(userCase.getId());
-        packages.insert(userCase.getPackage());
-        nombres[userCase.getId()] = userCase.getName();
+        packagesUC[servicioUserCase.getPackage(userCase)].insert(userCase);
+        packages.insert(servicioUserCase.getPackage(userCase));
+        nombres[userCase] = servicioUserCase.getName(userCase);
 
     }
     for (auto &actorUC : actorUCList) {
         //return the one that the OID is equal to the actorUC
-        packagesActor[actorUC.getPackage()].insert(actorUC.getId());
-        packages.insert(actorUC.getPackage());
-        nombres[actorUC.getId()] = actorUC.getName();
+        packagesActor[servicioActorUC.getPackage(actorUC)].insert(actorUC);
+        packages.insert(servicioActorUC.getPackage(actorUC));
+        nombres[actorUC] = servicioActorUC.getName(actorUC);
     }
 
 
@@ -66,25 +64,25 @@ void DiagramManager::visit(std::list<UserCase> userCaseList, std::list<ActorUC> 
 
 
     for (auto &userCase : userCaseList) {
-        for (auto &actorUC : userCase.getActors()) {
-            file << actorUC.operator std::string() << " --> " << userCase.getId().operator std::string() << std::endl;
+        for (auto &actorUC : servicioUserCase.getActors(userCase)) {
+            file << actorUC.operator std::string() << " --> " << userCase.operator std::string() << std::endl;
         }
-        for (auto step : userCase.getSteps()) {
+        for (auto step : servicioUserCase.getSteps(userCase)) {
             if (step.getType() == INCLUDE and step.getReference() != OID()) {
-                file << userCase.getId().operator std::string() << " ..> " << step.getReference().operator std::string()
+                file << userCase.operator std::string() << " ..> " << step.getReference().operator std::string()
                      << " : <<include>>" << std::endl;
             }
             if (step.getType() == EXTEND and step.getReference() != OID()) {
-                file << userCase.getId().operator std::string() << " ..> " << step.getReference().operator std::string()
+                file << userCase.operator std::string() << " ..> " << step.getReference().operator std::string()
                      << " : <<extend>>" << std::endl;
             }
         }
-        if (userCase.getGeneralization() != OID())
-            file << userCase.getGeneralization().operator std::string() << " <|-- " << userCase.getId().operator std::string() << std::endl;
+        if (servicioUserCase.getGeneralization(userCase) != OID())
+            file <<servicioUserCase.getGeneralization(userCase).operator std::string() << " <|-- " << userCase.operator std::string() << std::endl;
     }
-    for (auto &actorUC : actorUCList) {
-        if (actorUC.getId().getPrefix() == ActorUC::getPrefixID() and actorUC.getGeneralization() != OID())
-            file << actorUC.getGeneralization().operator std::string() << " <|-- " << actorUC.getId().operator std::string() << std::endl;
+    for (auto actorUC : actorUCList) {
+        if (actorUC.getPrefix() == ActorUC::getPrefixID() and servicioActorUC.getGeneralization(actorUC) != OID())
+            file << servicioActorUC.getGeneralization(actorUC).operator std::string() << " <|-- " << actorUC.operator std::string() << std::endl;
     }
     file << "@enduml" << std::endl;
     file.close();

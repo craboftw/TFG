@@ -287,8 +287,7 @@ void crearRestrictionRequirement()
     jsoneitor.visit(restrictionRequirement);
 
     HtmlManager htmlManager;
-    Trackeable* html = &restrictionRequirement ;
-    std::cout<<htmlManager.generateTable(html)<<std::endl;
+    //std::cout<<htmlManager.generateTable(restrictionRequirement.getId())<<std::endl;
 
 }
 
@@ -381,7 +380,7 @@ void pruebaServicioUserCase()
         FileJsonManager fileJsonManager;
         std::list<UserCase> userCases = fileJsonManager.loadAllUserCase();
         auto actores = fileJsonManager.loadAllActorUC();
-        diagramManager.visit(userCases,actores);
+        //diagramManager.visit(userCases,actores);
 
     }
 
@@ -447,12 +446,13 @@ void crearUserCase(){
     stp1.setCondition("La cocina esta apagada");
     stp1.setComments("No se puede encender la cocina si esta encendida");
     stp1.setType(ACTOR);
+    stp1.setReference(OID({"AC",1}));
 
     Step stp2;
     stp2.setDescription("Poner la cacerola con agua");
     stp2.setCondition("La cacerola esta vacia");
     stp2.setComments("No se puede poner la cacerola si ya hay una");
-    stp2.setType(ACTOR);
+    stp2.setType(SYSTEM);
 
     Step stp3;
     stp3.setDescription("Esperar a que hierva");
@@ -504,28 +504,28 @@ void crearUserCase(){
     step2.setDescription("Agregar sal");
     step2.setCondition("Tener sal");
     step2.setComments("No se puede agregar sal sin sal");
-    step2.setType(ACTOR);
+    step2.setType(SYSTEM);
 
     Step step3;
     step3.setAbstract(false);
     step3.setDescription("Agregar spaghetti");
     step3.setCondition("Tener spaghetti");
     step3.setComments("No se puede agregar spaghetti sin spaghetti");
-    step3.setType(ACTOR);
+    step3.setType(SYSTEM);
 
     Step step4;
     step4.setAbstract(false);
     step4.setDescription("Esperar 10 minutos");
     step4.setCondition("Tener tiempo");
     step4.setComments("No se puede esperar sin tiempo");
-    step4.setType(ACTOR);
+    step4.setType(SYSTEM);
 
     Step step5;
     step5.setAbstract(false);
     step5.setDescription("Colar spaghetti");
     step5.setCondition("Tener colador");
     step5.setComments("No se puede colar sin colador");
-    step5.setType(ACTOR);
+    step5.setType(SYSTEM);
 
     Step step6;
     step6.setAbstract(false);
@@ -533,6 +533,7 @@ void crearUserCase(){
     step6.setCondition("Tener salsa de tomate");
     step6.setComments("No se puede agregar salsa de tomate sin salsa de tomate");
             step6.setType(ACTOR);
+    step6.setReference(OID({"AC",1}));
 
     /*Add one exception of type Exception
     struct Exception{
@@ -545,10 +546,10 @@ void crearUserCase(){
         OID reference;
     };*/
 
-    step6.addException({1,1,INCLUDE,"No hay agua","No hay agua","No hay agua",{"UC",1}});
-    step6.addException({2,2,EXTEND,"No hay sal","No hay sal","No hay sal",{"UC",1}});
-    step6.addException({3,3,ACTOR,"No hay spaghetti","No hay spaghetti","No hay spaghetti",{"UC",1}});
-    step6.addException({4,4,SYSTEM,"No hay tiempo","No hay tiempo","No hay tiempo",{"UC",1}});
+    userCase.addException({1,1,INCLUDE,"No hay agua","No hay agua","No hay agua",{"UC",1}});
+    userCase.addException({2,2,EXTEND,"No hay sal","No hay sal","No hay sal",{"UC",1}});
+    userCase.addException({3,3,ACTOR,"No hay spaghetti","No hay spaghetti","No hay spaghetti",{"AC",1}});
+    userCase.addException({4,4,SYSTEM,"No hay tiempo","No hay tiempo","No hay tiempo",{"UC",1}});
 
 
     Step step7;
@@ -557,6 +558,7 @@ void crearUserCase(){
     step7.setCondition("Tener plato");
     step7.setComments("No se puede servir sin plato");
     step7.setType(ACTOR);
+    step7.setReference(OID({"AC",1}));
 
     userCase.addStep(step1);
     userCase.addStep(step2);
@@ -590,16 +592,19 @@ void crearUserCase(){
 
     std::ofstream file;
     file.open("usercase.html");
-    file<<htmlManager.generateTable(userCase);
+    std::list<ActorUC> actors;
+    DiagramManager diagramGenerator;
+    diagramGenerator.visit({{"UC",1},{"UC",2}}, {{"AC", 1}});
+    //diagramGenerator.visit(userCases);
+    for (auto &uc : userCases) {
+        file << htmlManager.generateTableUserCase(uc.getId());
 
+        }
 
+    file<< "<img src=\"Diagrams/UseCaseDiagram.png\" alt=\"UseCaseDiagram\" style=\"width:100%;\">";
 
+}
 
-
-
-
-
-};
 
 int main() {
 crearUserCase() ;

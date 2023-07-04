@@ -9,6 +9,8 @@
 #include <string>
 #include "Visitor.h"
 #include "Servicio/ServicioStakeholder.h"
+#include "Servicio/ServicioActorUC.h"
+#include "Servicio/ServicioUserCase.h"
 
 class HtmlManager {
 public:
@@ -24,11 +26,25 @@ public:
     std::string generateTable(InformationRequirement requirement);
     std::string generateTable(SystemObjective systemObjective);
     std::string generateText(Text text);
+
+    std::string generateTableUserCase(OID id);
+
 private:
+    ServicioTrackeable servicioTrackeable;
+    ServicioPriority servicioPriority;
     ServicioStakeholder servicioStakeholder;
+    ServicioActorUC servicioActorUC;
+    ServicioUserCase servicioUserCase;
 
 
     std::string generateTable(std::list<SpecificInformation> lista);
+
+    std::string generateTablePriority(OID id);
+
+    std::string generateTableTrackeable(OID id);
+
+    std::string generateTableChanges(OID id);
+
 };
 
 

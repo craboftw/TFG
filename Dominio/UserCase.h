@@ -40,7 +40,6 @@ private:
     std::string comments;
     type stepType;
     OID reference;
-    std::list<Exception> exceptions;
 
 
 
@@ -52,7 +51,6 @@ public:
     std::string getComments() const;
     type getType() const;
     OID getReference() const;
-    std::list<Exception> getExceptions() const;
 
     void setAbstract(bool _abstract);
     void setCondition(std::string _condition);
@@ -60,10 +58,7 @@ public:
     void setDescription(std::string _description);
     void setType(type _type);
     void setReference(OID _reference);
-    void addException(Exception exception);
-    void setException(Exception exception) ;
-    void removeException(unsigned pos);
-    void setExceptions(std::list<Exception> _exceptions);
+
 
 };
 
@@ -78,8 +73,11 @@ class UserCase : virtual public Trackeable, public Priority {
     std::vector<Step> steps;
     std::list<OID> actors;
     std::list<OID> objectives;
+    std::list<Exception> exceptions;
     OID generalization; //OID of the UserCase that this UserCase generalizes
+
     inline static std::string prefixID = "UC";
+
 
 
 public:
@@ -96,11 +94,17 @@ public:
     void setActors(std::list<OID> _actors);
     void setPackage(std::string _package);
     void setGeneralization(OID _generalization);
+    void setExceptions(std::list<Exception> _exceptions);
+
 
     void addStep(Step step);
     void addStep(Step step, int pos);
     void removeStep(int pos);
     void addActor(OID actor);
+
+    void addException(Exception exception);
+    void setException(Exception exception) ;
+    void removeException(unsigned id);
 
     bool isAbstract() const;
     bool getAbstract() const;
@@ -114,6 +118,7 @@ public:
     OID getGeneralization() const;
     static std::string getPrefixID();
 
+    std::list<Exception> getExceptions() const;
 };
 
 

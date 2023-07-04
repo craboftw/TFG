@@ -24,6 +24,7 @@ add_library(TFG_Library
         Servicio/ServicioGeneric.cpp
         Servicio/ServicioStakeholder.cpp
         Servicio/ServicioOrganization.cpp
+        Servicio/ServicioActorUC.cpp
         Visitor/HtmlManager.cpp
         )
 

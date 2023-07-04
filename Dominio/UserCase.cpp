@@ -158,11 +158,11 @@ type Step::getType() const {
     return stepType;
 }
 
-void Step::addException(Exception exception) {
+void UserCase::addException(Exception exception) {
     exceptions.push_back(exception);
 }
 
-void Step::removeException(unsigned id) {
+void UserCase::removeException(unsigned id) {
     //find exception
     auto lista = exceptions;
     for (auto it = exceptions.begin(); it != exceptions.end(); ++it)
@@ -175,15 +175,15 @@ void Step::removeException(unsigned id) {
     }
 }
 
-std::list<Exception> Step::getExceptions() const {
+std::list<Exception> UserCase::getExceptions() const {
     return exceptions;
 }
 
-void Step::setExceptions(std::list<Exception> _exceptions) {
+void UserCase::setExceptions(std::list<Exception> _exceptions) {
      exceptions = std::move(_exceptions);
 }
 
-void Step::setException(Exception exception) {
+void UserCase::setException(Exception exception) {
     //find exception
     auto lista = exceptions;
     for (auto it : exceptions)

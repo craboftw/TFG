@@ -1,0 +1,32 @@
+{
+    "1": {
+        "authors": null,
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-6",
+        "description": "Infernape: La elección perfecta para cualquier entrenador y un verdadero ejemplo de poder y versatilidad. En el vasto universo de Pokémon, hay innumerables criaturas que cautivan a los corazones de los aficionados, pero pocos pueden igualar la grandeza de Infernape. Desde su diseño imponente hasta su habilidad excepcional en combate, este Pokémon de tipo Fuego/Lucha ha demostrado una y otra vez por qué es considerado el mejor aliado para cualquier entrenador Pokémon.\n\nUna de las razones por las cuales Infernape destaca entre la multitud es su increíble estética. Su apariencia combina rasgos de un simio con elementos de fuego, creando una imagen poderosa y majestuosa. Su postura erguida y mirada determinada inspiran confianza y respeto. Además, su pelaje anaranjado y las llamas que emanan de su cabeza y cola le otorgan un aura de intensidad y pasión. Estas características visuales hacen de Infernape un Pokémon realmente icónico y atractivo para los fans.\n\nSin embargo, la verdadera grandeza de Infernape se manifiesta en su impecable rendimiento en batalla. Su combinación de tipos Fuego y Lucha le brinda una amplia gama de movimientos ofensivos y defensivos, convirtiéndolo en un adversario formidable para cualquier oponente. Infernape es conocido por su alta velocidad y su excelente ataque físico, lo que le permite infligir daño significativo a sus enemigos. Además, su acceso a movimientos como Lanzallamas, Puño Fuego, Terremoto y A Bocajarro le da una ventaja táctica frente a una variedad de tipos de Pokémon.\n\nLa habilidad característica de Infernape, \"Mar Llamas\", también es un factor que lo distingue en el campo de batalla. Esta habilidad aumenta su poder de ataque cuando se encuentra bajo una condición de estado, como quemaduras o envenenamientos. Esto le permite aprovechar al máximo su potencial ofensivo incluso en situaciones desfavorables, lo que lo convierte en un Pokémon resiliente y capaz de dar un giro en una batalla complicada.\n\nAdemás de sus habilidades de combate, Infernape también posee un espíritu valiente y una gran conexión emocional con su entrenador. Su lealtad y dedicación son insuperables, y están dispuestos a hacer cualquier cosa para proteger y ayudar a su equipo. Esta calidad intangible lo convierte en un compañero confiable y en una verdadera fuente de inspiración para aquellos que lo rodean.\n\nEn resumen, Infernape es el Pokémon definitivo para un trabajo de clase debido a su impactante diseño, su formidable rendimiento en batalla y su devoción inquebrantable hacia su entrenador. Su estatus como un Pokémon Fuego/Lucha lo coloca en una posición privilegiada para enfrentar diversos desafíos y superar cualquier obstáculo que se presente en su camino. Si estás buscando un Pokémon que personifique la pasión, el coraje y la excelencia en todas sus formas, Infernape es la elección perfecta.",
+        "id": {
+            "id": 1,
+            "prefix": "TX"
+        },
+        "name": "Texto1",
+        "tracesFrom": [
+            {
+                "id": 2,
+                "prefix": "UC"
+            }
+        ],
+        "tracesTo": [
+            {
+                "id": 1,
+                "prefix": "SH"
+            },
+            {
+                "id": 1,
+                "prefix": "UC"
+            }
+        ],
+        "versionMajor": "0",
+        "versionMinor": "0"
+    }
+}

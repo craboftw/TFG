@@ -20,10 +20,10 @@ public:
     void setAuthors(OID id, std::set<OID>& setauthors);
     void addAuthor(OID id, OID author);
     void removeAuthor(OID id, OID author);
-    void setTracesFrom(OID id, std::list<OID>& tracesFrom);
+    void setTracesFrom(OID id, std::set<OID>& tracesFrom);
     void addTraceFrom(OID id, OID traceFrom);
     void removeTraceFrom(OID id, OID traceFrom);
-    void setTracesTo(OID id, std::list<OID>& tracesTo);
+    void setTracesTo(OID id, std::set<OID>& tracesTo);
     void addTraceTo(OID id, OID traceTo);
     void removeTraceTo(OID id, OID traceTo);
     void setChanges(OID id, std::list<Change> changes);
@@ -32,8 +32,8 @@ public:
     std::string getName(OID id);
     std::string getDescription(OID id);
     std::list<Change> getChanges(OID id);
-    std::list<OID> getTracesFrom(OID id);
-    std::list<OID> getTracesTo(OID id);
+    std::set<OID> getTracesFrom(OID id);
+    std::set<OID> getTracesTo(OID id);
     std::set<OID> getAuthors(OID id);
     std::string getComments(OID id);
     Fecha getDate(OID id);

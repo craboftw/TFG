@@ -277,7 +277,7 @@ std::list<UserCase> FileJsonManager::loadAllUserCase() {
 
 std::list<Text> FileJsonManager::loadAllText() {
     std::list<Text> texts;
-    json j = loadAll("TX");
+    json j = loadAll(Text::getPrefixID());
     Jsoneitor jsoneitor;
     for (auto& element : j) {
         texts.push_back(jsoneitor.deserializeText(element));
@@ -286,7 +286,7 @@ std::list<Text> FileJsonManager::loadAllText() {
 }
 
 unsigned FileJsonManager::lastStakeholder() {
-    json j = loadAll("UC");
+    json j = loadAll(Stakeholder::getPrefixID());
     unsigned last = 0;
     for (auto& element : j) {
         if (last < element["id"]["id"])
@@ -296,7 +296,7 @@ unsigned FileJsonManager::lastStakeholder() {
 }
 
 unsigned FileJsonManager::lastRestrictionRequirement() {
-    json j = loadAll("RR");
+    json j = loadAll(RestrictionRequirement::getPrefixID());
     unsigned last = 0;
     for (auto& element : j) {
         if (last < element["id"]["id"])
@@ -306,7 +306,7 @@ unsigned FileJsonManager::lastRestrictionRequirement() {
 }
 
 unsigned FileJsonManager::lastFunctionalRequirement() {
-    json j = loadAll("FR");
+    json j = loadAll(FunctionalRequirement::getPrefixID());
     unsigned last = 0;
     for (auto& element : j) {
         if (last < element["id"]["id"])
@@ -316,7 +316,7 @@ unsigned FileJsonManager::lastFunctionalRequirement() {
 }
 
 unsigned FileJsonManager::lastNonFunctionalRequirement() {
-    json j = loadAll("NF");
+    json j = loadAll(NonFunctionalRequirement::getPrefixID());
     unsigned last = 0;
     for (auto& element : j) {
         if (last < element["id"]["id"])
@@ -326,7 +326,7 @@ unsigned FileJsonManager::lastNonFunctionalRequirement() {
 }
 
 unsigned FileJsonManager::lastActorUC() {
-    json j = loadAll("AC");
+    json j = loadAll(ActorUC::getPrefixID());
     unsigned last = 0;
     for (auto& element : j) {
         if (last < element["id"]["id"])
@@ -336,7 +336,7 @@ unsigned FileJsonManager::lastActorUC() {
 }
 
 unsigned FileJsonManager::lastInformationRequirement() {
-    json j = loadAll("IR");
+    json j = loadAll(InformationRequirement::getPrefixID());
     unsigned last = 0;
     for (auto& element : j) {
         if (last < element["id"]["id"])
@@ -346,7 +346,7 @@ unsigned FileJsonManager::lastInformationRequirement() {
 }
 
 unsigned FileJsonManager::lastOrganization() {
-    json j = loadAll("OR");
+    json j = loadAll(Organization::getPrefixID());
     unsigned last = 0;
     for (auto& element : j) {
         if (last < element["id"]["id"])
@@ -355,18 +355,10 @@ unsigned FileJsonManager::lastOrganization() {
     return last;
 }
 
-unsigned FileJsonManager::lastRolStakeholder() {
-    json j = loadAll("RS");
-    unsigned last = 0;
-    for (auto& element : j) {
-        if (last < element["id"]["id"])
-            last = element["id"]["id"];
-    }
-    return last;
-}
+
 
 unsigned FileJsonManager::lastSystemObjective() {
-    json j = loadAll("SO");
+    json j = loadAll(SystemObjective::getPrefixID());
     unsigned last = 0;
     for (auto& element : j) {
         if (last < element["id"]["id"])
@@ -376,7 +368,7 @@ unsigned FileJsonManager::lastSystemObjective() {
 }
 
 unsigned FileJsonManager::lastUserCase() {
-    json j = loadAll("UC");
+    json j = loadAll(UserCase::getPrefixID());
     unsigned last = 0;
     for (auto& element : j) {
         if (last < element["id"]["id"]) {
@@ -387,7 +379,7 @@ unsigned FileJsonManager::lastUserCase() {
 }
 
 unsigned FileJsonManager::lastText() {
-    json j = loadAll("TX");
+    json j = loadAll(Text::getPrefixID());
     unsigned last = 0;
     for (auto& element : j) {
         if (last < element["id"]["id"]) {

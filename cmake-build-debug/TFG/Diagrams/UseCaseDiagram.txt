@@ -9,4 +9,6 @@ usecase "Cocinar espaguetis con tomate" as UC2
 }
 AC1 --> UC2
 UC2 ..> UC1 : <<include>>
+UC2 ..> UC1 : <<include>>
+UC2 ..> UC1 : <<extend>>
 @enduml

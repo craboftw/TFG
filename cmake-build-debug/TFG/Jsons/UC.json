@@ -5,7 +5,7 @@
         "authors": null,
         "changes": [],
         "comments": "Que util",
-        "date_init": "2023-07-4",
+        "date_init": "2023-07-5",
         "description": "Hervir agua en una cacerola",
         "estability": 0,
         "exceptions": null,
@@ -63,10 +63,408 @@
                 "stepType": 0
             }
         ],
-        "tracesFrom": null,
-        "tracesTo": null,
+        "tracesFrom": [
+            {
+                "id": 1,
+                "prefix": "FR"
+            },
+            {
+                "id": 1,
+                "prefix": "IR"
+            },
+            {
+                "id": 1,
+                "prefix": "NF"
+            },
+            {
+                "id": 1,
+                "prefix": "OR"
+            },
+            {
+                "id": 1,
+                "prefix": "SH"
+            },
+            {
+                "id": 1,
+                "prefix": "SO"
+            },
+            {
+                "id": 1,
+                "prefix": "TX"
+            },
+            {
+                "id": 2,
+                "prefix": "UC"
+            }
+        ],
+        "tracesTo": [
+            {
+                "id": 1,
+                "prefix": "SH"
+            }
+        ],
         "urgencyLevel": 2,
         "versionMajor": "1",
+        "versionMinor": "0"
+    },
+    "10": {
+        "abstract": false,
+        "actors": null,
+        "authors": null,
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-7",
+        "description": "",
+        "estability": 2,
+        "exceptions": null,
+        "frequency": {
+            "quantity": 0,
+            "unit": 1
+        },
+        "generalization": {
+            "id": 0,
+            "prefix": "XX"
+        },
+        "id": {
+            "id": 10,
+            "prefix": "UC"
+        },
+        "importanceLevel": 3,
+        "name": "Hacer un coxme",
+        "objectives": null,
+        "package": "",
+        "phase": 6,
+        "postcondition": "",
+        "precondition": "",
+        "steps": [],
+        "tracesFrom": null,
+        "tracesTo": null,
+        "urgencyLevel": 3,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    },
+    "11": {
+        "abstract": false,
+        "actors": null,
+        "authors": null,
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-7",
+        "description": "",
+        "estability": 2,
+        "exceptions": null,
+        "frequency": {
+            "quantity": 0,
+            "unit": 1
+        },
+        "generalization": {
+            "id": 0,
+            "prefix": "XX"
+        },
+        "id": {
+            "id": 11,
+            "prefix": "UC"
+        },
+        "importanceLevel": 3,
+        "name": "Hacer un coxme",
+        "objectives": null,
+        "package": "",
+        "phase": 6,
+        "postcondition": "",
+        "precondition": "",
+        "steps": [],
+        "tracesFrom": null,
+        "tracesTo": null,
+        "urgencyLevel": 3,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    },
+    "12": {
+        "abstract": false,
+        "actors": null,
+        "authors": null,
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-7",
+        "description": "",
+        "estability": 2,
+        "exceptions": null,
+        "frequency": {
+            "quantity": 0,
+            "unit": 1
+        },
+        "generalization": {
+            "id": 0,
+            "prefix": "XX"
+        },
+        "id": {
+            "id": 12,
+            "prefix": "UC"
+        },
+        "importanceLevel": 3,
+        "name": "Hacer un coxme",
+        "objectives": null,
+        "package": "",
+        "phase": 6,
+        "postcondition": "",
+        "precondition": "",
+        "steps": [],
+        "tracesFrom": null,
+        "tracesTo": null,
+        "urgencyLevel": 3,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    },
+    "13": {
+        "abstract": false,
+        "actors": null,
+        "authors": null,
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-7",
+        "description": "",
+        "estability": 2,
+        "exceptions": null,
+        "frequency": {
+            "quantity": 0,
+            "unit": 1
+        },
+        "generalization": {
+            "id": 0,
+            "prefix": "XX"
+        },
+        "id": {
+            "id": 13,
+            "prefix": "UC"
+        },
+        "importanceLevel": 3,
+        "name": "Hacer un coxme",
+        "objectives": null,
+        "package": "",
+        "phase": 6,
+        "postcondition": "",
+        "precondition": "",
+        "steps": [],
+        "tracesFrom": null,
+        "tracesTo": null,
+        "urgencyLevel": 3,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    },
+    "14": {
+        "abstract": false,
+        "actors": null,
+        "authors": null,
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-7",
+        "description": "",
+        "estability": 2,
+        "exceptions": null,
+        "frequency": {
+            "quantity": 0,
+            "unit": 1
+        },
+        "generalization": {
+            "id": 0,
+            "prefix": "XX"
+        },
+        "id": {
+            "id": 14,
+            "prefix": "UC"
+        },
+        "importanceLevel": 3,
+        "name": "Hacer un coxme",
+        "objectives": null,
+        "package": "",
+        "phase": 6,
+        "postcondition": "",
+        "precondition": "",
+        "steps": [],
+        "tracesFrom": null,
+        "tracesTo": null,
+        "urgencyLevel": 3,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    },
+    "15": {
+        "abstract": false,
+        "actors": null,
+        "authors": null,
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-7",
+        "description": "",
+        "estability": 2,
+        "exceptions": null,
+        "frequency": {
+            "quantity": 0,
+            "unit": 1
+        },
+        "generalization": {
+            "id": 0,
+            "prefix": "XX"
+        },
+        "id": {
+            "id": 15,
+            "prefix": "UC"
+        },
+        "importanceLevel": 3,
+        "name": "Hacer un coxme",
+        "objectives": null,
+        "package": "",
+        "phase": 6,
+        "postcondition": "",
+        "precondition": "",
+        "steps": [],
+        "tracesFrom": null,
+        "tracesTo": null,
+        "urgencyLevel": 3,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    },
+    "16": {
+        "abstract": false,
+        "actors": null,
+        "authors": null,
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-7",
+        "description": "",
+        "estability": 2,
+        "exceptions": null,
+        "frequency": {
+            "quantity": 0,
+            "unit": 1
+        },
+        "generalization": {
+            "id": 0,
+            "prefix": "XX"
+        },
+        "id": {
+            "id": 16,
+            "prefix": "UC"
+        },
+        "importanceLevel": 3,
+        "name": "Hacer un coxme",
+        "objectives": null,
+        "package": "",
+        "phase": 6,
+        "postcondition": "",
+        "precondition": "",
+        "steps": [],
+        "tracesFrom": null,
+        "tracesTo": null,
+        "urgencyLevel": 3,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    },
+    "17": {
+        "abstract": false,
+        "actors": null,
+        "authors": null,
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-7",
+        "description": "",
+        "estability": 2,
+        "exceptions": null,
+        "frequency": {
+            "quantity": 0,
+            "unit": 1
+        },
+        "generalization": {
+            "id": 0,
+            "prefix": "XX"
+        },
+        "id": {
+            "id": 17,
+            "prefix": "UC"
+        },
+        "importanceLevel": 3,
+        "name": "Hacer un coxme",
+        "objectives": null,
+        "package": "",
+        "phase": 6,
+        "postcondition": "",
+        "precondition": "",
+        "steps": [],
+        "tracesFrom": null,
+        "tracesTo": null,
+        "urgencyLevel": 3,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    },
+    "18": {
+        "abstract": false,
+        "actors": null,
+        "authors": null,
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-7",
+        "description": "",
+        "estability": 2,
+        "exceptions": null,
+        "frequency": {
+            "quantity": 0,
+            "unit": 1
+        },
+        "generalization": {
+            "id": 0,
+            "prefix": "XX"
+        },
+        "id": {
+            "id": 18,
+            "prefix": "UC"
+        },
+        "importanceLevel": 3,
+        "name": "Hacer un coxme",
+        "objectives": null,
+        "package": "",
+        "phase": 6,
+        "postcondition": "",
+        "precondition": "",
+        "steps": [],
+        "tracesFrom": null,
+        "tracesTo": null,
+        "urgencyLevel": 3,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    },
+    "19": {
+        "abstract": false,
+        "actors": null,
+        "authors": null,
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-7",
+        "description": "",
+        "estability": 2,
+        "exceptions": null,
+        "frequency": {
+            "quantity": 0,
+            "unit": 1
+        },
+        "generalization": {
+            "id": 0,
+            "prefix": "XX"
+        },
+        "id": {
+            "id": 19,
+            "prefix": "UC"
+        },
+        "importanceLevel": 3,
+        "name": "Hacer un coxme",
+        "objectives": null,
+        "package": "",
+        "phase": 6,
+        "postcondition": "",
+        "precondition": "",
+        "steps": [],
+        "tracesFrom": null,
+        "tracesTo": null,
+        "urgencyLevel": 3,
+        "versionMajor": "0",
         "versionMinor": "0"
     },
     "2": {
@@ -80,7 +478,7 @@
         "authors": null,
         "changes": [],
         "comments": "Que rico",
-        "date_init": "2023-07-4",
+        "date_init": "2023-07-5",
         "description": "Realizacion culinaria de un plato de pasta con la salsa de tomate",
         "estability": 0,
         "exceptions": [
@@ -88,7 +486,6 @@
                 "comments": "No hay agua",
                 "condition": "No hay agua",
                 "description": "No hay agua",
-                "id": 1,
                 "reference": {
                     "id": 1,
                     "prefix": "UC"
@@ -100,7 +497,6 @@
                 "comments": "No hay sal",
                 "condition": "No hay sal",
                 "description": "No hay sal",
-                "id": 2,
                 "reference": {
                     "id": 1,
                     "prefix": "UC"
@@ -112,7 +508,6 @@
                 "comments": "No hay spaghetti",
                 "condition": "No hay spaghetti",
                 "description": "No hay spaghetti",
-                "id": 3,
                 "reference": {
                     "id": 1,
                     "prefix": "AC"
@@ -124,7 +519,6 @@
                 "comments": "No hay tiempo",
                 "condition": "No hay tiempo",
                 "description": "No hay tiempo",
-                "id": 4,
                 "reference": {
                     "id": 1,
                     "prefix": "UC"
@@ -134,7 +528,7 @@
             }
         ],
         "frequency": {
-            "quantity": 1,
+            "quantity": 4,
             "unit": 2
         },
         "generalization": {
@@ -232,23 +626,417 @@
             }
         ],
         "tracesFrom": null,
-        "tracesTo": null,
+        "tracesTo": [
+            {
+                "id": 1,
+                "prefix": "AC"
+            },
+            {
+                "id": 1,
+                "prefix": "FR"
+            },
+            {
+                "id": 1,
+                "prefix": "IR"
+            },
+            {
+                "id": 1,
+                "prefix": "NF"
+            },
+            {
+                "id": 1,
+                "prefix": "SH"
+            },
+            {
+                "id": 1,
+                "prefix": "SO"
+            },
+            {
+                "id": 1,
+                "prefix": "TX"
+            },
+            {
+                "id": 1,
+                "prefix": "UC"
+            }
+        ],
         "urgencyLevel": 2,
         "versionMajor": "1",
         "versionMinor": "0"
     },
-    "3": {
-        "abstract": true,
+    "20": {
+        "abstract": false,
         "actors": null,
         "authors": null,
         "changes": [],
         "comments": "",
-        "date_init": "2023-07-3",
+        "date_init": "2023-07-7",
         "description": "",
         "estability": 2,
+        "exceptions": null,
         "frequency": {
-            "quantity": 5,
-            "unit": 3
+            "quantity": 0,
+            "unit": 1
+        },
+        "generalization": {
+            "id": 0,
+            "prefix": "XX"
+        },
+        "id": {
+            "id": 20,
+            "prefix": "UC"
+        },
+        "importanceLevel": 3,
+        "name": "Hacer un coxme",
+        "objectives": null,
+        "package": "",
+        "phase": 6,
+        "postcondition": "",
+        "precondition": "",
+        "steps": [],
+        "tracesFrom": null,
+        "tracesTo": null,
+        "urgencyLevel": 3,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    },
+    "21": {
+        "abstract": false,
+        "actors": null,
+        "authors": null,
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-7",
+        "description": "",
+        "estability": 2,
+        "exceptions": null,
+        "frequency": {
+            "quantity": 0,
+            "unit": 1
+        },
+        "generalization": {
+            "id": 0,
+            "prefix": "XX"
+        },
+        "id": {
+            "id": 21,
+            "prefix": "UC"
+        },
+        "importanceLevel": 3,
+        "name": "Hacer un coxme",
+        "objectives": null,
+        "package": "",
+        "phase": 6,
+        "postcondition": "",
+        "precondition": "",
+        "steps": [],
+        "tracesFrom": null,
+        "tracesTo": null,
+        "urgencyLevel": 3,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    },
+    "22": {
+        "abstract": false,
+        "actors": null,
+        "authors": null,
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-7",
+        "description": "",
+        "estability": 2,
+        "exceptions": null,
+        "frequency": {
+            "quantity": 0,
+            "unit": 1
+        },
+        "generalization": {
+            "id": 0,
+            "prefix": "XX"
+        },
+        "id": {
+            "id": 22,
+            "prefix": "UC"
+        },
+        "importanceLevel": 3,
+        "name": "Hacer un coxme",
+        "objectives": null,
+        "package": "",
+        "phase": 6,
+        "postcondition": "",
+        "precondition": "",
+        "steps": [],
+        "tracesFrom": null,
+        "tracesTo": null,
+        "urgencyLevel": 3,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    },
+    "23": {
+        "abstract": false,
+        "actors": null,
+        "authors": null,
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-7",
+        "description": "",
+        "estability": 2,
+        "exceptions": null,
+        "frequency": {
+            "quantity": 0,
+            "unit": 1
+        },
+        "generalization": {
+            "id": 0,
+            "prefix": "XX"
+        },
+        "id": {
+            "id": 23,
+            "prefix": "UC"
+        },
+        "importanceLevel": 3,
+        "name": "Hacer un coxme",
+        "objectives": null,
+        "package": "",
+        "phase": 6,
+        "postcondition": "",
+        "precondition": "",
+        "steps": [],
+        "tracesFrom": null,
+        "tracesTo": null,
+        "urgencyLevel": 3,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    },
+    "24": {
+        "abstract": false,
+        "actors": null,
+        "authors": null,
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-7",
+        "description": "",
+        "estability": 2,
+        "exceptions": null,
+        "frequency": {
+            "quantity": 0,
+            "unit": 1
+        },
+        "generalization": {
+            "id": 0,
+            "prefix": "XX"
+        },
+        "id": {
+            "id": 24,
+            "prefix": "UC"
+        },
+        "importanceLevel": 3,
+        "name": "Hacer un coxme",
+        "objectives": null,
+        "package": "",
+        "phase": 6,
+        "postcondition": "",
+        "precondition": "",
+        "steps": [],
+        "tracesFrom": null,
+        "tracesTo": null,
+        "urgencyLevel": 3,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    },
+    "25": {
+        "abstract": false,
+        "actors": null,
+        "authors": null,
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-7",
+        "description": "",
+        "estability": 2,
+        "exceptions": null,
+        "frequency": {
+            "quantity": 0,
+            "unit": 1
+        },
+        "generalization": {
+            "id": 0,
+            "prefix": "XX"
+        },
+        "id": {
+            "id": 25,
+            "prefix": "UC"
+        },
+        "importanceLevel": 3,
+        "name": "Hacer un coxme",
+        "objectives": null,
+        "package": "",
+        "phase": 6,
+        "postcondition": "",
+        "precondition": "",
+        "steps": [],
+        "tracesFrom": null,
+        "tracesTo": null,
+        "urgencyLevel": 3,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    },
+    "26": {
+        "abstract": false,
+        "actors": null,
+        "authors": null,
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-7",
+        "description": "",
+        "estability": 2,
+        "exceptions": null,
+        "frequency": {
+            "quantity": 0,
+            "unit": 1
+        },
+        "generalization": {
+            "id": 0,
+            "prefix": "XX"
+        },
+        "id": {
+            "id": 26,
+            "prefix": "UC"
+        },
+        "importanceLevel": 3,
+        "name": "Hacer un coxme",
+        "objectives": null,
+        "package": "",
+        "phase": 6,
+        "postcondition": "",
+        "precondition": "",
+        "steps": [],
+        "tracesFrom": null,
+        "tracesTo": null,
+        "urgencyLevel": 3,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    },
+    "27": {
+        "abstract": false,
+        "actors": null,
+        "authors": null,
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-7",
+        "description": "",
+        "estability": 2,
+        "exceptions": null,
+        "frequency": {
+            "quantity": 0,
+            "unit": 1
+        },
+        "generalization": {
+            "id": 0,
+            "prefix": "XX"
+        },
+        "id": {
+            "id": 27,
+            "prefix": "UC"
+        },
+        "importanceLevel": 3,
+        "name": "Hacer un coxme",
+        "objectives": null,
+        "package": "",
+        "phase": 6,
+        "postcondition": "",
+        "precondition": "",
+        "steps": [],
+        "tracesFrom": null,
+        "tracesTo": null,
+        "urgencyLevel": 3,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    },
+    "28": {
+        "abstract": false,
+        "actors": null,
+        "authors": null,
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-7",
+        "description": "",
+        "estability": 2,
+        "exceptions": null,
+        "frequency": {
+            "quantity": 0,
+            "unit": 1
+        },
+        "generalization": {
+            "id": 0,
+            "prefix": "XX"
+        },
+        "id": {
+            "id": 28,
+            "prefix": "UC"
+        },
+        "importanceLevel": 3,
+        "name": "Hacer un coxme",
+        "objectives": null,
+        "package": "",
+        "phase": 6,
+        "postcondition": "",
+        "precondition": "",
+        "steps": [],
+        "tracesFrom": null,
+        "tracesTo": null,
+        "urgencyLevel": 3,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    },
+    "29": {
+        "abstract": false,
+        "actors": null,
+        "authors": null,
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-7",
+        "description": "",
+        "estability": 2,
+        "exceptions": null,
+        "frequency": {
+            "quantity": 0,
+            "unit": 1
+        },
+        "generalization": {
+            "id": 0,
+            "prefix": "XX"
+        },
+        "id": {
+            "id": 29,
+            "prefix": "UC"
+        },
+        "importanceLevel": 3,
+        "name": "Hacer un coxme",
+        "objectives": null,
+        "package": "",
+        "phase": 6,
+        "postcondition": "",
+        "precondition": "",
+        "steps": [],
+        "tracesFrom": null,
+        "tracesTo": null,
+        "urgencyLevel": 3,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    },
+    "3": {
+        "abstract": false,
+        "actors": null,
+        "authors": null,
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-7",
+        "description": "",
+        "estability": 2,
+        "exceptions": null,
+        "frequency": {
+            "quantity": 0,
+            "unit": 1
         },
         "generalization": {
             "id": 0,
@@ -259,50 +1047,157 @@
             "prefix": "UC"
         },
         "importanceLevel": 3,
-        "name": "UC3",
+        "name": "Hacer un coxme",
         "objectives": null,
         "package": "",
         "phase": 6,
-        "postcondition": "Postcondición del UserCase",
-        "precondition": "Precondición del UserCase",
-        "steps": [
-            {
-                "abstract": true,
-                "comments": "",
-                "condition": "Descripción del paso 1",
-                "description": "",
-                "exceptions": null,
-                "reference": {
-                    "id": 0,
-                    "prefix": "XX"
-                },
-                "stepType": 0
-            },
-            {
-                "abstract": false,
-                "comments": "",
-                "condition": "Descripción del paso 2",
-                "description": "",
-                "exceptions": null,
-                "reference": {
-                    "id": 0,
-                    "prefix": "XX"
-                },
-                "stepType": 0
-            },
-            {
-                "abstract": false,
-                "comments": "",
-                "condition": "Nuevo paso",
-                "description": "",
-                "exceptions": null,
-                "reference": {
-                    "id": 0,
-                    "prefix": "XX"
-                },
-                "stepType": 108
-            }
-        ],
+        "postcondition": "",
+        "precondition": "",
+        "steps": [],
+        "tracesFrom": null,
+        "tracesTo": null,
+        "urgencyLevel": 3,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    },
+    "30": {
+        "abstract": false,
+        "actors": null,
+        "authors": null,
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-7",
+        "description": "",
+        "estability": 2,
+        "exceptions": null,
+        "frequency": {
+            "quantity": 0,
+            "unit": 1
+        },
+        "generalization": {
+            "id": 0,
+            "prefix": "XX"
+        },
+        "id": {
+            "id": 30,
+            "prefix": "UC"
+        },
+        "importanceLevel": 3,
+        "name": "Hacer un coxme",
+        "objectives": null,
+        "package": "",
+        "phase": 6,
+        "postcondition": "",
+        "precondition": "",
+        "steps": [],
+        "tracesFrom": null,
+        "tracesTo": null,
+        "urgencyLevel": 3,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    },
+    "31": {
+        "abstract": false,
+        "actors": null,
+        "authors": null,
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-7",
+        "description": "",
+        "estability": 2,
+        "exceptions": null,
+        "frequency": {
+            "quantity": 0,
+            "unit": 1
+        },
+        "generalization": {
+            "id": 0,
+            "prefix": "XX"
+        },
+        "id": {
+            "id": 31,
+            "prefix": "UC"
+        },
+        "importanceLevel": 3,
+        "name": "Hacer un coxme",
+        "objectives": null,
+        "package": "",
+        "phase": 6,
+        "postcondition": "",
+        "precondition": "",
+        "steps": [],
+        "tracesFrom": null,
+        "tracesTo": null,
+        "urgencyLevel": 3,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    },
+    "32": {
+        "abstract": false,
+        "actors": null,
+        "authors": null,
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-7",
+        "description": "",
+        "estability": 2,
+        "exceptions": null,
+        "frequency": {
+            "quantity": 0,
+            "unit": 1
+        },
+        "generalization": {
+            "id": 0,
+            "prefix": "XX"
+        },
+        "id": {
+            "id": 32,
+            "prefix": "UC"
+        },
+        "importanceLevel": 3,
+        "name": "Hacer un coxme",
+        "objectives": null,
+        "package": "",
+        "phase": 6,
+        "postcondition": "",
+        "precondition": "",
+        "steps": [],
+        "tracesFrom": null,
+        "tracesTo": null,
+        "urgencyLevel": 3,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    },
+    "33": {
+        "abstract": false,
+        "actors": null,
+        "authors": null,
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-7",
+        "description": "",
+        "estability": 2,
+        "exceptions": null,
+        "frequency": {
+            "quantity": 0,
+            "unit": 1
+        },
+        "generalization": {
+            "id": 0,
+            "prefix": "XX"
+        },
+        "id": {
+            "id": 33,
+            "prefix": "UC"
+        },
+        "importanceLevel": 3,
+        "name": "Hacer un coxme",
+        "objectives": null,
+        "package": "",
+        "phase": 6,
+        "postcondition": "",
+        "precondition": "",
+        "steps": [],
         "tracesFrom": null,
         "tracesTo": null,
         "urgencyLevel": 3,
@@ -310,71 +1205,215 @@
         "versionMinor": "0"
     },
     "4": {
-        "abstract": true,
+        "abstract": false,
         "actors": null,
         "authors": null,
         "changes": [],
         "comments": "",
-        "date_init": "2023-07-3",
+        "date_init": "2023-07-7",
         "description": "",
         "estability": 2,
+        "exceptions": null,
         "frequency": {
-            "quantity": 5,
-            "unit": 3
+            "quantity": 0,
+            "unit": 1
         },
         "generalization": {
-            "id": 1,
-            "prefix": "UC"
+            "id": 0,
+            "prefix": "XX"
         },
         "id": {
             "id": 4,
             "prefix": "UC"
         },
         "importanceLevel": 3,
-        "name": "UC4",
+        "name": "Hacer un coxme",
         "objectives": null,
         "package": "",
         "phase": 6,
-        "postcondition": "Postcondición del UserCase",
-        "precondition": "Precondición del UserCase",
-        "steps": [
-            {
-                "abstract": true,
-                "comments": "",
-                "condition": "Condición modificada",
-                "description": "",
-                "exceptions": null,
-                "reference": {
-                    "id": 3,
-                    "prefix": "UC"
-                },
-                "stepType": 2
-            },
-            {
-                "abstract": true,
-                "comments": "Comentarios modificados",
-                "condition": "Descripción del paso 2",
-                "description": "Descripción modificada",
-                "exceptions": null,
-                "reference": {
-                    "id": 2,
-                    "prefix": "UC"
-                },
-                "stepType": 3
-            },
-            {
-                "abstract": false,
-                "comments": "",
-                "condition": "Nuevo paso",
-                "description": "",
-                "exceptions": null,
-                "reference": {
-                    "id": 0,
-                    "prefix": "XX"
-                },
-                "stepType": 108
-            }
-        ],
+        "postcondition": "",
+        "precondition": "",
+        "steps": [],
+        "tracesFrom": null,
+        "tracesTo": null,
+        "urgencyLevel": 3,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    },
+    "5": {
+        "abstract": false,
+        "actors": null,
+        "authors": null,
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-7",
+        "description": "",
+        "estability": 2,
+        "exceptions": null,
+        "frequency": {
+            "quantity": 0,
+            "unit": 1
+        },
+        "generalization": {
+            "id": 0,
+            "prefix": "XX"
+        },
+        "id": {
+            "id": 5,
+            "prefix": "UC"
+        },
+        "importanceLevel": 3,
+        "name": "Hacer un coxme",
+        "objectives": null,
+        "package": "",
+        "phase": 6,
+        "postcondition": "",
+        "precondition": "",
+        "steps": [],
+        "tracesFrom": null,
+        "tracesTo": null,
+        "urgencyLevel": 3,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    },
+    "6": {
+        "abstract": false,
+        "actors": null,
+        "authors": null,
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-7",
+        "description": "",
+        "estability": 2,
+        "exceptions": null,
+        "frequency": {
+            "quantity": 0,
+            "unit": 1
+        },
+        "generalization": {
+            "id": 0,
+            "prefix": "XX"
+        },
+        "id": {
+            "id": 6,
+            "prefix": "UC"
+        },
+        "importanceLevel": 3,
+        "name": "Hacer un coxme",
+        "objectives": null,
+        "package": "",
+        "phase": 6,
+        "postcondition": "",
+        "precondition": "",
+        "steps": [],
+        "tracesFrom": null,
+        "tracesTo": null,
+        "urgencyLevel": 3,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    },
+    "7": {
+        "abstract": false,
+        "actors": null,
+        "authors": null,
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-7",
+        "description": "",
+        "estability": 2,
+        "exceptions": null,
+        "frequency": {
+            "quantity": 0,
+            "unit": 1
+        },
+        "generalization": {
+            "id": 0,
+            "prefix": "XX"
+        },
+        "id": {
+            "id": 7,
+            "prefix": "UC"
+        },
+        "importanceLevel": 3,
+        "name": "Hacer un coxme",
+        "objectives": null,
+        "package": "",
+        "phase": 6,
+        "postcondition": "",
+        "precondition": "",
+        "steps": [],
+        "tracesFrom": null,
+        "tracesTo": null,
+        "urgencyLevel": 3,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    },
+    "8": {
+        "abstract": false,
+        "actors": null,
+        "authors": null,
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-7",
+        "description": "",
+        "estability": 2,
+        "exceptions": null,
+        "frequency": {
+            "quantity": 0,
+            "unit": 1
+        },
+        "generalization": {
+            "id": 0,
+            "prefix": "XX"
+        },
+        "id": {
+            "id": 8,
+            "prefix": "UC"
+        },
+        "importanceLevel": 3,
+        "name": "Hacer un coxme",
+        "objectives": null,
+        "package": "",
+        "phase": 6,
+        "postcondition": "",
+        "precondition": "",
+        "steps": [],
+        "tracesFrom": null,
+        "tracesTo": null,
+        "urgencyLevel": 3,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    },
+    "9": {
+        "abstract": false,
+        "actors": null,
+        "authors": null,
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-7",
+        "description": "",
+        "estability": 2,
+        "exceptions": null,
+        "frequency": {
+            "quantity": 0,
+            "unit": 1
+        },
+        "generalization": {
+            "id": 0,
+            "prefix": "XX"
+        },
+        "id": {
+            "id": 9,
+            "prefix": "UC"
+        },
+        "importanceLevel": 3,
+        "name": "Hacer un coxme",
+        "objectives": null,
+        "package": "",
+        "phase": 6,
+        "postcondition": "",
+        "precondition": "",
+        "steps": [],
         "tracesFrom": null,
         "tracesTo": null,
         "urgencyLevel": 3,

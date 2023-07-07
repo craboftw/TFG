@@ -6,7 +6,7 @@
 
 OID ServicioInformationRequirement::createInformationRequirement(std::string nombre)
 {
-    InformationRequirement obj(fileJsonManager.lastInformationRequirement());
+    InformationRequirement obj(fileJsonManager.lastInformationRequirement() +1);
     if (nombre == "") nombre = obj.getId().operator std::string();
     obj.setName(nombre);
     fileJsonManager.save(obj);
@@ -77,30 +77,94 @@ std::string ServicioInformationRequirement::strMaxSimultaneousOccurrence(OID id)
     if (id.getPrefix() !=  InformationRequirement::getPrefixID()) throw std::invalid_argument("El id a modificar no corresponde a un UserCase, strMaxSimultaneousOccurrence");
     if (!fileJsonManager.exist(id)) throw std::invalid_argument("El id a modificar no existe, strMaxSimultaneousOccurrence");
     InformationRequirement obj = fileJsonManager.loadInformationRequirement(id);
-    return obj.strMaxSimultaneousOccurrence();
+    auto maxSimultaneousOccurrence = obj.getMaxSimultaneousOccurrence();
+    if (maxSimultaneousOccurrence == 0) return "Ninguna";
+    if (maxSimultaneousOccurrence == 1 ) return "1 vez.";
+    else return std::to_string(maxSimultaneousOccurrence) + " veces.";
 }
 
 std::string ServicioInformationRequirement::strAvgSimultaneousOccurrence(OID id) {
     if (id.getPrefix() !=  InformationRequirement::getPrefixID()) throw std::invalid_argument("El id a modificar no corresponde a un UserCase, strAvgSimultaneousOccurrence");
     if (!fileJsonManager.exist(id)) throw std::invalid_argument("El id a modificar no existe, strAvgSimultaneousOccurrence");
     InformationRequirement obj = fileJsonManager.loadInformationRequirement(id);
-    return obj.strAvgSimultaneousOccurrence();
+    auto maxSimultaneousOccurrence = obj.getMaxSimultaneousOccurrence();
+    if (maxSimultaneousOccurrence == 0) return "Ninguna";
+    if (maxSimultaneousOccurrence == 1 ) return "1 vez.";
+    else return std::to_string(maxSimultaneousOccurrence) + " veces.";
+}
 
+std::string strTimequantity(TimeQuantity lifeMaxEstimate) {
+    std::string str = "";
+    switch (lifeMaxEstimate.getUnit()) {
+        case TimeQuantity::MILLISECOND:
+            if (lifeMaxEstimate.getQuantity() > 1)
+                return std::to_string(lifeMaxEstimate.getQuantity()) + " milisegundos";
+            else
+                return "1 milisegundo";
+            break;
+        case TimeQuantity::SECOND:
+            if (lifeMaxEstimate.getQuantity() > 1)
+                return std::to_string(lifeMaxEstimate.getQuantity()) + " segundos";
+            else
+                return "1 segundo";
+            break;
+        case TimeQuantity::MINUTE:
+            if (lifeMaxEstimate.getQuantity() > 1)
+                return std::to_string(lifeMaxEstimate.getQuantity()) + " minutos";
+            else
+                return "1 minuto";
+            break;
+        case TimeQuantity::HOUR:
+            if (lifeMaxEstimate.getQuantity() > 1)
+                return std::to_string(lifeMaxEstimate.getQuantity()) + " horas";
+            else
+                return "1 hora";
+            break;
+        case TimeQuantity::DAY:
+            if (lifeMaxEstimate.getQuantity() > 1)
+                return std::to_string(lifeMaxEstimate.getQuantity()) + " dias";
+            else
+                return "1 dia";
+            break;
+        case TimeQuantity::WEEK:
+            if (lifeMaxEstimate.getQuantity() > 1)
+                return std::to_string(lifeMaxEstimate.getQuantity()) + " semanas";
+            else
+                return "1 semana";
+            break;
+        case TimeQuantity::MONTH:
+            if (lifeMaxEstimate.getQuantity() > 1)
+                return std::to_string(lifeMaxEstimate.getQuantity()) + " meses";
+            else
+                return "1 mes";
+            break;
+        case TimeQuantity::YEAR:
+            if (lifeMaxEstimate.getQuantity() > 1)
+                return std::to_string(lifeMaxEstimate.getQuantity()) + " años";
+            else
+                return "1 año";
+            break;
+        default:
+            return "Error";
+            break;
+
+    }
 }
 
 std::string ServicioInformationRequirement::strLifeMaxEstimate(OID id) {
     if (id.getPrefix() !=  InformationRequirement::getPrefixID()) throw std::invalid_argument("El id a modificar no corresponde a un UserCase, strLifeMaxEstimate");
     if (!fileJsonManager.exist(id)) throw std::invalid_argument("El id a modificar no existe, strLifeMaxEstimate");
     InformationRequirement obj = fileJsonManager.loadInformationRequirement(id);
-    return obj.strLifeMaxEstimate();
-
+    auto lifeMaxEstimate = obj.getLifeMaxEstimate();
+    return strTimequantity(lifeMaxEstimate);
 }
 
 std::string ServicioInformationRequirement::strLifeAvgEstimate(OID id) {
     if (id.getPrefix() !=  InformationRequirement::getPrefixID()) throw std::invalid_argument("El id a modificar no corresponde a un UserCase, strLifeAvgEstimate");
     if (!fileJsonManager.exist(id)) throw std::invalid_argument("El id a modificar no existe, strLifeAvgEstimate");
     InformationRequirement obj = fileJsonManager.loadInformationRequirement(id);
-    return obj.strLifeAvgEstimate();
+    auto lifeAvgEstimate = obj.getLifeAvgEstimate();
+    return strTimequantity(lifeAvgEstimate);
 
 }
 

@@ -87,38 +87,38 @@ std::set<OID> Trackeable::getAuthors() const {
     return this->authors;
 }
 
-std::list<OID> Trackeable::getTracesFrom() const {
+std::set<OID> Trackeable::getTracesFrom() const {
     return this->tracesFrom;
 }
 
-std::list<OID> Trackeable::getTracesTo() const {
+std::set<OID> Trackeable::getTracesTo() const {
     return this->tracesTo;
 }
 
 
 
-void Trackeable::setTracesFrom(std::list<OID> &objtracesFrom) {
+void Trackeable::setTracesFrom(std::set<OID> &objtracesFrom) {
     tracesFrom = objtracesFrom;
 }
 
 void Trackeable::addTraceFrom(OID objtraceFrom) {
     //add a objTraceFrom to the list
-    tracesFrom.push_back(objtraceFrom);
+    tracesFrom.insert(objtraceFrom);
 
 }
 
 void Trackeable::removeTraceFrom(OID objtraceFrom) {
     //remove a objTraceFrom from the list
-    tracesFrom.remove(objtraceFrom);
+    tracesFrom.erase(objtraceFrom);
 }
 
-void Trackeable::setTracesTo(std::list<OID> &objtracesTo) {
+void Trackeable::setTracesTo(std::set<OID> &objtracesTo) {
     tracesTo = objtracesTo;
 }
 
 void Trackeable::addTraceTo(OID objtraceTo) {
     //add a objTraceTo to the list
-    tracesTo.push_back(objtraceTo);
+    tracesTo.insert(objtraceTo);
 }
 
 void Trackeable::removeTraceTo(OID objtraceTo) {

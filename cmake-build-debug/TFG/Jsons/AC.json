@@ -3,7 +3,7 @@
         "authors": null,
         "changes": [],
         "comments": "Que rico",
-        "date_init": "2023-07-4",
+        "date_init": "2023-07-5",
         "description": "Persona que cocina",
         "generalization": {
             "id": 0,
@@ -15,8 +15,18 @@
         },
         "name": "Cocinero",
         "package": "Cocina",
-        "tracesFrom": null,
-        "tracesTo": null,
+        "tracesFrom": [
+            {
+                "id": 2,
+                "prefix": "UC"
+            }
+        ],
+        "tracesTo": [
+            {
+                "id": 1,
+                "prefix": "SH"
+            }
+        ],
         "versionMajor": "1",
         "versionMinor": "0"
     },

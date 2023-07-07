@@ -30,8 +30,8 @@ public:
     void addActor(OID id,OID actor);
     void removeStep(OID id,int pos);
     void removeActor(OID id,OID actor);
-    void setException(OID id,Exception exception);
-    void setExceptions(OID id,std::list<Exception> exceptions);
+    void setException(OID id,unsigned pos, Exception exception);
+    void setExceptions(OID id,std::vector<Exception> exceptions);
     void addException(OID id,Exception exception);
 
 
@@ -40,11 +40,13 @@ public:
     std::string getPrecondition(OID id);
     std::string getPostcondition(OID id);
     TimeQuantity getFrequency(OID id);
+    std::string strFrequency(OID id);
     std::vector<Step> getSteps(OID id);
     std::list<OID> getActors(OID id);
     std::list<OID> getObjectives(OID id);
     std::string getPackage(OID id);
     OID getGeneralization(OID id);
+    std::vector<Exception> getExceptions(OID oid);
 
     bool getAbstract(OID id,unsigned pos);
     std::string getDescription(OID id,unsigned pos);
@@ -60,9 +62,9 @@ public:
     void setType(OID id,unsigned pos,type _type);
     void setReference(OID id,unsigned pos,OID _reference);
 
+
     std::list<std::pair<OID, std::string>> getUseCases();
 
-    std::list<Exception> getExceptions(OID oid);
 
 private:
     FileJsonManager fileJsonManager;

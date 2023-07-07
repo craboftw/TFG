@@ -26,7 +26,7 @@ add_library(TFG_Library
         Servicio/ServicioOrganization.cpp
         Servicio/ServicioActorUC.cpp
         Visitor/HtmlManager.cpp
-        )
+        Dominio/Trackeable/MatrixTraces.cpp Dominio/Trackeable/MatrixTraces.h)
 
 add_executable(TFG_Executable main.cpp)
 

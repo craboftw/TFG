@@ -76,7 +76,19 @@ void DiagramManager::visit(std::list<OID> userCaseList, std::list<OID> actorUCLi
                 file << userCase.operator std::string() << " ..> " << step.getReference().operator std::string()
                      << " : <<extend>>" << std::endl;
             }
+
         }
+        for (auto exceptions : servicioUserCase.getExceptions(userCase)) {
+           if(exceptions.stepType == INCLUDE) {
+               file << userCase.operator std::string() << " ..> " << exceptions.reference.operator std::string()
+                    << " : <<include>>" << std::endl;
+           }
+              if(exceptions.stepType == EXTEND) {
+                file << userCase.operator std::string() << " ..> " << exceptions.reference.operator std::string()
+                      << " : <<extend>>" << std::endl;
+              }
+        }
+
         if (servicioUserCase.getGeneralization(userCase) != OID())
             file <<servicioUserCase.getGeneralization(userCase).operator std::string() << " <|-- " << userCase.operator std::string() << std::endl;
     }

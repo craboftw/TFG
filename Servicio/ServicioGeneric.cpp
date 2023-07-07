@@ -142,19 +142,3 @@ std::list<std::pair<OID, std::string>> ServicioText::getTexts() {
     return texts;
 }
 
-bool ServicioText::getIndexable(OID id) {
-    if(id.getPrefix() != Text::getPrefixID()) throw std::invalid_argument("El id no es de un Text, getIndexable");
-    if(!fileJsonManager.exist(id)) throw std::invalid_argument("El Text no existe, getIndexable");
-    Text text = fileJsonManager.loadText(id);
-    return text.getIndexable();
-}
-
-void ServicioText::setIndexable(OID id, bool indexable) {
-    if(id.getPrefix() != Text::getPrefixID()) throw std::invalid_argument("El id no es de un Text, setIndexable");
-    if(!fileJsonManager.exist(id)) throw std::invalid_argument("El Text no existe, setIndexable");
-    Text text = fileJsonManager.loadText(id);
-    text.setIndexable(indexable);
-    fileJsonManager.save(text);
-}
-
-

@@ -162,36 +162,35 @@ void UserCase::addException(Exception exception) {
     exceptions.push_back(exception);
 }
 
-void UserCase::removeException(unsigned id) {
-    //find exception
-    auto lista = exceptions;
-    for (auto it = exceptions.begin(); it != exceptions.end(); ++it)
+void UserCase::removeException(unsigned pos) {
+    //find exception and remove it
+    auto vector = exceptions;
+    if (pos < vector.size())
     {
-        if (it->id == id)
-        {
-            exceptions.erase(it);
-            break;
-        }
+        exceptions.erase(exceptions.begin() + pos);
     }
+    else throw std::out_of_range("Index out of range, removeException");
+
 }
 
-std::list<Exception> UserCase::getExceptions() const {
+std::vector<Exception> UserCase::getExceptions() const {
     return exceptions;
 }
 
-void UserCase::setExceptions(std::list<Exception> _exceptions) {
+void UserCase::setExceptions(std::vector<Exception> _exceptions) {
      exceptions = std::move(_exceptions);
 }
 
-void UserCase::setException(Exception exception) {
+void UserCase::setException(Exception exception, unsigned pos) {
     //find exception
-    auto lista = exceptions;
-    for (auto it : exceptions)
+    auto vector = exceptions;
+    if (pos < vector.size())
     {
-        if (it.id == exception.id)
-        {
-            it = exception;
-            break;
-        }
+        exceptions[pos] = exception;
     }
+    else throw std::out_of_range("Index out of range, setException");
+
 }
+
+
+

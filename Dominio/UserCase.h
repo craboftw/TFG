@@ -20,7 +20,6 @@ enum type {SYSTEM, ACTOR, INCLUDE, EXTEND};
 
 
 struct Exception{
-    unsigned id;
     unsigned step;
     type stepType;
     std::string description;
@@ -73,7 +72,7 @@ class UserCase : virtual public Trackeable, public Priority {
     std::vector<Step> steps;
     std::list<OID> actors;
     std::list<OID> objectives;
-    std::list<Exception> exceptions;
+    std::vector<Exception> exceptions;
     OID generalization; //OID of the UserCase that this UserCase generalizes
 
     inline static std::string prefixID = "UC";
@@ -94,7 +93,7 @@ public:
     void setActors(std::list<OID> _actors);
     void setPackage(std::string _package);
     void setGeneralization(OID _generalization);
-    void setExceptions(std::list<Exception> _exceptions);
+    void setExceptions(std::vector<Exception> _exceptions);
 
 
     void addStep(Step step);
@@ -103,7 +102,6 @@ public:
     void addActor(OID actor);
 
     void addException(Exception exception);
-    void setException(Exception exception) ;
     void removeException(unsigned id);
 
     bool isAbstract() const;
@@ -118,7 +116,10 @@ public:
     OID getGeneralization() const;
     static std::string getPrefixID();
 
-    std::list<Exception> getExceptions() const;
+    std::vector<Exception> getExceptions() const;
+
+    void setException(Exception exception, unsigned int pos);
+
 };
 
 

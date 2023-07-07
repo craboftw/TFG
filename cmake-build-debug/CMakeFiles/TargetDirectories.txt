@@ -1,4 +1,4 @@
-/home/craboftw/TFG/cmake-build-debug/CMakeFiles/TFG_Library.dir
-/home/craboftw/TFG/cmake-build-debug/CMakeFiles/TFG_Executable.dir
-/home/craboftw/TFG/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/craboftw/TFG/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/Fran-/OneDrive/Documentos/GitHub/TFG/cmake-build-debug/CMakeFiles/TFG_Library.dir
+C:/Users/Fran-/OneDrive/Documentos/GitHub/TFG/cmake-build-debug/CMakeFiles/TFG_Executable.dir
+C:/Users/Fran-/OneDrive/Documentos/GitHub/TFG/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Fran-/OneDrive/Documentos/GitHub/TFG/cmake-build-debug/CMakeFiles/rebuild_cache.dir

@@ -9,19 +9,17 @@
 #include <string>
 #include "Dominio/Trackeable/Trackeable.h"
 #include "Visitor/FileJsonManager.h"
+#include "ServicioTrackeable.h"
 
-class ServicioOrganization {
+class ServicioOrganization : public ServicioTrackeable{
 public:
     OID createOrganization(std::string name="");
-
-    std::list<std::pair<OID,std::string>> getOrganizations();
+    void setContactInfo(OID id, std::string _contactInfo);
+    std::string getContactInfo(OID id);
 
 private:
     FileJsonManager fileJsonManager;
 
-    void setContactInfo(OID id, std::string _contactInfo);
-
-    std::string getContactInfo(OID id);
 };
 
 

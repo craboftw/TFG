@@ -26,7 +26,7 @@ private:
     FileJsonManager fileJsonManager;
 };
 
-class ServicioNonFunctionalRequirement : virtual public Trackeable, public Priority {
+class ServicioNonFunctionalRequirement : virtual public ServicioTrackeable, public ServicioPriority {
 public:
     OID createNonFunctionalRequirement(std::string name="");
     std::list<std::pair<OID,std::string>> getNonFunctionalRequirements();
@@ -34,7 +34,7 @@ private:
     FileJsonManager fileJsonManager;
 };
 
-class ServicioFunctionalRequirement : virtual public Trackeable, public Priority {
+class ServicioFunctionalRequirement : virtual public ServicioTrackeable, public ServicioPriority {
 public:
     OID createFunctionalRequirement(std::string name="");
     std::list<std::pair<OID,std::string>> getFunctionalRequirements();
@@ -42,7 +42,7 @@ private:
     FileJsonManager fileJsonManager;
 };
 
-class ServicioRestrictionRequirement : virtual public Trackeable, public Priority {
+class ServicioRestrictionRequirement : virtual public ServicioTrackeable, public ServicioPriority {
 public:
     OID createRestrictionRequirement(std::string name="");
     std::list<std::pair<OID,std::string>> getRestrictionRequirements();
@@ -50,7 +50,7 @@ private:
     FileJsonManager fileJsonManager;
 };
 
-class ServicioSystemObjective : virtual public Trackeable, public Priority {
+class ServicioSystemObjective : virtual public ServicioTrackeable, public ServicioPriority {
 public:
     OID createSystemObjective(std::string name="");
     std::list<std::pair<OID,std::string>> getSystemObjectives();
@@ -58,7 +58,7 @@ private:
     FileJsonManager fileJsonManager;
 };
 
-class ServicioText : virtual public Trackeable {
+class ServicioText : virtual public ServicioTrackeable {
 public:
     OID createText(std::string name="");
     bool getIndexable(OID id);

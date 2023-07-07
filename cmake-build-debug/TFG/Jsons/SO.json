@@ -1,0 +1,36 @@
+{
+    "1": {
+        "authors": null,
+        "changes": [],
+        "comments": "Comer muy rico",
+        "date_init": "2023-07-6",
+        "description": "Comer muy rico",
+        "estability": 2,
+        "id": {
+            "id": 1,
+            "prefix": "SO"
+        },
+        "importanceLevel": 3,
+        "name": "Comer muy rico",
+        "phase": 6,
+        "tracesFrom": [
+            {
+                "id": 2,
+                "prefix": "UC"
+            }
+        ],
+        "tracesTo": [
+            {
+                "id": 1,
+                "prefix": "SH"
+            },
+            {
+                "id": 1,
+                "prefix": "UC"
+            }
+        ],
+        "urgencyLevel": 3,
+        "versionMajor": "1",
+        "versionMinor": "0"
+    }
+}

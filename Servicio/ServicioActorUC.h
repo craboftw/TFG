@@ -17,6 +17,11 @@ public:
 
     OID getGeneralization(OID oid);
 
+    void setGeneralization(OID oid, OID generalization);
+    void setPackage(OID oid, std::string package);
+    void setName(OID oid, std::string name);
+
+
 private:
     FileJsonManager fileJsonManager;
 };

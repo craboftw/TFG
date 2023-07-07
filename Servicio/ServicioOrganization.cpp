@@ -28,13 +28,7 @@ std::string ServicioOrganization::getContactInfo(OID id) {
     return organization.getContactInfo();
 }
 
-std::list<std::pair<OID, std::string>> ServicioOrganization::getOrganizations() {
-    std::list<std::pair<OID, std::string>> organizations;
-    for (auto org : fileJsonManager.loadAllOrganization()) {
-        organizations.push_back(std::make_pair(org.getId(), org.getName()));
-    }
-    return organizations;
-}
+
 
 
 

@@ -94,13 +94,13 @@ protected:
     Fecha date_init;
     std::string comments;
     std::set<OID> authors;
-    std::list<OID> tracesFrom;
-    std::list<OID> tracesTo;
+    std::set<OID> tracesFrom;
+    std::set<OID> tracesTo;
     std::list<Change> changes;
 
 public:
     explicit Trackeable(std::string prefix = "XX",unsigned id =-1):
-            id(prefix,id), name(""), versionMajor(defaultVersionMajor), versionMinor(defaultVersionMinor), date_init(defaultDate), comments(""), authors(defaultAuthors), tracesFrom(std::list<OID>()), tracesTo(std::list<OID>()), changes(std::list<Change>()) {}
+            id(prefix,id), name(""), versionMajor(defaultVersionMajor), versionMinor(defaultVersionMinor), date_init(defaultDate), comments(""), authors(defaultAuthors), changes(std::list<Change>()) {}
 
 
     void setName(std::string objName);
@@ -112,10 +112,10 @@ public:
     void setAuthors(std::set<OID>& setauthors);
     void addAuthor(OID author);
     void removeAuthor(OID author);
-    void setTracesFrom(std::list<OID>& tracesFrom);
+    void setTracesFrom(std::set<OID>& tracesFrom);
     void addTraceFrom(OID traceFrom);
     void removeTraceFrom(OID traceFrom);
-    void setTracesTo(std::list<OID>& tracesTo);
+    void setTracesTo(std::set<OID>& tracesTo);
     void addTraceTo(OID traceTo);
     void removeTraceTo(OID traceTo);
 
@@ -146,8 +146,8 @@ public:
     Fecha getDate() const;
     std::string getComments() const;
     std::set<OID> getAuthors() const;
-    std::list<OID> getTracesFrom() const;
-    std::list<OID> getTracesTo() const;
+    std::set<OID> getTracesFrom() const;
+    std::set<OID> getTracesTo() const;
 
 
     void setChanges(std::list<Change> changes);

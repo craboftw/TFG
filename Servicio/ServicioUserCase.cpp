@@ -222,7 +222,6 @@ OID ServicioUserCase::getGeneralization(OID id) {
         throw std::invalid_argument("El id a modificar no corresponde a un UserCase, getAbstract");
     if (!fileJsonManager.exist(id)) throw std::invalid_argument("El id a leer no existe, getAbstract");
     UserCase userCase = fileJsonManager.loadUserCase(id);
-    std::cout<<"\n"<<userCase.getGeneralization().getPrefix()<<std::endl;
     auto generalization = userCase.getGeneralization();
 
     if (id != OID() and fileJsonManager.exist(generalization))
@@ -389,11 +388,116 @@ std::list<std::pair<OID, std::string>> ServicioUserCase::getUseCases() {
 
 }
 
-std::list<Exception> ServicioUserCase::getExceptions(OID oid) {
+std::vector<Exception> ServicioUserCase::getExceptions(OID oid) {
     if (oid.getPrefix() !=  UserCase::getPrefixID()) throw std::invalid_argument("El id a modificar no corresponde a un UserCase, getExceptions");
     if (!fileJsonManager.exist(oid)) throw std::invalid_argument("El id a modificar no existe, getExceptions");
     UserCase userCase = fileJsonManager.loadUserCase(oid);
     return userCase.getExceptions();
+}
+
+void ServicioUserCase::removeActor(OID id, OID actor) {
+    if (id.getPrefix() !=  UserCase::getPrefixID()) throw std::invalid_argument("El id a modificar no corresponde a un UserCase, removeActor");
+    if (!fileJsonManager.exist(id)) throw std::invalid_argument("El id a modificar no existe, removeActor");
+    if (actor.getPrefix() !=  ActorUC::getPrefixID()) throw std::invalid_argument("El id actor debe ser un Actor, removeActor");
+    if (!fileJsonManager.exist(actor)) throw std::invalid_argument("El id actor no existe, removeActor");
+
+    UserCase userCase = fileJsonManager.loadUserCase(id);
+    auto actores = userCase.getActors();
+    actores.remove(actor);
+    userCase.setActors(actores);
+    fileJsonManager.save(userCase);
+}
+
+
+
+
+void ServicioUserCase::addException(OID id, Exception exception) {
+    if (id.getPrefix() !=  UserCase::getPrefixID()) throw std::invalid_argument("El id a modificar no corresponde a un UserCase, addException");
+    if (!fileJsonManager.exist(id)) throw std::invalid_argument("El id a modificar no existe, addException");
+    UserCase userCase = fileJsonManager.loadUserCase(id);
+    auto exceptions = userCase.getExceptions();
+    exceptions.push_back(exception);
+    userCase.setExceptions(exceptions);
+    fileJsonManager.save(userCase);
+}
+
+void ServicioUserCase::setException(OID id, unsigned int pos, Exception exception) {
+    if (id.getPrefix() !=  UserCase::getPrefixID()) throw std::invalid_argument("El id a modificar no corresponde a un UserCase, setException");
+    if (!fileJsonManager.exist(id)) throw std::invalid_argument("El id a modificar no existe, setException");
+    UserCase userCase = fileJsonManager.loadUserCase(id);
+    auto exceptions = userCase.getExceptions();
+    if (pos < 0 || pos > exceptions.size()) throw std::invalid_argument("La posicion no corresponde a una excepcion, setException");
+    exceptions[pos] = exception;
+    userCase.setExceptions(exceptions);
+    fileJsonManager.save(userCase);
+}
+
+void ServicioUserCase::setExceptions(OID id, std::vector<Exception> exceptions) {
+    if (id.getPrefix() !=  UserCase::getPrefixID()) throw std::invalid_argument("El id a modificar no corresponde a un UserCase, setExceptions");
+    if (!fileJsonManager.exist(id)) throw std::invalid_argument("El id a modificar no existe, setExceptions");
+    UserCase userCase = fileJsonManager.loadUserCase(id);
+    userCase.setExceptions(exceptions);
+    fileJsonManager.save(userCase);
+
+}
+
+std::string ServicioUserCase::strFrequency(OID id) {
+    if (id.getPrefix() !=  UserCase::getPrefixID()) throw std::invalid_argument("El id a modificar no corresponde a un UserCase, strFrequency");
+    if (!fileJsonManager.exist(id)) throw std::invalid_argument("El id a modificar no existe, strFrequency");
+    UserCase userCase = fileJsonManager.loadUserCase(id);
+    std::string str;
+    auto frequency =  userCase.getFrequency();
+    switch (frequency.getUnit()) {
+        case TimeQuantity::MILLISECOND:
+            if (frequency.getQuantity() > 1)
+                str = "Cada " + std::to_string(frequency.getQuantity()) + " milisegundos";
+            else
+                str = "Cada milisegundo";
+            break;
+        case TimeQuantity::SECOND:
+            if (frequency.getQuantity() > 1)
+                str = "Cada " + std::to_string(frequency.getQuantity()) + " segundos";
+            else
+                str = "Cada segundo";
+            break;
+        case TimeQuantity::MINUTE:
+            if (frequency.getQuantity() > 1)
+                str = "Cada " + std::to_string(frequency.getQuantity()) + " minutos";
+            else
+                str = "Cada minuto";
+            break;
+        case TimeQuantity::HOUR:
+            if (frequency.getQuantity() > 1)
+                str = "Cada " + std::to_string(frequency.getQuantity()) + " horas";
+            else
+                str = "Cada hora";
+            break;
+        case TimeQuantity::DAY:
+            if (frequency.getQuantity() > 1)
+                str = "Cada " + std::to_string(frequency.getQuantity()) + " dias";
+            else
+                str = "Cada dia";
+            break;
+        case TimeQuantity::WEEK:
+            if (frequency.getQuantity() > 1)
+                str = "Cada " + std::to_string(frequency.getQuantity()) + " semanas";
+            else
+                str = "Cada semana";
+            break;
+        case TimeQuantity::MONTH:
+            if (frequency.getQuantity() > 1)
+                str = "Cada " + std::to_string(frequency.getQuantity()) + " meses";
+            else
+                str = "Cada mes";
+            break;
+        case TimeQuantity::YEAR:
+            if (frequency.getQuantity() > 1)
+                str = "Cada " + std::to_string(frequency.getQuantity()) + " años";
+            else
+                str = "Cada año";
+            break;
+    }
+    return str;
 }
 
 

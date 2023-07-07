@@ -29,8 +29,8 @@ struct TrackeableDTO{
     Fecha date;
     std::string comments;
     std::set<OID> authors;
-    std::list<OID> tracesFrom;
-    std::list<OID> tracesTo;
+    std::set<OID> tracesFrom;
+    std::set<OID> tracesTo;
     std::list<Change> listOfChanges;
 };
 
@@ -143,21 +143,13 @@ json Jsoneitor::serializeListOfOID(const std::list<OID>& listOfOID) {
     return j;
 }
 
-json Jsoneitor::serializeListOfExceptions(std::list<Exception> listOfExceptions) {
+json Jsoneitor::serializeVectorOfExceptions(std::vector<Exception> vectorOfExceptions) {
     json j;
 
     // Serializar cada excepcion en la lista
-    for (const Exception& exception : listOfExceptions) {
+    for (const Exception& exception : vectorOfExceptions) {
         json exceptionJson;
-        /*struct Exception{
-    unsigned id;
-    unsigned step;
-    type stepType;
-    std::string description;
-    std::string condition;
-    std::string comments;
-};*/
-        exceptionJson["id"] = exception.id;
+
         exceptionJson["step"] = exception.step;
         exceptionJson["stepType"] = exception.stepType;
         exceptionJson["description"] = exception.description;
@@ -169,13 +161,12 @@ json Jsoneitor::serializeListOfExceptions(std::list<Exception> listOfExceptions)
     return j;
 }
 
-std::list<Exception> Jsoneitor::deserializeListOfExceptions(const json& j) {
-    std::list<Exception> listOfExceptions;
+std::vector<Exception> Jsoneitor::deserializeVectorOfExceptions(const json& j) {
+    std::vector<Exception> listOfExceptions;
 
     // Deserializar cada excepcion en la lista
     for (const json& exceptionJson : j) {
         Exception exception;
-        exception.id = exceptionJson["id"];
         exception.step = exceptionJson["step"];
         exception.stepType = exceptionJson["stepType"];
         exception.description = exceptionJson["description"];
@@ -245,8 +236,8 @@ std::vector<Step> Jsoneitor::deserializeVectorOfSteps(json reference) {
 std::list<SpecificInformation> Jsoneitor::deserializeListOfSpecificInformation(json j) {
     std::list<SpecificInformation> listOfSpecificInformation;
     for (auto specificInformationJson : j) {
-        SpecificInformation specificInformation{j["id"],j["name"],j["description"]};
-        listOfSpecificInformation.push_back(specificInformation);
+        SpecificInformation o{specificInformationJson["id"],specificInformationJson["name"],specificInformationJson["description"]};
+        listOfSpecificInformation.push_back(o);
     }
     return listOfSpecificInformation;
 
@@ -274,8 +265,8 @@ json Jsoneitor::trackeablePart(Trackeable* objeto,json& j)
     j["date_init"] = objeto->getDate().toString();
     j["comments"] = objeto->getComments();
     j["authors"] = serializeSetOfOID(objeto->getAuthors());
-    j["tracesFrom"] = serializeListOfOID(objeto->getTracesFrom());
-    j["tracesTo"] = serializeListOfOID(objeto->getTracesTo());
+    j["tracesFrom"] = serializeSetOfOID(objeto->getTracesFrom());
+    j["tracesTo"] = serializeSetOfOID(objeto->getTracesTo());
     j["changes"] = serializeListOfChanges(objeto->getChanges());
 
     return j;
@@ -305,8 +296,8 @@ TrackeableDTO Jsoneitor::deserializeTrackeableDTO(const json& j) {
     trackeableDTO.date = Fecha(j["date_init"]);
     trackeableDTO.comments = j["comments"];
     trackeableDTO.authors = deserializeSetOfOID(j["authors"]);
-    trackeableDTO.tracesFrom = deserializeListOfOID(j["tracesFrom"]);
-    trackeableDTO.tracesTo = deserializeListOfOID(j["tracesTo"]);
+    trackeableDTO.tracesFrom = deserializeSetOfOID(j["tracesFrom"]);
+    trackeableDTO.tracesTo = deserializeSetOfOID(j["tracesTo"]);
     trackeableDTO.listOfChanges = deserializeListOfChanges(j["changes"]);
     return trackeableDTO;
 }
@@ -361,13 +352,13 @@ void Jsoneitor::visit(InformationRequirement informationRequirement) {
 
 /*｡o°✥✤✣TRACKEABLE PRIORITY GET✣✤✥°o｡*/
     j = trackeablePart(&informationRequirement,j);
-    j = priorityPart(&informationRequirement,j);
 
 /*｡o°✥✤✣INFORMATION REQUIREMENT GET✣✤✥°o｡*/
     j["maxSimultaneousOccurrence"] = informationRequirement.getMaxSimultaneousOccurrence();
     j["avgSimultaneousOccurrence"] = informationRequirement.getAvgSimultaneousOccurrence();
     j["lifeMaxEstimate"] = serializeTimeQuantity(informationRequirement.getLifeMaxEstimate());
     j["lifeAvgEstimate"] = serializeTimeQuantity(informationRequirement.getLifeAvgEstimate());
+    j["specificInformation"] = serializeListOfSpecificInformation(informationRequirement.getSpecificInformation());
 
     FileJsonManager::save(j);
 }
@@ -376,7 +367,6 @@ InformationRequirement Jsoneitor::deserializeInformationRequirement(json j) {
 
 /*｡o°✥✤✣TRACKEABLE PRIORITY GET✣✤✥°o｡*/
     TrackeableDTO trackeableDTO = deserializeTrackeableDTO(j);
-    PriorityDTO priorityDTO = deserializePriorityDTO(j);
 
 /*｡o°✥✤✣INFORMATION REQUIREMENT GET✣✤✥°o｡*/
     unsigned int maxSimultaneousOccurrence = j["maxSimultaneousOccurrence"];
@@ -388,7 +378,6 @@ InformationRequirement Jsoneitor::deserializeInformationRequirement(json j) {
 /*｡o°✥✤✣TRACKEABLE PRIORITY SET✣✤✥°o｡*/
     InformationRequirement o(trackeableDTO.id.getId());
     setTrackeablePart(trackeableDTO, &o);
-    setPriorityPart(priorityDTO, &o);
 
 
 /*｡o°✥✤✣INFORMATION REQUIREMENT SET✣✤✥°o｡*/
@@ -396,6 +385,7 @@ InformationRequirement Jsoneitor::deserializeInformationRequirement(json j) {
     o.setAvgSimultaneousOccurrence(avgSimultaneousOccurrence);
     o.setLifeMaxEstimate(lifeMaxEstimate);
     o.setLifeAvgEstimate(lifeAvgEstimate);
+    o.setSpecificInformation(specificInformation);
 
     return o;
 }
@@ -540,7 +530,7 @@ void Jsoneitor::visit(UserCase& userCase) {
     j["objectives"] = serializeListOfOID(userCase.getObjectives());
     j["package"] = userCase.getPackage();
     j["generalization"] = serializeOID(userCase.getGeneralization());
-    j["exceptions"] = serializeListOfExceptions(userCase.getExceptions());
+    j["exceptions"] = serializeVectorOfExceptions(userCase.getExceptions());
 
     FileJsonManager::save(j);
 
@@ -561,7 +551,7 @@ UserCase Jsoneitor::deserializeUserCase(json j) {
         std::list<OID> actors = deserializeListOfOID(j["actors"]);
         std::list <OID> objectives = deserializeListOfOID(j["objectives"]);
         std::string package = j["package"];
-        std::list<Exception> exceptions = deserializeListOfExceptions(j["exceptions"]);
+        std::vector<Exception> exceptions = deserializeVectorOfExceptions(j["exceptions"]);
         OID generalization = deserializeOID(j["generalization"]);
 
 
@@ -585,6 +575,38 @@ UserCase Jsoneitor::deserializeUserCase(json j) {
         return u;
 }
 
+void Jsoneitor::visit(Organization organization) {
+
+    json j;
+
+    /*｡o°✥✤✣TRACKEABLE PART✣✤✥°o｡*/
+    j= trackeablePart(&organization, j);
+
+    /*｡o°✥✤✣ORGANIZATION PART✣✤✥°o｡*/
+    j["contactInfo"] = organization.getContactInfo();
+
+    FileJsonManager::save(j);
+
+}
+
+Organization Jsoneitor::deserializeOrganization(json j) {
+
+    /*｡o°✥✤✣TRACKEABLE PART✣✤✥°o｡*/
+    TrackeableDTO trackeableDTO = deserializeTrackeableDTO(j);
+
+    /*｡o°✥✤✣ORGANIZATION PART✣✤✥°o｡*/
+    std::string contactInfo = j["contactInfo"];
+
+    /*｡o°✥✤✣TRACKEABLE SET✣✤✥°o｡*/
+    Organization o(trackeableDTO.id.getId());
+    setTrackeablePart(trackeableDTO, &o);
+
+    /*｡o°✥✤✣ORGANIZATION SET✣✤✥°o｡*/
+    o.setContactInfo(contactInfo);
+
+    return o;
+}
+
 void Jsoneitor::visit(Stakeholder stakeholder) {
 
     json j;
@@ -600,6 +622,32 @@ void Jsoneitor::visit(Stakeholder stakeholder) {
     j["worksForOrganization"] = serializeOID(stakeholder.getWorksForOrganization());
 
     FileJsonManager::save(j);
+}
+
+Stakeholder Jsoneitor::deserializeStakeholder(json j) {
+
+    /*｡o°✥✤✣TRACKEABLE PART✣✤✥°o｡*/
+    TrackeableDTO trackeableDTO = deserializeTrackeableDTO(j);
+
+    /*｡o°✥✤✣STAKEHOLDER GET✣✤✥°o｡*/
+    std::string email = j["email"];
+    std::string phone = j["phone"];
+    std::string address = j["address"];
+    std::string stakeholderRole = j["stakeholderRole"];
+    OID worksForOrganization = deserializeOID(j["worksForOrganization"]);
+
+    /*｡o°✥✤✣TRACKEABLE SET✣✤✥°o｡*/
+    Stakeholder s(trackeableDTO.id.getId());
+    setTrackeablePart(trackeableDTO, &s);
+
+    /*｡o°✥✤✣STAKEHOLDER SET✣✤✥°o｡*/
+    s.setEmail(email);
+    s.setPhone(phone);
+    s.setAddress(address);
+    s.setStakeholderRole(stakeholderRole);
+    s.setWorksForOrganization(worksForOrganization);
+
+    return s;
 }
 
 Trackeable* Jsoneitor::deserializeTrackeable(json j) {
@@ -618,62 +666,8 @@ Priority* Jsoneitor::deserializePriority(json j) {
     return p;
 }
 
-Stakeholder Jsoneitor::deserializeStakeholder(json j) {
-
-    /*｡o°✥✤✣TRACKEABLE PART✣✤✥°o｡*/
-    TrackeableDTO trackeableDTO = deserializeTrackeableDTO(j);
-
-    /*｡o°✥✤✣STAKEHOLDER GET✣✤✥°o｡*/
-    std::string email = j["email"];
-    std::string phone = j["phone"];
-    std::string address = j["address"];
-    OID stakeholderRole = deserializeOID(j["stakeholderRole"]);
-    OID worksForOrganization = deserializeOID(j["worksForOrganization"]);
-
-    /*｡o°✥✤✣TRACKEABLE SET✣✤✥°o｡*/
-    Stakeholder s(trackeableDTO.id.getId());
-    setTrackeablePart(trackeableDTO, &s);
-
-    /*｡o°✥✤✣STAKEHOLDER SET✣✤✥°o｡*/
-    s.setEmail(email);
-    s.setPhone(phone);
-    s.setAddress(address);
-    s.setStakeholderRole(stakeholderRole);
-    s.setWorksForOrganization(worksForOrganization);
-
-    return s;
-}
 
 
-void Jsoneitor::visit(Organization organization) {
-
-        json j;
-
-        /*｡o°✥✤✣TRACKEABLE PART✣✤✥°o｡*/
-        j= trackeablePart(&organization,j);
-        /*｡o°✥✤✣ORGANIZATION PART✣✤✥°o｡*/
-        j["contactInfo"] = organization.getContactInfo();
-        FileJsonManager::save(j);
-
-}
-
-Organization Jsoneitor::deserializeOrganization(json j) {
-
-    /*｡o°✥✤✣TRACKEABLE PART✣✤✥°o｡*/
-    TrackeableDTO trackeableDTO = deserializeTrackeableDTO(j);
-
-    /*｡o°✥✤✣ORGANIZATION GET✣✤✥°o｡*/
-    std::string contactInfo = j["contactInfo"];
-
-    /*｡o°✥✤✣TRACKEABLE SET✣✤✥°o｡*/
-    Organization o(trackeableDTO.id.getId());
-    setTrackeablePart(trackeableDTO, &o);
-
-    /*｡o°✥✤✣ORGANIZATION SET✣✤✥°o｡*/
-    o.setContactInfo(contactInfo);
-
-    return o;
-}
 
 void Jsoneitor::visit(Trackeable *trackeable) {
 
@@ -703,9 +697,6 @@ void Jsoneitor::visit(Text text) {
         /*｡o°✥✤✣TRACKEABLE PART✣✤✥°o｡*/
         j= trackeablePart(&text,j);
 
-        /*｡o°✥✤✣TEXT PART✣✤✥°o｡*/
-        j["indexable"] = text.getIndexable();
-
         FileJsonManager::save(j);
 }
 
@@ -714,15 +705,9 @@ Text Jsoneitor::deserializeText(json j) {
         /*｡o°✥✤✣TRACKEABLE PART✣✤✥°o｡*/
         TrackeableDTO trackeableDTO = deserializeTrackeableDTO(j);
 
-        /*｡o°✥✤✣TEXT GET✣✤✥°o｡*/
-        bool indexable = j["indexable"];
-
         /*｡o°✥✤✣TRACKEABLE SET✣✤✥°o｡*/
         Text t(trackeableDTO.id.getId());
         setTrackeablePart(trackeableDTO, &t);
-
-        /*｡o°✥✤✣TEXT SET✣✤✥°o｡*/
-        t.setIndexable(indexable);
 
         return t;
 }

@@ -9,6 +9,7 @@
 #include "Visitor/DiagramManager.h"
 #include "Servicio/ServicioUserCase.h"
 #include "Visitor/HtmlManager.h"
+#include "Dominio/Trackeable/MatrixTraces.h"
 
 std::string generateHTML(InformationRequirement& requirement) {
     std::string html;
@@ -225,7 +226,7 @@ void print(UserCase userCase)
     }
 }
 
-void crearInformationRequirement()
+InformationRequirement crearInformationRequirement()
 {
     InformationRequirement informationRequirement(1) ;
     informationRequirement.setName("Nombre");
@@ -247,6 +248,7 @@ void crearInformationRequirement()
 
     Jsoneitor jsoneitor;
     jsoneitor.visit(informationRequirement);
+    return informationRequirement;
 }
 
 void print(InformationRequirement i)
@@ -409,11 +411,10 @@ void pruebaServicioUserCase()
         requirement.addSpecificInformation("Información específica de prueba 2", "Esta es la información específica de prueba 2");
         requirement.addSpecificInformation("Información específica de prueba 3", "Esta es la información específica de prueba 3");
         HtmlManager htmlManager;
-        std::cout<<htmlManager.generateTable(requirement)<<std::endl;
         //crea un fichero prueba html
         std::ofstream file;
         file.open("prueba.html");
-        file<<htmlManager.generateTable(requirement);
+        file<<htmlManager.generateTableInformationRequirement(requirement.getId());
     }
 
 
@@ -489,7 +490,7 @@ void crearUserCase(){
     userCase.addAuthor({"SH",1});
     userCase.addActor({"AC",1});
     userCase.setPackage("Menu");
-    userCase.setFrequency({1,TimeQuantity::WEEK});
+    userCase.setFrequency({4,TimeQuantity::WEEK});
 
     Step step1;
     step1.setAbstract(false);
@@ -546,10 +547,10 @@ void crearUserCase(){
         OID reference;
     };*/
 
-    userCase.addException({1,1,INCLUDE,"No hay agua","No hay agua","No hay agua",{"UC",1}});
-    userCase.addException({2,2,EXTEND,"No hay sal","No hay sal","No hay sal",{"UC",1}});
-    userCase.addException({3,3,ACTOR,"No hay spaghetti","No hay spaghetti","No hay spaghetti",{"AC",1}});
-    userCase.addException({4,4,SYSTEM,"No hay tiempo","No hay tiempo","No hay tiempo",{"UC",1}});
+    userCase.addException({1,INCLUDE,"No hay agua","No hay agua","No hay agua",{"UC",1}});
+    userCase.addException({2,EXTEND,"No hay sal","No hay sal","No hay sal",{"UC",1}});
+    userCase.addException({3,ACTOR,"No hay spaghetti","No hay spaghetti","No hay spaghetti",{"AC",1}});
+    userCase.addException({4,SYSTEM,"No hay tiempo","No hay tiempo","No hay tiempo",{"UC",1}});
 
 
     Step step7;
@@ -589,27 +590,167 @@ void crearUserCase(){
     HtmlManager htmlManager;
     //in file userCase.html htmlManager.generateTable(userCase)
 
+}
 
-    std::ofstream file;
-    file.open("usercase.html");
-    std::list<ActorUC> actors;
-    DiagramManager diagramGenerator;
-    diagramGenerator.visit({{"UC",1},{"UC",2}}, {{"AC", 1}});
-    //diagramGenerator.visit(userCases);
-    for (auto &uc : userCases) {
-        file << htmlManager.generateTableUserCase(uc.getId());
+OID pruebaServicioStakeholder()
+{
+    ServicioStakeholder servicioStakeholder;
+    auto id = servicioStakeholder.createStakeholder("Pakito");
+    servicioStakeholder.setName(id,"Pakito");
+    servicioStakeholder.setDescription(id,"El mejor");
+    servicioStakeholder.setVersionMajor(id,"2");
+    servicioStakeholder.setVersionMinor(id,"0");
+    servicioStakeholder.setComments(id,"Que rico");
+    servicioStakeholder.setEmail(id,"pa@ki.to");
+    servicioStakeholder.setPhone(id,"123456789");
+    servicioStakeholder.setAddress(id,"Calle de la piruleta");
+    servicioStakeholder.setWorksForOrganization(id,{"OR",1});
+    servicioStakeholder.setStakeholderRole(id,"Autor de la aplicacion");
+    return id;
+}
 
-        }
+OID pruebaServicioOrganitacion()
+{
+    //make megacorp company, the most important company in the world
+    ServicioOrganization servicioOrganizacion;
+    auto id = servicioOrganizacion.createOrganization("Megacorp");
+    servicioOrganizacion.setName(id,"Megacorp");
+    servicioOrganizacion.setDescription(id,"La mejor empresa del mundo");
+    servicioOrganizacion.setVersionMajor(id,"1");
+    servicioOrganizacion.setVersionMinor(id,"0");
+    servicioOrganizacion.setComments(id,"Son ricos");
+    servicioOrganizacion.setContactInfo(id,"www.megacorp.com");
 
-    file<< "<img src=\"Diagrams/UseCaseDiagram.png\" alt=\"UseCaseDiagram\" style=\"width:100%;\">";
+
 
 }
 
 
 int main() {
-crearUserCase() ;
-    return 0;
+    ServicioStakeholder servicioStakeholder;
+    ServicioOrganization servicioOrganization;
+    ServicioUserCase servicioUserCase;
+    ServicioFunctionalRequirement servicioFunctionalRequirement;
+    ServicioSystemObjective servicioSystemObjective;
+    ServicioInformationRequirement servicioInformationRequirement;
+    ServicioActorUC servicioActorUC;
+ //crear un actor a traves de un actor uc
+ auto iduc = servicioUserCase.createUserCase("Hacer un coxme");
+    std::set<OID> actors;
+ //ADD RANDOM TRACES
 
+
+    OID fr = {"FR",1};
+    OID so = {"SO",1};
+    OID nf = {"NF",1};
+    OID tx = {"TX",1} ;
+    OID ir = {"IR",1} ;
+    OID uc = {"UC",1} ;
+    OID uc2 = {"UC",2} ;
+    OID ac = {"AC",1} ;
+    OID sh = {"SH",1} ;
+    auto setVacio = std::set<OID>();
+    servicioStakeholder.setTracesTo(fr,setVacio);
+    servicioStakeholder.setTracesTo(so,setVacio);
+    servicioStakeholder.setTracesTo(nf,setVacio);
+    servicioStakeholder.setTracesTo(tx,setVacio);
+    servicioStakeholder.setTracesTo(ir,setVacio);
+    servicioStakeholder.setTracesTo(uc,setVacio);
+    servicioStakeholder.setTracesTo(uc2,setVacio);
+    servicioStakeholder.setTracesTo(ac,setVacio);
+
+
+    servicioStakeholder.addTraceTo(fr,sh);
+    servicioStakeholder.addTraceTo(so,sh);
+    servicioStakeholder.addTraceTo(nf,sh);
+    servicioStakeholder.addTraceTo(tx,sh);
+    servicioStakeholder.addTraceTo(ir,sh);
+    servicioStakeholder.addTraceTo(uc,sh);
+    servicioStakeholder.addTraceTo(ac,sh);
+
+
+    servicioUserCase.addTraceTo(fr,uc);
+    servicioUserCase.addTraceTo(so,uc);
+    servicioUserCase.addTraceTo(nf,uc);
+    servicioUserCase.addTraceTo(tx,uc);
+    servicioUserCase.addTraceTo(uc2,uc) ;
+    servicioUserCase.addTraceTo(uc2,ac);
+    servicioUserCase.addTraceTo(uc2,fr);
+    servicioUserCase.addTraceTo(uc2,so);
+    servicioUserCase.addTraceTo(uc2,nf);
+    servicioUserCase.addTraceTo(uc2,tx);
+    servicioUserCase.addTraceTo(uc2,ir);
+    servicioUserCase.addTraceTo(uc2,sh);
+
+
+    HtmlManager htmlManager;
+    std::list <OID> userCases;
+    //insert iduc in the list usercases
+    userCases.push_back(iduc);
+    userCases = {{"UC",1},{"UC",2}};
+    auto htmlir = htmlManager.generateTableInformationRequirement(ir);
+    std::ofstream file;
+    file.open("usercase.html");
+    std::list<ActorUC> listaActores;
+    DiagramManager diagramGenerator;
+    diagramGenerator.visit(userCases, {{"AC", 1}});
+    //diagramGenerator.visit(userCases);
+    for (auto &uc : userCases) {
+        file << htmlManager.generateTableUserCase(uc);
+        //make a separator between the tables
+        file << "<br>";
+    }
+    //auto adjust the size of the image to the size of the window make the width 100%
+    file<< "<html><body><img src=\"TFG\\Diagrams\\UseCaseDiagram.png\" alt=\"diagram\"  width=\"100%\" height=\"auto\"></body></html>";
+    file<<"<br>";
+    file<<htmlir ;
+    file<<"<br>";
+    file<<htmlManager.generateTableStakeholder({"SH",1});
+    file<<"<br>";
+    file<<htmlManager.generateTableActorUC({"AC",1});
+    file<<"<br>";
+    file<<htmlManager.generateTableText(tx) ;
+    file<<"<br>";
+    file<<htmlManager.generateTableNonFunctionalRequirement(nf) ;
+    file<<"<br>";
+    file<<htmlManager.generateTableFunctionalRequirement(fr) ;
+    file<<"<br>";
+    file<<htmlManager.generateTableSystemObjetive(so) ;
+
+    MatrixTraces matrixTraces(1);
+    matrixTraces.addPrefixFrom("UC");
+    matrixTraces.addPrefixFrom("OR");
+    matrixTraces.addPrefixFrom("IR");
+    matrixTraces.addPrefixTo("UC");
+    matrixTraces.addPrefixTo("FR");
+    matrixTraces.addPrefixTo("SO");
+    matrixTraces.addPrefixTo("NF");
+    matrixTraces.addPrefixTo("TX");
+    matrixTraces.addPrefixTo("IR");
+    matrixTraces.addPrefixTo("AC");
+    matrixTraces.addPrefixTo("SH");
+    matrixTraces.addPrefixTo("OR");
+    matrixTraces.addPrefixTo("IN");
+    matrixTraces.addPrefixTo("TE");
+    matrixTraces.addPrefixTo("PR");
+
+    matrixTraces.addTrackeable(uc);
+    matrixTraces.addTrackeable(fr);
+    matrixTraces.addTrackeable(so);
+    matrixTraces.addTrackeable(nf);
+    matrixTraces.addTrackeable(tx);
+    matrixTraces.addTrackeable(ir);
+    matrixTraces.addTrackeable(ac);
+    matrixTraces.addTrackeable(sh);
+    matrixTraces.addTrackeable({"OR",1});
+    matrixTraces.addTrackeable({"UC",2});
+
+    matrixTraces.print();
+    file<<"<br>";
+    file<<htmlManager.generateMatrixTraces(matrixTraces);
+
+
+    return 0 ;
 }
 
 

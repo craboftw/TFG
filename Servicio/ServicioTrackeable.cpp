@@ -84,13 +84,14 @@ void ServicioTrackeable::removeAuthor(OID id, OID author) {
     fileJsonManager.save(obj);
 }
 
-void ServicioTrackeable::setTracesFrom(OID id, std::list<OID> &tracesFrom) {
+void ServicioTrackeable::setTracesFrom(OID id, std::set<OID> &tracesFrom) {
     if (!fileJsonManager.exist(id)) throw std::invalid_argument("El id a modificar no existe, setTracesFrom");
     for(auto it = tracesFrom.begin(); it != tracesFrom.end(); ++it){
         if(!fileJsonManager.exist(*it)) throw std::invalid_argument("Uno de los id de tracesFrom no existe, setTracesFrom");
     }
     Trackeable *obj = fileJsonManager.loadTrackeable(id);
-    obj->setTracesFrom(tracesFrom);
+
+
     fileJsonManager.save(obj);
 }
 
@@ -98,25 +99,46 @@ void ServicioTrackeable::addTraceFrom(OID id, OID traceFrom) {
     if (!fileJsonManager.exist(id)) throw std::invalid_argument("El id a modificar no existe, addTraceFrom");
     if (!fileJsonManager.exist(traceFrom)) throw std::invalid_argument("El id de traceFrom no existe, addTraceFrom");
     Trackeable *obj = fileJsonManager.loadTrackeable(id);
+    Trackeable *objTraceFrom = fileJsonManager.loadTrackeable(traceFrom);
     obj->addTraceFrom(traceFrom);
+    objTraceFrom->addTraceTo(id);
+
     fileJsonManager.save(obj);
+    fileJsonManager.save(objTraceFrom);
 }
 
 void ServicioTrackeable::removeTraceFrom(OID id, OID traceFrom) {
     if (!fileJsonManager.exist(id)) throw std::invalid_argument("El id a modificar no existe, removeTraceFrom");
     if (!fileJsonManager.exist(traceFrom)) throw std::invalid_argument("El id de traceFrom no existe, removeTraceFrom");
     Trackeable *obj = fileJsonManager.loadTrackeable(id);
+    Trackeable *objTraceFrom = fileJsonManager.loadTrackeable(traceFrom);
+
+
     obj->removeTraceFrom(traceFrom);
+    objTraceFrom->removeTraceTo(id);
     fileJsonManager.save(obj);
+    fileJsonManager.save(objTraceFrom);
 }
 
-void ServicioTrackeable::setTracesTo(OID id, std::list<OID> &tracesTo) {
+void ServicioTrackeable::setTracesTo(OID id, std::set<OID> &tracesTo) {
     if (!fileJsonManager.exist(id)) throw std::invalid_argument("El id a modificar no existe, setTracesTo");
     for(auto it = tracesTo.begin(); it != tracesTo.end(); ++it){
         if(!fileJsonManager.exist(*it)) throw std::invalid_argument("Uno de los id de tracesTo no existe, setTracesTo");
     }
     Trackeable *obj = fileJsonManager.loadTrackeable(id);
+    //clear tracesTo from obj
+    auto traces = obj->getTracesTo();
+    for(auto it = traces.begin(); it != traces.end(); ++it){
+        Trackeable *objTraceTo = fileJsonManager.loadTrackeable(*it);
+        objTraceTo->removeTraceFrom(id);
+        fileJsonManager.save(objTraceTo);
+    }
     obj->setTracesTo(tracesTo);
+    for (auto it = tracesTo.begin(); it != tracesTo.end(); ++it) {
+        Trackeable *objTraceTo = fileJsonManager.loadTrackeable(*it);
+        objTraceTo->addTraceFrom(id);
+        fileJsonManager.save(objTraceTo);
+    }
     fileJsonManager.save(obj);
 }
 
@@ -124,16 +146,22 @@ void ServicioTrackeable::addTraceTo(OID id, OID traceTo) {
     if (!fileJsonManager.exist(id)) throw std::invalid_argument("El id a modificar no existe, addTraceTo");
     if (!fileJsonManager.exist(traceTo)) throw std::invalid_argument("El id de traceTo no existe, addTraceTo");
     Trackeable *obj = fileJsonManager.loadTrackeable(id);
+    Trackeable *objTraceTo = fileJsonManager.loadTrackeable(traceTo);
     obj->addTraceTo(traceTo);
+    objTraceTo->addTraceFrom(id);
     fileJsonManager.save(obj);
+    fileJsonManager.save(objTraceTo);
 }
 
 void ServicioTrackeable::removeTraceTo(OID id, OID traceTo) {
     if (!fileJsonManager.exist(id)) throw std::invalid_argument("El id a modificar no existe, removeTraceTo");
     if (!fileJsonManager.exist(traceTo)) throw std::invalid_argument("El id de traceTo no existe, removeTraceTo");
     Trackeable *obj = fileJsonManager.loadTrackeable(id);
+    Trackeable *objTraceTo = fileJsonManager.loadTrackeable(traceTo);
     obj->removeTraceTo(traceTo);
+    objTraceTo->removeTraceFrom(id);
     fileJsonManager.save(obj);
+    fileJsonManager.save(objTraceTo);
 }
 
 void ServicioTrackeable::setChanges(OID id, std::list<Change> changes)
@@ -214,15 +242,15 @@ std::set<OID> ServicioTrackeable::getAuthors(OID id)
     return authorsToReturn;
 }
 
-std::list<OID> ServicioTrackeable::getTracesFrom(OID id)
+std::set<OID> ServicioTrackeable::getTracesFrom(OID id)
 {
     if (!fileJsonManager.exist(id)) throw std::invalid_argument("El id a modificar no existe, getTracesFrom");
     Trackeable *obj = fileJsonManager.loadTrackeable(id);
     //test if every traceFrom exists
-    std::list<OID> tracesFrom = obj->getTracesFrom();
-    std::list<OID> tracesFromToReturn;
+    std::set<OID> tracesFrom = obj->getTracesFrom();
+    std::set<OID> tracesFromToReturn;
     for(auto it = tracesFrom.begin(); it != tracesFrom.end(); ++it){
-        if(!fileJsonManager.exist(*it)) tracesFromToReturn.push_back(*it);
+        if(!fileJsonManager.exist(*it)) tracesFromToReturn.insert(*it);
     }
     //si tienen distinto tamaño es porque alguno no existe
     if(tracesFrom.size() != tracesFromToReturn.size())
@@ -233,15 +261,15 @@ std::list<OID> ServicioTrackeable::getTracesFrom(OID id)
     return tracesFromToReturn;
 }
 
-std::list<OID> ServicioTrackeable::getTracesTo(OID id)
+std::set<OID> ServicioTrackeable::getTracesTo(OID id)
 {
     if (!fileJsonManager.exist(id)) throw std::invalid_argument("El id a modificar no existe, getTracesTo");
     Trackeable *obj = fileJsonManager.loadTrackeable(id);
     //test if every traceTo exists
-    std::list<OID> tracesTo = obj->getTracesTo();
-    std::list<OID> tracesToToReturn;
+    std::set<OID> tracesTo = obj->getTracesTo();
+    std::set<OID> tracesToToReturn;
     for(auto it = tracesTo.begin(); it != tracesTo.end(); ++it){
-        if(!fileJsonManager.exist(*it)) tracesToToReturn.push_back(*it);
+        if(fileJsonManager.exist(*it)) tracesToToReturn.insert(*it);
     }
     //si tienen distinto tamaño es porque alguno no existe
     if(tracesTo.size() != tracesToToReturn.size())

@@ -65,6 +65,7 @@ public:
     json serializeOID(OID oid);
     json serializeVectorOfOID(const std::vector<OID> &vectorOfOID);
     json serializeListOfChanges(const std::list<Change> &listOfChanges);
+    json serializeVectorOfExceptions(std::vector<Exception> listOfExceptions);
 
     std::set<OID> deserializeSetOfOID(const json &j);
     std::vector<OID> deserializeVectorOfOID(const json &j);
@@ -73,6 +74,7 @@ public:
     TrackeableDTO deserializeTrackeableDTO(const json &j);
     PriorityDTO deserializePriorityDTO(const json &j);
     TimeQuantity deserializeTimeQuantity(const json &j);
+    std::vector<Exception> deserializeVectorOfExceptions(const json& j) ;
 
     json trackeablePart(Trackeable *objeto, json &j);
     json priorityPart(Priority *objeto, json &j);
@@ -80,9 +82,7 @@ public:
     void setTrackeablePart(TrackeableDTO trackeableDTO, Trackeable *trackeable);
     void setPriorityPart(PriorityDTO priorityDTO, Priority *priority);
 
-    json serializeListOfExceptions(std::list<Exception> listOfExceptions);
 
-    std::list<Exception> deserializeListOfExceptions(const json &j);
 };
 
 

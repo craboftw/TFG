@@ -7,6 +7,7 @@
 #include "nlohmann/json.hpp"
 #include "Visitor.h"
 #include "FileJsonManager.h"
+#include "Dominio/Trackeable/MatrixTraces.h"
 #include "Dominio/Trackeable/Organization.h"
 #include "Dominio/Trackeable/Stakeholder.h"
 
@@ -34,7 +35,9 @@ public:
     void visit(Stakeholder stakeholder) override;
     void visit(UserCase& userCase) override;
     void visit(Organization organization) override;
+    void visit(MatrixTraces matrixTraces);
     void visit(Text text) override;
+    void visit(UserStories userStories) override;
 
     void visit(Trackeable* trackeable) override;
     void visit(Priority *priority);
@@ -51,6 +54,8 @@ public:
     InformationRequirement deserializeInformationRequirement(json j);
     Organization deserializeOrganization(json j);
     Text deserializeText(json j);
+    MatrixTraces deserializeMatrixTraces(json j);
+    UserStories deserializeUserStories(json j);
 
     Trackeable *deserializeTrackeable(json j);
     Priority *deserializePriority(json j);

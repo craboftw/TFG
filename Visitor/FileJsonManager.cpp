@@ -211,6 +211,8 @@ Organization FileJsonManager::loadOrganization(OID id) {
     return jsoneitor.deserializeOrganization(j);
 }
 
+
+
 std::list<Organization> FileJsonManager::loadAllOrganization() {
     std::list<Organization> organizations;
     json j = loadAll("OR");
@@ -249,6 +251,18 @@ Text FileJsonManager::loadText(OID id) {
     json j = load(id);
     Jsoneitor jsoneitor;
     return jsoneitor.deserializeText(j);
+}
+
+MatrixTraces FileJsonManager::loadMatrixTraces(OID id) {
+    json j = load(id);
+    Jsoneitor jsoneitor;
+    return jsoneitor.deserializeMatrixTraces(j);
+}
+
+UserStories FileJsonManager::loadUserStories(OID id) {
+    json j = load(id);
+    Jsoneitor jsoneitor;
+    return jsoneitor.deserializeUserStories(j);
 }
 
 Trackeable *FileJsonManager::loadTrackeable(OID id) {
@@ -389,6 +403,28 @@ unsigned FileJsonManager::lastText() {
     return last;
 }
 
+unsigned FileJsonManager::lastMatrixTraces() {
+    json j = loadAll(MatrixTraces::getPrefixID());
+    int last = 0;
+    for (auto& element : j) {
+        if (last < element["id"]["id"]) {
+            last = element["id"]["id"];
+        }
+    }
+    return last;
+}
+
+unsigned int FileJsonManager::lastUserStories() {
+    json j = loadAll(UserStories::getPrefixID());
+    unsigned last = 0;
+    for (auto& element : j) {
+        if (last < element["id"]["id"]) {
+            last = element["id"]["id"];
+        }
+    }
+    return last;
+}
+
 
 void FileJsonManager::save(Stakeholder stakeholder) {
     Jsoneitor jsoneitor;
@@ -442,6 +478,12 @@ void FileJsonManager::save(Text text) {
 }
 
 
+void FileJsonManager::save(MatrixTraces matrixTraces) {
+    Jsoneitor jsoneitor;
+    jsoneitor.visit(matrixTraces);
+
+}
+
 void FileJsonManager::save(Trackeable *pTrackeable) {
     Jsoneitor jsoneitor;
     jsoneitor.visit(pTrackeable);
@@ -450,6 +492,11 @@ void FileJsonManager::save(Trackeable *pTrackeable) {
 void FileJsonManager::save(Priority* pPriority) {
     Jsoneitor jsoneitor;
     jsoneitor.visit(pPriority);
+}
+
+void FileJsonManager::save(UserStories userStories) {
+    Jsoneitor jsoneitor;
+    jsoneitor.visit(userStories);
 }
 
 void FileJsonManager::saveAll(std::list<Stakeholder> stakeholders) {

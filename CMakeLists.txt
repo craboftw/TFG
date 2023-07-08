@@ -10,12 +10,11 @@ add_library(TFG_Library
         Dominio/Priority/Priority.cpp
         Dominio/Trackeable/Stakeholder.cpp
         Dominio/Trackeable/Trackeable.cpp
+        Visitor/FileJsonManager.cpp
         Dominio/Generic.cpp
-        Visitor/Jsoneitor.cpp
         Dominio/UserCase.cpp
         Dominio/InformationRequirement.cpp
         Dominio/Trackeable/Organization.cpp
-        Visitor/FileJsonManager.cpp
         Servicio/ServicioUserCase.cpp
         Visitor/DiagramManager.cpp
         Servicio/ServicioInformationRequirement.cpp
@@ -26,7 +25,8 @@ add_library(TFG_Library
         Servicio/ServicioOrganization.cpp
         Servicio/ServicioActorUC.cpp
         Visitor/HtmlManager.cpp
-        Dominio/Trackeable/MatrixTraces.cpp Dominio/Trackeable/MatrixTraces.h)
+        Visitor/Jsoneitor.cpp
+        Dominio/Trackeable/MatrixTraces.cpp Servicio/ServicioMatrixTraces.cpp Servicio/ServicioMatrixTraces.h Dominio/UserStories.cpp Dominio/UserStories.h Servicio/ServicioUserStories.cpp Servicio/ServicioUserStories.h Servicio/ServicioHTML.cpp Servicio/ServicioHTML.h)
 
 add_executable(TFG_Executable main.cpp)
 

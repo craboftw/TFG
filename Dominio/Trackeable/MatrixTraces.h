@@ -11,11 +11,12 @@
 #include <vector>
 #include <map>
 #include "Trackeable.h"
-#include "Servicio/ServicioTrackeable.h"
+
+class FileJsonManager;
 
 class MatrixTraces : public Trackeable {
 public:
-    MatrixTraces(unsigned id): Trackeable(prefixID,id), servicioTrackeable() {
+    MatrixTraces(unsigned id): Trackeable(prefixID,id) {
         matrix.resize(0);
     }
     void addPrefixFrom(std::string prefix);
@@ -25,10 +26,16 @@ public:
 
     void addTrackeable(OID id);
     void removeTrackeable(OID id);
+    void setPrefixesTracesTo(std::set<std::string> prefixes);
+    void setPrefixesTracesFrom(std::set<std::string> prefixes);
+    void setTrackeables(std::set<OID> trackeables);
+
     std::set<OID> getTrackeablesFrom();
     std::set<OID> getTrackeablesTo();
     std::vector<std::vector<bool>> getMatrix();
     static std::string getPrefixID();
+    std::set<std::string> getPrefixesTracesTo();
+    std::set<std::string> getPrefixesTracesFrom();
     void visit(Visitor* visitor);
     void print();
 
@@ -43,9 +50,10 @@ private:
     std::vector<std::vector<bool>> matrix;
     std::map<unsigned ,OID > mapTracesTo;
     std::map<unsigned ,OID > mapTracesFrom;
-    ServicioTrackeable servicioTrackeable;
 
     inline static std::string prefixID = "MT";
+
+    void update();
 };
 
 

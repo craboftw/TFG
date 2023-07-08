@@ -14,10 +14,11 @@ const std::string COLOR_EXCEPTION_SEPARATOR = "#000000";
 const std::string COLOR_BORDER = "#08088A";
 const std::string COLOR_NAME = "#191970";
 
+
+
 std::string HtmlManager::generateHead(OID id){
     std::string html;
     html += "<html>";
-    html += "<head>";
     html += "<meta charset=\"UTF-8\">";
     html += "<style>";
     html += "table { width: 100%; border-collapse: collapse; border: 3px solid " + COLOR_BORDER + "; }";
@@ -68,6 +69,8 @@ std::string obtenerTipoTrackeable(OID id)
     mapa[Organization::getPrefixID()] = "Organización";
     mapa[RestrictionRequirement::getPrefixID()] = "Requisito de restricción";
     mapa[SystemObjective::getPrefixID()] = "Objetivo del sistema";
+    mapa[MatrixTraces::getPrefixID()] = "Matriz de trazabilidad";
+    mapa[UserStories::getPrefixID()] = "Historia de usuario";
 
     return mapa[id.getPrefix()];
 }
@@ -190,9 +193,9 @@ std::string HtmlManager::generateTable(std::list<SpecificInformation> lista)
     html += "<th style='font-family: Arial, sans-serif;' colspan='1'>Información específica</th>";
     html += "<td style='font-family: Arial, sans-serif;' colspan='5'>";
     for (const auto& info : lista) { //Añade una pelota gorda negra a la siguiente linea añadiendo lo siguiente: <span style='font-size: 20px;'>&#9679;</span>
-        html += "<span style='font-size: 20px;'>&#9679;</span>" ;
+        html += "<span style='font-size: 20px;'>&#9679; </span>" ;
         html += "<strong>"+info.name +":</strong> <br>"; //añade una sangria a la siguiente linea añadiendo lo siguiente: <span style='margin-left: 30px;'>" + info.description + "</span><br>";
-        html += " <span style='margin-left: 30px;'>\"" + info.description + "\"<br>";
+        html += " <span style='margin-left: 30px;'>\"" + info.description + "\"<br></span>";
     }
     html += "</td>";
     html += "</tr>";
@@ -221,6 +224,7 @@ std::string HtmlManager::generateTableInformationRequirement (OID requirement) {
 
     html += generateTableChanges(requirement);
     html += "</table>";
+    html += "</html>";
 
     return html;
 
@@ -384,6 +388,8 @@ std::string HtmlManager::generateTableUserCase(OID id) {
     html += generateTablePriority(id);
     html += generateTableChanges(id);
     html += "</table>";
+    html += "</html>";
+
 
     //add TFG/Diagrams/UseCaseDiagram.png
 
@@ -427,6 +433,8 @@ std::string HtmlManager::generateTableStakeholder(OID stakeholder) {
     html += generateTableChanges(stakeholder);
 
     html += "</table>";
+    html += "</html>";
+
     return html;
 }
 
@@ -450,6 +458,8 @@ std::string HtmlManager::generateTableActorUC(OID actorUC) {
 
     html += generateTableChanges(actorUC);
     html += "</table>";
+    html += "</html>";
+
     return html;
 }
 
@@ -486,12 +496,14 @@ std::string HtmlManager::generateTableText(OID requirement) {
     }
 
     // Construir el HTML final
+    html += "<html>";
     html += "<p style='font-family: Arial, sans-serif; padding: 10px;'>";
     for (const std::string& para : paragraphs) {
         html += "<span style='font-size: 18px; color: #333333;'>";
         html += para;
         html += "</span></p>";
     }
+    html += "</html>";
 
     return html;
 }
@@ -502,7 +514,8 @@ std::string HtmlManager::generateTableNonFunctionalRequirement(OID requirement) 
     html += generateTablePriority(requirement);
     html += generateTableChanges(requirement);
 
-    html += "</table>";
+    html += "</table>";    html += "</html>";
+
     return html;
 }
 
@@ -512,7 +525,8 @@ std::string HtmlManager::generateTableFunctionalRequirement(OID requirement) {
     html += generateTablePriority(requirement);
     html += generateTableChanges(requirement);
 
-    html += "</table>";
+    html += "</table>";    html += "</html>";
+
     return html;
 }
 
@@ -522,7 +536,8 @@ std::string HtmlManager::generateTableSystemObjetive(OID requirement) {
     html += generateTablePriority(requirement);
     html += generateTableChanges(requirement);
 
-    html += "</table>";
+    html += "</table>";    html += "</html>";
+
     return html;
 }
 
@@ -531,7 +546,8 @@ std::string HtmlManager::generateTableRestrictionRequirement(OID requirement) {
 
     html += generateTablePriority(requirement);
     html += generateTableChanges(requirement);
-    html += "</table>";
+    html += "</table>";    html += "</html>";
+
     return html;
 }
 
@@ -544,12 +560,13 @@ std::string HtmlManager::generateTableOrganization(OID organization) {
     html += "<td style='font-family: Arial, sans-serif;'colspan=3>" + servicioOrganization.getContactInfo(organization) + "</td>";
     html += "</tr>";
 
-    html += "</table>";
+    html += "</table>";    html += "</html>";
+
     return html;
 
 }
 
-std::string HtmlManager::generateMatrixTraces(MatrixTraces matrix)
+std::string HtmlManager::generateMatrixTraces(OID id)
 {
     std::string html;
     html += "<html>";
@@ -568,7 +585,7 @@ std::string HtmlManager::generateMatrixTraces(MatrixTraces matrix)
     html += "<table>";
 
     //Cada elemento de trackeableto ocupara una columna
-    auto trackeableTo = matrix.getTrackeablesTo();
+    auto trackeableTo = servicioMatrixTraces.getTrackeablesTo(id);
     html += "<tr>";
     html += "<th style='font-family: Arial, sans-serif;'>Requerimientos</th>";
     for (auto trackeable : trackeableTo)
@@ -578,8 +595,8 @@ std::string HtmlManager::generateMatrixTraces(MatrixTraces matrix)
 html += "</tr>";
 
         //Cada elemento de trackeableFrom ocupara una fila
-        auto trackeableFrom = matrix.getTrackeablesFrom();
-        auto matrixbool = matrix.getMatrix();
+        auto trackeableFrom = servicioMatrixTraces.getTrackeablesFrom(id);
+        auto matrixbool = servicioMatrixTraces.getMatrix(id);
         unsigned int i = 0;
         for (auto trackeable : trackeableFrom)
         {
@@ -607,21 +624,182 @@ html += "</tr>";
 
         // Cerrar la tabla
         html += "</table>";
-        html += "</body>";
         html += "</html>";
 
         return html;
 
 }
+std::string HtmlManager::generateTableUserStory(OID id)
+{
+    std::string role = servicioUserStories.getRole(id);
+    std::string goal = servicioUserStories.getGoal(id);
+    std::string benefit = servicioUserStories.getBenefit(id);
+    unsigned priorityPoints = servicioUserStories.getPriorityPoints(id);
+    unsigned devTimePoints = servicioUserStories.getDevTimePoints(id);
+
+    std::string html = generateHead(id) ;
 
 
 
+    html += "<tr>";
+    html += "<th style='font-family: Arial, sans-serif;'>Rol</th>";
+    html += "<td style='font-family: Arial, sans-serif;'colspan=3>" + role + "</td>";
+    html += "</tr>";
+    html += "<tr>";
+    html += "<th style='font-family: Arial, sans-serif;'>Meta</th>";
+    html += "<td style='font-family: Arial, sans-serif;'colspan=3>" + goal + "</td>";
+    html += "</tr>";
+    html += "<tr>";
+    html += "<th style='font-family: Arial, sans-serif;'>Beneficio</th>";
+    html += "<td style='font-family: Arial, sans-serif;'colspan=3>" + benefit + "</td>";
+    html += "</tr>";
+    html += "<tr>";
+    html += "<th style='font-family: Arial, sans-serif;'>Time Points</th>";
+    html += "<td style='font-family: Arial, sans-serif;'>" + std::to_string(devTimePoints) + "</td>";
+    html += "<th style='font-family: Arial, sans-serif;'>Priority Points</th>";
+    html += "<td style='font-family: Arial, sans-serif;'>" + std::to_string(priorityPoints) + "</td>";
+    html += "</tr>";
+    html += generateTablePriority(id);
+    html += generateTableChanges(id);
+
+    html += "</table>";
+    html += "</html>";
+
+    return html;
+}
+
+std::string HtmlManager::generateUserStory(OID id) {
+    std::string html;
+
+    std::string role = servicioUserStories.getRole(id);
+    std::string goal = servicioUserStories.getGoal(id);
+    std::string benefit = servicioUserStories.getBenefit(id);
+    unsigned priorityPoints = servicioUserStories.getPriorityPoints(id);
+    unsigned devTimePoints = servicioUserStories.getDevTimePoints(id);
+
+    html += "<table style='width: 100%; border-collapse: collapse;'>";
+    html += "<tr style='line-height: 60%;'>";
+    html += "<th style='font-family: Arial, sans-serif; background-color: " + COLOR_NAME + "; color: " + COLOR_HEADER_TEXT + "; width: 50%; font-size: 60%; padding: 0;'>Time Points: " + std::to_string(devTimePoints) + "</th>";
+    html += "<td style='font-family: Arial, sans-serif; color: " + COLOR_HEADER_TEXT + "; background-color: " + COLOR_NAME + "; width: 50%; font-size: 60%; padding: 0;'> <strong> Importance Points: " + std::to_string(priorityPoints) + "</strong></td>";
+    html += "</tr>";
+    html += "</table>";
 
 
 
+    html += "<table style='width: 100%; border-top: 0px solid " + COLOR_BORDER + ";'>";
+    html += "<tr>";
+    html += "<th style='font-family: Arial, sans-serif; width: 20%;'>Como</th>";
+    html += "<td style='font-family: Arial, sans-serif;'>" + role + "</td>";
+    html += "</tr>";
+    html += "<tr>";
+    html += "<th style='font-family: Arial, sans-serif; width: 20%; border-top: 0px;'>Quiero</th>";
+    html += "<td style='font-family: Arial, sans-serif;'>" + goal + "</td>";
+    html += "</tr>";
+    html += "<tr>";
+    html += "<th style='font-family: Arial, sans-serif; width: 20%; border-top: 0px;'>Para</th>";
+    html += "<td style='font-family: Arial, sans-serif;'>" + benefit + "</td>";
+    html += "</tr>";
+    html += "</table>";
+
+    return html;
+}
 
 
+std::string HtmlManager::generateUserStory(const std::list<OID>& listID) {
+    std::string html;
+    // El mismo código que generateUserStory(OID id), pero para una lista de OID. En este caso, la tabla ocupará todo el ancho de la página o el ancho del contenedor,
+    // siendo cada tabla un cuarto del ancho de la página.
+    html += "<table style='width: 100%;'>";
+    unsigned int i = 0;
+    html += "<tr>";
+    for (auto id : listID) {
+        if (i != 4) {
+            html += "<td style='width: 25%;'>";
+            html += generateUserStory(id);
+            html += "</td>";
+            i++;
+        } else {
+            html += "</tr><tr>";
+            html += "<td style='width: 25%;'>";
+            html += generateUserStory(id);
+            html += "</td>";
+            i = 1;
+        }
+    }
+    html += "</tr>";
+    html += "</table>";
+    html += "</html>";
+
+    return html;
+}
 
 
+unsigned IndexHTMLelement::getPos() const {
+    return pos ;
+}
 
+void IndexHTMLelement::setPos(unsigned int pos) {
+    this->pos = pos;
+}
 
+OID IndexHTMLelement::getId() const {
+    return id;
+}
+
+std::set<OID> IndexHTMLelement::getElementsToPrint() const {
+    return elementsToPrint;
+}
+
+void IndexHTMLelement::setElementsToPrint(const std::set<OID> &elementsToPrint) {
+    this->elementsToPrint = elementsToPrint;
+}
+
+void IndexHTMLelement::addElementToPrint(OID id) {
+    elementsToPrint.insert(id);
+}
+
+void IndexHTMLelement::addElementToPrint(std::set<OID> ids) {
+    elementsToPrint.insert(ids.begin(), ids.end());
+}
+
+void IndexHTMLelement::removeElementToPrint(OID id) {
+    elementsToPrint.erase(id);
+}
+
+void IndexHTMLelement::removeElementToPrint(std::set<OID> ids) {
+    for (auto id : ids) {
+        elementsToPrint.erase(id);
+    }
+}
+
+void IndexHTMLelement::addsubLevel(IndexHTMLelement hijo) {
+    sublevels.push_back(hijo);
+}
+
+void IndexHTMLelement::removeSubLevel(unsigned int pos) {
+    sublevels.erase(sublevels.begin() + pos);
+}
+
+std::vector<IndexHTMLelement> IndexHTMLelement::getSublevels() const {
+    return sublevels;
+}
+
+IndexHTMLelement IndexHTMLelement::getSubLevel(unsigned int pos) const {
+    return sublevels[pos];
+}
+
+void IndexHTMLelement::setsubLevel(IndexHTMLelement hijo, unsigned int pos) {
+    sublevels[pos] = hijo;
+}
+
+void IndexHTMLelement::setId(OID id) {
+    this->id = id;
+}
+
+std::string IndexHTMLelement::getName() const {
+    return name;
+}
+
+void IndexHTMLelement::setName(std::string name) {
+    this->name = name;
+}

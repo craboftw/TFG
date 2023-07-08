@@ -7,10 +7,10 @@
 #include "Dominio/InformationRequirement.h"
 #include "Dominio/Generic.h"
 #include "Dominio/Trackeable/Stakeholder.h"
+#include "Dominio/Trackeable/MatrixTraces.h"
 
 using json = nlohmann::json;
 
-class InformationRequirement;
 class ActorUC;
 class SystemObjective;
 class RestrictionRequirement;
@@ -711,6 +711,110 @@ Text Jsoneitor::deserializeText(json j) {
 
         return t;
 }
+
+void Jsoneitor::visit(MatrixTraces matrixTraces) {
+
+        json j;
+
+        /*｡o°✥✤✣TRACKEABLE PART✣✤✥°o｡*/
+        j= trackeablePart(&matrixTraces,j);
+
+        /*｡o°✥✤✣MATRIX TRACES PART✣✤✥°o｡*/
+        j["prefixesTracesTo"] = matrixTraces.getPrefixesTracesTo();
+        j["prefixesTracesFrom"] = matrixTraces.getPrefixesTracesFrom();
+        j["TrackeableTo"] = serializeSetOfOID(matrixTraces.getTrackeablesTo());
+        j["TrackeableFrom"] = serializeSetOfOID(matrixTraces.getTrackeablesFrom());
+        FileJsonManager::save(j);
+}
+
+MatrixTraces Jsoneitor::deserializeMatrixTraces(json j) {
+
+        /*｡o°✥✤✣TRACKEABLE PART✣✤✥°o｡*/
+        TrackeableDTO trackeableDTO = deserializeTrackeableDTO(j);
+
+        /*｡o°✥✤✣MATRIX TRACES GET✣✤✥°o｡*/
+        std::set<std::string> prefixesTracesTo = j["prefixesTracesTo"];
+        std::set<std::string> prefixesTracesFrom = j["prefixesTracesFrom"];
+        std::set<OID> trackeablesTo = deserializeSetOfOID(j["TrackeableTo"]);
+        std::set<OID> trackeablesFrom = deserializeSetOfOID(j["TrackeableFrom"]);
+
+
+
+        /*｡o°✥✤✣TRACKEABLE SET✣✤✥°o｡*/
+        MatrixTraces m(trackeableDTO.id.getId());
+        setTrackeablePart(trackeableDTO, &m);
+
+        m.setPrefixesTracesTo(prefixesTracesTo);
+        m.setPrefixesTracesFrom(prefixesTracesFrom);
+        for (OID oid : trackeablesTo) {
+            trackeablesFrom.insert(oid);
+        }
+        m.setTrackeables(trackeablesFrom);
+
+
+        /*｡o°✥✤✣MATRIX TRACES SET✣✤✥°o｡*/
+
+        return m;
+}
+
+void Jsoneitor::visit(UserStories userStories) {
+
+            json j;
+
+            /*｡o°✥✤✣TRACKEABLE PART✣✤✥°o｡*/
+            j= trackeablePart(&userStories,j);
+            j= priorityPart(&userStories,j);
+
+            /*｡o°✥✤✣USER STORIES PART✣✤✥°o｡*/
+            //std::string getRole();
+    //    std::string getGoal();
+    //    std::string getBenefit();
+    //    unsigned getPriorityPoints();
+    //    unsigned getDevTimePoints();
+
+            j["role"] = userStories.getRole();
+            j["goal"] = userStories.getGoal();
+            j["benefit"] = userStories.getBenefit();
+            j["priorityPoints"] = userStories.getPriorityPoints();
+            j["devTimePoints"] = userStories.getDevTimePoints();
+
+            FileJsonManager::save(j);
+}
+
+UserStories Jsoneitor::deserializeUserStories(json j) {
+
+                /*｡o°✥✤✣TRACKEABLE PART✣✤✥°o｡*/
+                TrackeableDTO trackeableDTO = deserializeTrackeableDTO(j);
+
+                /*｡o°✥✤✣PRIORITY PART✣✤✥°o｡*/
+                PriorityDTO priorityDTO = deserializePriorityDTO(j);
+
+                /*｡o°✥✤✣USER STORIES GET✣✤✥°o｡*/
+                std::string role = j["role"];
+                std::string goal = j["goal"];
+                std::string benefit = j["benefit"];
+                unsigned priorityPoints = j["priorityPoints"];
+                unsigned devTimePoints = j["devTimePoints"];
+
+                /*｡o°✥✤✣TRACKEABLE SET✣✤✥°o｡*/
+                UserStories u(trackeableDTO.id.getId());
+                setTrackeablePart(trackeableDTO, &u);
+
+                /*｡o°✥✤✣PRIORITY SET✣✤✥°o｡*/
+                setPriorityPart(priorityDTO, &u);
+
+                /*｡o°✥✤✣USER STORIES SET✣✤✥°o｡*/
+                u.setRole(role);
+                u.setGoal(goal);
+                u.setBenefit(benefit);
+                u.setPriorityPoints(priorityPoints);
+                u.setDevTimePoints(devTimePoints);
+
+                return u;
+}
+
+
+
 
 
 

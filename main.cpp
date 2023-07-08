@@ -10,6 +10,7 @@
 #include "Servicio/ServicioUserCase.h"
 #include "Visitor/HtmlManager.h"
 #include "Dominio/Trackeable/MatrixTraces.h"
+#include "Servicio/ServicioMatrixTraces.h"
 
 std::string generateHTML(InformationRequirement& requirement) {
     std::string html;
@@ -622,6 +623,80 @@ OID pruebaServicioOrganitacion()
     servicioOrganizacion.setContactInfo(id,"www.megacorp.com");
 
 
+    return id;
+}
+
+void pruebaServicioMatrix()
+{
+    /*   MatrixTraces matrixTraces(1);
+    matrixTraces.addPrefixFrom("UC");
+    matrixTraces.addPrefixFrom("OR");
+    matrixTraces.addPrefixFrom("IR");
+    matrixTraces.addPrefixTo("UC");
+    matrixTraces.addPrefixTo("FR");
+    matrixTraces.addPrefixTo("SO");
+    matrixTraces.addPrefixTo("NF");
+    matrixTraces.addPrefixTo("TX");
+    matrixTraces.addPrefixTo("IR");
+    matrixTraces.addPrefixTo("AC");
+    matrixTraces.addPrefixTo("SH");
+    matrixTraces.addPrefixTo("OR");
+    matrixTraces.addPrefixTo("IN");
+    matrixTraces.addPrefixTo("TE");
+    matrixTraces.addPrefixTo("PR");
+
+    matrixTraces.addTrackeable(uc);
+    matrixTraces.addTrackeable(fr);
+    matrixTraces.addTrackeable(so);
+    matrixTraces.addTrackeable(nf);
+    matrixTraces.addTrackeable(tx);
+    matrixTraces.addTrackeable(ir);
+    matrixTraces.addTrackeable(ac);
+    matrixTraces.addTrackeable(sh);
+    matrixTraces.addTrackeable({"OR",1});
+    matrixTraces.addTrackeable({"UC",2});*/
+
+    ServicioMatrixTraces servicioMatrixTraces;
+    auto id = servicioMatrixTraces.createMatrixTraces("la matriz");
+    servicioMatrixTraces.addPrefixFrom(id,"UC");
+    servicioMatrixTraces.addPrefixFrom(id,"OR");
+    servicioMatrixTraces.addPrefixFrom(id,"IR");
+    servicioMatrixTraces.addPrefixTo(id,"UC");
+    servicioMatrixTraces.addPrefixTo(id,"FR");
+    servicioMatrixTraces.addPrefixTo(id,"SO");
+    servicioMatrixTraces.addPrefixTo(id,"NF");
+    servicioMatrixTraces.addPrefixTo(id,"TX");
+    servicioMatrixTraces.addPrefixTo(id,"IR");
+    servicioMatrixTraces.addPrefixTo(id,"AC");
+    servicioMatrixTraces.addPrefixTo(id,"SH");
+    servicioMatrixTraces.addPrefixTo(id,"OR");
+    servicioMatrixTraces.addPrefixTo(id,"IN");
+    servicioMatrixTraces.addPrefixTo(id,"TE");
+    servicioMatrixTraces.addPrefixTo(id,"PR");
+    OID fr = {"FR",1};
+    OID so = {"SO",1};
+    OID nf = {"NF",1};
+    OID tx = {"TX",1} ;
+    OID ir = {"IR",1} ;
+    OID uc = {"UC",1} ;
+    OID uc2 = {"UC",2} ;
+    OID ac = {"AC",1} ;
+    OID sh = {"SH",1} ;
+
+    servicioMatrixTraces.addTrackeable(id,uc);
+    servicioMatrixTraces.addTrackeable(id,fr);
+    servicioMatrixTraces.addTrackeable(id,so);
+    servicioMatrixTraces.addTrackeable(id,nf);
+    servicioMatrixTraces.addTrackeable(id,tx);
+    servicioMatrixTraces.addTrackeable(id,ir);
+    servicioMatrixTraces.addTrackeable(id,ac);
+    servicioMatrixTraces.addTrackeable(id,sh);
+    servicioMatrixTraces.addTrackeable(id,{"OR",1});
+    servicioMatrixTraces.addTrackeable(id,{"UC",2});
+    servicioMatrixTraces.addTrackeable(id,{"IR",1});
+    servicioMatrixTraces.addTrackeable(id,{"IN",1});
+
+
 
 }
 
@@ -634,10 +709,10 @@ int main() {
     ServicioSystemObjective servicioSystemObjective;
     ServicioInformationRequirement servicioInformationRequirement;
     ServicioActorUC servicioActorUC;
- //crear un actor a traves de un actor uc
- auto iduc = servicioUserCase.createUserCase("Hacer un coxme");
-    std::set<OID> actors;
- //ADD RANDOM TRACES
+    ServicioUserStories servicioUserStories;
+
+
+
 
 
     OID fr = {"FR",1};
@@ -650,43 +725,10 @@ int main() {
     OID ac = {"AC",1} ;
     OID sh = {"SH",1} ;
     auto setVacio = std::set<OID>();
-    servicioStakeholder.setTracesTo(fr,setVacio);
-    servicioStakeholder.setTracesTo(so,setVacio);
-    servicioStakeholder.setTracesTo(nf,setVacio);
-    servicioStakeholder.setTracesTo(tx,setVacio);
-    servicioStakeholder.setTracesTo(ir,setVacio);
-    servicioStakeholder.setTracesTo(uc,setVacio);
-    servicioStakeholder.setTracesTo(uc2,setVacio);
-    servicioStakeholder.setTracesTo(ac,setVacio);
-
-
-    servicioStakeholder.addTraceTo(fr,sh);
-    servicioStakeholder.addTraceTo(so,sh);
-    servicioStakeholder.addTraceTo(nf,sh);
-    servicioStakeholder.addTraceTo(tx,sh);
-    servicioStakeholder.addTraceTo(ir,sh);
-    servicioStakeholder.addTraceTo(uc,sh);
-    servicioStakeholder.addTraceTo(ac,sh);
-
-
-    servicioUserCase.addTraceTo(fr,uc);
-    servicioUserCase.addTraceTo(so,uc);
-    servicioUserCase.addTraceTo(nf,uc);
-    servicioUserCase.addTraceTo(tx,uc);
-    servicioUserCase.addTraceTo(uc2,uc) ;
-    servicioUserCase.addTraceTo(uc2,ac);
-    servicioUserCase.addTraceTo(uc2,fr);
-    servicioUserCase.addTraceTo(uc2,so);
-    servicioUserCase.addTraceTo(uc2,nf);
-    servicioUserCase.addTraceTo(uc2,tx);
-    servicioUserCase.addTraceTo(uc2,ir);
-    servicioUserCase.addTraceTo(uc2,sh);
-
 
     HtmlManager htmlManager;
     std::list <OID> userCases;
     //insert iduc in the list usercases
-    userCases.push_back(iduc);
     userCases = {{"UC",1},{"UC",2}};
     auto htmlir = htmlManager.generateTableInformationRequirement(ir);
     std::ofstream file;
@@ -716,38 +758,22 @@ int main() {
     file<<htmlManager.generateTableFunctionalRequirement(fr) ;
     file<<"<br>";
     file<<htmlManager.generateTableSystemObjetive(so) ;
+    pruebaServicioMatrix();
 
-    MatrixTraces matrixTraces(1);
-    matrixTraces.addPrefixFrom("UC");
-    matrixTraces.addPrefixFrom("OR");
-    matrixTraces.addPrefixFrom("IR");
-    matrixTraces.addPrefixTo("UC");
-    matrixTraces.addPrefixTo("FR");
-    matrixTraces.addPrefixTo("SO");
-    matrixTraces.addPrefixTo("NF");
-    matrixTraces.addPrefixTo("TX");
-    matrixTraces.addPrefixTo("IR");
-    matrixTraces.addPrefixTo("AC");
-    matrixTraces.addPrefixTo("SH");
-    matrixTraces.addPrefixTo("OR");
-    matrixTraces.addPrefixTo("IN");
-    matrixTraces.addPrefixTo("TE");
-    matrixTraces.addPrefixTo("PR");
+    auto matrix = OID {"MT",1};
 
-    matrixTraces.addTrackeable(uc);
-    matrixTraces.addTrackeable(fr);
-    matrixTraces.addTrackeable(so);
-    matrixTraces.addTrackeable(nf);
-    matrixTraces.addTrackeable(tx);
-    matrixTraces.addTrackeable(ir);
-    matrixTraces.addTrackeable(ac);
-    matrixTraces.addTrackeable(sh);
-    matrixTraces.addTrackeable({"OR",1});
-    matrixTraces.addTrackeable({"UC",2});
-
-    matrixTraces.print();
     file<<"<br>";
-    file<<htmlManager.generateMatrixTraces(matrixTraces);
+    file<<htmlManager.generateMatrixTraces(matrix);
+    file<<"<br>";
+    std::list<OID> listaus; //hasta el 11
+    listaus = {{"US",1},{"US",2}, {"US",4}, {"US",5}, {"US",6}};
+    for (auto &us : listaus) {
+        file << htmlManager.generateTableUserStory(us);
+        //make a separator between the tables
+        file << "<br>";
+    }
+    file<<htmlManager.generateUserStory(listaus);
+
 
 
     return 0 ;

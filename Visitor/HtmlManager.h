@@ -15,6 +15,8 @@
 #include "Servicio/ServicioOrganization.h"
 #include "Servicio/ServicioGeneric.h"
 #include "Dominio/Trackeable/MatrixTraces.h"
+#include "Servicio/ServicioMatrixTraces.h"
+#include "Servicio/ServicioUserStories.h"
 
 class HtmlManager {
 public:
@@ -38,7 +40,11 @@ public:
     std::string generateTableFunctionalRequirement(OID requirement);
     std::string generateTableRestrictionRequirement(OID requirement);
     std::string generateTableOrganization(OID organization);
-    std::string generateMatrixTraces(MatrixTraces matrixTraces);
+    std::string generateMatrixTraces(OID matrixTraces);
+    std::string generateUserStory(OID id);
+    std::string generateUserStory(const std::list<OID>& listID);
+    std::string generateTableUserStory(OID id);
+
 
 private:
     ServicioTrackeable servicioTrackeable;
@@ -49,6 +55,8 @@ private:
     ServicioInformationRequirement servicioInformationRequirement;
     ServicioOrganization servicioOrganization;
     ServicioText servicioText;
+    ServicioMatrixTraces servicioMatrixTraces;
+    ServicioUserStories servicioUserStories;
 
 
     std::string generateTable(std::list<SpecificInformation> lista);
@@ -58,6 +66,45 @@ private:
 
     std::string generateHead(OID id);
 
+
+};
+
+class IndexHTMLelement {
+public:
+    IndexHTMLelement(unsigned ida) : id(prefixID,ida) {}
+    unsigned getPos() const;
+    void setPos(unsigned pos);
+    OID getId() const;
+    void setId(OID id);
+
+    std::string getName() const;
+    void setName(std::string name);
+
+    std::set<OID> getElementsToPrint() const;
+    void setElementsToPrint(const std::set<OID> &elementsToPrint);
+
+    void addElementToPrint(OID id);
+    void addElementToPrint(std::set<OID> ids);
+    void removeElementToPrint(OID id);
+    void removeElementToPrint(std::set<OID> ids);
+
+    std::vector<IndexHTMLelement> getSublevels() const;
+    void addsubLevel(IndexHTMLelement list);
+    void setsubLevel(IndexHTMLelement hijo, unsigned pos);
+    void removeSubLevel(unsigned pos);
+    IndexHTMLelement getSubLevel(unsigned pos) const;
+
+    static std::string getPrefixID() {return prefixID;}
+
+
+
+private:
+    OID id;
+    std::string name;
+    unsigned pos;
+    std::set<OID> elementsToPrint;
+    std::vector<IndexHTMLelement> sublevels;
+    inline static std::string prefixID = "IE";
 
 };
 

@@ -10,6 +10,7 @@
 #include "Dominio/InformationRequirement.h"
 #include "Dominio/Generic.h"
 #include "Dominio/Trackeable/Stakeholder.h"
+#include "Dominio/UserStories.h"
 
 
 class ActorUC;
@@ -32,6 +33,7 @@ public:
     virtual void visit(UserCase& userCase) = 0;
     virtual void visit(Organization organization) = 0;
     virtual void visit(Text text) = 0;
+    virtual void visit(UserStories userStories) = 0;
     virtual void visit(Trackeable* trackeable) = 0;
     virtual void visit(Priority* priority) = 0;
     virtual ~Visitor() = default;

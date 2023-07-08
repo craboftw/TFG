@@ -7,30 +7,31 @@
 
 #include "nlohmann/json.hpp"
 #include "Dominio/Trackeable/Trackeable.h"
-#include "Jsoneitor.h"
+#include "Dominio/Trackeable/Stakeholder.h"
+#include "Dominio/Trackeable/Organization.h"
+#include "Dominio/Generic.h"
+#include "Dominio/InformationRequirement.h"
+#include "Dominio/UserCase.h"
+#include "Visitor/Jsoneitor.h"
+#include "Dominio/UserStories.h"
 #include <fstream>
 #include <iostream>
 #include <string>
-#define STAKEHOLDER 0
-#define RESTRICTION_REQUIREMENT 1
-#define FUNCTIONAL_REQUIREMENT 2
-#define NON_FUNCTIONAL_REQUIREMENT 3
-#define ACTOR_UC 4
-#define INFORMATION_REQUIREMENT 5
-#define ORGANIZATION 6
-#define ROL_STAKEHOLDER 7
-#define SYSTEM_OBJECTIVE 8
-#define USER_CASE 9
+
+
+
+class MatrixTraces;
 
 using json = nlohmann::json;
+
+
 
 
 
 class FileJsonManager {
 private:
     json loadAll(std::string prefix);
-
-    std::map<unsigned , std::string > prefixes = { {STAKEHOLDER,"SH",},{RESTRICTION_REQUIREMENT,"RR"},{FUNCTIONAL_REQUIREMENT,"FR"},{NON_FUNCTIONAL_REQUIREMENT,"NF"},{ACTOR_UC,"AC"},{INFORMATION_REQUIREMENT,"IR"},{ORGANIZATION,"OR"},{ROL_STAKEHOLDER,"RS"},{SYSTEM_OBJECTIVE,"SO"},{USER_CASE,"UC"}};
+    //reverse map
 public:
 
 
@@ -44,8 +45,11 @@ public:
     SystemObjective loadSystemObjective(OID id);
     UserCase loadUserCase(OID id);
     Text loadText(OID id);
+    MatrixTraces loadMatrixTraces(OID id);
+    UserStories loadUserStories(OID id);
+
     Trackeable* loadTrackeable(OID id);
-    Priority *loadPriority(OID oid);
+    Priority *loadPriority(OID oid) ;
 
     std::list<Stakeholder> loadAllStakeholder();
     std::list<RestrictionRequirement> loadAllRestrictionRequirement();
@@ -70,6 +74,8 @@ public:
     unsigned lastSystemObjective();
     unsigned lastUserCase();
     unsigned lastText();
+    unsigned lastMatrixTraces();
+    unsigned lastUserStories();
 
     static void save(json singlejson);
 
@@ -83,6 +89,8 @@ public:
     void save(SystemObjective systemObjective);
     void save(UserCase& userCase);
     void save(Text text);
+    void save(MatrixTraces matrixTraces);
+    void save(UserStories userStories);
     void save(Priority* priority);
     void save(Trackeable* trackeable);
 
@@ -100,7 +108,6 @@ public:
 
 
     json load(OID id);
-
 
 };
 

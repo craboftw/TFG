@@ -19,6 +19,9 @@ public:
     MatrixTraces(unsigned id): Trackeable(prefixID,id) {
         matrix.resize(0);
     }
+    MatrixTraces() : Trackeable(OID()) {
+        matrix.resize(0);
+    }
     void addPrefixFrom(std::string prefix);
     void addPrefixTo(std::string prefix);
     void removePrefixFrom(std::string prefix);

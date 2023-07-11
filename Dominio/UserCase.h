@@ -43,7 +43,7 @@ private:
 
 
 public:
-    Step(bool abstract = false, std::string condition ="", std::string comments ="") : abstract(abstract), condition(std::move(condition)), comments(std::move(comments)) {}
+    Step(bool abstract = false, std::string description ="", std::string comments ="") : abstract(abstract), description(std::move(description)), comments(std::move(comments)) {}
     bool getAbstract() const;
     std::string getDescription() const;
     std::string getCondition() const;
@@ -81,7 +81,7 @@ class UserCase : virtual public Trackeable, public Priority {
 
 public:
     UserCase(unsigned id) : Trackeable(prefixID , id), abstract(false), precondition(""), postcondition(""), frequency(),package(""),generalization(){}
-
+    UserCase() : Trackeable(OID()), abstract(false), precondition(""), postcondition(""), frequency(),package(""),generalization(){}
     void setAbstract(bool _abstract);
     void setPrecondition(std::string _precondition);
     void setPostcondition(std::string _postcondition);

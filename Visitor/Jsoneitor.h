@@ -15,9 +15,8 @@
 // for convenience
 using json = nlohmann::json;
 
-class TrackeableDTO;
-
-class PriorityDTO;
+class Trackeable;
+class Priority;
 
 class Jsoneitor : public Visitor {
 private:
@@ -66,7 +65,7 @@ public:
     json serializeTimeQuantity(const TimeQuantity &timeQuantity);
     json serializeVectorOfSteps(const std::vector<Step> &vectorOfSteps);
     json serializeListOfOID(const std::list<OID> &listOfOID);
-    json serializeSetOfOID(const std::set<OID> &setOfOID);
+    json serializeSetOfOID(const std::set<OID> setOfOID);
     json serializeOID(OID oid);
     json serializeVectorOfOID(const std::vector<OID> &vectorOfOID);
     json serializeListOfChanges(const std::list<Change> &listOfChanges);

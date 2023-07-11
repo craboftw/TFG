@@ -17,18 +17,11 @@
 #include "Dominio/Trackeable/MatrixTraces.h"
 #include "Servicio/ServicioMatrixTraces.h"
 #include "Servicio/ServicioUserStories.h"
+#include "LinkedGeneralTree.cpp"
 
 class HtmlManager {
 public:
 
-    std::string generateTable(ActorUC actorUC);
-    std::string generateTable(UserCase userCase);
-    std::string generateTable(NonFunctionalRequirement nonFunctionalRequirement);
-    std::string generateTable(FunctionalRequirement functionalRequirement);
-    std::string generateTable(RestrictionRequirement restrictionRequirement);
-    std::string generateTable(InformationRequirement requirement);
-    std::string generateTable(SystemObjective systemObjective);
-    std::string generateText(Text text);
 
     std::string generateTableStakeholder(OID stakeholder);
     std::string generateTableUserCase(OID id);
@@ -69,44 +62,36 @@ private:
 
 };
 
-class IndexHTMLelement {
+typedef struct {
+    unsigned id;
+    std::string titulo;
+    std::string indice;
+    std::vector<OID> elementos;
+}ElementosIndex;
+
+class Index {
 public:
-    IndexHTMLelement(unsigned ida) : id(prefixID,ida) {}
-    unsigned getPos() const;
-    void setPos(unsigned pos);
-    OID getId() const;
-    void setId(OID id);
-
-    std::string getName() const;
-    void setName(std::string name);
-
-    std::set<OID> getElementsToPrint() const;
-    void setElementsToPrint(const std::set<OID> &elementsToPrint);
-
-    void addElementToPrint(OID id);
-    void addElementToPrint(std::set<OID> ids);
-    void removeElementToPrint(OID id);
-    void removeElementToPrint(std::set<OID> ids);
-
-    std::vector<IndexHTMLelement> getSublevels() const;
-    void addsubLevel(IndexHTMLelement list);
-    void setsubLevel(IndexHTMLelement hijo, unsigned pos);
-    void removeSubLevel(unsigned pos);
-    IndexHTMLelement getSubLevel(unsigned pos) const;
-
-    static std::string getPrefixID() {return prefixID;}
-
+    Index(){index.insertarRaiz({lastID++,"INDICE","",std::vector<OID>()});}
+    unsigned createIndex(std::string titulo,unsigned id);
+    void deleteIndex(unsigned id);
+    void moveIndex(unsigned id,unsigned pos);
+    std::string printIndex(unsigned id);
+    std::vector<ElementosIndex> getIndex();
+    std::vector<OID> getElements(unsigned id);
+    void addElement(unsigned id, OID oid);
+    void deleteElement(unsigned index,OID id);
+    void moveElementInIndex(unsigned index,OID id,unsigned pos);
 
 
 private:
-    OID id;
-    std::string name;
-    unsigned pos;
-    std::set<OID> elementsToPrint;
-    std::vector<IndexHTMLelement> sublevels;
-    inline static std::string prefixID = "IE";
+    Agen<ElementosIndex> index;
+    unsigned lastID = 0;
 
+    Agen<ElementosIndex>::nodo buscarNodo(Agen<ElementosIndex>::nodo n, unsigned int id);
+
+    std::string printRecursive(std::string print, Agen<ElementosIndex>::nodo n);
+
+    Agen<ElementosIndex>::nodo buscarNodo(Agen<ElementosIndex>::nodo n, OID id);
 };
-
 
 #endif //TFG_HTMLMANAGER_H

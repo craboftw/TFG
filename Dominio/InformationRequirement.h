@@ -31,6 +31,12 @@ public:
               avgSimultaneousOccurrence(0),
               lifeMaxEstimate(TimeQuantity()),
               lifeAvgEstimate(TimeQuantity()) {}
+    InformationRequirement() : Trackeable(OID()),
+                               Priority(),
+                               maxSimultaneousOccurrence(0),
+                               avgSimultaneousOccurrence(0),
+                               lifeMaxEstimate(TimeQuantity()),
+                               lifeAvgEstimate(TimeQuantity()) {}
 
               static std::string getPrefixID();
 
@@ -56,6 +62,8 @@ public:
     void setSpecificInformationName(const unsigned id, const std::string &name);
     void setSpecificInformationDescription(const unsigned id, const std::string &description);
     void accept(Visitor* visitor) override ;
+
+
 private:
     inline static std::string prefixID = "IR";
 

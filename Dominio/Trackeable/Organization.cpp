@@ -12,3 +12,5 @@ void Organization::setContactInfo(std::string _contactInfo) {
 void Organization::accept(Visitor *visitor) {
     Trackeable::accept(visitor);
 }
+
+

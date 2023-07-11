@@ -16,6 +16,7 @@ class Stakeholder;
 class SystemObjective : virtual public Trackeable , public Priority {
 public:
     explicit SystemObjective(unsigned id) : Trackeable(prefixID,id), Priority() {}
+    SystemObjective() : Trackeable(OID()), Priority() {}
     void accept(Visitor* visitor) override ;
     static std::string getPrefixID();
 
@@ -26,6 +27,7 @@ private:
 class RestrictionRequirement : virtual public Trackeable, public Priority {
 public:
     explicit RestrictionRequirement(unsigned id) : Trackeable(prefixID,id), Priority() {}
+    RestrictionRequirement() : Trackeable(OID()), Priority() {}
     void accept(Visitor* visitor) override ;
     static std::string getPrefixID();
 
@@ -36,6 +38,7 @@ private:
 class FunctionalRequirement : virtual public Trackeable, public Priority {
 public:
     explicit FunctionalRequirement(unsigned id) : Trackeable(prefixID,id), Priority() {}
+    FunctionalRequirement() : Trackeable(OID()), Priority() {}
     void accept(Visitor* visitor) ;
     static std::string getPrefixID();
 
@@ -46,6 +49,7 @@ private:
 class NonFunctionalRequirement : virtual public Trackeable, public Priority {
 public:
     explicit NonFunctionalRequirement(unsigned id) : Trackeable(prefixID,id), Priority() {}
+    NonFunctionalRequirement() : Trackeable(OID()), Priority() {}
     void accept(Visitor* visitor) override ;
     static std::string getPrefixID();
 
@@ -56,6 +60,7 @@ private:
 class Text : virtual public Trackeable {
     public:
     explicit Text(unsigned id) : Trackeable(prefixID,id) {}
+    Text() : Trackeable(OID()) {}
     void accept(Visitor* visitor) override ;
     static std::string getPrefixID() {return prefixID;}
 
@@ -66,6 +71,7 @@ private:
 class ActorUC : public Trackeable {
 public:
     explicit ActorUC(unsigned id) : Trackeable(prefixID,id), package("") {}
+    ActorUC() : Trackeable(OID()), package("") {}
     void accept(Visitor* visitor) override ;
 
     std::string getPackage();
@@ -81,5 +87,7 @@ private:
     OID generalization;
     std::string package;
 };
+
+
 
 #endif //TFG_GENERIC_H

@@ -12,6 +12,7 @@
 class UserStories : virtual public Trackeable, public Priority{
 public:
    UserStories(unsigned id) : Trackeable(prefixID,id) {}
+    UserStories() : Trackeable(OID()) {}
    void setRole(std::string role);
     void setGoal(std::string goal);
     void setBenefit(std::string benefit);

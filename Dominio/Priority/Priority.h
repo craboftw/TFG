@@ -4,6 +4,8 @@
 #include <string>
 #include "Dominio/Trackeable/Trackeable.h"
 
+
+
 class Priority : virtual public Trackeable{
 public:
     Priority();
@@ -18,6 +20,7 @@ public:
     void setUrgencyLevel(Importance urgencyLevel);
     void setPhase(Development_phase _phase);
     void setEstability(Estability _estability);
+    void setPriorityPart(Priority* priority);
     
     std::string strImportanceLevel();
     std::string strUrgencyLevel();
@@ -57,4 +60,10 @@ private:
     Estability estability;
 };
 
+struct PriorityDTO {
+    Priority::Importance importanceLevel;
+    Priority::Importance urgencyLevel;
+    Priority::Development_phase phase;
+    Priority::Estability estability;
+};
 #endif //TFG_PRIORITY_H

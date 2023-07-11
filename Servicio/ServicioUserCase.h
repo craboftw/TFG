@@ -48,19 +48,19 @@ public:
     OID getGeneralization(OID id);
     std::vector<Exception> getExceptions(OID oid);
 
-    bool getAbstract(OID id,unsigned pos);
-    std::string getDescription(OID id,unsigned pos);
-    std::string getCondition(OID id,unsigned pos);
-    std::string getComments(OID id,unsigned pos);
-    type getType(OID id,unsigned pos);
-    OID getReference(OID id,unsigned pos);
+    bool getAbstractStep(OID id,unsigned pos);
+    std::string getDescriptionStep(OID id,unsigned pos);
+    std::string getConditionStep(OID id,unsigned pos);
+    std::string getCommentsStep(OID id,unsigned pos);
+    type getTypeStep(OID id,unsigned pos);
+    OID getReferenceStep(OID id,unsigned pos);
 
-    void setAbstract(OID id,unsigned pos,bool _abstract);
-    void setCondition(OID id,unsigned pos,std::string _condition);
-    void setComments(OID id,unsigned pos,std::string _comments);
-    void setDescription(OID id,unsigned pos,std::string _description);
-    void setType(OID id,unsigned pos,type _type);
-    void setReference(OID id,unsigned pos,OID _reference);
+    void setAbstractStep(OID id,unsigned pos,bool _abstract);
+    void setConditionStep(OID id,unsigned pos,std::string _condition);
+    void setCommentsStep(OID id,unsigned pos,std::string _comments);
+    void setDescriptionStep(OID id,unsigned pos,std::string _description);
+    void setTypeStep(OID id,unsigned pos,type _type);
+    void setReferenceStep(OID id,unsigned pos,OID _reference);
 
 
     std::list<std::pair<OID, std::string>> getUseCases();

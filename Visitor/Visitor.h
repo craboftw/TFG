@@ -11,6 +11,8 @@
 #include "Dominio/Generic.h"
 #include "Dominio/Trackeable/Stakeholder.h"
 #include "Dominio/UserStories.h"
+#include "Dominio/Trackeable/Trackeable.h"
+#include "Dominio/Priority/Priority.h"
 
 
 class ActorUC;

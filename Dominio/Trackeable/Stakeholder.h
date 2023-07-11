@@ -18,7 +18,7 @@ private:
 
 public:
     explicit Stakeholder(unsigned id): Trackeable(prefixID,id), email(""),  phone("") , address(""), worksForOrganization(),stakeholderRole()  {}
-
+    explicit Stakeholder() : Trackeable(OID()), email(""),  phone("") , address(""), worksForOrganization(),stakeholderRole()  {}
     //Getters
     std::string getEmail() const {return email;}
     std::string getPhone() const {return phone;}

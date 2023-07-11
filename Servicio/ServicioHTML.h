@@ -22,21 +22,6 @@
 
 class ServicioHTML {
     public:
-    ServicioHTML(): mainPage(indexCounter){indexCounter++;}
-    void addElement(OID posicion, OID elemento);
-    void eraseElement(OID posicion, OID elemento);
-    OID createIndex(OID posicion,std::string name);
-    void setIndexName(OID posicion, IndexHTMLelement sublevel);
-    void deleteIndex(OID posicion);
-
-    void printHTML();
-
-
-    private:
-        IndexHTMLelement mainPage;
-        unsigned int indexCounter = 0;
-
-    IndexHTMLelement findElement(OID posicion);
     inline static std::map<std::string, unsigned> prefixes = {{Stakeholder::getPrefixID(),STAKEHOLDER},
                                                                 {RestrictionRequirement::getPrefixID(),RESTRICTION_REQUIREMENT},
                                                                 {FunctionalRequirement::getPrefixID(),FUNCTIONAL_REQUIREMENT},
@@ -49,6 +34,11 @@ class ServicioHTML {
                                                                 {Text::getPrefixID(),TEXT},
                                                                 {MatrixTraces::getPrefixID(),MATRIX_TRACES},
                                                                 {UserStories::getPrefixID(),USER_STORIES}};
+
+
+    static void printElement(OID it);
+    void printHTML();
+    Index index;
 };
 
 

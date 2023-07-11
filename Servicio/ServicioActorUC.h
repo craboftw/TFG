@@ -7,10 +7,12 @@
 #include "Dominio/Trackeable/Trackeable.h"
 #include "Dominio/Generic.h"
 #include "Visitor/FileJsonManager.h"
+#include "ServicioTrackeable.h"
 
-class ServicioActorUC {
+class ServicioActorUC : public ServicioTrackeable{
 
 public:
+    OID createActorUC(std::string name="");
     std::string getName(OID oid);
 
     std::string getPackage(OID &oid);

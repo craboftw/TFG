@@ -68,8 +68,19 @@ public:
 
 OID operator+(const std::string& rhs, unsigned lhs);
 
-
-
+struct TrackeableDTO{
+    OID id;
+    std::string name;
+    std::string description;
+    std::string versionMajor;
+    std::string versionMinor;
+    Fecha date_init;
+    std::string comments;
+    std::set<OID> authors;
+    std::set<OID> tracesFrom;
+    std::set<OID> tracesTo;
+    std::list<Change> changes;
+};
 
 class Trackeable  {
 private:
@@ -109,13 +120,15 @@ public:
     void setVersionMinor(std::string versionMin);
     void setDate(Fecha objDate);
     void setComments(std::string objComments);
-    void setAuthors(std::set<OID>& setauthors);
+    void setAuthors(std::set<OID> setauthors);
+    void setTrackeablePart(TrackeableDTO trackeable);
+    void setTrackeablePart(Trackeable* trackeable);
     void addAuthor(OID author);
     void removeAuthor(OID author);
-    void setTracesFrom(std::set<OID>& tracesFrom);
+    void setTracesFrom(std::set<OID> tracesFrom);
     void addTraceFrom(OID traceFrom);
     void removeTraceFrom(OID traceFrom);
-    void setTracesTo(std::set<OID>& tracesTo);
+    void setTracesTo(std::set<OID> tracesTo);
     void addTraceTo(OID traceTo);
     void removeTraceTo(OID traceTo);
 
@@ -156,6 +169,8 @@ public:
     void removeChange(Change change);
 
     std::list<Change> getChanges() const;
+
+    void setTrackeableDTO(TrackeableDTO);
 };
 
 #endif // TFG_TRACKEABLE_H

@@ -48,3 +48,11 @@ void ServicioActorUC::setName(OID oid, std::string name) {
     actorUC.setName(name);
     fileJsonManager.save(actorUC);
 }
+
+OID ServicioActorUC::createActorUC(std::string name) {
+    ActorUC actorUC(fileJsonManager.lastActorUC()+1);
+    if (name.empty()) name = actorUC.getId().operator std::string();
+    actorUC.setName(name);
+    fileJsonManager.save(actorUC);
+    return actorUC.getId();
+}

@@ -123,3 +123,11 @@ std::string Priority::strEstability() {
             return "No se ha establecido la estabilidad";
     }
 }
+
+void Priority::setPriorityPart(Priority *priority) {
+    importanceLevel = priority->importanceLevel;
+    urgencyLevel = priority->urgencyLevel;
+    phase = priority->phase;
+    estability = priority->estability;
+
+}

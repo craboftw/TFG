@@ -5,152 +5,115 @@
 #include <stack>
 #include "ServicioHTML.h"
 
-void ServicioHTML::addElement(OID id, OID elemento) {
-    auto it = &mainPage;
-    std::stack<IndexHTMLelement*> pila;
-    pila.push(it);
-    while(!pila.empty()){
-        IndexHTMLelement* aux = pila.top();
-        pila.pop();
-        if(aux->getId() == id){
-            aux->addElementToPrint(elemento);
-            return;
-        }
-        for(auto it: aux->getSublevels()){
-            pila.push(&it);
+
+void ServicioHTML::printElement(OID it){
+    HtmlManager htmlManager;
+    std::string html;
+    std::ofstream file;
+    file.open(it.operator std::string()+".html");
+    switch (prefixes[it.getPrefix()]) {
+        case STAKEHOLDER:
+            file<<htmlManager.generateTableStakeholder(it);
+            break;
+        case RESTRICTION_REQUIREMENT:
+            file<<htmlManager.generateTableRestrictionRequirement(it);
+            break;
+        case FUNCTIONAL_REQUIREMENT:
+            file<<htmlManager.generateTableFunctionalRequirement(it);
+            break;
+        case NON_FUNCTIONAL_REQUIREMENT:
+            file<<htmlManager.generateTableNonFunctionalRequirement(it);
+            break;
+        case ACTOR_UC:
+            file<<htmlManager.generateTableActorUC(it);
+            break;
+        case INFORMATION_REQUIREMENT:
+            file<<htmlManager.generateTableInformationRequirement(it);
+            break;
+        case ORGANIZATION:
+            file<<htmlManager.generateTableOrganization(it);
+            break;
+        case SYSTEM_OBJECTIVE:
+            file<<htmlManager.generateTableSystemObjetive(it);
+            break;
+        case USER_CASE:
+            file<<htmlManager.generateTableUserCase(it);
+            break;
+        case TEXT:
+            file<<htmlManager.generateTableText(it);
+            break;
+        case MATRIX_TRACES:
+            file<<htmlManager.generateMatrixTraces(it);
+            break;
+        default:
+            throw std::invalid_argument("Invalid prefix");
         }
     }
-}
-
-void ServicioHTML::eraseElement(OID id, OID elemento) {
-    auto it = &mainPage;
-    std::stack<IndexHTMLelement*> pila;
-    pila.push(it);
-    while(!pila.empty()){
-        IndexHTMLelement* aux = pila.top();
-        pila.pop();
-        if(aux->getId() == id){
-            aux->removeElementToPrint(elemento);
-            return;
-        }
-        for(auto it: aux->getSublevels()){
-            pila.push(&it);
-        }
-    }
-}
-
-OID ServicioHTML::createIndex(OID posicion, std::string name) {
-    auto it = &mainPage;
-    std::stack<IndexHTMLelement*> pila;
-    pila.push(it);
-    while(!pila.empty()){
-        //buscar el padre del elemento a buscar, contar la posicion dentro de los sublevels
-        IndexHTMLelement* aux = pila.top();
-        pila.pop();
-        unsigned pos = 0;
-        for(auto it: aux->getSublevels()){
-            if(it.getId() == posicion){
-                indexCounter++;
-                IndexHTMLelement nuevo(indexCounter);
-                nuevo.setName(name);
-                nuevo.setPos(pos)   ;
-                aux->addsubLevel(nuevo);
-                return nuevo.getId();
-            }
-            pila.push(&it);
-            pos++;
-        }
-        for(auto it: aux->getSublevels()){
-            pila.push(&it);
-        }
-    }
-    return OID(IndexHTMLelement::getPrefixID(),-1) ;
-}
-
-void ServicioHTML::deleteIndex(OID id) {
-    auto it = &mainPage;
-    std::stack<IndexHTMLelement*> pila;
-    pila.push(it);
-    while(!pila.empty()){
-        IndexHTMLelement* aux = pila.top();
-        pila.pop();
-        //recorrer todos los sublevels y eliminar el que tenga el id
-        for(auto it: aux->getSublevels()){
-            if(it.getId() == id){
-                aux->removeSubLevel(it.getPos());
-                return;
-            }
-            pila.push(&it);
-        }
-        for(auto it: aux->getSublevels()){
-            pila.push(&it);
-        }
-    }
-
-}
-
-void ServicioHTML::setIndexName(OID id, IndexHTMLelement sublevel) {
-    auto it = &mainPage;
-    std::stack<IndexHTMLelement*> pila;
-    pila.push(it);
-    while(!pila.empty()){
-        IndexHTMLelement* aux = pila.top();
-        pila.pop();
-        if(aux->getId() == id){
-            aux->setName(sublevel.getName());
-            return;
-        }
-    }
-}
 
 void ServicioHTML::printHTML() {
+    std::string html;
     HtmlManager htmlManager;
-    for (auto it: mainPage.getElementsToPrint()){
+    std::ofstream file;
+    file.open("index.html");
+    html += "<!DOCTYPE html>\n";
+    html += "<html>\n";
+    html += "<head>\n";
+    html += "<title>Documento de especificaicon de requisitos</title>\n";
+    html += "<meta charset=\"UTF-8\">\n";
 
-            //build a file with the name of the OID.operator std::string()
-            std::ofstream file;
-            file.open(it.operator std::string()+".html");
-        switch (prefixes[it.getPrefix()]) {
-            case STAKEHOLDER:
-                file<<htmlManager.generateTableStakeholder(it);
-                break;
-            case RESTRICTION_REQUIREMENT:
-                file<<htmlManager.generateTableRestrictionRequirement(it);
-                break;
-            case FUNCTIONAL_REQUIREMENT:
-                file<<htmlManager.generateTableFunctionalRequirement(it);
-                break;
-            case NON_FUNCTIONAL_REQUIREMENT:
-                file<<htmlManager.generateTableNonFunctionalRequirement(it);
-                break;
-            case ACTOR_UC:
-                file<<htmlManager.generateTableActorUC(it);
-                break;
-            case INFORMATION_REQUIREMENT:
-                file<<htmlManager.generateTableInformationRequirement(it);
-                break;
-            case ORGANIZATION:
-                file<<htmlManager.generateTableOrganization(it);
-                break;
-            case SYSTEM_OBJECTIVE:
-                file<<htmlManager.generateTableSystemObjetive(it);
-                break;
-            case USER_CASE:
-                file<<htmlManager.generateTableUserCase(it);
-                break;
-            case TEXT:
-                file<<htmlManager.generateTableText(it);
-                break;
-
-            default:
-                throw std::invalid_argument("Invalid prefix");
+    html += "<style>\n";
+    html += ".content {\n";
+    html += "margin-bottom: 20px;\n";
+    html += "border: 1px solid #ccc;\n";
+    html += "padding: 10px;\n";
+    html += "}\n";
+    html += "</style>\n";
+    html += "</head>\n";
+    html += "<body>\n";
+    auto vec = index.getIndex();
+    std::list<std::string> list;
+    for (auto it = vec.begin(); it != vec.end(); ++it) {
+        unsigned headertype = std::count(it->indice.begin(), it->indice.end(), '.');
+        html += "<h" + std::to_string(headertype) + ">" + it->indice + " " + it->titulo + "</h" + std::to_string(headertype) + ">\n";
+        //html += "<body> <h1>" + it->indice + it->titulo + "</h1> </body>\n";
+        for (auto elemento : it->elementos) {
+            std::string str;
+            str = "<div id=\"" + elemento.operator std::string()+"\"></div>\n";
+            html += str;
+            html += "<br>\n";
+            list.push_back("'"+elemento.operator std::string()+".html'");
         }
     }
-}
-
-void printElement(OID)
-{
-
+    html += "<script>\n";
+    html += "var files = [";
+for (auto it = list.begin(); it != list.end(); ++it) {
+        html += *it;
+        if (std::next(it) != list.end()) {
+            html += ",";
+        }
+    }
+    html += "];\n";
+    html += "files.forEach(function(file) {\n"
+            "        var xhr = new XMLHttpRequest();\n"
+            "        xhr.open('GET', file, true);\n"
+            "        xhr.onreadystatechange = function() {\n"
+            "            if (xhr.readyState === 4 && xhr.status === 200) {\n"
+            "                var contentDiv = document.createElement('div');\n"
+            "                contentDiv.className = 'content';\n"
+            "                contentDiv.innerHTML = xhr.responseText;\n"
+            "                var targetDiv = document.getElementById(file.split(\".\")[0]);\n"
+            "                if (targetDiv) {\n"
+            "                    targetDiv.appendChild(contentDiv);\n"
+            "                }\n"
+            "            }\n"
+            "        };\n"
+            "        xhr.send();\n"
+            "    });"
+            "</script>\n";
+    html += "</body>\n";
+    html += "</html>\n";
+    file << html;
+    file.close();
 }
 
 

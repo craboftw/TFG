@@ -1,5 +1,6 @@
 #include "Trackeable.h"
 #include "Stakeholder.h"
+#include "Visitor/Jsoneitor.h"
 
 
 void Change::setVersion(std::string _version){
@@ -39,17 +40,17 @@ void Trackeable::setComments(std::string objComments) {
         this->comments = objComments;
 }
 
-void Trackeable::setAuthors(std::set<OID>& setauthors) {
+void Trackeable::setAuthors(std::set<OID> setauthors) {
         this->authors = setauthors;
 }
 
 void Trackeable::addAuthor(OID author) {
-        authors.insert(author);
+        this->authors.insert(author);
 
 }
 
 void Trackeable::removeAuthor(OID author) {
-        authors.erase(author);
+    this->authors.erase(author);
 
 }
 
@@ -97,7 +98,7 @@ std::set<OID> Trackeable::getTracesTo() const {
 
 
 
-void Trackeable::setTracesFrom(std::set<OID> &objtracesFrom) {
+void Trackeable::setTracesFrom(std::set<OID> objtracesFrom) {
     tracesFrom = objtracesFrom;
 }
 
@@ -112,7 +113,7 @@ void Trackeable::removeTraceFrom(OID objtraceFrom) {
     tracesFrom.erase(objtraceFrom);
 }
 
-void Trackeable::setTracesTo(std::set<OID> &objtracesTo) {
+void Trackeable::setTracesTo(std::set<OID> objtracesTo) {
     tracesTo = objtracesTo;
 }
 
@@ -163,6 +164,57 @@ void Trackeable::addChange(Change change) {
 
 std::list<Change> Trackeable::getChanges() const {
     return this->changes;
+}
+
+void Trackeable::setTrackeablePart(TrackeableDTO trackeable) {
+    /* std::string name;
+    std::string description;
+    std::string versionMajor;
+    std::string versionMinor;
+    Fecha date_init;
+    std::string comments;
+    std::set<OID> authors;
+    std::set<OID> tracesFrom;
+    std::set<OID> tracesTo;
+    std::list<Change> changes;*/
+    this->name = trackeable.name;
+    this->description = trackeable.description;
+    this->versionMajor = trackeable.versionMajor;
+    this->versionMinor = trackeable.versionMinor;
+    this->date_init = trackeable.date_init;
+    this->comments = trackeable.comments;
+    this->authors = trackeable.authors;
+    this->tracesFrom = trackeable.tracesFrom;
+    this->tracesTo = trackeable.tracesTo;
+    this->changes = trackeable.changes;
+
+}
+
+void Trackeable::setTrackeableDTO(TrackeableDTO trackeableDto)
+{
+    this->name = trackeableDto.name;
+    this->description = trackeableDto.description;
+    this->versionMajor = trackeableDto.versionMajor;
+    this->versionMinor = trackeableDto.versionMinor;
+    this->date_init = trackeableDto.date_init;
+    this->comments = trackeableDto.comments;
+    this->authors = trackeableDto.authors;
+    this->tracesFrom = trackeableDto.tracesFrom;
+    this->tracesTo = trackeableDto.tracesTo;
+    this->changes = trackeableDto.changes;
+}
+
+void Trackeable::setTrackeablePart(Trackeable *trackeable) {
+    this->name = trackeable->name;
+    this->description = trackeable->description;
+    this->versionMajor = trackeable->versionMajor;
+    this->versionMinor = trackeable->versionMinor;
+    this->date_init = trackeable->date_init;
+    this->comments = trackeable->comments;
+    this->authors = trackeable->authors;
+    this->tracesFrom = trackeable->tracesFrom;
+    this->tracesTo = trackeable->tracesTo;
+    this->changes = trackeable->changes;
 }
 
 

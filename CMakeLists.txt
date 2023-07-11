@@ -26,7 +26,7 @@ add_library(TFG_Library
         Servicio/ServicioActorUC.cpp
         Visitor/HtmlManager.cpp
         Visitor/Jsoneitor.cpp
-        Dominio/Trackeable/MatrixTraces.cpp Servicio/ServicioMatrixTraces.cpp Servicio/ServicioMatrixTraces.h Dominio/UserStories.cpp Dominio/UserStories.h Servicio/ServicioUserStories.cpp Servicio/ServicioUserStories.h Servicio/ServicioHTML.cpp Servicio/ServicioHTML.h)
+        Dominio/Trackeable/MatrixTraces.cpp Servicio/ServicioMatrixTraces.cpp Servicio/ServicioMatrixTraces.h Dominio/UserStories.cpp Dominio/UserStories.h Servicio/ServicioUserStories.cpp Servicio/ServicioUserStories.h Servicio/ServicioHTML.cpp Servicio/ServicioHTML.h Visitor/LinkedGeneralTree.cpp)
 
 add_executable(TFG_Executable main.cpp)
 

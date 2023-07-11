@@ -22,18 +22,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="717b5343-998e-4acd-bfc6-e19a8feecd69" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Dominio/UserStories.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dominio/UserStories.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Servicio/ServicioHTML.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Servicio/ServicioHTML.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Servicio/ServicioMatrixTraces.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Servicio/ServicioMatrixTraces.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Servicio/ServicioUserStories.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Servicio/ServicioUserStories.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Visitor/LinkedGeneralTree.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dominio/Trackeable/MatrixTraces.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/Trackeable/MatrixTraces.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dominio/Generic.h" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/Generic.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dominio/InformationRequirement.h" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/InformationRequirement.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dominio/Priority/Priority.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/Priority/Priority.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dominio/Priority/Priority.h" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/Priority/Priority.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Dominio/Trackeable/MatrixTraces.h" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/Trackeable/MatrixTraces.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dominio/Trackeable/Organization.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/Trackeable/Organization.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dominio/Trackeable/Organization.h" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/Trackeable/Organization.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dominio/Trackeable/Stakeholder.h" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/Trackeable/Stakeholder.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dominio/Trackeable/Trackeable.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/Trackeable/Trackeable.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dominio/Trackeable/Trackeable.h" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/Trackeable/Trackeable.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dominio/UserCase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/UserCase.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dominio/UserStories.h" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/UserStories.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Servicio/ServicioActorUC.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Servicio/ServicioActorUC.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Servicio/ServicioActorUC.h" beforeDir="false" afterPath="$PROJECT_DIR$/Servicio/ServicioActorUC.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Servicio/ServicioHTML.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Servicio/ServicioHTML.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Servicio/ServicioHTML.h" beforeDir="false" afterPath="$PROJECT_DIR$/Servicio/ServicioHTML.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Servicio/ServicioPriority.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Servicio/ServicioPriority.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Servicio/ServicioTrackeable.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Servicio/ServicioTrackeable.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Servicio/ServicioUserCase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Servicio/ServicioUserCase.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Servicio/ServicioUserCase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Servicio/ServicioUserCase.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Visitor/FileJsonManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Visitor/FileJsonManager.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Visitor/FileJsonManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/Visitor/FileJsonManager.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Visitor/HtmlManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Visitor/HtmlManager.cpp" afterDir="false" />
@@ -41,34 +52,59 @@
       <change beforePath="$PROJECT_DIR$/Visitor/Jsoneitor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Visitor/Jsoneitor.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Visitor/Jsoneitor.h" beforeDir="false" afterPath="$PROJECT_DIR$/Visitor/Jsoneitor.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Visitor/Visitor.h" beforeDir="false" afterPath="$PROJECT_DIR$/Visitor/Visitor.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-6946830129ead684ae8f.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2023-07-07T19-10-38-0401.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/target-TFG_Library-Debug-05855a1475dc7b09ec3c.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-5b96739f044471f2e1ac.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2023-07-08T15-30-50-0481.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/target-TFG_Library-Debug-f829dd7bfebd85bcc41e.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Executable.dir/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Executable.dir/main.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Dominio/Generic.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Dominio/Generic.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Dominio/InformationRequirement.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Dominio/InformationRequirement.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Dominio/Priority/Priority.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Dominio/Priority/Priority.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Dominio/Trackeable/MatrixTraces.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Dominio/Trackeable/MatrixTraces.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Dominio/Trackeable/Organization.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Dominio/Trackeable/Organization.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Dominio/Trackeable/Stakeholder.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Dominio/Trackeable/Stakeholder.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Dominio/Trackeable/Trackeable.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Dominio/Trackeable/Trackeable.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Dominio/UserCase.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Dominio/UserCase.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Dominio/UserStories.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Dominio/UserStories.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Servicio/ServicioActorUC.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Servicio/ServicioActorUC.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Servicio/ServicioGeneric.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Servicio/ServicioGeneric.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Servicio/ServicioHTML.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Servicio/ServicioHTML.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Servicio/ServicioInformationRequirement.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Servicio/ServicioInformationRequirement.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Servicio/ServicioMatrixTraces.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Servicio/ServicioMatrixTraces.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Servicio/ServicioOrganization.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Servicio/ServicioOrganization.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Servicio/ServicioPriority.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Servicio/ServicioPriority.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Servicio/ServicioStakeholder.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Servicio/ServicioStakeholder.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Servicio/ServicioTrackeable.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Servicio/ServicioTrackeable.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Servicio/ServicioUserCase.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Servicio/ServicioUserCase.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Servicio/ServicioUserStories.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Servicio/ServicioUserStories.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Visitor/DiagramManager.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Visitor/DiagramManager.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Visitor/FileJsonManager.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Visitor/FileJsonManager.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Visitor/HtmlManager.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Visitor/HtmlManager.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Visitor/Jsoneitor.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Visitor/Jsoneitor.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TFG/Jsons/UC.json" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/TFG/Jsons/UC.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TFG_Executable.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/TFG_Executable.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TFG/Jsons/AC.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TFG/Jsons/FR.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TFG/Jsons/IR.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TFG/Jsons/MT.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TFG/Jsons/NF.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TFG/Jsons/OR.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TFG/Jsons/RR.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TFG/Jsons/SH.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TFG/Jsons/SO.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TFG/Jsons/TX.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TFG/Jsons/UC.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TFG/Jsons/US.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TFG_Executable" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TFG_Executable.exe" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/build.ninja" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/libTFG_Library.a" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/libTFG_Library.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/usercase.html" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/usercase.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/prueba.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/st1QBI6D" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/stFzP5tM" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/stP1kAlM" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/stiG2Kb7" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/usercase.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -106,43 +142,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Fran-/OneDrive/Documentos/GitHub/TFG&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/Fran-/OneDrive/Documentos/GitHub/TFG",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.editor",
+    "structure.view.defaults.are.configured": "true",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/Servicio" />
       <recent name="C:\Users\Fran-\OneDrive\Documentos\GitHub\TFG" />
+      <recent name="$PROJECT_DIR$/Servicio" />
       <recent name="C:\Users\Fran-\OneDrive\Documentos\GitHub\TFG\cmake-build-debug\TFG" />
       <recent name="C:\Users\Fran-\OneDrive\Documentos\GitHub\TFG\cmake-build-debug\TFG\Jsons" />
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunManager" selected="CMake Application.TFG_Executable">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="TFG_Executable" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="TFG" TARGET_NAME="TFG_Executable" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="TFG" RUN_TARGET_NAME="TFG_Executable">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -197,7 +229,14 @@
       <workItem from="1688617948190" duration="5369000" />
       <workItem from="1688645573140" duration="3246000" />
       <workItem from="1688744593112" duration="924000" />
-      <workItem from="1688751885353" duration="31896000" />
+      <workItem from="1688751885353" duration="39344000" />
+      <workItem from="1688908490395" duration="12839000" />
+      <workItem from="1688987505742" duration="13048000" />
+      <workItem from="1689009275851" duration="197000" />
+      <workItem from="1689009488068" duration="273000" />
+      <workItem from="1689011542910" duration="23986000" />
+      <workItem from="1689065984095" duration="28060000" />
+      <workItem from="1689106495078" duration="3346000" />
     </task>
     <servers />
   </component>
@@ -219,13 +258,8 @@
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Visitor/FileJsonManager.cpp</url>
-          <line>122</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/main.cpp</url>
-          <line>358</line>
+          <line>359</line>
           <option name="timeStamp" value="26" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
@@ -234,89 +268,69 @@
           <option name="timeStamp" value="27" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Servicio/ServicioPriority.cpp</url>
-          <line>85</line>
-          <option name="timeStamp" value="28" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/Dominio/InformationRequirement.h</url>
-          <line>41</line>
+          <line>47</line>
           <option name="timeStamp" value="32" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Visitor/HtmlManager.cpp</url>
-          <line>139</line>
-          <option name="timeStamp" value="35" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/main.cpp</url>
-          <line>450</line>
+          <line>451</line>
           <option name="timeStamp" value="37" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Visitor/HtmlManager.h</url>
-          <line>61</line>
-          <option name="timeStamp" value="43" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Visitor/Jsoneitor.cpp</url>
-          <line>600</line>
-          <option name="timeStamp" value="54" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Visitor/Jsoneitor.cpp</url>
-          <line>593</line>
-          <option name="timeStamp" value="55" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Visitor/Jsoneitor.cpp</url>
-          <line>581</line>
-          <option name="timeStamp" value="57" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Visitor/Jsoneitor.cpp</url>
-          <line>248</line>
-          <option name="timeStamp" value="65" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Visitor/Jsoneitor.cpp</url>
-          <line>360</line>
-          <option name="timeStamp" value="66" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Visitor/Jsoneitor.cpp</url>
-          <line>350</line>
-          <option name="timeStamp" value="67" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Visitor/FileJsonManager.cpp</url>
-          <line>455</line>
-          <option name="timeStamp" value="68" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Servicio/ServicioInformationRequirement.cpp</url>
-          <line>194</line>
-          <option name="timeStamp" value="70" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Servicio/ServicioInformationRequirement.cpp</url>
-          <line>192</line>
-          <option name="timeStamp" value="73" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Visitor/Jsoneitor.cpp</url>
-          <line>356</line>
-          <option name="timeStamp" value="74" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/main.cpp</url>
-          <line>764</line>
-          <option name="timeStamp" value="95" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/Dominio/UserStories.cpp</url>
           <line>3</line>
           <option name="timeStamp" value="96" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Visitor/HtmlManager.cpp</url>
+          <line>836</line>
+          <option name="timeStamp" value="105" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Visitor/HtmlManager.cpp</url>
+          <line>835</line>
+          <option name="timeStamp" value="106" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Servicio/ServicioTrackeable.cpp</url>
+          <line>233</line>
+          <option name="timeStamp" value="143" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/main.cpp</url>
+          <line>1637</line>
+          <option name="timeStamp" value="144" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Servicio/ServicioStakeholder.cpp</url>
+          <line>57</line>
+          <option name="timeStamp" value="149" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Visitor/FileJsonManager.cpp</url>
+          <line>946</line>
+          <option name="timeStamp" value="187" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Servicio/ServicioTrackeable.cpp</url>
+          <line>140</line>
+          <option name="timeStamp" value="191" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Servicio/ServicioTrackeable.cpp</url>
+          <line>148</line>
+          <option name="timeStamp" value="193" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Dominio/Trackeable/MatrixTraces.cpp</url>
+          <line>51</line>
+          <option name="timeStamp" value="196" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/main.cpp</url>
+          <line>813</line>
+          <option name="timeStamp" value="197" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -329,6 +343,10 @@
         <watch expression="nombres[0]" />
         <watch expression="nombres[1]" />
         <watch expression="objTraceTo" />
+        <watch expression="this-&gt;sublevels[0]" />
+        <watch expression="this" />
+        <watch expression="this-&gt;authors" />
+        <watch expression="this-&gt;authors" />
       </configuration>
     </watches-manager>
   </component>

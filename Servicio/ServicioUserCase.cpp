@@ -242,7 +242,7 @@ void ServicioUserCase::removeStep(OID id, int pos) {
     fileJsonManager.save(userCase);
 }
 
-bool ServicioUserCase::getAbstract(OID id, unsigned int pos) {
+bool ServicioUserCase::getAbstractStep(OID id, unsigned int pos) {
     if (id.getPrefix() !=  UserCase::getPrefixID()) throw std::invalid_argument("El id a modificar no corresponde a un UserCase, getAbstract");
     if (!fileJsonManager.exist(id)) throw std::invalid_argument("El id a leer no existe, getAbstract");
     UserCase userCase = fileJsonManager.loadUserCase(id);
@@ -250,7 +250,7 @@ bool ServicioUserCase::getAbstract(OID id, unsigned int pos) {
     return userCase.getSteps()[pos].getAbstract();
 }
 
-std::string ServicioUserCase::getDescription(OID id, unsigned int pos) {
+std::string ServicioUserCase::getDescriptionStep(OID id, unsigned int pos) {
     if (id.getPrefix() !=  UserCase::getPrefixID()) throw std::invalid_argument("El id a modificar no corresponde a un UserCase, getDescription");
     if (!fileJsonManager.exist(id)) throw std::invalid_argument("El id a leer no existe, getDescription");
     UserCase userCase = fileJsonManager.loadUserCase(id);
@@ -259,7 +259,7 @@ std::string ServicioUserCase::getDescription(OID id, unsigned int pos) {
 
 }
 
-std::string ServicioUserCase::getCondition(OID id, unsigned int pos) {
+std::string ServicioUserCase::getConditionStep(OID id, unsigned int pos) {
     if (id.getPrefix() !=  UserCase::getPrefixID()) throw std::invalid_argument("El id a modificar no corresponde a un UserCase, getCondition");
     if (!fileJsonManager.exist(id)) throw std::invalid_argument("El id a leer no existe, getCondition");
     UserCase userCase = fileJsonManager.loadUserCase(id);
@@ -267,7 +267,7 @@ std::string ServicioUserCase::getCondition(OID id, unsigned int pos) {
     return userCase.getSteps()[pos].getCondition();
 }
 
-std::string ServicioUserCase::getComments(OID id, unsigned int pos) {
+std::string ServicioUserCase::getCommentsStep(OID id, unsigned int pos) {
     if (id.getPrefix() !=  UserCase::getPrefixID()) throw std::invalid_argument("El id a modificar no corresponde a un UserCase, getComments");
     if (!fileJsonManager.exist(id)) throw std::invalid_argument("El id a leer no existe, getComments");
     UserCase userCase = fileJsonManager.loadUserCase(id);
@@ -276,7 +276,7 @@ std::string ServicioUserCase::getComments(OID id, unsigned int pos) {
 
 }
 
-type ServicioUserCase::getType(OID id, unsigned int pos) {
+type ServicioUserCase::getTypeStep(OID id, unsigned int pos) {
     if (id.getPrefix() !=  UserCase::getPrefixID()) throw std::invalid_argument("El id a modificar no corresponde a un UserCase, getType");
     if (!fileJsonManager.exist(id)) throw std::invalid_argument("El id a leer no existe, getType");
     //pos must be betwenn 0 and steps.size() + 1
@@ -286,7 +286,7 @@ type ServicioUserCase::getType(OID id, unsigned int pos) {
 
 }
 
-OID ServicioUserCase::getReference(OID id, unsigned int pos) {
+OID ServicioUserCase::getReferenceStep(OID id, unsigned int pos) {
     if (id.getPrefix() !=  UserCase::getPrefixID()) throw std::invalid_argument("El id a modificar no corresponde a un UserCase, getReference");
     if (!fileJsonManager.exist(id)) throw std::invalid_argument("El id a leer no existe, getReference");
 
@@ -299,7 +299,7 @@ OID ServicioUserCase::getReference(OID id, unsigned int pos) {
     return reference;
 }
 
-void ServicioUserCase::setAbstract(OID id, unsigned int pos, bool _abstract) {
+void ServicioUserCase::setAbstractStep(OID id, unsigned int pos, bool _abstract) {
     if (id.getPrefix() !=  UserCase::getPrefixID()) throw std::invalid_argument("El id a modificar no corresponde a un UserCase, setAbstract");
     if (!fileJsonManager.exist(id)) throw std::invalid_argument("El id a modificar no existe, setAbstract");
     UserCase userCase = fileJsonManager.loadUserCase(id);
@@ -311,7 +311,7 @@ void ServicioUserCase::setAbstract(OID id, unsigned int pos, bool _abstract) {
     fileJsonManager.save(userCase);
 }
 
-void ServicioUserCase::setCondition(OID id, unsigned int pos, std::string _condition) {
+void ServicioUserCase::setConditionStep(OID id, unsigned int pos, std::string _condition) {
     if (id.getPrefix() !=  UserCase::getPrefixID()) throw std::invalid_argument("El id a modificar no corresponde a un UserCase, setCondition");
     if (!fileJsonManager.exist(id)) throw std::invalid_argument("El id a modificar no existe, setCondition");
     UserCase userCase = fileJsonManager.loadUserCase(id);
@@ -323,7 +323,7 @@ void ServicioUserCase::setCondition(OID id, unsigned int pos, std::string _condi
     fileJsonManager.save(userCase);
 }
 
-void ServicioUserCase::setComments(OID id, unsigned int pos, std::string _comments) {
+void ServicioUserCase::setCommentsStep(OID id, unsigned int pos, std::string _comments) {
     if (id.getPrefix() !=  UserCase::getPrefixID()) throw std::invalid_argument("El id a modificar no corresponde a un UserCase, setComments");
     if (!fileJsonManager.exist(id)) throw std::invalid_argument("El id a modificar no existe, setComments");
         UserCase userCase = fileJsonManager.loadUserCase(id);
@@ -335,7 +335,7 @@ void ServicioUserCase::setComments(OID id, unsigned int pos, std::string _commen
         fileJsonManager.save(userCase);
 }
 
-void ServicioUserCase::setDescription(OID id, unsigned int pos, std::string _description) {
+void ServicioUserCase::setDescriptionStep(OID id, unsigned int pos, std::string _description) {
     if (id.getPrefix() !=  UserCase::getPrefixID()) throw std::invalid_argument("El id a modificar no corresponde a un UserCase, setDescription");
     if (!fileJsonManager.exist(id)) throw std::invalid_argument("El id a modificar no existe, setDescription");
         UserCase userCase = fileJsonManager.loadUserCase(id);
@@ -347,7 +347,7 @@ void ServicioUserCase::setDescription(OID id, unsigned int pos, std::string _des
         fileJsonManager.save(userCase);
 }
 
-void ServicioUserCase::setType(OID id, unsigned int pos, type _type) {
+void ServicioUserCase::setTypeStep(OID id, unsigned int pos, type _type) {
     if (id.getPrefix() !=  UserCase::getPrefixID()) throw std::invalid_argument("El id a modificar no corresponde a un UserCase, setType");
     if (!fileJsonManager.exist(id)) throw std::invalid_argument("El id a modificar no existe, setType");
 
@@ -362,8 +362,8 @@ void ServicioUserCase::setType(OID id, unsigned int pos, type _type) {
 
 }
 
-void ServicioUserCase::setReference(OID id, unsigned int pos, OID _reference) {
-    if (_reference.getPrefix() != UserCase::getPrefixID()) throw std::invalid_argument("El id referencia debe ser un UserCase, setReference");
+void ServicioUserCase::setReferenceStep(OID id, unsigned int pos, OID _reference) {
+    if (_reference.getPrefix() !=  UserCase::getPrefixID() and _reference.getPrefix() != ActorUC::getPrefixID()) throw std::invalid_argument("El id referencia no corresponde a un UserCase o un Actor, setReference" );
     if (!fileJsonManager.exist(_reference)) throw std::invalid_argument("El id referencia no existe, setReference");
     if (id.getPrefix() !=  UserCase::getPrefixID()) throw std::invalid_argument("El id a modificar no corresponde a un UserCase, setReference");
     if (!fileJsonManager.exist(id)) throw std::invalid_argument("El id a modificar no existe, setReference");

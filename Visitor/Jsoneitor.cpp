@@ -20,26 +20,6 @@ class Stakeholder;
 
 
 
-struct TrackeableDTO{
-    OID id;
-    std::string name;
-    std::string description;
-    std::string versionMajor;
-    std::string versionMinor;
-    Fecha date;
-    std::string comments;
-    std::set<OID> authors;
-    std::set<OID> tracesFrom;
-    std::set<OID> tracesTo;
-    std::list<Change> listOfChanges;
-};
-
-struct PriorityDTO{
-    Priority::Importance urgencyLevel;
-    Priority::Importance importanceLevel;
-    Priority::Estability estibility;
-    Priority::Development_phase phase;
-};
 
 
 
@@ -86,7 +66,7 @@ std::set<OID> Jsoneitor::deserializeSetOfOID(const json& j) {
 }
 
 
-json Jsoneitor::serializeSetOfOID(const std::set<OID>& setOfOID) {
+json Jsoneitor::serializeSetOfOID(const std::set<OID> setOfOID) {
     json j;
 
     // Serializar cada autor en la lista
@@ -293,12 +273,12 @@ TrackeableDTO Jsoneitor::deserializeTrackeableDTO(const json& j) {
     trackeableDTO.description = j["description"];
     trackeableDTO.versionMajor = j["versionMajor"];
     trackeableDTO.versionMinor = j["versionMinor"];
-    trackeableDTO.date = Fecha(j["date_init"]);
+    trackeableDTO.date_init = Fecha(j["date_init"]);
     trackeableDTO.comments = j["comments"];
     trackeableDTO.authors = deserializeSetOfOID(j["authors"]);
     trackeableDTO.tracesFrom = deserializeSetOfOID(j["tracesFrom"]);
     trackeableDTO.tracesTo = deserializeSetOfOID(j["tracesTo"]);
-    trackeableDTO.listOfChanges = deserializeListOfChanges(j["changes"]);
+    trackeableDTO.changes = deserializeListOfChanges(j["changes"]);
     return trackeableDTO;
 }
 
@@ -307,7 +287,7 @@ PriorityDTO Jsoneitor::deserializePriorityDTO(const json& j) {
     priorityDTO.importanceLevel = j["importanceLevel"];
     priorityDTO.urgencyLevel = j["urgencyLevel"];
     priorityDTO.phase = j["phase"];
-    priorityDTO.estibility = j["estability"];
+    priorityDTO.estability = j["estability"];
     return priorityDTO;
 }
 
@@ -330,19 +310,19 @@ void Jsoneitor::setTrackeablePart(TrackeableDTO trackeableDTO, Trackeable* track
     trackeable->setDescription(trackeableDTO.description);
     trackeable->setVersionMajor(trackeableDTO.versionMajor);
     trackeable->setVersionMinor(trackeableDTO.versionMinor);
-    trackeable->setDate(trackeableDTO.date);
+    trackeable->setDate(trackeableDTO.date_init);
     trackeable->setComments(trackeableDTO.comments);
     trackeable->setAuthors(trackeableDTO.authors);
     trackeable->setTracesFrom(trackeableDTO.tracesFrom);
     trackeable->setTracesTo(trackeableDTO.tracesTo);
-    trackeable->setChanges(trackeableDTO.listOfChanges);
+    trackeable->setChanges(trackeableDTO.changes);
 }
 
 void Jsoneitor::setPriorityPart(PriorityDTO priorityDTO, Priority* priority) {
     priority->setImportanceLevel(priorityDTO.importanceLevel);
     priority->setUrgencyLevel(priorityDTO.urgencyLevel);
     priority->setPhase(priorityDTO.phase);
-    priority->setEstability(priorityDTO.estibility);
+    priority->setEstability(priorityDTO.estability);
 }
 
 
@@ -352,6 +332,7 @@ void Jsoneitor::visit(InformationRequirement informationRequirement) {
 
 /*｡o°✥✤✣TRACKEABLE PRIORITY GET✣✤✥°o｡*/
     j = trackeablePart(&informationRequirement,j);
+    j = priorityPart(&informationRequirement,j);
 
 /*｡o°✥✤✣INFORMATION REQUIREMENT GET✣✤✥°o｡*/
     j["maxSimultaneousOccurrence"] = informationRequirement.getMaxSimultaneousOccurrence();
@@ -367,6 +348,7 @@ InformationRequirement Jsoneitor::deserializeInformationRequirement(json j) {
 
 /*｡o°✥✤✣TRACKEABLE PRIORITY GET✣✤✥°o｡*/
     TrackeableDTO trackeableDTO = deserializeTrackeableDTO(j);
+    PriorityDTO priorityDTO = deserializePriorityDTO(j);
 
 /*｡o°✥✤✣INFORMATION REQUIREMENT GET✣✤✥°o｡*/
     unsigned int maxSimultaneousOccurrence = j["maxSimultaneousOccurrence"];
@@ -378,6 +360,7 @@ InformationRequirement Jsoneitor::deserializeInformationRequirement(json j) {
 /*｡o°✥✤✣TRACKEABLE PRIORITY SET✣✤✥°o｡*/
     InformationRequirement o(trackeableDTO.id.getId());
     setTrackeablePart(trackeableDTO, &o);
+    setPriorityPart(priorityDTO, &o);
 
 
 /*｡o°✥✤✣INFORMATION REQUIREMENT SET✣✤✥°o｡*/

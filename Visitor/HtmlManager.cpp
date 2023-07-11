@@ -3,6 +3,7 @@
 //
 
 #include "HtmlManager.h"
+#include "Servicio/ServicioHTML.h"
 
 
 // Color constants or variables as std::string
@@ -22,7 +23,7 @@ std::string HtmlManager::generateHead(OID id){
     html += "<meta charset=\"UTF-8\">";
     html += "<style>";
     html += "table { width: 100%; border-collapse: collapse; border: 3px solid " + COLOR_BORDER + "; }";
-    html += "th, td { padding: 10px; text-align: left; border-bottom: 1px solid " + COLOR_STEP_SEPARATOR + "; }";
+    html += "th, td { padding: 10px; text-align: left; border-bottom: 1px solid " + COLOR_STEP_SEPARATOR + "; font-family: Arial; }";
     html += "th { background-color: "+COLOR_HEADER_BG+"; color: " + COLOR_HEADER_TEXT + "; }";
     html += "td { background-color: " + COLOR_CELL_BG + "; }";
     html += ".step-separator {border-bottom: 1px dashed " + COLOR_STEP_SEPARATOR + ";margin-bottom: 10px;padding-bottom: 10px;}";
@@ -40,18 +41,18 @@ std::string HtmlManager::generateTablePriority(OID id) {
     std::string html;
     // Agregar la importancia y urgencia del requerimiento en una fila
     html += "<tr>";
-    html += "<th style='font-family: Arial, sans-serif;'>Importancia</th>";
-    html += "<td style='font-family: Arial, sans-serif;'>" + servicioPriority.strImportanceLevel(id) + "</td>";
-    html += "<th style='font-family: Arial, sans-serif;'>Urgencia</th>";
-    html += "<td style='font-family: Arial, sans-serif;'>" + servicioPriority.strUrgencyLevel(id) + "</td>";
+    html += "<th >Importancia</th>";
+    html += "<td >" + servicioPriority.strImportanceLevel(id) + "</td>";
+    html += "<th >Urgencia</th>";
+    html += "<td >" + servicioPriority.strUrgencyLevel(id) + "</td>";
     html += "</tr>";
 
     // Agregar la fase de desarrollo y estabilidad del requerimiento en una fila
     html += "<tr>";
-    html += "<th style='font-family: Arial, sans-serif;'>Fase de desarrollo</th>";
-    html += "<td style='font-family: Arial, sans-serif;'>" + servicioPriority.strPhase(id) + "</td>";
-    html += "<th style='font-family: Arial, sans-serif;'>Estabilidad</th>";
-    html += "<td style='font-family: Arial, sans-serif;'>" + servicioPriority.strEstability(id) + "</td>";
+    html += "<th >Fase de desarrollo</th>";
+    html += "<td >" + servicioPriority.strPhase(id) + "</td>";
+    html += "<th >Estabilidad</th>";
+    html += "<td >" + servicioPriority.strEstability(id) + "</td>";
     html += "</tr>";
 
     return html;
@@ -90,8 +91,8 @@ std::string HtmlManager::generateTableTrackeable(OID id) {
 
     // Agregar la descripción del trackeable en una fila
     html += "<tr>";
-    html += "<th style='font-family: Arial, sans-serif;' colspan='1'>Descripción</th>";
-    html += "<td style='font-family: Arial, sans-serif;' colspan='5'>" + servicioTrackeable.getDescription(id) + "</td>";
+    html += "<th  colspan='1'>Descripción</th>";
+    html += "<td  colspan='5'>" + servicioTrackeable.getDescription(id) + "</td>";
     html += "</tr>";
 
 
@@ -109,10 +110,10 @@ std::string HtmlManager::generateTableChanges(OID id) {
 
     // Agregar la versión y la fecha del trackeable en una fila
     html += "<tr>";
-    html += "<th style='font-family: Arial, sans-serif;' width='25%'>Rango de versiones</th>";
-    html += "<td style='font-family: Arial, sans-serif;' width='25%'>" + servicioTrackeable.getVersionMinor(id) + " - " + servicioTrackeable.getVersionMajor(id) + "</td>";
-    html += "<th style='font-family: Arial, sans-serif;' width='25%'>Fecha</th>";
-    html += "<td style='font-family: Arial, sans-serif;' width='25%'>" + servicioTrackeable.getDate(id).toString() + "</td>";
+    html += "<th  width='25%'>Rango de versiones</th>";
+    html += "<td  width='25%'>" + servicioTrackeable.getVersionMinor(id) + " - " + servicioTrackeable.getVersionMajor(id) + "</td>";
+    html += "<th  width='25%'>Fecha</th>";
+    html += "<td  width='25%'>" + servicioTrackeable.getDate(id).toString() + "</td>";
     html += "</tr>";
 
     // Agregar los autores del trackeable en una fila
@@ -125,8 +126,8 @@ std::string HtmlManager::generateTableChanges(OID id) {
 
 
     html += "<tr>";
-    html += "<th style='font-family: Arial, sans-serif;' colspan='1'>"+palabro+"</th>";
-    html += "<td style='font-family: Arial, sans-serif;' colspan='3'>";
+    html += "<th  colspan='1'>"+palabro+"</th>";
+    html += "<td  colspan='3'>";
     //get every name of the authors
     for (auto author : authors) {
         html +=  servicioStakeholder.getName(author);
@@ -144,8 +145,8 @@ std::string HtmlManager::generateTableChanges(OID id) {
     std::set<OID> tracesTo = servicioTrackeable.getTracesTo(id);
     if (!tracesTo.empty()) {
         html += "<tr>";
-        html += "<th style='font-family: Arial, sans-serif;' colspan='1'>Dependencias con:</th>";
-        html += "<td style='font-family: Arial, sans-serif;' colspan='3'>";
+        html += "<th  colspan='1'>Dependencias con:</th>";
+        html += "<td  colspan='3'>";
         //get every name of the authors
         for (auto trace : tracesTo) {
             html += "<strong>"+ trace.operator std::string() +"</strong>  "+ servicioTrackeable.getName(trace);
@@ -167,10 +168,10 @@ std::string HtmlManager::generateTableChanges(OID id) {
     if (!changes.empty()) {
 
         html += "<tr>";
-        html += "<th style='font-family: Arial, sans-serif;' colspan='5'>Cambios</th>";
+        html += "<th  colspan='5'>Cambios</th>";
         html += "</tr>";
         html += "<tr>";
-        html += "<td style='font-family: Arial, sans-serif;' colspan='3'>";
+        html += "<td  colspan='3'>";
         for (const auto &change: changes) {
             html += "<strong>Cambio:</strong> " + change.getVersion() + "<br>";
             html += "<strong>Fecha:</strong> " + change.getDate().toString() + "<br>";
@@ -190,8 +191,8 @@ std::string HtmlManager::generateTable(std::list<SpecificInformation> lista)
 {
     std::string html;
     html += "<tr>";
-    html += "<th style='font-family: Arial, sans-serif;' colspan='1'>Información específica</th>";
-    html += "<td style='font-family: Arial, sans-serif;' colspan='5'>";
+    html += "<th  colspan='1'>Información específica</th>";
+    html += "<td  colspan='5'>";
     for (const auto& info : lista) { //Añade una pelota gorda negra a la siguiente linea añadiendo lo siguiente: <span style='font-size: 20px;'>&#9679;</span>
         html += "<span style='font-size: 20px;'>&#9679; </span>" ;
         html += "<strong>"+info.name +":</strong> <br>"; //añade una sangria a la siguiente linea añadiendo lo siguiente: <span style='margin-left: 30px;'>" + info.description + "</span><br>";
@@ -209,16 +210,16 @@ std::string HtmlManager::generateTableInformationRequirement (OID requirement) {
 
     html += generateTable(servicioInformationRequirement.getSpecificInformation(requirement));
     html += "<tr>";
-    html += "<th style='font-family: Arial, sans-serif;' width='25%'>Maxima ocurrencia simultanea</th>";
-    html += "<td style='font-family: Arial, sans-serif;' width='25%'>" + servicioInformationRequirement.strMaxSimultaneousOccurrence(requirement) + "</td>";
-    html += "<th style='font-family: Arial, sans-serif;' width='25%'>Promedio de ocurrencia simultanea</th>";
-    html += "<td style='font-family: Arial, sans-serif;' width='25%'>" + servicioInformationRequirement.strAvgSimultaneousOccurrence(requirement) + "</td>";
+    html += "<th  width='25%'>Maxima ocurrencia simultanea</th>";
+    html += "<td  width='25%'>" + servicioInformationRequirement.strMaxSimultaneousOccurrence(requirement) + "</td>";
+    html += "<th  width='25%'>Promedio de ocurrencia simultanea</th>";
+    html += "<td  width='25%'>" + servicioInformationRequirement.strAvgSimultaneousOccurrence(requirement) + "</td>";
     html += "</tr>";
     html += "<tr>";
-    html += "<th style='font-family: Arial, sans-serif;' width='25%'>Estimacion de vida maxima</th>";
-    html += "<td style='font-family: Arial, sans-serif;' width='25%'>" + servicioInformationRequirement.strLifeMaxEstimate(requirement) + "</td>";
-    html += "<th style='font-family: Arial, sans-serif;' width='25%'>Estimacion de vida promedio</th>";
-    html += "<td style='font-family: Arial, sans-serif;' width='25%'>" + servicioInformationRequirement.strLifeAvgEstimate(requirement) + "</td>";
+    html += "<th  width='25%'>Estimacion de vida maxima</th>";
+    html += "<td  width='25%'>" + servicioInformationRequirement.strLifeMaxEstimate(requirement) + "</td>";
+    html += "<th  width='25%'>Estimacion de vida promedio</th>";
+    html += "<td  width='25%'>" + servicioInformationRequirement.strLifeAvgEstimate(requirement) + "</td>";
     html += "</tr>";
 
 
@@ -242,35 +243,35 @@ std::string HtmlManager::generateTableUserCase(OID id) {
 
     // Agregar el campo abstracto en una fila
     html += "<tr>";
-    html += "<th style='font-family: Arial, sans-serif;'>Abstracto</th>";
+    html += "<th >Abstracto</th>";
     std::string abstract = servicioUserCase.getAbstract(id) ? "Sí" : "No";
-    html += "<td style='font-family: Arial, sans-serif;'colspan=3>" + abstract + "</td>";
+    html += "<td colspan=3>" + abstract + "</td>";
     html += "</tr>";
 
     // Agregar la precondición en una fila
     html += "<tr>";
-    html += "<th style='font-family: Arial, sans-serif;'>Precondición</th>";
-    html += "<td style='font-family: Arial, sans-serif;'colspan=3>" + servicioUserCase.getPrecondition(id) + "</td>";
+    html += "<th >Precondición</th>";
+    html += "<td colspan=3>" + servicioUserCase.getPrecondition(id) + "</td>";
     html += "</tr>";
 
     // Agregar la postcondición en una fila
     html += "<tr>";
-    html += "<th style='font-family: Arial, sans-serif;'>Postcondición</th>";
-    html += "<td style='font-family: Arial, sans-serif;'colspan=3>" + servicioUserCase.getPostcondition(id) + "</td>";
+    html += "<th >Postcondición</th>";
+    html += "<td colspan=3>" + servicioUserCase.getPostcondition(id) + "</td>";
     html += "</tr>";
 
     // Agregar los pasos en una fila
     /*
      *   <tr>
-    <th style='font-family: Arial, sans-serif;' colspan=6>Pasos</th>
+    <th  colspan=6>Pasos</th>
   </tr>
   <tr>
-    <td style='font-family: Arial, sans-serif;' colspan=6>
+    <td  colspan=6>
      * */
 
     html += "<tr>";
-    html += "<th style='font-family: Arial, sans-serif;' colspan=6>Pasos</th> </tr> <tr>";
-    html += "<td style='font-family: Arial, sans-serif;'colspan=6>";
+    html += "<th  colspan=6>Pasos</th> </tr> <tr>";
+    html += "<td colspan=6>";
 
     std::vector<Step> steps = servicioUserCase.getSteps(id);
     unsigned int i = 0;
@@ -305,8 +306,8 @@ std::string HtmlManager::generateTableUserCase(OID id) {
     std::vector<Exception> exceptions = servicioUserCase.getExceptions(id);
     if (!exceptions.empty()) {
         html += "<tr>";
-        html += "<th style='font-family: Arial, sans-serif;' colspan=6>Excepciones</th> </tr> <tr>";
-        html += "<td style='font-family: Arial, sans-serif;'colspan=6>";
+        html += "<th  colspan=6>Excepciones</th> </tr> <tr>";
+        html += "<td colspan=6>";
         unsigned int i = 0;
         for (const auto& exception : exceptions) {
             html += "<strong>Paso:</strong> " + std::to_string(exception.step) + "<br>";
@@ -340,8 +341,8 @@ std::string HtmlManager::generateTableUserCase(OID id) {
 
     // Agregar los actores en una fila
     html += "<tr>";
-    html += "<th style='font-family: Arial, sans-serif;'>Actores</th>";
-    html += "<td style='font-family: Arial, sans-serif;'colspan=3>";
+    html += "<th >Actores</th>";
+    html += "<td colspan=3>";
 
     std::list<OID> actors = servicioUserCase.getActors(id);
     for (const auto& actor : actors) {
@@ -353,8 +354,8 @@ std::string HtmlManager::generateTableUserCase(OID id) {
 
     // Agregar los objetivos en una fila
     html += "<tr>";
-    html += "<th style='font-family: Arial, sans-serif;'>Objetivos</th>";
-    html += "<td style='font-family: Arial, sans-serif;'colspan=3>";
+    html += "<th >Objetivos</th>";
+    html += "<td colspan=3>";
 
     std::list<OID> objectives = servicioUserCase.getObjectives(id);
     for (const auto& objective : objectives) {
@@ -366,21 +367,21 @@ std::string HtmlManager::generateTableUserCase(OID id) {
 
     // Agregar el paquete en una fila
     html += "<tr>";
-    html += "<th style='font-family: Arial, sans-serif;'>Paquete</th>";
-    html += "<td style='font-family: Arial, sans-serif;'colspan=3>" + servicioUserCase.getPackage(id) + "</td>";
+    html += "<th >Paquete</th>";
+    html += "<td colspan=3>" + servicioUserCase.getPackage(id) + "</td>";
     html += "</tr>";
 
     // Agregar la frecuencia en una fila
     html += "<tr>";
-    html += "<th style='font-family: Arial, sans-serif;'>Frecuencia</th>";
-    html += "<td style='font-family: Arial, sans-serif;'colspan=3>" + servicioUserCase.strFrequency(id)+"</td>";
+    html += "<th >Frecuencia</th>";
+    html += "<td colspan=3>" + servicioUserCase.strFrequency(id)+"</td>";
     html += "</tr>";
 
     // Agregar la generalización en una fila
     if (servicioUserCase.getGeneralization(id) != OID()) {
         html += "<tr>";
-        html += "<th style='font-family: Arial, sans-serif;'>Generalización</th>";
-        html += "<td style='font-family: Arial, sans-serif;'colspan=3>" +
+        html += "<th >Generalización</th>";
+        html += "<td colspan=3>" +
                 servicioUserCase.getGeneralization(id).operator std::string() + "</td>";
         html += "</tr>";
     }
@@ -405,30 +406,30 @@ std::string HtmlManager::generateTableStakeholder(OID stakeholder) {
     std::string getStakeholderRole(OID id);
     OID getWorksForOrganization(OID id);*/
     html += "<tr>";
-    html += "<th style='font-family: Arial, sans-serif;'>Email</th>";
-    html += "<td style='font-family: Arial, sans-serif;'colspan=3>" + servicioStakeholder.getEmail(stakeholder) + "</td>";
+    html += "<th >Email</th>";
+    html += "<td colspan=3>" + servicioStakeholder.getEmail(stakeholder) + "</td>";
     html += "</tr>";
 
     html += "<tr>";
-    html += "<th style='font-family: Arial, sans-serif;'>Teléfono</th>";
-    html += "<td style='font-family: Arial, sans-serif;'colspan=3>" + servicioStakeholder.getPhone(stakeholder) + "</td>";
+    html += "<th >Teléfono</th>";
+    html += "<td colspan=3>" + servicioStakeholder.getPhone(stakeholder) + "</td>";
     html += "</tr>";
 
     html += "<tr>";
-    html += "<th style='font-family: Arial, sans-serif;'>Dirección</th>";
-    html += "<td style='font-family: Arial, sans-serif;'colspan=3>" + servicioStakeholder.getAddress(stakeholder) + "</td>";
+    html += "<th >Dirección</th>";
+    html += "<td colspan=3>" + servicioStakeholder.getAddress(stakeholder) + "</td>";
     html += "</tr>";
 
     html += "<tr>";
-    html += "<th style='font-family: Arial, sans-serif;'>Rol</th>";
-    html += "<td style='font-family: Arial, sans-serif;'colspan=3>" + servicioStakeholder.getStakeholderRole(stakeholder) + "</td>";
+    html += "<th >Rol</th>";
+    html += "<td colspan=3>" + servicioStakeholder.getStakeholderRole(stakeholder) + "</td>";
     html += "</tr>";
 
     html += "<tr>";
-    html += "<th style='font-family: Arial, sans-serif;'>Organización</th>";
+    html += "<th >Organización</th>";
     OID organization = servicioStakeholder.getWorksForOrganization(stakeholder);
     auto frase = organization.operator std::string()+": "+servicioOrganization.getName(organization);
-    html += "<td style='font-family: Arial, sans-serif;'colspan=3>" +frase+"</td>";
+    html += "<td colspan=3>" +frase+"</td>";
     html += "</tr>";
     html += generateTableChanges(stakeholder);
 
@@ -444,14 +445,14 @@ std::string HtmlManager::generateTableActorUC(OID actorUC) {
 
     std::string html = generateHead(actorUC) ;
     html += "<tr>";
-    html += "<th style='font-family: Arial, sans-serif;'>Paquete</th>";
-    html += "<td style='font-family: Arial, sans-serif;'colspan=3>" + servicioActorUC.getPackage(actorUC) + "</td>";
+    html += "<th >Paquete</th>";
+    html += "<td colspan=3>" + servicioActorUC.getPackage(actorUC) + "</td>";
     html += "</tr>";
 
     if (servicioActorUC.getGeneralization(actorUC) != OID()) {
         html += "<tr>";
-        html += "<th style='font-family: Arial, sans-serif;'>Generalización</th>";
-        html += "<td style='font-family: Arial, sans-serif;'colspan=3>" +
+        html += "<th >Generalización</th>";
+        html += "<td colspan=3>" +
                 servicioActorUC.getGeneralization(actorUC).operator std::string() + "</td>";
         html += "</tr>";
     }
@@ -556,8 +557,8 @@ std::string HtmlManager::generateTableOrganization(OID organization) {
 
     html += generateTableChanges(organization);
     html += "<tr>";
-    html += "<th style='font-family: Arial, sans-serif;'>Informacion de Contacto</th>";
-    html += "<td style='font-family: Arial, sans-serif;'colspan=3>" + servicioOrganization.getContactInfo(organization) + "</td>";
+    html += "<th >Informacion de Contacto</th>";
+    html += "<td colspan=3>" + servicioOrganization.getContactInfo(organization) + "</td>";
     html += "</tr>";
 
     html += "</table>";    html += "</html>";
@@ -587,7 +588,7 @@ std::string HtmlManager::generateMatrixTraces(OID id)
     //Cada elemento de trackeableto ocupara una columna
     auto trackeableTo = servicioMatrixTraces.getTrackeablesTo(id);
     html += "<tr>";
-    html += "<th style='font-family: Arial, sans-serif;'>Requerimientos</th>";
+    html += "<th >Requerimientos</th>";
     for (auto trackeable : trackeableTo)
     {
         html += "<th style='font-family: Arial, sans-serif; text-align: center;'>"    + trackeable.operator std::string() + "</th>";
@@ -601,7 +602,7 @@ html += "</tr>";
         for (auto trackeable : trackeableFrom)
         {
             html += "<tr>";
-            html += "<th style='font-family: Arial, sans-serif;'>" + trackeable.operator std::string() + "</th>";
+            html += "<th >" + trackeable.operator std::string() + "</th>";
             //add a vertical separator
             unsigned int j = 0;
             for (auto trackeable2 : trackeableTo)
@@ -642,22 +643,22 @@ std::string HtmlManager::generateTableUserStory(OID id)
 
 
     html += "<tr>";
-    html += "<th style='font-family: Arial, sans-serif;'>Rol</th>";
-    html += "<td style='font-family: Arial, sans-serif;'colspan=3>" + role + "</td>";
+    html += "<th >Rol</th>";
+    html += "<td colspan=3>" + role + "</td>";
     html += "</tr>";
     html += "<tr>";
-    html += "<th style='font-family: Arial, sans-serif;'>Meta</th>";
-    html += "<td style='font-family: Arial, sans-serif;'colspan=3>" + goal + "</td>";
+    html += "<th >Meta</th>";
+    html += "<td colspan=3>" + goal + "</td>";
     html += "</tr>";
     html += "<tr>";
-    html += "<th style='font-family: Arial, sans-serif;'>Beneficio</th>";
-    html += "<td style='font-family: Arial, sans-serif;'colspan=3>" + benefit + "</td>";
+    html += "<th >Beneficio</th>";
+    html += "<td colspan=3>" + benefit + "</td>";
     html += "</tr>";
     html += "<tr>";
-    html += "<th style='font-family: Arial, sans-serif;'>Time Points</th>";
-    html += "<td style='font-family: Arial, sans-serif;'>" + std::to_string(devTimePoints) + "</td>";
-    html += "<th style='font-family: Arial, sans-serif;'>Priority Points</th>";
-    html += "<td style='font-family: Arial, sans-serif;'>" + std::to_string(priorityPoints) + "</td>";
+    html += "<th >Time Points</th>";
+    html += "<td >" + std::to_string(devTimePoints) + "</td>";
+    html += "<th >Priority Points</th>";
+    html += "<td >" + std::to_string(priorityPoints) + "</td>";
     html += "</tr>";
     html += generateTablePriority(id);
     html += generateTableChanges(id);
@@ -689,15 +690,15 @@ std::string HtmlManager::generateUserStory(OID id) {
     html += "<table style='width: 100%; border-top: 0px solid " + COLOR_BORDER + ";'>";
     html += "<tr>";
     html += "<th style='font-family: Arial, sans-serif; width: 20%;'>Como</th>";
-    html += "<td style='font-family: Arial, sans-serif;'>" + role + "</td>";
+    html += "<td >" + role + "</td>";
     html += "</tr>";
     html += "<tr>";
     html += "<th style='font-family: Arial, sans-serif; width: 20%; border-top: 0px;'>Quiero</th>";
-    html += "<td style='font-family: Arial, sans-serif;'>" + goal + "</td>";
+    html += "<td >" + goal + "</td>";
     html += "</tr>";
     html += "<tr>";
     html += "<th style='font-family: Arial, sans-serif; width: 20%; border-top: 0px;'>Para</th>";
-    html += "<td style='font-family: Arial, sans-serif;'>" + benefit + "</td>";
+    html += "<td >" + benefit + "</td>";
     html += "</tr>";
     html += "</table>";
 
@@ -734,72 +735,237 @@ std::string HtmlManager::generateUserStory(const std::list<OID>& listID) {
 }
 
 
-unsigned IndexHTMLelement::getPos() const {
-    return pos ;
-}
-
-void IndexHTMLelement::setPos(unsigned int pos) {
-    this->pos = pos;
-}
-
-OID IndexHTMLelement::getId() const {
-    return id;
-}
-
-std::set<OID> IndexHTMLelement::getElementsToPrint() const {
-    return elementsToPrint;
-}
-
-void IndexHTMLelement::setElementsToPrint(const std::set<OID> &elementsToPrint) {
-    this->elementsToPrint = elementsToPrint;
-}
-
-void IndexHTMLelement::addElementToPrint(OID id) {
-    elementsToPrint.insert(id);
-}
-
-void IndexHTMLelement::addElementToPrint(std::set<OID> ids) {
-    elementsToPrint.insert(ids.begin(), ids.end());
-}
-
-void IndexHTMLelement::removeElementToPrint(OID id) {
-    elementsToPrint.erase(id);
-}
-
-void IndexHTMLelement::removeElementToPrint(std::set<OID> ids) {
-    for (auto id : ids) {
-        elementsToPrint.erase(id);
+unsigned int getNumberOfElements(Agen<ElementosIndex>::nodo n) {
+    //recorrer index y buscar el id. Una vez encontrado devolver el vector de oid.
+    Agen<ElementosIndex> A;
+    if (n == Agen<ElementosIndex>::NODO_NULO) {
+        return 0;
+    } else {
+        auto nodo = A.hijoIzqdo(n);
+        if (nodo == Agen<ElementosIndex>::NODO_NULO) {
+            return 1;
+        } else {
+            unsigned int i = 1;
+            while (nodo != Agen<ElementosIndex>::NODO_NULO) {
+                i += getNumberOfElements(nodo);
+                nodo = A.hermDrcho(nodo);
+            }
+            return i;
+        }
     }
 }
 
-void IndexHTMLelement::addsubLevel(IndexHTMLelement hijo) {
-    sublevels.push_back(hijo);
+
+
+unsigned Index::createIndex(std::string titulo,unsigned id) {
+    //recorrer index y buscar el id
+    auto nodo = buscarNodo(index.raiz(),id);
+    if (nodo == Agen<ElementosIndex>::NODO_NULO) {
+        throw std::domain_error("El id no existe, no se puede crear el index, createIndex");
+    } else {
+        if (index.hijoIzqdo(nodo) == Agen<ElementosIndex>::NODO_NULO) {
+            index.insertarHijoIzqdo(nodo,{lastID++,titulo,"",std::vector<OID>()});
+            return lastID-1;
+        }
+        else
+        {
+            auto nodo2 = index.hijoIzqdo(nodo);
+            while (index.hermDrcho(nodo2) != Agen<ElementosIndex>::NODO_NULO) {
+                nodo2 = index.hermDrcho(nodo2);
+            }
+            index.insertarHermDrcho(nodo2,{lastID++,titulo,"",std::vector<OID>()});
+            return lastID-1;
+        }
+
+    }
 }
 
-void IndexHTMLelement::removeSubLevel(unsigned int pos) {
-    sublevels.erase(sublevels.begin() + pos);
+void Index::deleteIndex(unsigned id) {
+    //recorrer index y buscar el id
+    //flotar el hijo izquierdo
+//borrar el nodo
+
+    auto nodo = buscarNodo(index.raiz(),id);
+    if (nodo == Agen<ElementosIndex>::NODO_NULO) {
+        throw std::domain_error("El id no existe, no se puede borrar el index, deleteIndex");
+    } else {
+        index.eliminarHijoIzqdo(nodo);
+    }
 }
 
-std::vector<IndexHTMLelement> IndexHTMLelement::getSublevels() const {
-    return sublevels;
+Agen<ElementosIndex>::nodo Index::buscarNodo(Agen<ElementosIndex>::nodo n,unsigned int id) {
+    //Recursive search of the node with the id
+    if (n == Agen<ElementosIndex>::NODO_NULO) {
+        return Agen<ElementosIndex>::NODO_NULO;
+    } else if (index.elemento(n).id == id) {
+        return n;
+    } else {
+        auto hijo = index.hijoIzqdo(n);
+        while (hijo != Agen<ElementosIndex>::NODO_NULO) {
+            auto nodo = buscarNodo(hijo, id);
+            if (nodo != Agen<ElementosIndex>::NODO_NULO) {
+                return nodo;
+            }
+        hijo = index.hermDrcho(hijo) ;
+        }
+        return Agen<ElementosIndex>::NODO_NULO;
+    }
 }
 
-IndexHTMLelement IndexHTMLelement::getSubLevel(unsigned int pos) const {
-    return sublevels[pos];
+void Index::moveIndex(unsigned int id, unsigned int pos) {
+    //recorrer index y buscar el id, luego mover el id entero a un hijoizquierdo de pos
+    auto nodo = buscarNodo(index.raiz(),id);
+    if (nodo == Agen<ElementosIndex>::NODO_NULO) {
+        throw std::domain_error("El id no existe, no se puede mover el index, moveIndex");
+    } else {
+        auto nodopos = buscarNodo(index.raiz(),pos);
+        if (nodopos == Agen<ElementosIndex>::NODO_NULO) {
+            throw std::domain_error("El id no existe, no se puede mover el index, moveIndex");
+        } else {
+            index.insertarHijoIzqdo(nodopos,index.elemento(nodo));
+            index.hijoIzqdo(nodopos)->hizq= nodo;
+        }
+    }
 }
 
-void IndexHTMLelement::setsubLevel(IndexHTMLelement hijo, unsigned int pos) {
-    sublevels[pos] = hijo;
+std::string Index::printIndex(unsigned int id) {
+    //recorrer index y buscar el id. Una vez encontrado localizar su posicion respecto a sus hermanos y guardarlo en un string.
+    //subir un nivel y hacer lo mismo con el padre, hasta llegar a la raiz.
+    //una vez llegado a la raiz, imprimir el string.
+    //ejemplo de resultado = 2.3.5
+    auto nodo = buscarNodo(index.raiz(),id);
+    return printRecursive(std::string(),nodo);
+
 }
 
-void IndexHTMLelement::setId(OID id) {
-    this->id = id;
+std::string Index::printRecursive(std::string print, Agen<ElementosIndex>::nodo n) {
+    auto padre = index.padre(n);
+    if (n == index.raiz())
+        return print;
+
+    auto hijo = index.hijoIzqdo(padre);
+    unsigned int i = 1;
+    while (hijo != n) {
+        hijo = index.hermDrcho(hijo);
+        i++;
+    }
+    std::string aux = std::to_string(i) + "." + print;
+    return printRecursive(aux,padre);
 }
 
-std::string IndexHTMLelement::getName() const {
-    return name;
+std::vector<ElementosIndex> Index::getIndex()
+{
+    std::vector<ElementosIndex> v;
+    auto nodo = index.raiz();
+    unsigned int i = 1;
+    unsigned int encontrados = 1;
+    unsigned cantidadElementos = getNumberOfElements(nodo);
+    while (encontrados <= cantidadElementos)
+    {
+        if (nodo != Agen<ElementosIndex>::NODO_NULO) {
+            auto elemento = index.elemento(nodo);
+            elemento.indice = printRecursive(std::string(),nodo);
+            v.push_back(elemento);
+            encontrados++;
+        }
+        nodo = buscarNodo(index.raiz(),i);
+        i++;
+    }
+    //ordenamos el vector de cabeceras y con el mismo orden ordenamos el vector de elementos
+    for (unsigned int i = 0; i < v.size(); i++) {
+        for (unsigned int j = 0; j < v.size(); j++) {
+            if (v[i].indice < v[j].indice) {
+                std::swap(v[i],v[j]);
+            }
+        }
+    }
+    return v;
 }
 
-void IndexHTMLelement::setName(std::string name) {
-    this->name = name;
+std::vector<OID> Index::getElements(unsigned int id) {
+    //recorrer index y buscar el id. Una vez encontrado devolver el vector de oid.
+    auto nodo = buscarNodo(index.raiz(),id);
+    if (nodo == Agen<ElementosIndex>::NODO_NULO) {
+        throw std::domain_error("El id no existe, no se puede obtener el vector de oid, getElements");
+    } else {
+        return index.elemento(nodo).elementos;
+    }
 }
+
+void Index::addElement(unsigned id, OID oid) {
+    //recorrer index y buscar el id. Una vez encontrado añadir el oid al vector de oid.
+    auto nodo = buscarNodo(index.raiz(),id);
+    if (nodo == Agen<ElementosIndex>::NODO_NULO) {
+        throw std::domain_error("El id no existe, no se puede añadir el oid, addElement");
+    } else {
+        index.elemento(nodo).elementos.push_back(oid);
+    }
+    ServicioHTML::printElement(oid);
+
+}
+
+Agen<ElementosIndex>::nodo Index::buscarNodo(Agen<ElementosIndex>::nodo n, OID id) {
+    //Recursive search of the node with the element id
+    if (n == Agen<ElementosIndex>::NODO_NULO) {
+        return Agen<ElementosIndex>::NODO_NULO;
+    }
+    auto vec = index.elemento(n).elementos;
+    if (std::find(vec.begin(),vec.end(),id) != vec.end()) {
+        return n;
+    } else {
+        auto hijo = index.hijoIzqdo(n);
+        while (hijo != Agen<ElementosIndex>::NODO_NULO) {
+            auto nodo = buscarNodo(hijo, id);
+            if (nodo != Agen<ElementosIndex>::NODO_NULO) {
+                return nodo;
+            }
+        hijo = index.hermDrcho(hijo) ;
+        }
+        return Agen<ElementosIndex>::NODO_NULO;
+    }
+
+}
+
+void Index::deleteElement(unsigned id, OID oid) {
+    //recorrer index y buscar el id. Una vez encontrado borrar el oid del vector de oid.
+    auto nodo = buscarNodo(this->index.raiz(),id);
+    if (nodo == Agen<ElementosIndex>::NODO_NULO) {
+        throw std::domain_error("El id no existe, no se puede borrar el oid, deleteElement");
+    } else {
+        auto vecElementos = index.elemento(nodo).elementos;
+        auto it = std::find(vecElementos.begin(),vecElementos.end(),oid);
+        for (auto it = vecElementos.begin(); it != vecElementos.end(); it++) {
+            if (*it == oid) {
+                vecElementos.erase(it);
+            }
+        }
+        nodo->elto.elementos = vecElementos;
+    }
+}
+
+void Index::moveElementInIndex(unsigned inodo, OID oid, unsigned int pos) {
+    //recorrer index y buscar el id. Una vez encontrado mover el oid del vector de oid a la posicion pos.auto nodo = buscarNodo(this->index.raiz(),id);
+    auto nodo = buscarNodo(this->index.raiz(),oid);
+    auto nodoPos = buscarNodo(this->index.raiz(),inodo);
+
+    if (nodo == Agen<ElementosIndex>::NODO_NULO || nodoPos == Agen<ElementosIndex>::NODO_NULO) {
+        throw std::domain_error("El id no existe, no se puede mover el oid, moveElement");
+    if (index.elemento(nodoPos).elementos.size() < pos)
+        throw std::domain_error("La posicion no existe, no se puede mover el oid, moveElement");
+    } else {
+        auto vecElementos = index.elemento(nodo).elementos;
+        auto it = std::find(vecElementos.begin(),vecElementos.end(),oid);
+        for (auto it = vecElementos.begin(); it != vecElementos.end(); it++) {
+            if (*it == oid) {
+                vecElementos.erase(it);
+            }
+        }
+        auto vecElementosPos = index.elemento(nodoPos).elementos;
+        vecElementosPos.insert(vecElementosPos.begin()+pos,oid);
+        nodo->elto.elementos = vecElementos;
+        nodoPos->elto.elementos = vecElementosPos;
+    }
+
+}
+
+

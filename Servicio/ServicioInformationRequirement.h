@@ -38,7 +38,7 @@ public:
 
 
 private:
-    FileJsonManager fileJsonManager;
+    JsonRepository fileJsonManager;
 /*    void setMaxSimultaneousOccurrence(unsigned int maxSimultaneousOccurrence);
     void setAvgSimultaneousOccurrence(unsigned int avgSimultaneousOccurrence);
     void setLifeMaxEstimate(const TimeQuantity &lifeMaxEstimate);

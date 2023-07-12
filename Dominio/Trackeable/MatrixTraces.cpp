@@ -4,6 +4,7 @@
 
 #include "MatrixTraces.h"
 #include "Servicio/ServicioTrackeable.h"
+#include "Servicio/ServicioHTML.h"
 
 void MatrixTraces::update()
 {
@@ -26,6 +27,7 @@ void MatrixTraces::update()
             matrix[i][j] = std::find(set.begin(), set.end(), trackeableTo) != set.end();
         }
     }
+    ServicioHTML::printElement(getId());
 
 }
 void MatrixTraces::addTrackeable(OID id) {
@@ -44,8 +46,7 @@ void MatrixTraces::addTrackeable(OID id) {
         mapTracesTo.clear();
         unsigned i = 0;
         for (auto it = OIDTracesTo.begin(); it != OIDTracesTo.end(); ++it) {
-            mapTracesTo.insert(std::pair<unsigned, OID>(i, *it));
-            ++i;
+            mapTracesTo[++i] = *it;
         }
     }
 

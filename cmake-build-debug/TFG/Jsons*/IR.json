@@ -1,0 +1,344 @@
+{
+    "1": {
+        "authors": [
+            {
+                "id": 2,
+                "prefix": "SH"
+            },
+            {
+                "id": 3,
+                "prefix": "SH"
+            }
+        ],
+        "avgSimultaneousOccurrence": 0,
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "El sistema deberá proporcionar diversos tipos de productos para que el usuario pueda elegir.",
+        "estability": 0,
+        "id": {
+            "id": 1,
+            "prefix": "IR"
+        },
+        "importanceLevel": 2,
+        "lifeAvgEstimate": {
+            "quantity": 2,
+            "unit": 0
+        },
+        "lifeMaxEstimate": {
+            "quantity": 5,
+            "unit": 0
+        },
+        "maxSimultaneousOccurrence": 0,
+        "name": "Tipos de productos",
+        "phase": 3,
+        "specificInformation": [
+            {
+                "description": "Decoraciones de esparto con la forma de una cabeza de toro.",
+                "id": 1,
+                "name": "Cabezas de toro"
+            },
+            {
+                "description": "Bolsos de esparto.",
+                "id": 2,
+                "name": "Bolsos"
+            },
+            {
+                "description": "Persianas de esparto personalizables con los tamañanos que el cliente desee.",
+                "id": 3,
+                "name": "Persianas"
+            },
+            {
+                "description": "Alfombras de esparto personalizables con los tamañanos que el cliente desee.",
+                "id": 4,
+                "name": "Alfombras"
+            },
+            {
+                "description": "Fundas de botella de esparto.",
+                "id": 5,
+                "name": "Fundas de botella"
+            },
+            {
+                "description": "Fundas de maceta de esparto.",
+                "id": 6,
+                "name": "Fundas de maceta"
+            },
+            {
+                "description": "Revisteros de esparto.",
+                "id": 7,
+                "name": "Revisteros"
+            },
+            {
+                "description": "Cestos de esparto.",
+                "id": 8,
+                "name": "Cestos"
+            },
+            {
+                "description": "Burros de esparto.",
+                "id": 9,
+                "name": "Burros"
+            },
+            {
+                "description": "Alfombras redondas de esparto del diametro que el cliente desee.",
+                "id": 10,
+                "name": "Reores"
+            },
+            {
+                "description": "Canastos de esparto.",
+                "id": 11,
+                "name": "Canastos"
+            },
+            {
+                "description": "Leñeros de esparto.",
+                "id": 12,
+                "name": "Leñeros"
+            },
+            {
+                "description": "Productos de esparto personalizados con las formas y tamaños que el cliente desee.",
+                "id": 13,
+                "name": "Productos Personalizados"
+            }
+        ],
+        "tracesFrom": null,
+        "tracesTo": null,
+        "urgencyLevel": 2,
+        "versionMajor": "1.0",
+        "versionMinor": "0.0"
+    },
+    "2": {
+        "authors": [
+            {
+                "id": 1,
+                "prefix": "SH"
+            },
+            {
+                "id": 2,
+                "prefix": "SH"
+            },
+            {
+                "id": 3,
+                "prefix": "SH"
+            }
+        ],
+        "avgSimultaneousOccurrence": 0,
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "El sistema deberá almacenar la información correspondiente a las formas preferidas del artesano de contacto. Whatsapp por preferencia. En concreto: Whatsapp, Facebook, Instagram y Llamada.",
+        "estability": 0,
+        "id": {
+            "id": 2,
+            "prefix": "IR"
+        },
+        "importanceLevel": 2,
+        "lifeAvgEstimate": {
+            "quantity": 2,
+            "unit": 0
+        },
+        "lifeMaxEstimate": {
+            "quantity": 5,
+            "unit": 0
+        },
+        "maxSimultaneousOccurrence": 0,
+        "name": "Contacto con el Artesano",
+        "phase": 3,
+        "specificInformation": [
+            {
+                "description": "",
+                "id": 1,
+                "name": "Whatsapp"
+            },
+            {
+                "description": "",
+                "id": 2,
+                "name": "Facebook"
+            },
+            {
+                "description": "",
+                "id": 3,
+                "name": "Instagram"
+            },
+            {
+                "description": "",
+                "id": 4,
+                "name": "Llamada"
+            }
+        ],
+        "tracesFrom": null,
+        "tracesTo": null,
+        "urgencyLevel": 2,
+        "versionMajor": "1.0",
+        "versionMinor": "0.0"
+    },
+    "3": {
+        "authors": [
+            {
+                "id": 2,
+                "prefix": "SH"
+            },
+            {
+                "id": 3,
+                "prefix": "SH"
+            }
+        ],
+        "avgSimultaneousOccurrence": 0,
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "El sistema deberá almacenar la información correspondiente a dónde se encuentra actualmente el taller. En concreto: Localización y Horario de apertura.",
+        "estability": 0,
+        "id": {
+            "id": 3,
+            "prefix": "IR"
+        },
+        "importanceLevel": 2,
+        "lifeAvgEstimate": {
+            "quantity": 2,
+            "unit": 0
+        },
+        "lifeMaxEstimate": {
+            "quantity": 5,
+            "unit": 0
+        },
+        "maxSimultaneousOccurrence": 0,
+        "name": "Informacion del taller",
+        "phase": 3,
+        "specificInformation": [
+            {
+                "description": "",
+                "id": 1,
+                "name": "Localización"
+            },
+            {
+                "description": "",
+                "id": 2,
+                "name": "Horario de apertura"
+            }
+        ],
+        "tracesFrom": null,
+        "tracesTo": null,
+        "urgencyLevel": 2,
+        "versionMajor": "1.0",
+        "versionMinor": "0.0"
+    },
+    "4": {
+        "authors": [
+            {
+                "id": 1,
+                "prefix": "SH"
+            },
+            {
+                "id": 2,
+                "prefix": "SH"
+            },
+            {
+                "id": 3,
+                "prefix": "SH"
+            }
+        ],
+        "avgSimultaneousOccurrence": 0,
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "El sistema deberá almacenar la información correspondiente a los usuarios del sistema. En concreto: Nombre, Clave, NIF, Email, Dirección y Teléfono.",
+        "estability": 2,
+        "id": {
+            "id": 4,
+            "prefix": "IR"
+        },
+        "importanceLevel": 2,
+        "lifeAvgEstimate": {
+            "quantity": 2,
+            "unit": 0
+        },
+        "lifeMaxEstimate": {
+            "quantity": 5,
+            "unit": 0
+        },
+        "maxSimultaneousOccurrence": 0,
+        "name": "Información sobre el cliente",
+        "phase": 3,
+        "specificInformation": [
+            {
+                "description": "",
+                "id": 1,
+                "name": "Nombre"
+            },
+            {
+                "description": "",
+                "id": 2,
+                "name": "Clave"
+            },
+            {
+                "description": "",
+                "id": 3,
+                "name": "NIF"
+            },
+            {
+                "description": "",
+                "id": 4,
+                "name": "Email"
+            },
+            {
+                "description": "",
+                "id": 5,
+                "name": "Dirección"
+            },
+            {
+                "description": "",
+                "id": 6,
+                "name": "Teléfono"
+            }
+        ],
+        "tracesFrom": [
+            {
+                "id": 5,
+                "prefix": "UC"
+            }
+        ],
+        "tracesTo": null,
+        "urgencyLevel": 2,
+        "versionMajor": "1.0",
+        "versionMinor": "0.0"
+    },
+    "5": {
+        "authors": [
+            {
+                "id": 2,
+                "prefix": "SH"
+            },
+            {
+                "id": 3,
+                "prefix": "SH"
+            }
+        ],
+        "avgSimultaneousOccurrence": 0,
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "El sistema deberá almacenar la información correspondiente a las facturas generadas de los pedidos.",
+        "estability": 2,
+        "id": {
+            "id": 5,
+            "prefix": "IR"
+        },
+        "importanceLevel": 2,
+        "lifeAvgEstimate": {
+            "quantity": 2,
+            "unit": 0
+        },
+        "lifeMaxEstimate": {
+            "quantity": 5,
+            "unit": 0
+        },
+        "maxSimultaneousOccurrence": 0,
+        "name": "Información sobre las facturas",
+        "phase": 3,
+        "specificInformation": null,
+        "tracesFrom": null,
+        "tracesTo": null,
+        "urgencyLevel": 2,
+        "versionMajor": "1.0",
+        "versionMinor": "0.0"
+    }
+}

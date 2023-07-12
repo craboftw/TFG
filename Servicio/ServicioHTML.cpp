@@ -6,49 +6,6 @@
 #include "ServicioHTML.h"
 
 
-void ServicioHTML::printElement(OID it){
-    HtmlManager htmlManager;
-    std::string html;
-    std::ofstream file;
-    file.open(it.operator std::string()+".html");
-    switch (prefixes[it.getPrefix()]) {
-        case STAKEHOLDER:
-            file<<htmlManager.generateTableStakeholder(it);
-            break;
-        case RESTRICTION_REQUIREMENT:
-            file<<htmlManager.generateTableRestrictionRequirement(it);
-            break;
-        case FUNCTIONAL_REQUIREMENT:
-            file<<htmlManager.generateTableFunctionalRequirement(it);
-            break;
-        case NON_FUNCTIONAL_REQUIREMENT:
-            file<<htmlManager.generateTableNonFunctionalRequirement(it);
-            break;
-        case ACTOR_UC:
-            file<<htmlManager.generateTableActorUC(it);
-            break;
-        case INFORMATION_REQUIREMENT:
-            file<<htmlManager.generateTableInformationRequirement(it);
-            break;
-        case ORGANIZATION:
-            file<<htmlManager.generateTableOrganization(it);
-            break;
-        case SYSTEM_OBJECTIVE:
-            file<<htmlManager.generateTableSystemObjetive(it);
-            break;
-        case USER_CASE:
-            file<<htmlManager.generateTableUserCase(it);
-            break;
-        case TEXT:
-            file<<htmlManager.generateTableText(it);
-            break;
-        case MATRIX_TRACES:
-            file<<htmlManager.generateMatrixTraces(it);
-            break;
-        default:
-            throw std::invalid_argument("Invalid prefix");
-        }
-    }
 
 void ServicioHTML::printHTML() {
     std::string html;
@@ -117,5 +74,91 @@ for (auto it = list.begin(); it != list.end(); ++it) {
 }
 
 
+void ServicioHTML::printElement(OID it){
+    HtmlManager htmlManager;
+    std::string html;
+    std::ofstream file;
+    file.open(it.operator std::string()+".html");
+    switch (prefixes[it.getPrefix()]) {
+        case STAKEHOLDER:
+            file<<htmlManager.generateTableStakeholder(it);
+            break;
+        case RESTRICTION_REQUIREMENT:
+            file<<htmlManager.generateTableRestrictionRequirement(it);
+            break;
+        case FUNCTIONAL_REQUIREMENT:
+            file<<htmlManager.generateTableFunctionalRequirement(it);
+            break;
+        case NON_FUNCTIONAL_REQUIREMENT:
+            file<<htmlManager.generateTableNonFunctionalRequirement(it);
+            break;
+        case ACTOR_UC:
+            file<<htmlManager.generateTableActorUC(it);
+            break;
+        case INFORMATION_REQUIREMENT:
+            file<<htmlManager.generateTableInformationRequirement(it);
+            break;
+        case ORGANIZATION:
+            file<<htmlManager.generateTableOrganization(it);
+            break;
+        case SYSTEM_OBJECTIVE:
+            file<<htmlManager.generateTableSystemObjetive(it);
+            break;
+        case USER_CASE:
+            file<<htmlManager.generateTableUserCase(it);
+            break;
+        case TEXT:
+            file<<htmlManager.generateTableText(it);
+            break;
+        case MATRIX_TRACES:
+            file<<htmlManager.generateMatrixTraces(it);
+            break;
+        case NULLTYPE:
+            file<<"";
+        default:
+            throw std::invalid_argument("Invalid prefix");
+    }
+}
+
+unsigned ServicioHTML::createIndex(std::string titulo, unsigned int id) {
+    return index.createIndex(titulo,id);
+}
+
+void ServicioHTML::deleteIndex(unsigned int id) {
+    index.deleteIndex(id);
+    printHTML();
+}
+
+void ServicioHTML::moveIndex(unsigned int id, unsigned int pos) {
+    index.moveIndex(id,pos);
+    printHTML();
+}
+
+std::string ServicioHTML::printIndex(unsigned int id) {
+    return index.printIndex(id);
+}
+
+std::vector<ElementosIndex> ServicioHTML::getIndex() {
+    return index.getIndex();
+}
+
+std::vector<OID> ServicioHTML::getElements(unsigned int id) {
+    return index.getElements(id);
+}
+
+void ServicioHTML::addElement(unsigned int id, OID oid) {
+    index.addElement(id,oid);
+    printHTML();
+}
+
+void ServicioHTML::deleteElement(unsigned int index, OID id) {
+    this->index.deleteElement(index,id);
+    printHTML();
+}
+
+void ServicioHTML::moveElementInIndex(unsigned int index, OID id, unsigned int pos) {
+    this->index.moveElementInIndex(index,id,pos);
+    printHTML();
+}
 
 

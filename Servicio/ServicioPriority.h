@@ -8,7 +8,7 @@
 
 #include "Dominio/Trackeable/Trackeable.h"
 #include "Dominio/Priority/Priority.h"
-#include "Visitor/FileJsonManager.h"
+#include "Repository/JsonRepository.h"
 
 class ServicioPriority {
 public:
@@ -28,8 +28,6 @@ public:
     Priority::Estability getEstability(OID id) ;
 
 
-protected:
-    FileJsonManager fileJsonManager;
 
 };
 

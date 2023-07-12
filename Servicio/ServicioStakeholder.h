@@ -6,7 +6,7 @@
 #define TFG_SERVICIOSTAKEHOLDER_H
 
 
-#include "Visitor/FileJsonManager.h"
+#include "Repository/JsonRepository.h"
 #include "ServicioTrackeable.h"
 
 class ServicioStakeholder : public ServicioTrackeable{
@@ -26,7 +26,7 @@ public:
 
 std::list<std::pair<OID,std::string>> getStakeholders();
 private:
-FileJsonManager fileJsonManager;
+JsonRepository fileJsonManager;
 };
 
 

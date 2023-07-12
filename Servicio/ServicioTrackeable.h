@@ -7,7 +7,8 @@
 
 
 #include "Dominio/Trackeable/Trackeable.h"
-#include "Visitor/FileJsonManager.h"
+
+class JsonRepository;
 
 class ServicioTrackeable {
 public:
@@ -39,11 +40,6 @@ public:
     Fecha getDate(OID id);
     std::string getVersionMinor(OID id);
     std::string getVersionMajor(OID id);
-
-
-
-protected:
-    FileJsonManager fileJsonManager;
 
 
 };

@@ -90,10 +90,13 @@ std::string HtmlManager::generateTableTrackeable(OID id) {
 
 
     // Agregar la descripción del trackeable en una fila
-    html += "<tr>";
-    html += "<th  colspan='1'>Descripción</th>";
-    html += "<td  colspan='5'>" + servicioTrackeable.getDescription(id) + "</td>";
-    html += "</tr>";
+    std::string descripcion = servicioTrackeable.getDescription(id);
+    if (!descripcion.empty()) {
+        html += "<tr>";
+        html += "<th  colspan='1'>Descripción</th>";
+        html += "<td  colspan='5'>" + descripcion + "</td>";
+        html += "</tr>";
+    }
 
 
 
@@ -108,10 +111,26 @@ std::string HtmlManager::generateTableChanges(OID id) {
 
     std::string html;
 
-    // Agregar la versión y la fecha del trackeable en una fila
-    html += "<tr>";
-    html += "<th  width='25%'>Rango de versiones</th>";
-    html += "<td  width='25%'>" + servicioTrackeable.getVersionMinor(id) + " - " + servicioTrackeable.getVersionMajor(id) + "</td>";
+    std::string versionMayor = servicioTrackeable.getVersionMajor(id);
+    std::string versionMenor = servicioTrackeable.getVersionMinor(id);
+    if (!versionMayor.empty() and !versionMenor.empty())
+    {  html += "<tr>";
+        html += "<th  width='25%'>Rango de versiones</th>";
+        html += "<td  width='25%'>" + versionMayor + " - " + versionMenor + "</td>";
+    }
+    if (versionMenor.empty())
+    {
+        html += "<tr>";
+        html += "<th  width='25%'>Versión</th>";
+        html += "<td  width='25%'>" + versionMayor + "</td>";
+
+    }
+    if (versionMayor.empty())
+    {
+        html += "<tr>";
+        html += "<th  width='25%'>Versión</th>";
+        html += "<td  width='25%'>" + versionMenor + "</td>";
+    }
     html += "<th  width='25%'>Fecha</th>";
     html += "<td  width='25%'>" + servicioTrackeable.getDate(id).toString() + "</td>";
     html += "</tr>";
@@ -119,27 +138,28 @@ std::string HtmlManager::generateTableChanges(OID id) {
     // Agregar los autores del trackeable en una fila
     std::set<OID> authors = servicioTrackeable.getAuthors(id);
     std::string palabro;
-    if (authors.empty() or authors.size() == 1)
+    unsigned int autorsize = authors.size();
+    if (autorsize == 1)
         palabro = "Autor";
     else
         palabro = "Autores";
 
-
-    html += "<tr>";
-    html += "<th  colspan='1'>"+palabro+"</th>";
-    html += "<td  colspan='3'>";
-    //get every name of the authors
-    for (auto author : authors) {
-        html +=  servicioStakeholder.getName(author);
-        //if it is not the last author, add a comma
-        if (author != *authors.rbegin()) {
-            html += ", ";
+    if (autorsize != 0) {
+        html += "<tr>";
+        html += "<th  colspan='1'>" + palabro + "</th>";
+        html += "<td  colspan='3'>";
+        //get every name of the authors
+        for (auto author: authors) {
+            html += servicioStakeholder.getName(author);
+            //if it is not the last author, add a comma
+            if (author != *authors.rbegin()) {
+                html += ", ";
+            } else {
+                html += ".</td>";
+            }
         }
-        else {
-            html += ".</td>";
-        }
+        html += "</tr>";
     }
-    html += "</tr>";
 
     //now the tracesTo
     std::set<OID> tracesTo = servicioTrackeable.getTracesTo(id);
@@ -284,13 +304,16 @@ std::string HtmlManager::generateTableUserCase(OID id) {
                 html += "<strong>Tipo:</strong> El sistema es quien realiza este paso. <br>";
                 break;
             case ACTOR:
+                if(step.getReference() != OID())
                 html += "<strong>Tipo:</strong> El actor "+servicioActorUC.getName(step.getReference())+" es quien realiza este paso. <br>";
                 break;
             case INCLUDE:
-                html += "<strong>Tipo:</strong> Include: &#09<strong>Caso de uso:</strong> " +step.getReference().operator std::string()+": "+ servicioUserCase.getName(step.getReference()) + "<br>";
+                if(step.getReference() != OID())
+                    html += "<strong>Tipo:</strong> Include: &#09<strong>Caso de uso:</strong> " +step.getReference().operator std::string()+": "+ servicioUserCase.getName(step.getReference()) + "<br>";
                 break;
             case EXTEND:
-                html += "<strong>Tipo:</strong> Extend: &#09<strong>Caso de uso:</strong> " +step.getReference().operator std::string()+": "+ servicioUserCase.getName(step.getReference()) + "<br>";
+                if(step.getReference() != OID())
+                    html += "<strong>Tipo:</strong> Extend: &#09<strong>Caso de uso:</strong> " +step.getReference().operator std::string()+": "+ servicioUserCase.getName(step.getReference()) + "<br>";
                 break;
         }
 
@@ -332,7 +355,6 @@ std::string HtmlManager::generateTableUserCase(OID id) {
             i++;
             if (i < exceptions.size())
             html += "<hr style=\"border-top: 1px dotted " + COLOR_EXCEPTION_SEPARATOR + ";\">";
-
         }
     }
 
@@ -343,10 +365,21 @@ std::string HtmlManager::generateTableUserCase(OID id) {
     html += "<tr>";
     html += "<th >Actores</th>";
     html += "<td colspan=3>";
-
-    std::list<OID> actors = servicioUserCase.getActors(id);
+    //getActors from every step and exception
+    auto pasos = servicioUserCase.getSteps(id);
+    std::set<OID> actors;
+    for (const auto& paso : pasos) {
+            if (paso.getType() == ACTOR && paso.getReference() != OID())
+                actors.insert(paso.getReference());
+    }
+    auto excepciones = servicioUserCase.getExceptions(id);
+    for (const auto& excepcion : excepciones) {
+        if (excepcion.stepType == ACTOR && excepcion.reference != OID()) {
+            actors.insert(excepcion.reference);
+        }
+    }
     for (const auto& actor : actors) {
-        html += "<strong>ID:</strong> " + actor.operator std::string() + "<br>";
+        html += "<strong>" + actor.operator std::string() + "</strong> "+ servicioTrackeable.getName(actor)+"<br>";
     }
 
     html += "</td>";
@@ -359,17 +392,19 @@ std::string HtmlManager::generateTableUserCase(OID id) {
 
     std::list<OID> objectives = servicioUserCase.getObjectives(id);
     for (const auto& objective : objectives) {
-        html += "<strong>ID:</strong> " + objective.operator std::string() + "<br>";
+        html += "<strong>" + objective.operator std::string() + "</strong> "+ servicioTrackeable.getName(objective)+"<br>";
     }
 
     html += "</td>";
     html += "</tr>";
-
-    // Agregar el paquete en una fila
-    html += "<tr>";
-    html += "<th >Paquete</th>";
-    html += "<td colspan=3>" + servicioUserCase.getPackage(id) + "</td>";
-    html += "</tr>";
+    std::string paquete = servicioUserCase.getPackage(id);
+    if (paquete != "") {
+        // Agregar el paquete en una fila
+        html += "<tr>";
+        html += "<th >Paquete</th>";
+        html += "<td colspan=3>" + paquete + "</td>";
+        html += "</tr>";
+    }
 
     // Agregar la frecuencia en una fila
     html += "<tr>";
@@ -405,32 +440,51 @@ std::string HtmlManager::generateTableStakeholder(OID stakeholder) {
     std::string getAddress(OID id);
     std::string getStakeholderRole(OID id);
     OID getWorksForOrganization(OID id);*/
-    html += "<tr>";
-    html += "<th >Email</th>";
-    html += "<td colspan=3>" + servicioStakeholder.getEmail(stakeholder) + "</td>";
-    html += "</tr>";
+    std::string email = servicioStakeholder.getEmail(stakeholder);
+    std::string phone = servicioStakeholder.getPhone(stakeholder);
+    std::string address = servicioStakeholder.getAddress(stakeholder);
+    std::string role = servicioStakeholder.getStakeholderRole(stakeholder);
 
-    html += "<tr>";
-    html += "<th >Teléfono</th>";
-    html += "<td colspan=3>" + servicioStakeholder.getPhone(stakeholder) + "</td>";
-    html += "</tr>";
+    if (!email.empty())
+    {
+        html += "<tr>";
+        html += "<th >Email</th>";
+        html += "<td colspan=3>" + servicioStakeholder.getEmail(stakeholder) + "</td>";
+        html += "</tr>";
+    }
 
-    html += "<tr>";
-    html += "<th >Dirección</th>";
-    html += "<td colspan=3>" + servicioStakeholder.getAddress(stakeholder) + "</td>";
-    html += "</tr>";
+    if (!phone.empty())
+    {
+        html += "<tr>";
+        html += "<th >Teléfono</th>";
+        html += "<td colspan=3>" + servicioStakeholder.getPhone(stakeholder) + "</td>";
+        html += "</tr>";
+    }
 
-    html += "<tr>";
-    html += "<th >Rol</th>";
-    html += "<td colspan=3>" + servicioStakeholder.getStakeholderRole(stakeholder) + "</td>";
-    html += "</tr>";
+    if (!address.empty())
+    {
+        html += "<tr>";
+        html += "<th >Dirección</th>";
+        html += "<td colspan=3>" + servicioStakeholder.getAddress(stakeholder) + "</td>";
+        html += "</tr>";
+    }
 
-    html += "<tr>";
-    html += "<th >Organización</th>";
+    if (!role.empty())
+    {
+        html += "<tr>";
+        html += "<th >Rol</th>";
+        html += "<td colspan=3>" + servicioStakeholder.getStakeholderRole(stakeholder) + "</td>";
+        html += "</tr>";
+    }
     OID organization = servicioStakeholder.getWorksForOrganization(stakeholder);
-    auto frase = organization.operator std::string()+": "+servicioOrganization.getName(organization);
-    html += "<td colspan=3>" +frase+"</td>";
-    html += "</tr>";
+    if (organization != OID())
+    {
+        html += "<tr>";
+        html += "<th >Organización</th>";
+        auto frase = organization.operator std::string() + ": " + servicioOrganization.getName(organization);
+        html += "<td colspan=3>" + frase + "</td>";
+        html += "</tr>";
+    }
     html += generateTableChanges(stakeholder);
 
     html += "</table>";
@@ -599,7 +653,7 @@ html += "</tr>";
         auto trackeableFrom = servicioMatrixTraces.getTrackeablesFrom(id);
         auto matrixbool = servicioMatrixTraces.getMatrix(id);
         unsigned int i = 0;
-        for (auto trackeable : trackeableFrom)
+        for (const auto& trackeable : trackeableFrom)
         {
             html += "<tr>";
             html += "<th >" + trackeable.operator std::string() + "</th>";

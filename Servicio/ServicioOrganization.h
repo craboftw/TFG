@@ -8,7 +8,7 @@
 
 #include <string>
 #include "Dominio/Trackeable/Trackeable.h"
-#include "Visitor/FileJsonManager.h"
+#include "Repository/JsonRepository.h"
 #include "ServicioTrackeable.h"
 
 class ServicioOrganization : public ServicioTrackeable{
@@ -18,7 +18,7 @@ public:
     std::string getContactInfo(OID id);
 
 private:
-    FileJsonManager fileJsonManager;
+    JsonRepository fileJsonManager;
 
 };
 

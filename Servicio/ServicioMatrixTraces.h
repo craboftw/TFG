@@ -8,12 +8,12 @@
 
 #include <vector>
 #include "Dominio/Trackeable/Trackeable.h"
-#include "Visitor/FileJsonManager.h"
+#include "Repository/JsonRepository.h"
 #include "ServicioTrackeable.h"
 #include "Dominio/Trackeable/MatrixTraces.h"
 
 
-class ServicioMatrixTraces : public ServicioTrackeable{
+class ServicioMatrixTraces {
 
     /*void addPrefixFrom(std::string prefix);
     void addPrefixTo(std::string prefix);
@@ -38,6 +38,7 @@ public:
     void addPrefixTo(OID id,std::string prefix);
     void removePrefixFrom(OID id,std::string prefix);
     void removePrefixTo(OID id,std::string prefix);
+    static void update();
 
     void addTrackeable(OID id,OID idTrackeable);
     void removeTrackeable(OID id,OID idTrackeable);
@@ -53,7 +54,7 @@ public:
     std::set<std::string> getPrefixesTracesFrom(OID id);
 
 private:
-    FileJsonManager fileJsonManager;
+    static JsonRepository fileJsonManager;
 
 };
 

@@ -1,7 +1,4 @@
 #include "Trackeable.h"
-#include "Stakeholder.h"
-#include "Visitor/Jsoneitor.h"
-
 
 void Change::setVersion(std::string _version){
     version = _version;

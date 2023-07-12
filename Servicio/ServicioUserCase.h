@@ -7,7 +7,6 @@
 
 
 #include "Dominio/Trackeable/Trackeable.h"
-#include "Visitor/FileJsonManager.h"
 #include "ServicioTrackeable.h"
 #include "ServicioPriority.h"
 
@@ -66,8 +65,6 @@ public:
     std::list<std::pair<OID, std::string>> getUseCases();
 
 
-private:
-    FileJsonManager fileJsonManager;
 
 
 };

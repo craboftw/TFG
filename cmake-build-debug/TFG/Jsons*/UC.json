@@ -1,0 +1,1176 @@
+{
+    "1": {
+        "abstract": false,
+        "actors": null,
+        "authors": [
+            {
+                "id": 2,
+                "prefix": "SH"
+            },
+            {
+                "id": 3,
+                "prefix": "SH"
+            }
+        ],
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "El sistema deberá comportarse tal como se describe en el siguiente caso de uso cuando el Cliente pulse el botón de registrarse en la página web.",
+        "estability": 0,
+        "exceptions": [
+            {
+                "comments": "",
+                "condition": "Si el nombre no tiene el formato correcto (se han añadido caracteres especiales)",
+                "description": "El sistema muestra un mensaje de error y el caso de uso queda sin efecto",
+                "reference": {
+                    "id": 0,
+                    "prefix": "XX"
+                },
+                "step": 4,
+                "stepType": 0
+            },
+            {
+                "comments": "",
+                "condition": "Si el apellido no tiene el formato correcto (se han añadido caracteres especiales)",
+                "description": "El sistema muestra un mensaje de error y el caso de uso queda sin efecto",
+                "reference": {
+                    "id": 0,
+                    "prefix": "XX"
+                },
+                "step": 4,
+                "stepType": 0
+            },
+            {
+                "comments": "",
+                "condition": "Si el correo electrónico no tiene el formato correcto (texto + @ + host + . + com) ",
+                "description": "El sistema muestra un mensaje de error y el caso de uso queda sin efecto",
+                "reference": {
+                    "id": 0,
+                    "prefix": "XX"
+                },
+                "step": 4,
+                "stepType": 0
+            },
+            {
+                "comments": "",
+                "condition": "Si el correo electrónico ya está registrado en el sistema",
+                "description": "El sistema muestra un mensaje de error y el caso de uso queda sin efecto",
+                "reference": {
+                    "id": 0,
+                    "prefix": "XX"
+                },
+                "step": 4,
+                "stepType": 0
+            },
+            {
+                "comments": "",
+                "condition": "Si el NIF está registrado en el sistema",
+                "description": "El sistema muestra un mensaje de error y el caso de uso queda sin efecto",
+                "reference": {
+                    "id": 0,
+                    "prefix": "XX"
+                },
+                "step": 4,
+                "stepType": 0
+            },
+            {
+                "comments": "",
+                "condition": "Si el cliente no acepta las condiciones de uso",
+                "description": "El sistema muestra un mensaje de error y el caso de uso queda sin efecto",
+                "reference": {
+                    "id": 0,
+                    "prefix": "XX"
+                },
+                "step": 4,
+                "stepType": 0
+            }
+        ],
+        "frequency": {
+            "quantity": 20,
+            "unit": 1
+        },
+        "generalization": {
+            "id": 0,
+            "prefix": "XX"
+        },
+        "id": {
+            "id": 1,
+            "prefix": "UC"
+        },
+        "importanceLevel": 2,
+        "name": "Alta Cliente",
+        "objectives": null,
+        "package": "Gestion de clientes",
+        "phase": 6,
+        "postcondition": "El cliente ya está registrado en el sistema y puede iniciar sesión",
+        "precondition": "El cliente no está registrado en el sistema",
+        "steps": [
+            {
+                "abstract": false,
+                "comments": "",
+                "condition": "",
+                "description": "Accede a la página web",
+                "reference": {
+                    "id": 1,
+                    "prefix": "AC"
+                },
+                "stepType": 1
+            },
+            {
+                "abstract": false,
+                "comments": "",
+                "condition": "",
+                "description": "Introduce sus datos personales (nombre, apellidos, DNI, dirección, teléfono, correo electrónico, contraseña)",
+                "reference": {
+                    "id": 1,
+                    "prefix": "AC"
+                },
+                "stepType": 1
+            },
+            {
+                "abstract": false,
+                "comments": "",
+                "condition": "",
+                "description": "Crea una contraseña",
+                "reference": {
+                    "id": 0,
+                    "prefix": "XX"
+                },
+                "stepType": 0
+            },
+            {
+                "abstract": false,
+                "comments": "",
+                "condition": "",
+                "description": "El sistema comprueba que los datos introducidos son correctos y que el correo electrónico y el NIF no está registrado en el sistema",
+                "reference": {
+                    "id": 1,
+                    "prefix": "AC"
+                },
+                "stepType": 1
+            },
+            {
+                "abstract": false,
+                "comments": "",
+                "condition": "",
+                "description": "El sistema envía un correo electrónico de confirmación al cliente",
+                "reference": {
+                    "id": 0,
+                    "prefix": "XX"
+                },
+                "stepType": 0
+            },
+            {
+                "abstract": false,
+                "comments": "",
+                "condition": "",
+                "description": "El sistema guarda los datos del cliente",
+                "reference": {
+                    "id": 0,
+                    "prefix": "XX"
+                },
+                "stepType": 2
+            }
+        ],
+        "tracesFrom": null,
+        "tracesTo": [
+            {
+                "id": 5,
+                "prefix": "SO"
+            },
+            {
+                "id": 6,
+                "prefix": "SO"
+            }
+        ],
+        "urgencyLevel": 2,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    },
+    "10": {
+        "abstract": false,
+        "actors": null,
+        "authors": [
+            {
+                "id": 1,
+                "prefix": "SH"
+            },
+            {
+                "id": 2,
+                "prefix": "SH"
+            }
+        ],
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "El sistema deberá comportarse tal como se describe en el siguiente caso de uso cuando el Cliente quiere realizar un pedido.",
+        "estability": 0,
+        "exceptions": null,
+        "frequency": {
+            "quantity": 5,
+            "unit": 3
+        },
+        "generalization": {
+            "id": 0,
+            "prefix": "XX"
+        },
+        "id": {
+            "id": 10,
+            "prefix": "UC"
+        },
+        "importanceLevel": 2,
+        "name": "UC10",
+        "objectives": null,
+        "package": "Gestion de pedidos",
+        "phase": 6,
+        "postcondition": "Se redirecciona a WhatsApp el pedido realizado y la factura o presupuesto dependiendo del tipo de pedido.",
+        "precondition": "El Cliente tiene que estar registrado en la página web y haber iniciado sesión.",
+        "steps": [
+            {
+                "abstract": false,
+                "comments": "",
+                "condition": "",
+                "description": "El actor Cliente selecciona los productos ( de la página o personalizados) que quiere comprar.",
+                "reference": {
+                    "id": 1,
+                    "prefix": "AC"
+                },
+                "stepType": 1
+            },
+            {
+                "abstract": false,
+                "comments": "",
+                "condition": "",
+                "description": "El actor Cliente selecciona la opción de hacer un envío.",
+                "reference": {
+                    "id": 1,
+                    "prefix": "AC"
+                },
+                "stepType": 1
+            },
+            {
+                "abstract": false,
+                "comments": "",
+                "condition": "",
+                "description": "El sistema muestra los detalles del envío, y pide la confirmación del Cliente.",
+                "reference": {
+                    "id": 0,
+                    "prefix": "XX"
+                },
+                "stepType": 0
+            },
+            {
+                "abstract": false,
+                "comments": "",
+                "condition": "",
+                "description": "El actor Cliente confirma el pedido.",
+                "reference": {
+                    "id": 1,
+                    "prefix": "AC"
+                },
+                "stepType": 1
+            },
+            {
+                "abstract": false,
+                "comments": "",
+                "condition": "",
+                "description": "El sistema manda al WhastApp del espartero la información de todo el pedido.",
+                "reference": {
+                    "id": 0,
+                    "prefix": "XX"
+                },
+                "stepType": 0
+            },
+            {
+                "abstract": false,
+                "comments": "",
+                "condition": "",
+                "description": "El actor Cliente ya puede ponerse en contacto con el espartero y concretar los detalles de entrega.",
+                "reference": {
+                    "id": 1,
+                    "prefix": "AC"
+                },
+                "stepType": 1
+            }
+        ],
+        "tracesFrom": null,
+        "tracesTo": [
+            {
+                "id": 2,
+                "prefix": "SO"
+            },
+            {
+                "id": 3,
+                "prefix": "SO"
+            },
+            {
+                "id": 6,
+                "prefix": "SO"
+            }
+        ],
+        "urgencyLevel": 2,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    },
+    "2": {
+        "abstract": false,
+        "actors": null,
+        "authors": [
+            {
+                "id": 2,
+                "prefix": "SH"
+            },
+            {
+                "id": 3,
+                "prefix": "SH"
+            }
+        ],
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "El sistema deberá comportarse tal como se describe en el siguiente caso de uso cuando el Cliente pulse el botón de iniciar sesión en la página web.",
+        "estability": 0,
+        "exceptions": [
+            {
+                "comments": "",
+                "condition": "Si no confirma que quiere darse de baja",
+                "description": "El sistema muestra un mensaje de que su cuenta sigue siendo útil, a continuación este caso de uso queda sin efecto",
+                "reference": {
+                    "id": 0,
+                    "prefix": "XX"
+                },
+                "step": 4,
+                "stepType": 0
+            }
+        ],
+        "frequency": {
+            "quantity": 20,
+            "unit": 1
+        },
+        "generalization": {
+            "id": 0,
+            "prefix": "XX"
+        },
+        "id": {
+            "id": 2,
+            "prefix": "UC"
+        },
+        "importanceLevel": 2,
+        "name": "Iniciar sesión",
+        "objectives": null,
+        "package": "Gestion de clientes",
+        "phase": 6,
+        "postcondition": "El cliente ya está registrado en el sistema y puede iniciar sesión",
+        "precondition": "El cliente ya está registrado en el sistema",
+        "steps": [
+            {
+                "abstract": false,
+                "comments": "",
+                "condition": "",
+                "description": "Accede a su perfil en la página web",
+                "reference": {
+                    "id": 1,
+                    "prefix": "AC"
+                },
+                "stepType": 1
+            },
+            {
+                "abstract": false,
+                "comments": "",
+                "condition": "",
+                "description": "Selecciona la opción \"Eliminar cuenta\"",
+                "reference": {
+                    "id": 1,
+                    "prefix": "AC"
+                },
+                "stepType": 1
+            },
+            {
+                "abstract": false,
+                "comments": "",
+                "condition": "",
+                "description": "Muestra mensaje de confirmación",
+                "reference": {
+                    "id": 0,
+                    "prefix": "XX"
+                },
+                "stepType": 0
+            },
+            {
+                "abstract": false,
+                "comments": "",
+                "condition": "",
+                "description": "Confirma que quiere darse de baja",
+                "reference": {
+                    "id": 1,
+                    "prefix": "AC"
+                },
+                "stepType": 1
+            }
+        ],
+        "tracesFrom": null,
+        "tracesTo": [
+            {
+                "id": 5,
+                "prefix": "SO"
+            },
+            {
+                "id": 6,
+                "prefix": "SO"
+            }
+        ],
+        "urgencyLevel": 2,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    },
+    "3": {
+        "abstract": false,
+        "actors": null,
+        "authors": [
+            {
+                "id": 2,
+                "prefix": "SH"
+            },
+            {
+                "id": 3,
+                "prefix": "SH"
+            }
+        ],
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "El sistema deberá comportarse tal como se describe en el siguiente caso de uso cuando El Cliente pulsa el botón \"Modificar datos\"",
+        "estability": 0,
+        "exceptions": [
+            {
+                "comments": "",
+                "condition": "Si los datos introducidos no siguen el formato correcto",
+                "description": "El sistema muestra mensaje de error, a continuación este caso de uso queda sin efecto",
+                "reference": {
+                    "id": 0,
+                    "prefix": "XX"
+                },
+                "step": 4,
+                "stepType": 0
+            }
+        ],
+        "frequency": {
+            "quantity": 10,
+            "unit": 1
+        },
+        "generalization": {
+            "id": 0,
+            "prefix": "XX"
+        },
+        "id": {
+            "id": 3,
+            "prefix": "UC"
+        },
+        "importanceLevel": 2,
+        "name": "Modificar datos de cliente",
+        "objectives": null,
+        "package": "Gestion de clientes",
+        "phase": 6,
+        "postcondition": "El sistema guarda los datos del cliente modificados.",
+        "precondition": "El Cliente debe estar dado de alta en la página y haber iniciado sesión.",
+        "steps": [
+            {
+                "abstract": false,
+                "comments": "",
+                "condition": "",
+                "description": "Entra en su perfil",
+                "reference": {
+                    "id": 1,
+                    "prefix": "AC"
+                },
+                "stepType": 1
+            },
+            {
+                "abstract": false,
+                "comments": "",
+                "condition": "",
+                "description": "Pulsa en la opción \"Modificar datos\"",
+                "reference": {
+                    "id": 1,
+                    "prefix": "AC"
+                },
+                "stepType": 1
+            },
+            {
+                "abstract": false,
+                "comments": "",
+                "condition": "",
+                "description": "Muestra los datos actuales del Cliente y da la opción de modificarlos",
+                "reference": {
+                    "id": 0,
+                    "prefix": "XX"
+                },
+                "stepType": 0
+            },
+            {
+                "abstract": false,
+                "comments": "",
+                "condition": "",
+                "description": "Valida los datos introducidos y los actualiza",
+                "reference": {
+                    "id": 0,
+                    "prefix": "XX"
+                },
+                "stepType": 0
+            }
+        ],
+        "tracesFrom": null,
+        "tracesTo": null,
+        "urgencyLevel": 2,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    },
+    "4": {
+        "abstract": false,
+        "actors": null,
+        "authors": [
+            {
+                "id": 2,
+                "prefix": "SH"
+            },
+            {
+                "id": 3,
+                "prefix": "SH"
+            }
+        ],
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "El sistema deberá comportarse tal como se describe en el siguiente caso de uso cuando el Cliente quiere iniciar sesión.",
+        "estability": 0,
+        "exceptions": [
+            {
+                "comments": "",
+                "condition": "Si el cliente introduce correo o contraseña incorrectas",
+                "description": "El sistema muestra mensaje de error, a continuación este caso de uso queda sin efecto",
+                "reference": {
+                    "id": 0,
+                    "prefix": "XX"
+                },
+                "step": 1,
+                "stepType": 0
+            },
+            {
+                "comments": "",
+                "condition": "Si el cliente no está dado de alta",
+                "description": "El sistema muestra mensaje de error, a continuación este caso de uso queda sin efecto",
+                "reference": {
+                    "id": 0,
+                    "prefix": "XX"
+                },
+                "step": 2,
+                "stepType": 0
+            }
+        ],
+        "frequency": {
+            "quantity": 40,
+            "unit": 1
+        },
+        "generalization": {
+            "id": 0,
+            "prefix": "XX"
+        },
+        "id": {
+            "id": 4,
+            "prefix": "UC"
+        },
+        "importanceLevel": 2,
+        "name": "Identificación de Cliente",
+        "objectives": null,
+        "package": "Gestion de clientes",
+        "phase": 6,
+        "postcondition": "El sistema identifica al cliente y le permite acceder a las funcionalidades de la página.",
+        "precondition": "El Cliente se ha dado de alta en el sistema.",
+        "steps": [
+            {
+                "abstract": false,
+                "comments": "",
+                "condition": "",
+                "description": "Inicia sesión con su correo electrónico y contraseña",
+                "reference": {
+                    "id": 1,
+                    "prefix": "AC"
+                },
+                "stepType": 1
+            },
+            {
+                "abstract": false,
+                "comments": "",
+                "condition": "",
+                "description": "Verifica las credenciales del Cliente y lo identifica en el sistema",
+                "reference": {
+                    "id": 0,
+                    "prefix": "XX"
+                },
+                "stepType": 0
+            },
+            {
+                "abstract": false,
+                "comments": "",
+                "condition": "",
+                "description": "Muestra las funcionalidades de la página para clientes con cuenta",
+                "reference": {
+                    "id": 0,
+                    "prefix": "XX"
+                },
+                "stepType": 0
+            }
+        ],
+        "tracesFrom": null,
+        "tracesTo": [
+            {
+                "id": 5,
+                "prefix": "SO"
+            },
+            {
+                "id": 6,
+                "prefix": "SO"
+            }
+        ],
+        "urgencyLevel": 2,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    },
+    "5": {
+        "abstract": false,
+        "actors": null,
+        "authors": [
+            {
+                "id": 2,
+                "prefix": "SH"
+            },
+            {
+                "id": 3,
+                "prefix": "SH"
+            }
+        ],
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "El sistema deberá comportarse tal como se describe en el siguiente caso de uso cuando el Cliente quiere iniciar sesión.",
+        "estability": 0,
+        "exceptions": [
+            {
+                "comments": "",
+                "condition": "Si el cliente introduce correo o contraseña incorrectas",
+                "description": "El sistema muestra mensaje de error, a continuación este caso de uso queda sin efecto",
+                "reference": {
+                    "id": 0,
+                    "prefix": "XX"
+                },
+                "step": 1,
+                "stepType": 0
+            },
+            {
+                "comments": "",
+                "condition": "Si el cliente no está dado de alta",
+                "description": "El sistema muestra mensaje de error, a continuación este caso de uso queda sin efecto",
+                "reference": {
+                    "id": 0,
+                    "prefix": "XX"
+                },
+                "step": 2,
+                "stepType": 0
+            }
+        ],
+        "frequency": {
+            "quantity": 40,
+            "unit": 1
+        },
+        "generalization": {
+            "id": 0,
+            "prefix": "XX"
+        },
+        "id": {
+            "id": 5,
+            "prefix": "UC"
+        },
+        "importanceLevel": 2,
+        "name": "Identificación de Cliente",
+        "objectives": null,
+        "package": "Gestion de clientes",
+        "phase": 6,
+        "postcondition": "El sistema identifica al cliente y le permite acceder a las funcionalidades de la página.",
+        "precondition": "El Cliente se ha dado de alta en el sistema.",
+        "steps": [
+            {
+                "abstract": false,
+                "comments": "",
+                "condition": "",
+                "description": "Inicia sesión con su correo electrónico y contraseña",
+                "reference": {
+                    "id": 1,
+                    "prefix": "AC"
+                },
+                "stepType": 1
+            },
+            {
+                "abstract": false,
+                "comments": "",
+                "condition": "",
+                "description": "Verifica las credenciales del Cliente y lo identifica en el sistema",
+                "reference": {
+                    "id": 0,
+                    "prefix": "XX"
+                },
+                "stepType": 0
+            },
+            {
+                "abstract": false,
+                "comments": "",
+                "condition": "",
+                "description": "Muestra las funcionalidades de la página para clientes con cuenta",
+                "reference": {
+                    "id": 0,
+                    "prefix": "XX"
+                },
+                "stepType": 0
+            }
+        ],
+        "tracesFrom": null,
+        "tracesTo": [
+            {
+                "id": 4,
+                "prefix": "IR"
+            }
+        ],
+        "urgencyLevel": 2,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    },
+    "6": {
+        "abstract": false,
+        "actors": null,
+        "authors": [
+            {
+                "id": 2,
+                "prefix": "SH"
+            },
+            {
+                "id": 3,
+                "prefix": "SH"
+            }
+        ],
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "El sistema deberá comportarse tal como se describe en el siguiente caso de uso cuando el Asistente quiere publicar un nuevo producto de esparto. Selecciona la opción de añadir nuevo producto.",
+        "estability": 0,
+        "exceptions": [
+            {
+                "comments": "",
+                "condition": "Si los datos introducidos tienen errores en el formato",
+                "description": "El sistema muestra mensaje de error, a continuación este caso de uso queda sin efecto",
+                "reference": {
+                    "id": 0,
+                    "prefix": "XX"
+                },
+                "step": 1,
+                "stepType": 0
+            }
+        ],
+        "frequency": {
+            "quantity": 10,
+            "unit": 0
+        },
+        "generalization": {
+            "id": 0,
+            "prefix": "XX"
+        },
+        "id": {
+            "id": 6,
+            "prefix": "UC"
+        },
+        "importanceLevel": 2,
+        "name": "UC6",
+        "objectives": null,
+        "package": "Gestion de productos",
+        "phase": 6,
+        "postcondition": "El producto es creado y almacenado en el sistema.",
+        "precondition": "El Asistente ha iniciado sesión en el sistema y es reconocido como tal.",
+        "steps": [
+            {
+                "abstract": false,
+                "comments": "",
+                "condition": "",
+                "description": "El actor Pulsa en la sección Productos.",
+                "reference": {
+                    "id": 2,
+                    "prefix": "AC"
+                },
+                "stepType": 1
+            },
+            {
+                "abstract": false,
+                "comments": "",
+                "condition": "",
+                "description": "El actor selecciona la acción Añadir nuevo producto.",
+                "reference": {
+                    "id": 2,
+                    "prefix": "AC"
+                },
+                "stepType": 1
+            },
+            {
+                "abstract": false,
+                "comments": "",
+                "condition": "",
+                "description": "El sistema muestra la plantilla a rellenar para la publicación de ese producto.",
+                "reference": {
+                    "id": 0,
+                    "prefix": "XX"
+                },
+                "stepType": 0
+            },
+            {
+                "abstract": false,
+                "comments": "",
+                "condition": "",
+                "description": "El actor rellena la plantilla con nombre, precio, descripción y foto.",
+                "reference": {
+                    "id": 2,
+                    "prefix": "AC"
+                },
+                "stepType": 1
+            },
+            {
+                "abstract": false,
+                "comments": "",
+                "condition": "",
+                "description": "El sistema comprueba que la información introducida sigue el formato correcto, y crea el nuevo producto.",
+                "reference": {
+                    "id": 0,
+                    "prefix": "XX"
+                },
+                "stepType": 0
+            }
+        ],
+        "tracesFrom": null,
+        "tracesTo": [
+            {
+                "id": 4,
+                "prefix": "SO"
+            }
+        ],
+        "urgencyLevel": 2,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    },
+    "7": {
+        "abstract": false,
+        "actors": null,
+        "authors": [
+            {
+                "id": 2,
+                "prefix": "SH"
+            },
+            {
+                "id": 3,
+                "prefix": "SH"
+            }
+        ],
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "El sistema deberá comportarse tal como se describe en el siguiente caso de uso cuando el asistente selecciona la opción de eliminar un producto de esparto.",
+        "estability": 0,
+        "exceptions": [
+            {
+                "comments": "",
+                "condition": "Si El Asistente no confirma la eliminación del producto",
+                "description": "El sistema no elimina el producto, a continuación este caso de uso queda sin efecto",
+                "reference": {
+                    "id": 0,
+                    "prefix": "XX"
+                },
+                "step": 1,
+                "stepType": 0
+            }
+        ],
+        "frequency": {
+            "quantity": 5,
+            "unit": 0
+        },
+        "generalization": {
+            "id": 0,
+            "prefix": "XX"
+        },
+        "id": {
+            "id": 7,
+            "prefix": "UC"
+        },
+        "importanceLevel": 2,
+        "name": "UC7",
+        "objectives": null,
+        "package": "Gestion de productos",
+        "phase": 6,
+        "postcondition": "El producto deja de estar registrado en el sistema.",
+        "precondition": "El Asistente ha iniciado sesión en el sistema y es reconocido como tal.",
+        "steps": [
+            {
+                "abstract": false,
+                "comments": "",
+                "condition": "",
+                "description": "El actor Asistente (ACT-0003) accede a la sección de Productos.",
+                "reference": {
+                    "id": 2,
+                    "prefix": "AC"
+                },
+                "stepType": 1
+            },
+            {
+                "abstract": false,
+                "comments": "",
+                "condition": "",
+                "description": "El actor Asistente busca el producto (con el idP) que quiere eliminar y lo selecciona.",
+                "reference": {
+                    "id": 2,
+                    "prefix": "AC"
+                },
+                "stepType": 1
+            },
+            {
+                "abstract": false,
+                "comments": "",
+                "condition": "",
+                "description": "El actor Asistente pulsa la opción Eliminar Producto.",
+                "reference": {
+                    "id": 2,
+                    "prefix": "AC"
+                },
+                "stepType": 1
+            },
+            {
+                "abstract": false,
+                "comments": "",
+                "condition": "",
+                "description": "El sistema muestra un mensaje de confirmación para eliminar el producto.",
+                "reference": {
+                    "id": 0,
+                    "prefix": "XX"
+                },
+                "stepType": 0
+            },
+            {
+                "abstract": false,
+                "comments": "",
+                "condition": "",
+                "description": "El actor Asistente confirma que quiere eliminar el producto.",
+                "reference": {
+                    "id": 2,
+                    "prefix": "AC"
+                },
+                "stepType": 1
+            },
+            {
+                "abstract": false,
+                "comments": "",
+                "condition": "",
+                "description": "El sistema elimina el producto de la página web.",
+                "reference": {
+                    "id": 0,
+                    "prefix": "XX"
+                },
+                "stepType": 0
+            }
+        ],
+        "tracesFrom": null,
+        "tracesTo": [
+            {
+                "id": 4,
+                "prefix": "SO"
+            }
+        ],
+        "urgencyLevel": 2,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    },
+    "8": {
+        "abstract": false,
+        "actors": null,
+        "authors": [
+            {
+                "id": 2,
+                "prefix": "SH"
+            },
+            {
+                "id": 3,
+                "prefix": "SH"
+            }
+        ],
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "El sistema deberá comportarse tal como se describe en el siguiente caso de uso cuando el asistente quiere consultar un producto en específico y entra en la sección Productos.",
+        "estability": 0,
+        "exceptions": null,
+        "frequency": {
+            "quantity": 10,
+            "unit": 1
+        },
+        "generalization": {
+            "id": 0,
+            "prefix": "XX"
+        },
+        "id": {
+            "id": 8,
+            "prefix": "UC"
+        },
+        "importanceLevel": 2,
+        "name": "UC8",
+        "objectives": null,
+        "package": "Gestion de productos",
+        "phase": 6,
+        "postcondition": "El Asistente visualiza los detalles de un producto.",
+        "precondition": "El Asistente tiene que estar registrado e identificado como tal. El producto debe estar registrado en el sistema.",
+        "steps": [
+            {
+                "abstract": false,
+                "comments": "",
+                "condition": "",
+                "description": "El actor Asistente accede a la sección de Productos.",
+                "reference": {
+                    "id": 2,
+                    "prefix": "AC"
+                },
+                "stepType": 1
+            },
+            {
+                "abstract": false,
+                "comments": "",
+                "condition": "",
+                "description": "El actor Asistente busca el producto que quiere consultar y lo selecciona.",
+                "reference": {
+                    "id": 2,
+                    "prefix": "AC"
+                },
+                "stepType": 1
+            },
+            {
+                "abstract": false,
+                "comments": "",
+                "condition": "",
+                "description": "El sistema muestra los detalles del producto seleccionado: precio, descripción, tamaño...",
+                "reference": {
+                    "id": 0,
+                    "prefix": "XX"
+                },
+                "stepType": 0
+            }
+        ],
+        "tracesFrom": null,
+        "tracesTo": [
+            {
+                "id": 1,
+                "prefix": "SO"
+            },
+            {
+                "id": 4,
+                "prefix": "SO"
+            }
+        ],
+        "urgencyLevel": 2,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    },
+    "9": {
+        "abstract": false,
+        "actors": null,
+        "authors": [
+            {
+                "id": 1,
+                "prefix": "SH"
+            },
+            {
+                "id": 2,
+                "prefix": "SH"
+            }
+        ],
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "El sistema deberá comportarse tal como se describe en el siguiente caso de uso cuando el Cliente quiere realizar un pedido customizado.",
+        "estability": 0,
+        "exceptions": null,
+        "frequency": {
+            "quantity": 5,
+            "unit": 3
+        },
+        "generalization": {
+            "id": 0,
+            "prefix": "XX"
+        },
+        "id": {
+            "id": 9,
+            "prefix": "UC"
+        },
+        "importanceLevel": 2,
+        "name": "UC9",
+        "objectives": null,
+        "package": "Gestion de pedidos",
+        "phase": 6,
+        "postcondition": "Se registra un boceto personalizado.",
+        "precondition": "El Cliente tiene que estar registrado en la página web y haber iniciado sesión.",
+        "steps": [
+            {
+                "abstract": false,
+                "comments": "",
+                "condition": "",
+                "description": "El actor Cliente entra en la sección de peronalizar pedido.",
+                "reference": {
+                    "id": 1,
+                    "prefix": "AC"
+                },
+                "stepType": 1
+            },
+            {
+                "abstract": false,
+                "comments": "",
+                "condition": "",
+                "description": "El sistema muestra las opciones de personalización.",
+                "reference": {
+                    "id": 0,
+                    "prefix": "XX"
+                },
+                "stepType": 0
+            },
+            {
+                "abstract": false,
+                "comments": "",
+                "condition": "",
+                "description": "El actor Cliente elije las medidas y productos disponibles, y crea una hoja de un pedido que quiere.",
+                "reference": {
+                    "id": 1,
+                    "prefix": "AC"
+                },
+                "stepType": 1
+            },
+            {
+                "abstract": false,
+                "comments": "",
+                "condition": "",
+                "description": "El sistema guarda el boceto y lo deja para posibles consultas o para enviarlo. Da la opción de descarga también.",
+                "reference": {
+                    "id": 0,
+                    "prefix": "XX"
+                },
+                "stepType": 0
+            }
+        ],
+        "tracesFrom": null,
+        "tracesTo": [
+            {
+                "id": 2,
+                "prefix": "SO"
+            }
+        ],
+        "urgencyLevel": 2,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    }
+}

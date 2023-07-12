@@ -1,0 +1,22 @@
+{
+    "1": {
+        "TrackeableFrom": null,
+        "TrackeableTo": null,
+        "authors": null,
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "",
+        "id": {
+            "id": 1,
+            "prefix": "MT"
+        },
+        "name": "Matriz de rastreabilidad Objetivos/Requisitos",
+        "prefixesTracesFrom": [],
+        "prefixesTracesTo": [],
+        "tracesFrom": null,
+        "tracesTo": null,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    }
+}

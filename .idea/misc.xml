@@ -4,6 +4,7 @@
   <component name="CidrRootsConfiguration">
     <sourceRoots>
       <file path="$PROJECT_DIR$/Dominio" />
+      <file path="$PROJECT_DIR$/Repository" />
       <file path="$PROJECT_DIR$/Servicio" />
       <file path="$PROJECT_DIR$/Visitor" />
     </sourceRoots>

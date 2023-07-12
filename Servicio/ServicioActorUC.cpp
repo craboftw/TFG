@@ -11,7 +11,7 @@ std::string ServicioActorUC::getName(OID oid) {
     return actorUC.getName();
 }
 
-std::string ServicioActorUC::getPackage(OID &oid) {
+std::string ServicioActorUC::getPackage(OID oid) {
     if (oid.getPrefix() != ActorUC::getPrefixID()) throw std::invalid_argument("El id no es de un actor, getPackage");
     if(!fileJsonManager.exist(oid))  throw std::invalid_argument("El id a leer no existe, addChange");
     ActorUC actorUC = fileJsonManager.loadActorUC(oid);

@@ -17,6 +17,7 @@
 #define TEXT 10
 #define MATRIX_TRACES 11
 #define USER_STORIES 12
+#define NULLTYPE 13
 
 #include "Visitor/HtmlManager.h"
 
@@ -33,11 +34,23 @@ class ServicioHTML {
                                                                 {UserCase::getPrefixID(),USER_CASE},
                                                                 {Text::getPrefixID(),TEXT},
                                                                 {MatrixTraces::getPrefixID(),MATRIX_TRACES},
-                                                                {UserStories::getPrefixID(),USER_STORIES}};
+                                                                {UserStories::getPrefixID(),USER_STORIES},
+                                                                {OID().getPrefix(),NULL}};
+
 
 
     static void printElement(OID it);
     void printHTML();
+    unsigned createIndex(std::string titulo,unsigned id);
+    void deleteIndex(unsigned id);
+    void moveIndex(unsigned id,unsigned pos);
+    std::string printIndex(unsigned id);
+    std::vector<ElementosIndex> getIndex();
+    std::vector<OID> getElements(unsigned id);
+    void addElement(unsigned id, OID oid);
+    void deleteElement(unsigned index,OID id);
+    void moveElementInIndex(unsigned index,OID id,unsigned pos);
+private:
     Index index;
 };
 

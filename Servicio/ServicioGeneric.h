@@ -7,7 +7,7 @@
 
 
 #include "Dominio/Trackeable/Trackeable.h"
-#include "Visitor/FileJsonManager.h"
+#include "Repository/JsonRepository.h"
 #include "ServicioPriority.h"
 #include "ServicioTrackeable.h"
 
@@ -23,7 +23,7 @@ public:
     std::list<std::pair<OID,std::string>> getActorsUC();
 
 private:
-    FileJsonManager fileJsonManager;
+    JsonRepository fileJsonManager;
 };
 
 class ServicioNonFunctionalRequirement : virtual public ServicioTrackeable, public ServicioPriority {
@@ -31,7 +31,7 @@ public:
     OID createNonFunctionalRequirement(std::string name="");
     std::list<std::pair<OID,std::string>> getNonFunctionalRequirements();
 private:
-    FileJsonManager fileJsonManager;
+    JsonRepository fileJsonManager;
 };
 
 class ServicioFunctionalRequirement : virtual public ServicioTrackeable, public ServicioPriority {
@@ -39,7 +39,7 @@ public:
     OID createFunctionalRequirement(std::string name="");
     std::list<std::pair<OID,std::string>> getFunctionalRequirements();
 private:
-    FileJsonManager fileJsonManager;
+    JsonRepository fileJsonManager;
 };
 
 class ServicioRestrictionRequirement : virtual public ServicioTrackeable, public ServicioPriority {
@@ -47,7 +47,7 @@ public:
     OID createRestrictionRequirement(std::string name="");
     std::list<std::pair<OID,std::string>> getRestrictionRequirements();
 private:
-    FileJsonManager fileJsonManager;
+    JsonRepository fileJsonManager;
 };
 
 class ServicioSystemObjective : virtual public ServicioTrackeable, public ServicioPriority {
@@ -55,7 +55,7 @@ public:
     OID createSystemObjective(std::string name="");
     std::list<std::pair<OID,std::string>> getSystemObjectives();
 private:
-    FileJsonManager fileJsonManager;
+    JsonRepository fileJsonManager;
 };
 
 class ServicioText : virtual public ServicioTrackeable {
@@ -65,7 +65,7 @@ public:
     void setIndexable(OID id,bool indexable);
     std::list<std::pair<OID,std::string>> getTexts();
 private:
-    FileJsonManager fileJsonManager;
+    JsonRepository fileJsonManager;
 };
 
 

@@ -8,7 +8,7 @@
 
 #include <string>
 #include "Dominio/Trackeable/Trackeable.h"
-#include "Visitor/FileJsonManager.h"
+#include "Repository/JsonRepository.h"
 #include "ServicioTrackeable.h"
 #include "ServicioPriority.h"
 
@@ -28,7 +28,7 @@ public:
     unsigned getDevTimePoints(OID id);
 
 private:
-    FileJsonManager filejsonManager;
+    JsonRepository filejsonManager;
 };
 
 

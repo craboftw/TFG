@@ -1,0 +1,68 @@
+{
+    "1": {
+        "authors": [
+            {
+                "id": 1,
+                "prefix": "SH"
+            },
+            {
+                "id": 2,
+                "prefix": "SH"
+            },
+            {
+                "id": 3,
+                "prefix": "SH"
+            }
+        ],
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "La información almacenada por el sistema deberá satisfacer la siguiente restricción: los emails deberán ser únicos para cada cliente, es decir, no puede haber dos clientes distintos con el mismo email.",
+        "estability": 2,
+        "id": {
+            "id": 1,
+            "prefix": "RR"
+        },
+        "importanceLevel": 2,
+        "name": "Unicidad del email",
+        "phase": 3,
+        "tracesFrom": null,
+        "tracesTo": null,
+        "urgencyLevel": 2,
+        "versionMajor": "1.0",
+        "versionMinor": "0.0"
+    },
+    "2": {
+        "authors": [
+            {
+                "id": 1,
+                "prefix": "SH"
+            },
+            {
+                "id": 2,
+                "prefix": "SH"
+            },
+            {
+                "id": 3,
+                "prefix": "SH"
+            }
+        ],
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "La información almacenada por el sistema deberá satisfacer la siguiente restricción: los NIF deberán ser únicos para cada cliente, es decir, no puede haber dos clientes distintos con el mismo NIF.",
+        "estability": 2,
+        "id": {
+            "id": 2,
+            "prefix": "RR"
+        },
+        "importanceLevel": 2,
+        "name": "Unicidad NIF",
+        "phase": 3,
+        "tracesFrom": null,
+        "tracesTo": null,
+        "urgencyLevel": 2,
+        "versionMajor": "1.0",
+        "versionMinor": "0.0"
+    }
+}

@@ -12,7 +12,7 @@
 #include <map>
 #include "Trackeable.h"
 
-class FileJsonManager;
+class JsonRepository;
 
 class MatrixTraces : public Trackeable {
 public:
@@ -43,6 +43,8 @@ public:
     void print();
 
 
+    void update();
+
 private:
     OID id;
     std::set<std::string> prefixesTracesTo;
@@ -56,7 +58,6 @@ private:
 
     inline static std::string prefixID = "MT";
 
-    void update();
 };
 
 

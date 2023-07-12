@@ -3,6 +3,8 @@
 //
 
 #include "UserCaseDiagram.h"
+#include "Servicio/ServicioActorUC.h"
+#include "Servicio/ServicioUserCase.h"
 
 #include <fstream>
 
@@ -11,6 +13,7 @@ void UserCaseDiagram::setElements(std::set<OID> userCaseList, std::set<OID> acto
     //Categorizamos los actores y los casos de uso por paquetes
     ServicioUserCase servicioUserCase;
     ServicioActorUC servicioActorUC;
+
     for (auto &userCase : userCaseList) {
         packagesUC[servicioUserCase.getPackage(userCase)].insert(userCase);
         packages.insert(servicioUserCase.getPackage(userCase));
@@ -26,6 +29,8 @@ void UserCaseDiagram::setElements(std::set<OID> userCaseList, std::set<OID> acto
 }
 
 void UserCaseDiagram::addUserCase(OID userCase) {
+    ServicioUserCase servicioUserCase;
+    ServicioActorUC servicioActorUC;
     packagesUC[servicioUserCase.getPackage(userCase)].insert(userCase);
     packages.insert(servicioUserCase.getPackage(userCase));
     nombres[userCase] = servicioUserCase.getName(userCase);
@@ -41,6 +46,8 @@ void UserCaseDiagram::addUserCase(OID userCase) {
 }
 
 void UserCaseDiagram::removeUserCase(OID userCase) {
+    ServicioUserCase servicioUserCase;
+    ServicioActorUC servicioActorUC;
     packagesUC[servicioUserCase.getPackage(userCase)].erase(userCase);
     if (packagesUC[servicioUserCase.getPackage(userCase)].empty())
         packages.erase(servicioUserCase.getPackage(userCase));
@@ -61,6 +68,8 @@ void UserCaseDiagram::visit(Visitor *visitor) {
 }
 
 void UserCaseDiagram::update() {
+    ServicioUserCase servicioUserCase;
+    ServicioActorUC servicioActorUC;
     //Create a new file
     std::ofstream file("TFG/Diagrams/UseCaseDiagram.txt");
     //Write the header of the file

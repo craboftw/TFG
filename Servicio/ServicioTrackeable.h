@@ -7,8 +7,7 @@
 
 
 #include "Dominio/Trackeable/Trackeable.h"
-
-class JsonRepository;
+#include "Repository/JsonRepository.h"
 
 class ServicioTrackeable {
 public:

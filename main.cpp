@@ -1656,7 +1656,8 @@ void PruebaSinCrearObjetos(){
 }
 
 int main() {
-   prueba();
+    PruebaSinCrearObjetos();
 
+    return 0;
 }
 

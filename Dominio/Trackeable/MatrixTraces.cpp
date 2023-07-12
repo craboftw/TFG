@@ -256,3 +256,76 @@ void MatrixTraces::removeTrackeable(OID id) {
 
     update();
 }
+
+void MatrixTraces::initMatrix(std::set<std::string> prefixesTo, std::set<std::string> prefixesFrom, std::set<OID> track) {
+    prefixesTracesFrom = prefixesFrom;
+    ServicioTrackeable servicioTrackeable;
+    OIDTracesFrom.clear();
+    for (auto it = prefixesFrom.begin(); it != prefixesFrom.end(); ++it) {
+        for (auto it2 = trackeables.begin(); it2 != trackeables.end(); ++it2) {
+            if (it2->getPrefix() == *it)
+                OIDTracesFrom.insert(*it2);
+            mapTracesFrom.clear();
+            unsigned i = 0;
+            for (auto it = OIDTracesFrom.begin(); it != OIDTracesFrom.end(); ++it) {
+                mapTracesFrom.insert(std::pair<unsigned ,OID>(i,*it));
+                ++i;
+            }
+        }
+    }
+    prefixesTracesTo = prefixesTo;
+    OIDTracesTo.clear();
+    for (auto it = prefixesTo.begin(); it != prefixesTo.end(); ++it) {
+        for (auto it2 = trackeables.begin(); it2 != trackeables.end(); ++it2) {
+            if (it2->getPrefix() == *it)
+                OIDTracesTo.insert(*it2);
+            mapTracesTo.clear();
+            unsigned i = 0;
+            for (auto it = OIDTracesTo.begin(); it != OIDTracesTo.end(); ++it) {
+                mapTracesTo.insert(std::pair<unsigned ,OID>(i,*it));
+                ++i;
+            }
+        }
+    }
+    this->trackeables = track;
+    OIDTracesFrom.clear();
+    OIDTracesTo.clear();
+    for (auto it = trackeables.begin(); it != trackeables.end(); ++it) {
+        if (prefixesTracesFrom.find(it->getPrefix()) != prefixesTracesFrom.end()) {
+            OIDTracesFrom.insert(*it);
+            mapTracesFrom.clear();
+            unsigned i = 0;
+            for (auto it = OIDTracesFrom.begin(); it != OIDTracesFrom.end(); ++it) {
+                mapTracesFrom.insert(std::pair<unsigned, OID>(i, *it));
+                ++i;
+            }
+        }
+        if (prefixesTracesTo.find(it->getPrefix()) != prefixesTracesTo.end()) {
+            OIDTracesTo.insert(*it);
+            mapTracesTo.clear();
+            unsigned i = 0;
+            for (auto it = OIDTracesTo.begin(); it != OIDTracesTo.end(); ++it) {
+                mapTracesTo.insert(std::pair<unsigned, OID>(i, *it));
+                ++i;
+            }
+        }
+    }
+    matrix.resize(OIDTracesFrom.size());
+    for (auto it = matrix.begin(); it != matrix.end(); ++it) {
+        it->resize(OIDTracesTo.size());
+    }
+    //set to false all the matrix
+    for (unsigned i = 0; i < matrix.size(); ++i) {
+        for (unsigned j = 0; j < matrix[i].size(); ++j) {
+            matrix[i][j] = false;
+        }
+    }
+    for (unsigned i = 0; i < matrix.size(); ++i) {
+        OID trackeableFrom = mapTracesFrom[i];
+        for (unsigned j = 0; j < matrix[i].size(); ++j) {
+            OID trackeableTo = mapTracesTo[j];
+            auto set= servicioTrackeable.getTracesTo(trackeableFrom);
+            matrix[i][j] = std::find(set.begin(), set.end(), trackeableTo) != set.end();
+        }
+    }
+}

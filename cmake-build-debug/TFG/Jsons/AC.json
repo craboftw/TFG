@@ -1,0 +1,422 @@
+{
+    "1": {
+        "authors": [
+            {
+                "id": 2,
+                "prefix": "SH"
+            },
+            {
+                "id": 3,
+                "prefix": "SH"
+            }
+        ],
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "El cliente es el usuario que accede a la aplicación para realizar pedidos.",
+        "generalization": {
+            "id": 0,
+            "prefix": "XX"
+        },
+        "id": {
+            "id": 1,
+            "prefix": "AC"
+        },
+        "name": "Cliente",
+        "package": "",
+        "tracesFrom": null,
+        "tracesTo": null,
+        "versionMajor": "1.0",
+        "versionMinor": "0.0"
+    },
+    "10": {
+        "authors": [
+            {
+                "id": 14,
+                "prefix": "SH"
+            },
+            {
+                "id": 15,
+                "prefix": "SH"
+            }
+        ],
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "El asistente de artesano es el usuario que accede a la aplicación para gestionar los pedidos. Debido a que el artesano no tiene conocimientos informáticos, el asistente de artesano es el encargado de gestionar los pedidos.",
+        "generalization": {
+            "id": 0,
+            "prefix": "XX"
+        },
+        "id": {
+            "id": 10,
+            "prefix": "AC"
+        },
+        "name": "Asistente de artesano",
+        "package": "",
+        "tracesFrom": null,
+        "tracesTo": null,
+        "versionMajor": "1.0",
+        "versionMinor": "0.0"
+    },
+    "11": {
+        "authors": [
+            {
+                "id": 17,
+                "prefix": "SH"
+            },
+            {
+                "id": 18,
+                "prefix": "SH"
+            }
+        ],
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "El cliente es el usuario que accede a la aplicación para realizar pedidos.",
+        "generalization": {
+            "id": 0,
+            "prefix": "XX"
+        },
+        "id": {
+            "id": 11,
+            "prefix": "AC"
+        },
+        "name": "Cliente",
+        "package": "",
+        "tracesFrom": null,
+        "tracesTo": null,
+        "versionMajor": "1.0",
+        "versionMinor": "0.0"
+    },
+    "12": {
+        "authors": [
+            {
+                "id": 17,
+                "prefix": "SH"
+            },
+            {
+                "id": 18,
+                "prefix": "SH"
+            }
+        ],
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "El asistente de artesano es el usuario que accede a la aplicación para gestionar los pedidos. Debido a que el artesano no tiene conocimientos informáticos, el asistente de artesano es el encargado de gestionar los pedidos.",
+        "generalization": {
+            "id": 0,
+            "prefix": "XX"
+        },
+        "id": {
+            "id": 12,
+            "prefix": "AC"
+        },
+        "name": "Asistente de artesano",
+        "package": "",
+        "tracesFrom": null,
+        "tracesTo": null,
+        "versionMajor": "1.0",
+        "versionMinor": "0.0"
+    },
+    "13": {
+        "authors": [
+            {
+                "id": 20,
+                "prefix": "SH"
+            },
+            {
+                "id": 21,
+                "prefix": "SH"
+            }
+        ],
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "El cliente es el usuario que accede a la aplicación para realizar pedidos.",
+        "generalization": {
+            "id": 0,
+            "prefix": "XX"
+        },
+        "id": {
+            "id": 13,
+            "prefix": "AC"
+        },
+        "name": "Cliente",
+        "package": "",
+        "tracesFrom": null,
+        "tracesTo": null,
+        "versionMajor": "1.0",
+        "versionMinor": "0.0"
+    },
+    "14": {
+        "authors": [
+            {
+                "id": 20,
+                "prefix": "SH"
+            },
+            {
+                "id": 21,
+                "prefix": "SH"
+            }
+        ],
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "El asistente de artesano es el usuario que accede a la aplicación para gestionar los pedidos. Debido a que el artesano no tiene conocimientos informáticos, el asistente de artesano es el encargado de gestionar los pedidos.",
+        "generalization": {
+            "id": 0,
+            "prefix": "XX"
+        },
+        "id": {
+            "id": 14,
+            "prefix": "AC"
+        },
+        "name": "Asistente de artesano",
+        "package": "",
+        "tracesFrom": null,
+        "tracesTo": null,
+        "versionMajor": "1.0",
+        "versionMinor": "0.0"
+    },
+    "2": {
+        "authors": [
+            {
+                "id": 2,
+                "prefix": "SH"
+            },
+            {
+                "id": 3,
+                "prefix": "SH"
+            }
+        ],
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "El asistente de artesano es el usuario que accede a la aplicación para gestionar los pedidos. Debido a que el artesano no tiene conocimientos informáticos, el asistente de artesano es el encargado de gestionar los pedidos.",
+        "generalization": {
+            "id": 0,
+            "prefix": "XX"
+        },
+        "id": {
+            "id": 2,
+            "prefix": "AC"
+        },
+        "name": "Asistente de artesano",
+        "package": "",
+        "tracesFrom": null,
+        "tracesTo": null,
+        "versionMajor": "1.0",
+        "versionMinor": "0.0"
+    },
+    "3": {
+        "authors": [
+            {
+                "id": 5,
+                "prefix": "SH"
+            },
+            {
+                "id": 6,
+                "prefix": "SH"
+            }
+        ],
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "El cliente es el usuario que accede a la aplicación para realizar pedidos.",
+        "generalization": {
+            "id": 0,
+            "prefix": "XX"
+        },
+        "id": {
+            "id": 3,
+            "prefix": "AC"
+        },
+        "name": "Cliente",
+        "package": "",
+        "tracesFrom": null,
+        "tracesTo": null,
+        "versionMajor": "1.0",
+        "versionMinor": "0.0"
+    },
+    "4": {
+        "authors": [
+            {
+                "id": 5,
+                "prefix": "SH"
+            },
+            {
+                "id": 6,
+                "prefix": "SH"
+            }
+        ],
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "El asistente de artesano es el usuario que accede a la aplicación para gestionar los pedidos. Debido a que el artesano no tiene conocimientos informáticos, el asistente de artesano es el encargado de gestionar los pedidos.",
+        "generalization": {
+            "id": 0,
+            "prefix": "XX"
+        },
+        "id": {
+            "id": 4,
+            "prefix": "AC"
+        },
+        "name": "Asistente de artesano",
+        "package": "",
+        "tracesFrom": null,
+        "tracesTo": null,
+        "versionMajor": "1.0",
+        "versionMinor": "0.0"
+    },
+    "5": {
+        "authors": [
+            {
+                "id": 8,
+                "prefix": "SH"
+            },
+            {
+                "id": 9,
+                "prefix": "SH"
+            }
+        ],
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "El cliente es el usuario que accede a la aplicación para realizar pedidos.",
+        "generalization": {
+            "id": 0,
+            "prefix": "XX"
+        },
+        "id": {
+            "id": 5,
+            "prefix": "AC"
+        },
+        "name": "Cliente",
+        "package": "",
+        "tracesFrom": null,
+        "tracesTo": null,
+        "versionMajor": "1.0",
+        "versionMinor": "0.0"
+    },
+    "6": {
+        "authors": [
+            {
+                "id": 8,
+                "prefix": "SH"
+            },
+            {
+                "id": 9,
+                "prefix": "SH"
+            }
+        ],
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "El asistente de artesano es el usuario que accede a la aplicación para gestionar los pedidos. Debido a que el artesano no tiene conocimientos informáticos, el asistente de artesano es el encargado de gestionar los pedidos.",
+        "generalization": {
+            "id": 0,
+            "prefix": "XX"
+        },
+        "id": {
+            "id": 6,
+            "prefix": "AC"
+        },
+        "name": "Asistente de artesano",
+        "package": "",
+        "tracesFrom": null,
+        "tracesTo": null,
+        "versionMajor": "1.0",
+        "versionMinor": "0.0"
+    },
+    "7": {
+        "authors": [
+            {
+                "id": 11,
+                "prefix": "SH"
+            },
+            {
+                "id": 12,
+                "prefix": "SH"
+            }
+        ],
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "El cliente es el usuario que accede a la aplicación para realizar pedidos.",
+        "generalization": {
+            "id": 0,
+            "prefix": "XX"
+        },
+        "id": {
+            "id": 7,
+            "prefix": "AC"
+        },
+        "name": "Cliente",
+        "package": "",
+        "tracesFrom": null,
+        "tracesTo": null,
+        "versionMajor": "1.0",
+        "versionMinor": "0.0"
+    },
+    "8": {
+        "authors": [
+            {
+                "id": 11,
+                "prefix": "SH"
+            },
+            {
+                "id": 12,
+                "prefix": "SH"
+            }
+        ],
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "El asistente de artesano es el usuario que accede a la aplicación para gestionar los pedidos. Debido a que el artesano no tiene conocimientos informáticos, el asistente de artesano es el encargado de gestionar los pedidos.",
+        "generalization": {
+            "id": 0,
+            "prefix": "XX"
+        },
+        "id": {
+            "id": 8,
+            "prefix": "AC"
+        },
+        "name": "Asistente de artesano",
+        "package": "",
+        "tracesFrom": null,
+        "tracesTo": null,
+        "versionMajor": "1.0",
+        "versionMinor": "0.0"
+    },
+    "9": {
+        "authors": [
+            {
+                "id": 14,
+                "prefix": "SH"
+            },
+            {
+                "id": 15,
+                "prefix": "SH"
+            }
+        ],
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "El cliente es el usuario que accede a la aplicación para realizar pedidos.",
+        "generalization": {
+            "id": 0,
+            "prefix": "XX"
+        },
+        "id": {
+            "id": 9,
+            "prefix": "AC"
+        },
+        "name": "Cliente",
+        "package": "",
+        "tracesFrom": null,
+        "tracesTo": null,
+        "versionMajor": "1.0",
+        "versionMinor": "0.0"
+    }
+}

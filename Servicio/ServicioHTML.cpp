@@ -75,11 +75,24 @@ for (auto it = list.begin(); it != list.end(); ++it) {
 
 
 void ServicioHTML::printElement(OID it){
+    std::map<std::string, unsigned> prefijos = {{Stakeholder::getPrefixID(),STAKEHOLDER},
+                                                      {RestrictionRequirement::getPrefixID(),RESTRICTION_REQUIREMENT},
+                                                      {FunctionalRequirement::getPrefixID(),FUNCTIONAL_REQUIREMENT},
+                                                      {NonFunctionalRequirement::getPrefixID(),NON_FUNCTIONAL_REQUIREMENT},
+                                                      {ActorUC::getPrefixID(),ACTOR_UC},
+                                                      {InformationRequirement::getPrefixID(),INFORMATION_REQUIREMENT},
+                                                      {Organization::getPrefixID(),ORGANIZATION},
+                                                      {SystemObjective::getPrefixID(),SYSTEM_OBJECTIVE},
+                                                      {UserCase::getPrefixID(),USER_CASE},
+                                                      {Text::getPrefixID(),TEXT},
+                                                      {MatrixTraces::getPrefixID(),MATRIX_TRACES},
+                                                      {UserStories::getPrefixID(),USER_STORIES},
+                                                      {OID().getPrefix(),NULL}};
     HtmlManager htmlManager;
     std::string html;
     std::ofstream file;
     file.open(it.operator std::string()+".html");
-    switch (prefixes[it.getPrefix()]) {
+    switch (prefijos[it.getPrefix()]) {
         case STAKEHOLDER:
             file<<htmlManager.generateTableStakeholder(it);
             break;

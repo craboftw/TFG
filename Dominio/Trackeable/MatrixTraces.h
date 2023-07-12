@@ -45,6 +45,8 @@ public:
 
     void update();
 
+    void initMatrix(std::set<std::string> prefixesTo, std::set<std::string> prefixesFrom, std::set<OID> track);
+
 private:
     OID id;
     std::set<std::string> prefixesTracesTo;

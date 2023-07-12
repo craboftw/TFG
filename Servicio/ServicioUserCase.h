@@ -10,6 +10,8 @@
 #include "ServicioTrackeable.h"
 #include "ServicioPriority.h"
 
+class ServicioTrackeable;
+
 class ServicioUserCase : public ServicioTrackeable, public ServicioPriority{
 public:
     OID createUserCase(std::string name="");

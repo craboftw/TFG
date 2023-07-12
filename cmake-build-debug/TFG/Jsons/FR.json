@@ -1,0 +1,494 @@
+{
+    "1": {
+        "authors": [
+            {
+                "id": 1,
+                "prefix": "SH"
+            },
+            {
+                "id": 2,
+                "prefix": "SH"
+            },
+            {
+                "id": 3,
+                "prefix": "SH"
+            }
+        ],
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "El sistema deberá contar con botones para acceder rápidamente a los métodos de contacto del artesano.",
+        "estability": 2,
+        "id": {
+            "id": 1,
+            "prefix": "FR"
+        },
+        "importanceLevel": 2,
+        "name": "Boton de acceso directo a redes sociales",
+        "phase": 3,
+        "tracesFrom": null,
+        "tracesTo": [
+            {
+                "id": 3,
+                "prefix": "SO"
+            }
+        ],
+        "urgencyLevel": 2,
+        "versionMajor": "1.0",
+        "versionMinor": "0.0"
+    },
+    "10": {
+        "authors": [
+            {
+                "id": 13,
+                "prefix": "SH"
+            },
+            {
+                "id": 14,
+                "prefix": "SH"
+            },
+            {
+                "id": 15,
+                "prefix": "SH"
+            }
+        ],
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "",
+        "estability": 2,
+        "id": {
+            "id": 10,
+            "prefix": "FR"
+        },
+        "importanceLevel": 3,
+        "name": "Generador de hojas de pedido",
+        "phase": 6,
+        "tracesFrom": null,
+        "tracesTo": null,
+        "urgencyLevel": 3,
+        "versionMajor": "1.0",
+        "versionMinor": "0.0"
+    },
+    "11": {
+        "authors": [
+            {
+                "id": 16,
+                "prefix": "SH"
+            },
+            {
+                "id": 17,
+                "prefix": "SH"
+            },
+            {
+                "id": 18,
+                "prefix": "SH"
+            }
+        ],
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "El sistema deberá contar con botones para acceder rápidamente a los métodos de contacto del artesano.",
+        "estability": 2,
+        "id": {
+            "id": 11,
+            "prefix": "FR"
+        },
+        "importanceLevel": 2,
+        "name": "Boton de acceso directo a redes sociales",
+        "phase": 3,
+        "tracesFrom": null,
+        "tracesTo": [
+            {
+                "id": 33,
+                "prefix": "SO"
+            }
+        ],
+        "urgencyLevel": 2,
+        "versionMajor": "1.0",
+        "versionMinor": "0.0"
+    },
+    "12": {
+        "authors": [
+            {
+                "id": 16,
+                "prefix": "SH"
+            },
+            {
+                "id": 17,
+                "prefix": "SH"
+            },
+            {
+                "id": 18,
+                "prefix": "SH"
+            }
+        ],
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "",
+        "estability": 2,
+        "id": {
+            "id": 12,
+            "prefix": "FR"
+        },
+        "importanceLevel": 3,
+        "name": "Generador de hojas de pedido",
+        "phase": 6,
+        "tracesFrom": null,
+        "tracesTo": [
+            {
+                "id": 32,
+                "prefix": "SO"
+            }
+        ],
+        "urgencyLevel": 3,
+        "versionMajor": "1.0",
+        "versionMinor": "0.0"
+    },
+    "13": {
+        "authors": [
+            {
+                "id": 19,
+                "prefix": "SH"
+            },
+            {
+                "id": 20,
+                "prefix": "SH"
+            },
+            {
+                "id": 21,
+                "prefix": "SH"
+            }
+        ],
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "El sistema deberá contar con botones para acceder rápidamente a los métodos de contacto del artesano.",
+        "estability": 2,
+        "id": {
+            "id": 13,
+            "prefix": "FR"
+        },
+        "importanceLevel": 2,
+        "name": "Boton de acceso directo a redes sociales",
+        "phase": 3,
+        "tracesFrom": null,
+        "tracesTo": [
+            {
+                "id": 39,
+                "prefix": "SO"
+            }
+        ],
+        "urgencyLevel": 2,
+        "versionMajor": "1.0",
+        "versionMinor": "0.0"
+    },
+    "14": {
+        "authors": [
+            {
+                "id": 19,
+                "prefix": "SH"
+            },
+            {
+                "id": 20,
+                "prefix": "SH"
+            },
+            {
+                "id": 21,
+                "prefix": "SH"
+            }
+        ],
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "",
+        "estability": 2,
+        "id": {
+            "id": 14,
+            "prefix": "FR"
+        },
+        "importanceLevel": 3,
+        "name": "Generador de hojas de pedido",
+        "phase": 6,
+        "tracesFrom": null,
+        "tracesTo": [
+            {
+                "id": 38,
+                "prefix": "SO"
+            }
+        ],
+        "urgencyLevel": 3,
+        "versionMajor": "1.0",
+        "versionMinor": "0.0"
+    },
+    "2": {
+        "authors": [
+            {
+                "id": 1,
+                "prefix": "SH"
+            },
+            {
+                "id": 2,
+                "prefix": "SH"
+            },
+            {
+                "id": 3,
+                "prefix": "SH"
+            }
+        ],
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "",
+        "estability": 2,
+        "id": {
+            "id": 2,
+            "prefix": "FR"
+        },
+        "importanceLevel": 3,
+        "name": "Generador de hojas de pedido",
+        "phase": 6,
+        "tracesFrom": null,
+        "tracesTo": [
+            {
+                "id": 2,
+                "prefix": "SO"
+            }
+        ],
+        "urgencyLevel": 3,
+        "versionMajor": "1.0",
+        "versionMinor": "0.0"
+    },
+    "3": {
+        "authors": [
+            {
+                "id": 4,
+                "prefix": "SH"
+            },
+            {
+                "id": 5,
+                "prefix": "SH"
+            },
+            {
+                "id": 6,
+                "prefix": "SH"
+            }
+        ],
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "El sistema deberá contar con botones para acceder rápidamente a los métodos de contacto del artesano.",
+        "estability": 2,
+        "id": {
+            "id": 3,
+            "prefix": "FR"
+        },
+        "importanceLevel": 2,
+        "name": "Boton de acceso directo a redes sociales",
+        "phase": 3,
+        "tracesFrom": null,
+        "tracesTo": null,
+        "urgencyLevel": 2,
+        "versionMajor": "1.0",
+        "versionMinor": "0.0"
+    },
+    "4": {
+        "authors": [
+            {
+                "id": 4,
+                "prefix": "SH"
+            },
+            {
+                "id": 5,
+                "prefix": "SH"
+            },
+            {
+                "id": 6,
+                "prefix": "SH"
+            }
+        ],
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "",
+        "estability": 2,
+        "id": {
+            "id": 4,
+            "prefix": "FR"
+        },
+        "importanceLevel": 3,
+        "name": "Generador de hojas de pedido",
+        "phase": 6,
+        "tracesFrom": null,
+        "tracesTo": null,
+        "urgencyLevel": 3,
+        "versionMajor": "1.0",
+        "versionMinor": "0.0"
+    },
+    "5": {
+        "authors": [
+            {
+                "id": 7,
+                "prefix": "SH"
+            },
+            {
+                "id": 8,
+                "prefix": "SH"
+            },
+            {
+                "id": 9,
+                "prefix": "SH"
+            }
+        ],
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "El sistema deberá contar con botones para acceder rápidamente a los métodos de contacto del artesano.",
+        "estability": 2,
+        "id": {
+            "id": 5,
+            "prefix": "FR"
+        },
+        "importanceLevel": 2,
+        "name": "Boton de acceso directo a redes sociales",
+        "phase": 3,
+        "tracesFrom": null,
+        "tracesTo": null,
+        "urgencyLevel": 2,
+        "versionMajor": "1.0",
+        "versionMinor": "0.0"
+    },
+    "6": {
+        "authors": [
+            {
+                "id": 7,
+                "prefix": "SH"
+            },
+            {
+                "id": 8,
+                "prefix": "SH"
+            },
+            {
+                "id": 9,
+                "prefix": "SH"
+            }
+        ],
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "",
+        "estability": 2,
+        "id": {
+            "id": 6,
+            "prefix": "FR"
+        },
+        "importanceLevel": 3,
+        "name": "Generador de hojas de pedido",
+        "phase": 6,
+        "tracesFrom": null,
+        "tracesTo": null,
+        "urgencyLevel": 3,
+        "versionMajor": "1.0",
+        "versionMinor": "0.0"
+    },
+    "7": {
+        "authors": [
+            {
+                "id": 10,
+                "prefix": "SH"
+            },
+            {
+                "id": 11,
+                "prefix": "SH"
+            },
+            {
+                "id": 12,
+                "prefix": "SH"
+            }
+        ],
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "El sistema deberá contar con botones para acceder rápidamente a los métodos de contacto del artesano.",
+        "estability": 2,
+        "id": {
+            "id": 7,
+            "prefix": "FR"
+        },
+        "importanceLevel": 2,
+        "name": "Boton de acceso directo a redes sociales",
+        "phase": 3,
+        "tracesFrom": null,
+        "tracesTo": null,
+        "urgencyLevel": 2,
+        "versionMajor": "1.0",
+        "versionMinor": "0.0"
+    },
+    "8": {
+        "authors": [
+            {
+                "id": 10,
+                "prefix": "SH"
+            },
+            {
+                "id": 11,
+                "prefix": "SH"
+            },
+            {
+                "id": 12,
+                "prefix": "SH"
+            }
+        ],
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "",
+        "estability": 2,
+        "id": {
+            "id": 8,
+            "prefix": "FR"
+        },
+        "importanceLevel": 3,
+        "name": "Generador de hojas de pedido",
+        "phase": 6,
+        "tracesFrom": null,
+        "tracesTo": null,
+        "urgencyLevel": 3,
+        "versionMajor": "1.0",
+        "versionMinor": "0.0"
+    },
+    "9": {
+        "authors": [
+            {
+                "id": 13,
+                "prefix": "SH"
+            },
+            {
+                "id": 14,
+                "prefix": "SH"
+            },
+            {
+                "id": 15,
+                "prefix": "SH"
+            }
+        ],
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "El sistema deberá contar con botones para acceder rápidamente a los métodos de contacto del artesano.",
+        "estability": 2,
+        "id": {
+            "id": 9,
+            "prefix": "FR"
+        },
+        "importanceLevel": 2,
+        "name": "Boton de acceso directo a redes sociales",
+        "phase": 3,
+        "tracesFrom": null,
+        "tracesTo": null,
+        "urgencyLevel": 2,
+        "versionMajor": "1.0",
+        "versionMinor": "0.0"
+    }
+}

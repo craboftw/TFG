@@ -23,7 +23,7 @@
 
 class ServicioHTML {
     public:
-    inline static std::map<std::string, unsigned> prefixes = {{Stakeholder::getPrefixID(),STAKEHOLDER},
+    inline static const std::map<std::string, unsigned> prefixes = {{Stakeholder::getPrefixID(),STAKEHOLDER},
                                                                 {RestrictionRequirement::getPrefixID(),RESTRICTION_REQUIREMENT},
                                                                 {FunctionalRequirement::getPrefixID(),FUNCTIONAL_REQUIREMENT},
                                                                 {NonFunctionalRequirement::getPrefixID(),NON_FUNCTIONAL_REQUIREMENT},

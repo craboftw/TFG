@@ -4,10 +4,12 @@
 
 #ifndef TFG_USERCASEDIAGRAM_H
 #define TFG_USERCASEDIAGRAM_H
-#include "Servicio/ServicioUserCase.h"
-#include "Servicio/ServicioActorUC.h"
 
 
+#include "Dominio/Trackeable/Trackeable.h"
+#include <map>
+class ServicioActorUC;
+class ServicioUserCase;
 
 
 class UserCaseDiagram : public Trackeable {
@@ -25,7 +27,7 @@ public:
     void update();
 
 
-    static std::string getPrefixID() {return prefix;}
+    inline static std::string getPrefixID() {return prefix;}
 
 private:
 

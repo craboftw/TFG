@@ -35,7 +35,6 @@
 #include <iostream>
 #include <string>
 
-class MatrixTraces;
 
 using json = nlohmann::json;
 
@@ -58,7 +57,7 @@ public:
                                                               {Text::getPrefixID(),TEXT},
                                                               {MatrixTraces::getPrefixID(),MATRIX_TRACES},
                                                               {UserStories::getPrefixID(),USER_STORIES},
-                                                              {UserCaseDiagram::getPrefixID(),USER_CASE_DIAGRAM}};
+                                                              {"UD",USER_CASE_DIAGRAM}};
 
     static Stakeholder loadStakeholder(OID id);
     static RestrictionRequirement loadRestrictionRequirement(OID id);
@@ -131,8 +130,8 @@ public:
     unsigned lastRestrictionRequirement();
     unsigned lastFunctionalRequirement();
     unsigned lastNonFunctionalRequirement();
-    unsigned lastActorUC();
-    unsigned lastInformationRequirement();
+    static unsigned lastActorUC();
+    static unsigned lastInformationRequirement();
     unsigned lastOrganization();
     unsigned lastRolStakeholder();
     unsigned lastSystemObjective();
@@ -273,14 +272,7 @@ private:
         return map;
     }();
     
-    inline static std::map<OID,MatrixTraces> MEMMatrixTraces = []() {
-        std::map<OID,MatrixTraces> map;
-        for (auto matrixTraces : loadFileAllMatrixTraces()) {
-            MatrixTraces matrixTraces1 = MatrixTraces(matrixTraces);
-            map.insert(std::pair<OID,MatrixTraces>(matrixTraces1.getId(),matrixTraces1));
-        }
-        return map;
-    }();
+
     
     inline static std::map<OID,UserStories> MEMUserStories = []() {
         std::map<OID,UserStories> map;
@@ -295,6 +287,13 @@ private:
         for (auto userCaseDiagram : loadFileAllUserCaseDiagram()) {
             UserCaseDiagram userCaseDiagram1 = UserCaseDiagram(userCaseDiagram);
             map.insert(std::pair<OID,UserCaseDiagram>(userCaseDiagram1.getId(),userCaseDiagram1));
+        }
+        return map;
+    }();
+    inline static std::map<OID,MatrixTraces> MEMMatrixTraces = []() {
+        std::map<OID,MatrixTraces> map;
+        for (auto matrixTraces : loadFileAllMatrixTraces()) {
+            map.insert(std::pair<OID,MatrixTraces>(matrixTraces.getId(),matrixTraces));
         }
         return map;
     }();

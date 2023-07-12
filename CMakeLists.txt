@@ -30,8 +30,8 @@ add_library(TFG_Library
         Servicio/ServicioMatrixTraces.cpp
         Servicio/ServicioMatrixTraces.h
         Dominio/UserStories.cpp
-        Servicio/ServicioUserStories.cpp
         Servicio/ServicioHTML.cpp
+        Servicio/ServicioUserStories.cpp
         Visitor/LinkedGeneralTree.cpp)
 
 add_executable(TFG_Executable main.cpp)

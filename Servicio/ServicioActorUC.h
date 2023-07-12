@@ -7,6 +7,7 @@
 #include "Dominio/Trackeable/Trackeable.h"
 #include "Dominio/Generic.h"
 #include "ServicioTrackeable.h"
+#include "Repository/JsonRepository.h"
 
 class ServicioActorUC : public ServicioTrackeable{
 

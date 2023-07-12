@@ -6,8 +6,9 @@
 #define TFG_SERVICIOINFORMATIONREQUIREMENT_H
 
 
-#include "ServicioPriority.h"
-#include "ServicioTrackeable.h"
+#include "Dominio/Generic.h"
+#include "Servicio/ServicioTrackeable.h"
+#include "Servicio/ServicioPriority.h"
 
 class ServicioInformationRequirement : public ServicioTrackeable, public ServicioPriority {
 public:
@@ -37,8 +38,7 @@ public:
     std::list<std::pair<OID,std::string>> getInformationRequirements();
 
 
-private:
-    JsonRepository fileJsonManager;
+
 /*    void setMaxSimultaneousOccurrence(unsigned int maxSimultaneousOccurrence);
     void setAvgSimultaneousOccurrence(unsigned int avgSimultaneousOccurrence);
     void setLifeMaxEstimate(const TimeQuantity &lifeMaxEstimate);

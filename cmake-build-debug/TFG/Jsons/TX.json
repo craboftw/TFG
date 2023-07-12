@@ -1,0 +1,322 @@
+{
+    "1": {
+        "authors": null,
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "\nEl objetivo principal del sistema de Venta de Espartos a desarrollar es crear una plataforma digital en forma de página web para la comercialización y venta de los variados productos de espartos que fabrica el artesano Antonio López. Se trata de una solución moderna y efectiva que permitirá a los clientes personalizar sus pedidos a su gusto, ya sea en el tamaño de las persianas, las dimensiones de las cabezas de toro o la apariencia de los bolsos, entre otros. De esta manera, se podrán satisfacer las necesidades específicas de cada cliente, incrementando así la satisfacción del cliente y aumentando su fidelidad a la empresa. Este sistema será un impulso para el negocio de Antonio López, ya que simplificará la forma en que se gestionan los pedidos y se adaptarán a las necesidades de cada cliente. Asimismo, permitirá la exposición de sus productos a un público mucho más amplio, permitiendo que más personas se familiaricen con su trabajo, aumentando así la visibilidad y la reputación de su empresa en el mercado. \n\nLa presencia en internet es crucial en el mundo de los negocios moderno, y lamentablemente, nuestro cliente ha estado fuera del radar durante demasiado tiempo. Sin una página web o un medio de contacto efectivo, su alcance se ha limitado a aquellos que ya lo conocen. Pero esto no tiene por qué seguir siendo así, y es por eso que hemos asumido la tarea de desarrollar una página web para nuestro cliente, con el objetivo de darle a su negocio la visibilidad que merece. \n\nDespués de la realización de este proyecto se podrán ofrecer servicios a un público mucho más amplio y diverso, y establecer su presencia en internet para llegar a nuevas audiencias y clientes potenciales. A través de la personalización de los pedidos, su negocio podrá destacar en un mercado cada vez más competitivo y responder a las necesidades específicas de cada cliente. Además, la página web le permitirá establecer una relación más cercana con sus clientes y recibir feedback, lo que puede ser una gran ayuda para mejorar y crecer en el futuro. \n\nEn el resto del documento describiremos en profundidad los requisitos necesarios para llevar a cabo el prototipo, los objetivos del sistema y todo lo necesario para llevar a cabo este proyecto. \n\n",
+        "id": {
+            "id": 1,
+            "prefix": "TX"
+        },
+        "name": "Introduccion",
+        "tracesFrom": null,
+        "tracesTo": null,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    },
+    "10": {
+        "authors": null,
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "El negocio del esparto al que nos referimos está solo llevado por Antonio López, un hombre que trabaja solo y no está del todo acostumbrado a las nuevas tecnologías. Esto hace que su sistema de venta de productos de espartos se limite solo a la comunicación por WhatsApp o llamada, haciendo que sea más lenta la venta. Es decir, el cliente contacta con Antonio López, éste hace un boceto del pedido, lo manda, espera confirmación, y si todo está bien se procede a la venta. Si son necesarios cambios este proceso se retrasa más de lo necesario. \n\nNos encontramos también con el problema de que todos los datos se guardan a papel, o en los contactos de Antonio López, lo que acaba siendo muy confuso también para él. Hay que buscar manualmente a todos los contactos en caso de haber algún problema. Si pasase cualquier cosa con el móvil de Antonio López todos los clientes estarían perdidos. ",
+        "id": {
+            "id": 10,
+            "prefix": "TX"
+        },
+        "name": "Descripcion",
+        "tracesFrom": null,
+        "tracesTo": null,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    },
+    "11": {
+        "authors": null,
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "\nEl objetivo principal del sistema de Venta de Espartos a desarrollar es crear una plataforma digital en forma de página web para la comercialización y venta de los variados productos de espartos que fabrica el artesano Antonio López. Se trata de una solución moderna y efectiva que permitirá a los clientes personalizar sus pedidos a su gusto, ya sea en el tamaño de las persianas, las dimensiones de las cabezas de toro o la apariencia de los bolsos, entre otros. De esta manera, se podrán satisfacer las necesidades específicas de cada cliente, incrementando así la satisfacción del cliente y aumentando su fidelidad a la empresa. Este sistema será un impulso para el negocio de Antonio López, ya que simplificará la forma en que se gestionan los pedidos y se adaptarán a las necesidades de cada cliente. Asimismo, permitirá la exposición de sus productos a un público mucho más amplio, permitiendo que más personas se familiaricen con su trabajo, aumentando así la visibilidad y la reputación de su empresa en el mercado. \n\nLa presencia en internet es crucial en el mundo de los negocios moderno, y lamentablemente, nuestro cliente ha estado fuera del radar durante demasiado tiempo. Sin una página web o un medio de contacto efectivo, su alcance se ha limitado a aquellos que ya lo conocen. Pero esto no tiene por qué seguir siendo así, y es por eso que hemos asumido la tarea de desarrollar una página web para nuestro cliente, con el objetivo de darle a su negocio la visibilidad que merece. \n\nDespués de la realización de este proyecto se podrán ofrecer servicios a un público mucho más amplio y diverso, y establecer su presencia en internet para llegar a nuevas audiencias y clientes potenciales. A través de la personalización de los pedidos, su negocio podrá destacar en un mercado cada vez más competitivo y responder a las necesidades específicas de cada cliente. Además, la página web le permitirá establecer una relación más cercana con sus clientes y recibir feedback, lo que puede ser una gran ayuda para mejorar y crecer en el futuro. \n\nEn el resto del documento describiremos en profundidad los requisitos necesarios para llevar a cabo el prototipo, los objetivos del sistema y todo lo necesario para llevar a cabo este proyecto. \n\n",
+        "id": {
+            "id": 11,
+            "prefix": "TX"
+        },
+        "name": "Introduccion",
+        "tracesFrom": null,
+        "tracesTo": null,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    },
+    "12": {
+        "authors": null,
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "El negocio del esparto al que nos referimos está solo llevado por Antonio López, un hombre que trabaja solo y no está del todo acostumbrado a las nuevas tecnologías. Esto hace que su sistema de venta de productos de espartos se limite solo a la comunicación por WhatsApp o llamada, haciendo que sea más lenta la venta. Es decir, el cliente contacta con Antonio López, éste hace un boceto del pedido, lo manda, espera confirmación, y si todo está bien se procede a la venta. Si son necesarios cambios este proceso se retrasa más de lo necesario. \n\nNos encontramos también con el problema de que todos los datos se guardan a papel, o en los contactos de Antonio López, lo que acaba siendo muy confuso también para él. Hay que buscar manualmente a todos los contactos en caso de haber algún problema. Si pasase cualquier cosa con el móvil de Antonio López todos los clientes estarían perdidos. ",
+        "id": {
+            "id": 12,
+            "prefix": "TX"
+        },
+        "name": "Descripcion",
+        "tracesFrom": null,
+        "tracesTo": null,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    },
+    "13": {
+        "authors": null,
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "\nEl objetivo principal del sistema de Venta de Espartos a desarrollar es crear una plataforma digital en forma de página web para la comercialización y venta de los variados productos de espartos que fabrica el artesano Antonio López. Se trata de una solución moderna y efectiva que permitirá a los clientes personalizar sus pedidos a su gusto, ya sea en el tamaño de las persianas, las dimensiones de las cabezas de toro o la apariencia de los bolsos, entre otros. De esta manera, se podrán satisfacer las necesidades específicas de cada cliente, incrementando así la satisfacción del cliente y aumentando su fidelidad a la empresa. Este sistema será un impulso para el negocio de Antonio López, ya que simplificará la forma en que se gestionan los pedidos y se adaptarán a las necesidades de cada cliente. Asimismo, permitirá la exposición de sus productos a un público mucho más amplio, permitiendo que más personas se familiaricen con su trabajo, aumentando así la visibilidad y la reputación de su empresa en el mercado. \n\nLa presencia en internet es crucial en el mundo de los negocios moderno, y lamentablemente, nuestro cliente ha estado fuera del radar durante demasiado tiempo. Sin una página web o un medio de contacto efectivo, su alcance se ha limitado a aquellos que ya lo conocen. Pero esto no tiene por qué seguir siendo así, y es por eso que hemos asumido la tarea de desarrollar una página web para nuestro cliente, con el objetivo de darle a su negocio la visibilidad que merece. \n\nDespués de la realización de este proyecto se podrán ofrecer servicios a un público mucho más amplio y diverso, y establecer su presencia en internet para llegar a nuevas audiencias y clientes potenciales. A través de la personalización de los pedidos, su negocio podrá destacar en un mercado cada vez más competitivo y responder a las necesidades específicas de cada cliente. Además, la página web le permitirá establecer una relación más cercana con sus clientes y recibir feedback, lo que puede ser una gran ayuda para mejorar y crecer en el futuro. \n\nEn el resto del documento describiremos en profundidad los requisitos necesarios para llevar a cabo el prototipo, los objetivos del sistema y todo lo necesario para llevar a cabo este proyecto. \n\n",
+        "id": {
+            "id": 13,
+            "prefix": "TX"
+        },
+        "name": "Introduccion",
+        "tracesFrom": null,
+        "tracesTo": null,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    },
+    "14": {
+        "authors": null,
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "El negocio del esparto al que nos referimos está solo llevado por Antonio López, un hombre que trabaja solo y no está del todo acostumbrado a las nuevas tecnologías. Esto hace que su sistema de venta de productos de espartos se limite solo a la comunicación por WhatsApp o llamada, haciendo que sea más lenta la venta. Es decir, el cliente contacta con Antonio López, éste hace un boceto del pedido, lo manda, espera confirmación, y si todo está bien se procede a la venta. Si son necesarios cambios este proceso se retrasa más de lo necesario. \n\nNos encontramos también con el problema de que todos los datos se guardan a papel, o en los contactos de Antonio López, lo que acaba siendo muy confuso también para él. Hay que buscar manualmente a todos los contactos en caso de haber algún problema. Si pasase cualquier cosa con el móvil de Antonio López todos los clientes estarían perdidos. ",
+        "id": {
+            "id": 14,
+            "prefix": "TX"
+        },
+        "name": "Descripcion",
+        "tracesFrom": null,
+        "tracesTo": null,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    },
+    "15": {
+        "authors": null,
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "Esparto: Hoja de esta planta, radical, larga, dura, resistente y tan arrollada sobre sí que parece tener forma de hilo.\n\nPleita: Faja o tira de esparto, palma, pita u otros ramales entretejidos que, cosida con otras, se utiliza para hacer sombreros, esteras, etc.\n",
+        "id": {
+            "id": 15,
+            "prefix": "TX"
+        },
+        "name": "Glosario",
+        "tracesFrom": null,
+        "tracesTo": null,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    },
+    "16": {
+        "authors": null,
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "Esta es la entrevista para Ingeniería de Requisitos, él es Antonio López, el espartero de Chiclana, y vamos a realizarle algunas preguntas para analizar el posible software a desarrollar. Empezamos por la primera. \n\n-¿Cuál es el problema o necesidad específica que está buscando solucionar con una aplicación? \n\nPues lo que es el tema de cómo arreglaría tantas preguntas, como todo el mundo me pregunta, ¿qué artículo tiene usted? Pues poderlo llevar a redes sociales que no me hagan la pregunta, que simplemente lo veáis, y sigan, evidentemente, a lo que es el artículo que le interese. \n\n-¿Hay algún otro intento previo de solucionar este problema o de una aplicación? Si es así, ¿por qué falló? \n\nSe hizo, pero se hizo de cuatro artículos, nada más, o cinco artículos, después se hizo mal. No se detallaron los precios, no, en fin, falló el completo. Estaba mal hecho, cuando una cosa está mal hecha, está mal hecha. Y entonces, ya luego hemos ido rebotando a todo el mundo por WhatsApp, y es donde no hemos defendido, pero que por WhatsApp tampoco es. \n\n-Es decir, ¿que la comunicación de pasarle los productos va por WhatsApp? \n\nSí, ahora mismo sí, es la solución que hay. A no ser que hubiera lo que es una buena página web, una buena fórmula de que el cliente directamente lo hubiera, pero claro, siempre tendría que contactar conmigo, puesto que somos una persona no más fabricando, no tenemos capacidad de vender por encima de la web, si no nos saturan. \n\n-¿Cómo describiría el proceso del trabajo del artesano? \n\nEso es manual, eso no tiene más historia, aguja y cuerda y vámonos. \n\n-Quiero decir, pero desde que el cliente te contacta a ti hasta que llega, ¿cómo el cliente te llega a contactar a ti? ¿Cómo haces tú que el producto le llega al cliente? ¿Cuál es todo el proceso ahí? \n\n\nSimplemente, mensajería, empaqueto, preparo, mensajería, envío, dirección de envío, lo que es con los códigos postales y demás hoy en día no se pierde ningún producto, además, todos, todos, todos quedan grabados y si hay una incidencia, lo recuperas en 30 segundos. \n\n\n\n-¿Hay algún otro usuario, otra persona que debe interactuar con la página, además de tú? \n\nAhora mismo, cuando me hace falta lo que es el tema de facturación o algo, yo tengo la agencia, o sea, la agencia, la gestoría que ellos mismos me gestionan la parte de documento o si me hiciera falta de que por ejemplo cualquier proyecto que me pidieran de ingenería por algo, me hicieran falta de que me la aclararan, tengo mi gestoría que me hace lo que me hiciera falta. Es la parte técnica. \n\n-Pero entonces la gestoría que es la que lleva los papeles legales, ¿es la que tú querrías que te rellenara los tipos de productos en la página web? \n\nEs que hoy en día, para ser el proveedor de muchas empresas, te piden cosas que a mí me suenan los nombres a chino. Entonces lo mejor que hago cuando me entro en una empresa, por ejemplo, como ha pasado últimamente con televisión. Televisión Española me pedía hasta mi fecha de nacimiento pero de todo. ¿Qué hice? Mire usted, tome usted el número de teléfono de mi gestoría y las chavalas en las gestorías se encargaron de todo y no hubo problema ninguno. Cuando nos ha tocado el extranjero que lleva números de clave de exportación distinto, pues me ha pasado igual y hemos podido lamentar que me han pedido al mundo entero, le hemos podido enviar lo que pasa que hay ciertos puntos del mundo que son más caros o menos caros pero por enviarlo puedes enviar donde quieras. \n\n-¿Cómo querría que fuese el acceso a la web desde tu parte? ¿Es decir como administrador y dueño de ello o simplemente como usuario más? \n\nNo, por la parte de lo que es de administrador te vuelvo a decir lo mismo en la web, simplemente me haría falta a mí, informativa con idea de que automáticamente hiciera igual que hace todo lo poquito que tengo de redes sociales. Hable usted con Antonio por WhatsApp. A mi me gusta que me llegue a mí y me explique porque si no no hay forma de llevar, porque esto es totalmente construido a mano todos son diferentes pero todos son parecidos. \n\n-Claro, pero ponte que en un año no aparece en la página web, por ejemplo, un producto nuevo y tienes que añadirlo tú. \n\nSí. Socorro. Socorro. Buscaría la gestoría o buscaría alguien. \n\n-Ok. Cuando me atasco hay que pedir socorro, eso es muy lógico en la vida. \n\n-¿Hay algo en concreto, alguna característica que quieres que la aplicación o la página web pueda hacer por ti más que lo comentado hasta ahora de que informe al cliente hay algo más aparte de eso? \n\nLa verdad es que lo desconozco por el tema que yo no sé si la página web se podría enviar lo que eran vídeos constructivos, o sea, vídeos de como enlazar que como lo desconozco el tema de las redes sociales, esa parte sería a la par que vas haciendo, fraccionar este tramo. Y después, unirlo todo para mandárselo al cliente. De conocimiento ahí no llego, pero sería muy bonito poder hacer cuadros enteros de la elaboración. La elaboración completa de su trabajo. O sea, que el cliente tenga un seguimiento de producto exacto. \n\n\n-¿Hay alguna restricción en cuanto al costo o tiempo necesario para desarrollar la aplicación o la página web? \n\nNo. Simplemente no. Ni por requisitos ni por poder o no poder no tengo problema. \n\n-¿Te interesa que en la aplicación haya un perfil de comunicaciones para este tipo de cosas como una revista, un certamen, un concurso? \n\nAh, si me gusta pero al final no hago caso nunca. Me gusta que me inviten a todos lados a todos los certamenes, de España entera de todos lados y no voy a ningún lado. \n\n-¿Y cuándo es que tú vas? \n\nNo voy. Cuando es que voy es porque tengo a veces necesidad de salir del agobio del taller, simplemente programo cualquier cliente en la entrega y hago la entrega en cualquier punto de España o en cualquier punto de... Cuidado, que capaz de hacerla hasta afuera por decir, me voy un poquito. \n\n-Te hace falta una aplicación que cosa esparto. \n\nNo, hombre. \n\n-Este es el final de la entrevista a Antonio López. Muchas gracias por colaborar. \n\nPara mi no ha sido problema ninguno al revés. Para lo que queráis. \n\n-Pues nada, muchas gracias. \n\nA ustedes.",
+        "id": {
+            "id": 16,
+            "prefix": "TX"
+        },
+        "name": "Entrevista",
+        "tracesFrom": null,
+        "tracesTo": null,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    },
+    "17": {
+        "authors": null,
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "\nEl objetivo principal del sistema de Venta de Espartos a desarrollar es crear una plataforma digital en forma de página web para la comercialización y venta de los variados productos de espartos que fabrica el artesano Antonio López. Se trata de una solución moderna y efectiva que permitirá a los clientes personalizar sus pedidos a su gusto, ya sea en el tamaño de las persianas, las dimensiones de las cabezas de toro o la apariencia de los bolsos, entre otros. De esta manera, se podrán satisfacer las necesidades específicas de cada cliente, incrementando así la satisfacción del cliente y aumentando su fidelidad a la empresa. Este sistema será un impulso para el negocio de Antonio López, ya que simplificará la forma en que se gestionan los pedidos y se adaptarán a las necesidades de cada cliente. Asimismo, permitirá la exposición de sus productos a un público mucho más amplio, permitiendo que más personas se familiaricen con su trabajo, aumentando así la visibilidad y la reputación de su empresa en el mercado. \n\nLa presencia en internet es crucial en el mundo de los negocios moderno, y lamentablemente, nuestro cliente ha estado fuera del radar durante demasiado tiempo. Sin una página web o un medio de contacto efectivo, su alcance se ha limitado a aquellos que ya lo conocen. Pero esto no tiene por qué seguir siendo así, y es por eso que hemos asumido la tarea de desarrollar una página web para nuestro cliente, con el objetivo de darle a su negocio la visibilidad que merece. \n\nDespués de la realización de este proyecto se podrán ofrecer servicios a un público mucho más amplio y diverso, y establecer su presencia en internet para llegar a nuevas audiencias y clientes potenciales. A través de la personalización de los pedidos, su negocio podrá destacar en un mercado cada vez más competitivo y responder a las necesidades específicas de cada cliente. Además, la página web le permitirá establecer una relación más cercana con sus clientes y recibir feedback, lo que puede ser una gran ayuda para mejorar y crecer en el futuro. \n\nEn el resto del documento describiremos en profundidad los requisitos necesarios para llevar a cabo el prototipo, los objetivos del sistema y todo lo necesario para llevar a cabo este proyecto. \n\n",
+        "id": {
+            "id": 17,
+            "prefix": "TX"
+        },
+        "name": "Introduccion",
+        "tracesFrom": null,
+        "tracesTo": null,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    },
+    "18": {
+        "authors": null,
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "El negocio del esparto al que nos referimos está solo llevado por Antonio López, un hombre que trabaja solo y no está del todo acostumbrado a las nuevas tecnologías. Esto hace que su sistema de venta de productos de espartos se limite solo a la comunicación por WhatsApp o llamada, haciendo que sea más lenta la venta. Es decir, el cliente contacta con Antonio López, éste hace un boceto del pedido, lo manda, espera confirmación, y si todo está bien se procede a la venta. Si son necesarios cambios este proceso se retrasa más de lo necesario. \n\nNos encontramos también con el problema de que todos los datos se guardan a papel, o en los contactos de Antonio López, lo que acaba siendo muy confuso también para él. Hay que buscar manualmente a todos los contactos en caso de haber algún problema. Si pasase cualquier cosa con el móvil de Antonio López todos los clientes estarían perdidos. ",
+        "id": {
+            "id": 18,
+            "prefix": "TX"
+        },
+        "name": "Descripcion",
+        "tracesFrom": null,
+        "tracesTo": null,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    },
+    "19": {
+        "authors": null,
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "Esparto: Hoja de esta planta, radical, larga, dura, resistente y tan arrollada sobre sí que parece tener forma de hilo.\n\nPleita: Faja o tira de esparto, palma, pita u otros ramales entretejidos que, cosida con otras, se utiliza para hacer sombreros, esteras, etc.\n",
+        "id": {
+            "id": 19,
+            "prefix": "TX"
+        },
+        "name": "Glosario",
+        "tracesFrom": null,
+        "tracesTo": null,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    },
+    "2": {
+        "authors": null,
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "El negocio del esparto al que nos referimos está solo llevado por Antonio López, un hombre que trabaja solo y no está del todo acostumbrado a las nuevas tecnologías. Esto hace que su sistema de venta de productos de espartos se limite solo a la comunicación por WhatsApp o llamada, haciendo que sea más lenta la venta. Es decir, el cliente contacta con Antonio López, éste hace un boceto del pedido, lo manda, espera confirmación, y si todo está bien se procede a la venta. Si son necesarios cambios este proceso se retrasa más de lo necesario. \n\nNos encontramos también con el problema de que todos los datos se guardan a papel, o en los contactos de Antonio López, lo que acaba siendo muy confuso también para él. Hay que buscar manualmente a todos los contactos en caso de haber algún problema. Si pasase cualquier cosa con el móvil de Antonio López todos los clientes estarían perdidos. ",
+        "id": {
+            "id": 2,
+            "prefix": "TX"
+        },
+        "name": "Descripcion",
+        "tracesFrom": null,
+        "tracesTo": null,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    },
+    "20": {
+        "authors": null,
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "Esta es la entrevista para Ingeniería de Requisitos, él es Antonio López, el espartero de Chiclana, y vamos a realizarle algunas preguntas para analizar el posible software a desarrollar. Empezamos por la primera. \n\n-¿Cuál es el problema o necesidad específica que está buscando solucionar con una aplicación? \n\nPues lo que es el tema de cómo arreglaría tantas preguntas, como todo el mundo me pregunta, ¿qué artículo tiene usted? Pues poderlo llevar a redes sociales que no me hagan la pregunta, que simplemente lo veáis, y sigan, evidentemente, a lo que es el artículo que le interese. \n\n-¿Hay algún otro intento previo de solucionar este problema o de una aplicación? Si es así, ¿por qué falló? \n\nSe hizo, pero se hizo de cuatro artículos, nada más, o cinco artículos, después se hizo mal. No se detallaron los precios, no, en fin, falló el completo. Estaba mal hecho, cuando una cosa está mal hecha, está mal hecha. Y entonces, ya luego hemos ido rebotando a todo el mundo por WhatsApp, y es donde no hemos defendido, pero que por WhatsApp tampoco es. \n\n-Es decir, ¿que la comunicación de pasarle los productos va por WhatsApp? \n\nSí, ahora mismo sí, es la solución que hay. A no ser que hubiera lo que es una buena página web, una buena fórmula de que el cliente directamente lo hubiera, pero claro, siempre tendría que contactar conmigo, puesto que somos una persona no más fabricando, no tenemos capacidad de vender por encima de la web, si no nos saturan. \n\n-¿Cómo describiría el proceso del trabajo del artesano? \n\nEso es manual, eso no tiene más historia, aguja y cuerda y vámonos. \n\n-Quiero decir, pero desde que el cliente te contacta a ti hasta que llega, ¿cómo el cliente te llega a contactar a ti? ¿Cómo haces tú que el producto le llega al cliente? ¿Cuál es todo el proceso ahí? \n\n\nSimplemente, mensajería, empaqueto, preparo, mensajería, envío, dirección de envío, lo que es con los códigos postales y demás hoy en día no se pierde ningún producto, además, todos, todos, todos quedan grabados y si hay una incidencia, lo recuperas en 30 segundos. \n\n\n\n-¿Hay algún otro usuario, otra persona que debe interactuar con la página, además de tú? \n\nAhora mismo, cuando me hace falta lo que es el tema de facturación o algo, yo tengo la agencia, o sea, la agencia, la gestoría que ellos mismos me gestionan la parte de documento o si me hiciera falta de que por ejemplo cualquier proyecto que me pidieran de ingenería por algo, me hicieran falta de que me la aclararan, tengo mi gestoría que me hace lo que me hiciera falta. Es la parte técnica. \n\n-Pero entonces la gestoría que es la que lleva los papeles legales, ¿es la que tú querrías que te rellenara los tipos de productos en la página web? \n\nEs que hoy en día, para ser el proveedor de muchas empresas, te piden cosas que a mí me suenan los nombres a chino. Entonces lo mejor que hago cuando me entro en una empresa, por ejemplo, como ha pasado últimamente con televisión. Televisión Española me pedía hasta mi fecha de nacimiento pero de todo. ¿Qué hice? Mire usted, tome usted el número de teléfono de mi gestoría y las chavalas en las gestorías se encargaron de todo y no hubo problema ninguno. Cuando nos ha tocado el extranjero que lleva números de clave de exportación distinto, pues me ha pasado igual y hemos podido lamentar que me han pedido al mundo entero, le hemos podido enviar lo que pasa que hay ciertos puntos del mundo que son más caros o menos caros pero por enviarlo puedes enviar donde quieras. \n\n-¿Cómo querría que fuese el acceso a la web desde tu parte? ¿Es decir como administrador y dueño de ello o simplemente como usuario más? \n\nNo, por la parte de lo que es de administrador te vuelvo a decir lo mismo en la web, simplemente me haría falta a mí, informativa con idea de que automáticamente hiciera igual que hace todo lo poquito que tengo de redes sociales. Hable usted con Antonio por WhatsApp. A mi me gusta que me llegue a mí y me explique porque si no no hay forma de llevar, porque esto es totalmente construido a mano todos son diferentes pero todos son parecidos. \n\n-Claro, pero ponte que en un año no aparece en la página web, por ejemplo, un producto nuevo y tienes que añadirlo tú. \n\nSí. Socorro. Socorro. Buscaría la gestoría o buscaría alguien. \n\n-Ok. Cuando me atasco hay que pedir socorro, eso es muy lógico en la vida. \n\n-¿Hay algo en concreto, alguna característica que quieres que la aplicación o la página web pueda hacer por ti más que lo comentado hasta ahora de que informe al cliente hay algo más aparte de eso? \n\nLa verdad es que lo desconozco por el tema que yo no sé si la página web se podría enviar lo que eran vídeos constructivos, o sea, vídeos de como enlazar que como lo desconozco el tema de las redes sociales, esa parte sería a la par que vas haciendo, fraccionar este tramo. Y después, unirlo todo para mandárselo al cliente. De conocimiento ahí no llego, pero sería muy bonito poder hacer cuadros enteros de la elaboración. La elaboración completa de su trabajo. O sea, que el cliente tenga un seguimiento de producto exacto. \n\n\n-¿Hay alguna restricción en cuanto al costo o tiempo necesario para desarrollar la aplicación o la página web? \n\nNo. Simplemente no. Ni por requisitos ni por poder o no poder no tengo problema. \n\n-¿Te interesa que en la aplicación haya un perfil de comunicaciones para este tipo de cosas como una revista, un certamen, un concurso? \n\nAh, si me gusta pero al final no hago caso nunca. Me gusta que me inviten a todos lados a todos los certamenes, de España entera de todos lados y no voy a ningún lado. \n\n-¿Y cuándo es que tú vas? \n\nNo voy. Cuando es que voy es porque tengo a veces necesidad de salir del agobio del taller, simplemente programo cualquier cliente en la entrega y hago la entrega en cualquier punto de España o en cualquier punto de... Cuidado, que capaz de hacerla hasta afuera por decir, me voy un poquito. \n\n-Te hace falta una aplicación que cosa esparto. \n\nNo, hombre. \n\n-Este es el final de la entrevista a Antonio López. Muchas gracias por colaborar. \n\nPara mi no ha sido problema ninguno al revés. Para lo que queráis. \n\n-Pues nada, muchas gracias. \n\nA ustedes.",
+        "id": {
+            "id": 20,
+            "prefix": "TX"
+        },
+        "name": "Entrevista",
+        "tracesFrom": null,
+        "tracesTo": null,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    },
+    "3": {
+        "authors": null,
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "Esparto: Hoja de esta planta, radical, larga, dura, resistente y tan arrollada sobre sí que parece tener forma de hilo.\n\nPleita: Faja o tira de esparto, palma, pita u otros ramales entretejidos que, cosida con otras, se utiliza para hacer sombreros, esteras, etc.\n",
+        "id": {
+            "id": 3,
+            "prefix": "TX"
+        },
+        "name": "Glosario",
+        "tracesFrom": null,
+        "tracesTo": null,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    },
+    "4": {
+        "authors": null,
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "Esta es la entrevista para Ingeniería de Requisitos, él es Antonio López, el espartero de Chiclana, y vamos a realizarle algunas preguntas para analizar el posible software a desarrollar. Empezamos por la primera. \n\n-¿Cuál es el problema o necesidad específica que está buscando solucionar con una aplicación? \n\nPues lo que es el tema de cómo arreglaría tantas preguntas, como todo el mundo me pregunta, ¿qué artículo tiene usted? Pues poderlo llevar a redes sociales que no me hagan la pregunta, que simplemente lo veáis, y sigan, evidentemente, a lo que es el artículo que le interese. \n\n-¿Hay algún otro intento previo de solucionar este problema o de una aplicación? Si es así, ¿por qué falló? \n\nSe hizo, pero se hizo de cuatro artículos, nada más, o cinco artículos, después se hizo mal. No se detallaron los precios, no, en fin, falló el completo. Estaba mal hecho, cuando una cosa está mal hecha, está mal hecha. Y entonces, ya luego hemos ido rebotando a todo el mundo por WhatsApp, y es donde no hemos defendido, pero que por WhatsApp tampoco es. \n\n-Es decir, ¿que la comunicación de pasarle los productos va por WhatsApp? \n\nSí, ahora mismo sí, es la solución que hay. A no ser que hubiera lo que es una buena página web, una buena fórmula de que el cliente directamente lo hubiera, pero claro, siempre tendría que contactar conmigo, puesto que somos una persona no más fabricando, no tenemos capacidad de vender por encima de la web, si no nos saturan. \n\n-¿Cómo describiría el proceso del trabajo del artesano? \n\nEso es manual, eso no tiene más historia, aguja y cuerda y vámonos. \n\n-Quiero decir, pero desde que el cliente te contacta a ti hasta que llega, ¿cómo el cliente te llega a contactar a ti? ¿Cómo haces tú que el producto le llega al cliente? ¿Cuál es todo el proceso ahí? \n\n\nSimplemente, mensajería, empaqueto, preparo, mensajería, envío, dirección de envío, lo que es con los códigos postales y demás hoy en día no se pierde ningún producto, además, todos, todos, todos quedan grabados y si hay una incidencia, lo recuperas en 30 segundos. \n\n\n\n-¿Hay algún otro usuario, otra persona que debe interactuar con la página, además de tú? \n\nAhora mismo, cuando me hace falta lo que es el tema de facturación o algo, yo tengo la agencia, o sea, la agencia, la gestoría que ellos mismos me gestionan la parte de documento o si me hiciera falta de que por ejemplo cualquier proyecto que me pidieran de ingenería por algo, me hicieran falta de que me la aclararan, tengo mi gestoría que me hace lo que me hiciera falta. Es la parte técnica. \n\n-Pero entonces la gestoría que es la que lleva los papeles legales, ¿es la que tú querrías que te rellenara los tipos de productos en la página web? \n\nEs que hoy en día, para ser el proveedor de muchas empresas, te piden cosas que a mí me suenan los nombres a chino. Entonces lo mejor que hago cuando me entro en una empresa, por ejemplo, como ha pasado últimamente con televisión. Televisión Española me pedía hasta mi fecha de nacimiento pero de todo. ¿Qué hice? Mire usted, tome usted el número de teléfono de mi gestoría y las chavalas en las gestorías se encargaron de todo y no hubo problema ninguno. Cuando nos ha tocado el extranjero que lleva números de clave de exportación distinto, pues me ha pasado igual y hemos podido lamentar que me han pedido al mundo entero, le hemos podido enviar lo que pasa que hay ciertos puntos del mundo que son más caros o menos caros pero por enviarlo puedes enviar donde quieras. \n\n-¿Cómo querría que fuese el acceso a la web desde tu parte? ¿Es decir como administrador y dueño de ello o simplemente como usuario más? \n\nNo, por la parte de lo que es de administrador te vuelvo a decir lo mismo en la web, simplemente me haría falta a mí, informativa con idea de que automáticamente hiciera igual que hace todo lo poquito que tengo de redes sociales. Hable usted con Antonio por WhatsApp. A mi me gusta que me llegue a mí y me explique porque si no no hay forma de llevar, porque esto es totalmente construido a mano todos son diferentes pero todos son parecidos. \n\n-Claro, pero ponte que en un año no aparece en la página web, por ejemplo, un producto nuevo y tienes que añadirlo tú. \n\nSí. Socorro. Socorro. Buscaría la gestoría o buscaría alguien. \n\n-Ok. Cuando me atasco hay que pedir socorro, eso es muy lógico en la vida. \n\n-¿Hay algo en concreto, alguna característica que quieres que la aplicación o la página web pueda hacer por ti más que lo comentado hasta ahora de que informe al cliente hay algo más aparte de eso? \n\nLa verdad es que lo desconozco por el tema que yo no sé si la página web se podría enviar lo que eran vídeos constructivos, o sea, vídeos de como enlazar que como lo desconozco el tema de las redes sociales, esa parte sería a la par que vas haciendo, fraccionar este tramo. Y después, unirlo todo para mandárselo al cliente. De conocimiento ahí no llego, pero sería muy bonito poder hacer cuadros enteros de la elaboración. La elaboración completa de su trabajo. O sea, que el cliente tenga un seguimiento de producto exacto. \n\n\n-¿Hay alguna restricción en cuanto al costo o tiempo necesario para desarrollar la aplicación o la página web? \n\nNo. Simplemente no. Ni por requisitos ni por poder o no poder no tengo problema. \n\n-¿Te interesa que en la aplicación haya un perfil de comunicaciones para este tipo de cosas como una revista, un certamen, un concurso? \n\nAh, si me gusta pero al final no hago caso nunca. Me gusta que me inviten a todos lados a todos los certamenes, de España entera de todos lados y no voy a ningún lado. \n\n-¿Y cuándo es que tú vas? \n\nNo voy. Cuando es que voy es porque tengo a veces necesidad de salir del agobio del taller, simplemente programo cualquier cliente en la entrega y hago la entrega en cualquier punto de España o en cualquier punto de... Cuidado, que capaz de hacerla hasta afuera por decir, me voy un poquito. \n\n-Te hace falta una aplicación que cosa esparto. \n\nNo, hombre. \n\n-Este es el final de la entrevista a Antonio López. Muchas gracias por colaborar. \n\nPara mi no ha sido problema ninguno al revés. Para lo que queráis. \n\n-Pues nada, muchas gracias. \n\nA ustedes.",
+        "id": {
+            "id": 4,
+            "prefix": "TX"
+        },
+        "name": "Entrevista",
+        "tracesFrom": null,
+        "tracesTo": null,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    },
+    "5": {
+        "authors": null,
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "\nEl objetivo principal del sistema de Venta de Espartos a desarrollar es crear una plataforma digital en forma de página web para la comercialización y venta de los variados productos de espartos que fabrica el artesano Antonio López. Se trata de una solución moderna y efectiva que permitirá a los clientes personalizar sus pedidos a su gusto, ya sea en el tamaño de las persianas, las dimensiones de las cabezas de toro o la apariencia de los bolsos, entre otros. De esta manera, se podrán satisfacer las necesidades específicas de cada cliente, incrementando así la satisfacción del cliente y aumentando su fidelidad a la empresa. Este sistema será un impulso para el negocio de Antonio López, ya que simplificará la forma en que se gestionan los pedidos y se adaptarán a las necesidades de cada cliente. Asimismo, permitirá la exposición de sus productos a un público mucho más amplio, permitiendo que más personas se familiaricen con su trabajo, aumentando así la visibilidad y la reputación de su empresa en el mercado. \n\nLa presencia en internet es crucial en el mundo de los negocios moderno, y lamentablemente, nuestro cliente ha estado fuera del radar durante demasiado tiempo. Sin una página web o un medio de contacto efectivo, su alcance se ha limitado a aquellos que ya lo conocen. Pero esto no tiene por qué seguir siendo así, y es por eso que hemos asumido la tarea de desarrollar una página web para nuestro cliente, con el objetivo de darle a su negocio la visibilidad que merece. \n\nDespués de la realización de este proyecto se podrán ofrecer servicios a un público mucho más amplio y diverso, y establecer su presencia en internet para llegar a nuevas audiencias y clientes potenciales. A través de la personalización de los pedidos, su negocio podrá destacar en un mercado cada vez más competitivo y responder a las necesidades específicas de cada cliente. Además, la página web le permitirá establecer una relación más cercana con sus clientes y recibir feedback, lo que puede ser una gran ayuda para mejorar y crecer en el futuro. \n\nEn el resto del documento describiremos en profundidad los requisitos necesarios para llevar a cabo el prototipo, los objetivos del sistema y todo lo necesario para llevar a cabo este proyecto. \n\n",
+        "id": {
+            "id": 5,
+            "prefix": "TX"
+        },
+        "name": "Introduccion",
+        "tracesFrom": null,
+        "tracesTo": null,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    },
+    "6": {
+        "authors": null,
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "El negocio del esparto al que nos referimos está solo llevado por Antonio López, un hombre que trabaja solo y no está del todo acostumbrado a las nuevas tecnologías. Esto hace que su sistema de venta de productos de espartos se limite solo a la comunicación por WhatsApp o llamada, haciendo que sea más lenta la venta. Es decir, el cliente contacta con Antonio López, éste hace un boceto del pedido, lo manda, espera confirmación, y si todo está bien se procede a la venta. Si son necesarios cambios este proceso se retrasa más de lo necesario. \n\nNos encontramos también con el problema de que todos los datos se guardan a papel, o en los contactos de Antonio López, lo que acaba siendo muy confuso también para él. Hay que buscar manualmente a todos los contactos en caso de haber algún problema. Si pasase cualquier cosa con el móvil de Antonio López todos los clientes estarían perdidos. ",
+        "id": {
+            "id": 6,
+            "prefix": "TX"
+        },
+        "name": "Descripcion",
+        "tracesFrom": null,
+        "tracesTo": null,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    },
+    "7": {
+        "authors": null,
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "\nEl objetivo principal del sistema de Venta de Espartos a desarrollar es crear una plataforma digital en forma de página web para la comercialización y venta de los variados productos de espartos que fabrica el artesano Antonio López. Se trata de una solución moderna y efectiva que permitirá a los clientes personalizar sus pedidos a su gusto, ya sea en el tamaño de las persianas, las dimensiones de las cabezas de toro o la apariencia de los bolsos, entre otros. De esta manera, se podrán satisfacer las necesidades específicas de cada cliente, incrementando así la satisfacción del cliente y aumentando su fidelidad a la empresa. Este sistema será un impulso para el negocio de Antonio López, ya que simplificará la forma en que se gestionan los pedidos y se adaptarán a las necesidades de cada cliente. Asimismo, permitirá la exposición de sus productos a un público mucho más amplio, permitiendo que más personas se familiaricen con su trabajo, aumentando así la visibilidad y la reputación de su empresa en el mercado. \n\nLa presencia en internet es crucial en el mundo de los negocios moderno, y lamentablemente, nuestro cliente ha estado fuera del radar durante demasiado tiempo. Sin una página web o un medio de contacto efectivo, su alcance se ha limitado a aquellos que ya lo conocen. Pero esto no tiene por qué seguir siendo así, y es por eso que hemos asumido la tarea de desarrollar una página web para nuestro cliente, con el objetivo de darle a su negocio la visibilidad que merece. \n\nDespués de la realización de este proyecto se podrán ofrecer servicios a un público mucho más amplio y diverso, y establecer su presencia en internet para llegar a nuevas audiencias y clientes potenciales. A través de la personalización de los pedidos, su negocio podrá destacar en un mercado cada vez más competitivo y responder a las necesidades específicas de cada cliente. Además, la página web le permitirá establecer una relación más cercana con sus clientes y recibir feedback, lo que puede ser una gran ayuda para mejorar y crecer en el futuro. \n\nEn el resto del documento describiremos en profundidad los requisitos necesarios para llevar a cabo el prototipo, los objetivos del sistema y todo lo necesario para llevar a cabo este proyecto. \n\n",
+        "id": {
+            "id": 7,
+            "prefix": "TX"
+        },
+        "name": "Introduccion",
+        "tracesFrom": null,
+        "tracesTo": null,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    },
+    "8": {
+        "authors": null,
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "El negocio del esparto al que nos referimos está solo llevado por Antonio López, un hombre que trabaja solo y no está del todo acostumbrado a las nuevas tecnologías. Esto hace que su sistema de venta de productos de espartos se limite solo a la comunicación por WhatsApp o llamada, haciendo que sea más lenta la venta. Es decir, el cliente contacta con Antonio López, éste hace un boceto del pedido, lo manda, espera confirmación, y si todo está bien se procede a la venta. Si son necesarios cambios este proceso se retrasa más de lo necesario. \n\nNos encontramos también con el problema de que todos los datos se guardan a papel, o en los contactos de Antonio López, lo que acaba siendo muy confuso también para él. Hay que buscar manualmente a todos los contactos en caso de haber algún problema. Si pasase cualquier cosa con el móvil de Antonio López todos los clientes estarían perdidos. ",
+        "id": {
+            "id": 8,
+            "prefix": "TX"
+        },
+        "name": "Descripcion",
+        "tracesFrom": null,
+        "tracesTo": null,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    },
+    "9": {
+        "authors": null,
+        "changes": [],
+        "comments": "",
+        "date_init": "2023-07-12",
+        "description": "\nEl objetivo principal del sistema de Venta de Espartos a desarrollar es crear una plataforma digital en forma de página web para la comercialización y venta de los variados productos de espartos que fabrica el artesano Antonio López. Se trata de una solución moderna y efectiva que permitirá a los clientes personalizar sus pedidos a su gusto, ya sea en el tamaño de las persianas, las dimensiones de las cabezas de toro o la apariencia de los bolsos, entre otros. De esta manera, se podrán satisfacer las necesidades específicas de cada cliente, incrementando así la satisfacción del cliente y aumentando su fidelidad a la empresa. Este sistema será un impulso para el negocio de Antonio López, ya que simplificará la forma en que se gestionan los pedidos y se adaptarán a las necesidades de cada cliente. Asimismo, permitirá la exposición de sus productos a un público mucho más amplio, permitiendo que más personas se familiaricen con su trabajo, aumentando así la visibilidad y la reputación de su empresa en el mercado. \n\nLa presencia en internet es crucial en el mundo de los negocios moderno, y lamentablemente, nuestro cliente ha estado fuera del radar durante demasiado tiempo. Sin una página web o un medio de contacto efectivo, su alcance se ha limitado a aquellos que ya lo conocen. Pero esto no tiene por qué seguir siendo así, y es por eso que hemos asumido la tarea de desarrollar una página web para nuestro cliente, con el objetivo de darle a su negocio la visibilidad que merece. \n\nDespués de la realización de este proyecto se podrán ofrecer servicios a un público mucho más amplio y diverso, y establecer su presencia en internet para llegar a nuevas audiencias y clientes potenciales. A través de la personalización de los pedidos, su negocio podrá destacar en un mercado cada vez más competitivo y responder a las necesidades específicas de cada cliente. Además, la página web le permitirá establecer una relación más cercana con sus clientes y recibir feedback, lo que puede ser una gran ayuda para mejorar y crecer en el futuro. \n\nEn el resto del documento describiremos en profundidad los requisitos necesarios para llevar a cabo el prototipo, los objetivos del sistema y todo lo necesario para llevar a cabo este proyecto. \n\n",
+        "id": {
+            "id": 9,
+            "prefix": "TX"
+        },
+        "name": "Introduccion",
+        "tracesFrom": null,
+        "tracesTo": null,
+        "versionMajor": "0",
+        "versionMinor": "0"
+    }
+}

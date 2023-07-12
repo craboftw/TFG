@@ -20,6 +20,7 @@ class RestrictionRequirement;
 class SystemObjective;
 class NonFunctionalRequirement;
 class FunctionalRequirement;
+class UserCaseDiagram;
 
 
 class Text;

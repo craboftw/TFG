@@ -1,0 +1,69 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.24"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "TFG",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "TFG_Executable::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-TFG_Executable-Debug-1978d28655992025f0aa.json",
+					"name" : "TFG_Executable",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "TFG_Library::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-TFG_Library-Debug-cc7ccd588b8afb74e13e.json",
+					"name" : "TFG_Library",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/Fran-/OneDrive/Documentos/GitHub/TFG/cmake-build-debug",
+		"source" : "C:/Users/Fran-/OneDrive/Documentos/GitHub/TFG"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}

@@ -728,12 +728,11 @@ MatrixTraces JsonSerializer::deserializeMatrixTraces(json j) {
         MatrixTraces m(trackeableDTO.id.getId());
         setTrackeablePart(trackeableDTO, &m);
 
-        m.setPrefixesTracesTo(prefixesTracesTo);
-        m.setPrefixesTracesFrom(prefixesTracesFrom);
         for (OID oid : trackeablesTo) {
             trackeablesFrom.insert(oid);
         }
-        m.setTrackeables(trackeablesFrom);
+        m.initMatrix(prefixesTracesTo, prefixesTracesFrom,trackeablesFrom);
+
 
 
         /*｡o°✥✤✣MATRIX TRACES SET✣✤✥°o｡*/

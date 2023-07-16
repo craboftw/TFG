@@ -10,6 +10,7 @@
 #include "Dominio/Trackeable/MatrixTraces.h"
 #include "Dominio/Trackeable/Organization.h"
 #include "Dominio/Trackeable/Stakeholder.h"
+#include "Dominio/Index.h"
 
 
 
@@ -38,6 +39,7 @@ public:
     void visit(Text text) override;
     void visit(UserStories userStories) override;
     void visit(UserCaseDiagram userCaseDiagram);
+    void visit(Index index);
 
     void visit(Trackeable* trackeable) override;
     void visit(Priority *priority);
@@ -57,6 +59,7 @@ public:
     MatrixTraces deserializeMatrixTraces(json j);
     UserStories deserializeUserStories(json j);
     UserCaseDiagram deserializerUserCaseDiagram(json j);
+    Index deserializeIndex(json j);
 
 
     Trackeable *deserializeTrackeable(json j);
@@ -89,6 +92,19 @@ public:
     void setTrackeablePart(TrackeableDTO trackeableDTO, Trackeable *trackeable);
     void setPriorityPart(PriorityDTO priorityDTO, Priority *priority);
 
+
+    json serializeElementosIndex(ElementosIndex obj);
+    json serializeGeneralTree(Agen<ElementosIndex>::nodo n);
+
+    void deserializeGeneralTree(Agen<ElementosIndex>&A, const json &j);
+
+    void recurDeserializeGeneralTree(const json &j, Agen<ElementosIndex>::nodo n);
+
+    ElementosIndex deserializeElementosIndex(const json &j);
+
+    Agen<ElementosIndex> deserializeGeneralTree(const json &j);
+
+    void deserializeChildren(Agen<ElementosIndex>::nodo parent, const json &children);
 
 };
 

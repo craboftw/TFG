@@ -170,9 +170,19 @@ bool JsonRepository::exist(OID id) {
             if (MEMUserStories.find(id) == MEMUserStories.end()) {
                 return false;
             }
+        case USER_CASE_DIAGRAM:
+            if (MEMUserCaseDiagram.find(id) == MEMUserCaseDiagram.end()) {
+                return false;
+            }
+            break;
+        case INDEX:
+            if (MEMIndex.find(id) == MEMIndex.end()) {
+                return false;
+            }
             break;
         default:
-            throw std::invalid_argument("No existe el Trackeable con el prefijo: "+id.getPrefix()+", loadTrackeable");
+            throw std::invalid_argument(
+                    "No existe el Trackeable con el prefijo: " + id.getPrefix() + ", exist");
 
 
     }
@@ -342,6 +352,15 @@ UserCaseDiagram JsonRepository::loadUserCaseDiagram(OID id) {
     return MEMUserCaseDiagram[id];
 }
 
+Index JsonRepository::loadIndex(OID id) {
+    if (MEMIndex.find(id) == MEMIndex.end()) {
+        throw std::invalid_argument("No existe el Index, loadIndex");
+    }
+    return MEMIndex[id];
+}
+
+
+
 
 Trackeable JsonRepository::loadTrackeable(OID id) {
     Trackeable trackeable;
@@ -357,6 +376,8 @@ Trackeable JsonRepository::loadTrackeable(OID id) {
     Text text;
     MatrixTraces matrixTraces;
     UserStories userStories;
+    UserCaseDiagram userCaseDiagram;
+    Index index;
 
     switch (prefixes[id.getPrefix()]) {
         case STAKEHOLDER:
@@ -403,28 +424,37 @@ Trackeable JsonRepository::loadTrackeable(OID id) {
             break;
         case TEXT:
 
-                text = loadText(id);
-                trackeable = text;
-                break;
+            text = loadText(id);
+            trackeable = text;
+            break;
         case MATRIX_TRACES:
 
-                matrixTraces = loadMatrixTraces(id);
-                trackeable = matrixTraces;
-                break;
+            matrixTraces = loadMatrixTraces(id);
+            trackeable = matrixTraces;
+            break;
         case USER_STORIES:
 
-                    userStories = loadUserStories(id);
-                    trackeable = userStories;
-                    break;
+            userStories = loadUserStories(id);
+            trackeable = userStories;
+            break;
+
+        case USER_CASE_DIAGRAM:
+            userCaseDiagram = loadUserCaseDiagram(id);
+            trackeable = userCaseDiagram;
+            break;
+        case INDEX:
+            index = loadIndex(id);
+            trackeable = index;
+            break;
         default:
-            throw std::invalid_argument("No existe el Trackeable con el prefijo: "+id.getPrefix()+", loadTrackeable");
+            throw std::invalid_argument(
+                    "No existe el Trackeable con el prefijo: " + id.getPrefix() + ", loadTrackeable");
 
 
     }
     return trackeable;
 
 }
-
 
 
 Priority JsonRepository::loadPriority(OID id) {
@@ -446,37 +476,37 @@ Priority JsonRepository::loadPriority(OID id) {
         case RESTRICTION_REQUIREMENT:
             restrictionRequirement = loadRestrictionRequirement(id);
             priority
-     = restrictionRequirement;
+                    = restrictionRequirement;
             break;
         case FUNCTIONAL_REQUIREMENT:
             functionalRequirement = loadFunctionalRequirement(id);
             priority
-     = functionalRequirement;
+                    = functionalRequirement;
             break;
         case NON_FUNCTIONAL_REQUIREMENT:
 
             nonFunctionalRequirement = loadNonFunctionalRequirement(id);
             priority
-     = nonFunctionalRequirement;
+                    = nonFunctionalRequirement;
             break;
         case INFORMATION_REQUIREMENT:
 
             informationRequirement = loadInformationRequirement(id);
             priority
-     = informationRequirement;
+                    = informationRequirement;
             break;
 
         case SYSTEM_OBJECTIVE:
 
             systemObjective = loadSystemObjective(id);
             priority
-     = systemObjective;
+                    = systemObjective;
             break;
         case USER_CASE:
 
             userCase = loadUserCase(id);
             priority
-     = userCase;
+                    = userCase;
             break;
 
 
@@ -484,10 +514,10 @@ Priority JsonRepository::loadPriority(OID id) {
 
             userStories = loadUserStories(id);
             priority
-     = userStories;
+                    = userStories;
             break;
         default:
-            throw std::invalid_argument("No existe el Priority con el prefijo: "+id.getPrefix()+", loadPriority");
+            throw std::invalid_argument("No existe el Priority con el prefijo: " + id.getPrefix() + ", loadPriority");
 
 
     }
@@ -512,13 +542,20 @@ std::list<Text> JsonRepository::loadAllText() {
 }
 
 
-
 std::list<MatrixTraces> JsonRepository::loadAllMatrixTraces() {
     std::list<MatrixTraces> matrixTraces;
     for (auto &element: MEMMatrixTraces) {
         matrixTraces.push_back(element.second);
     }
     return matrixTraces;
+}
+
+std::list<Index> JsonRepository::loadAllIndex() {
+    std::list<Index> indexs;
+    for (auto &element: MEMIndex) {
+        indexs.push_back(element.second);
+    }
+    return indexs;
 }
 
 
@@ -740,6 +777,22 @@ std::list<UserCaseDiagram> JsonRepository::loadFileAllUserCaseDiagram() {
     return userCaseDiagrams;
 }
 
+Index JsonRepository::loadFileIndex(OID id) {
+    json j = load(id);
+    JsonSerializer jsoneitor;
+    return jsoneitor.deserializeIndex(j);
+}
+
+std::list<Index> JsonRepository::loadFileAllIndex() {
+    std::list<Index> indexes;
+    json j = loadAll(Index::getPrefixID());
+    JsonSerializer jsoneitor;
+    for (auto &element: j) {
+        indexes.push_back(jsoneitor.deserializeIndex(element));
+    }
+    return indexes;
+}
+
 
 unsigned JsonRepository::lastStakeholder() {
     unsigned last = 0;
@@ -751,7 +804,7 @@ unsigned JsonRepository::lastStakeholder() {
 }
 
 unsigned JsonRepository::lastRestrictionRequirement() {
-   unsigned last = 0;
+    unsigned last = 0;
     for (auto &element: MEMRestrictionRequirement) {
         if (last < element.first.getId())
             last = element.first.getId();
@@ -815,7 +868,7 @@ unsigned JsonRepository::lastSystemObjective() {
 }
 
 unsigned JsonRepository::lastUserCase() {
-   unsigned last = 0;
+    unsigned last = 0;
     for (auto &element: MEMUserCase) {
         if (last < element.first.getId())
             last = element.first.getId();
@@ -849,6 +902,26 @@ unsigned int JsonRepository::lastUserStories() {
     }
     return last;
 }
+
+unsigned JsonRepository::lastUserCaseDiagram() {
+    unsigned last = 0;
+    for (auto &element: MEMUserCaseDiagram) {
+        if (last < element.first.getId())
+            last = element.first.getId();
+    }
+    return last;
+}
+
+unsigned JsonRepository::lastIndex() {
+    unsigned last = 0;
+    for (auto &element: MEMIndex) {
+        if (last < element.first.getId())
+            last = element.first.getId();
+    }
+    return last;
+
+}
+
 
 
 void JsonRepository::save(Stakeholder stakeholder) {
@@ -928,8 +1001,15 @@ void JsonRepository::save(MatrixTraces matrixTraces) {
     ServicioHTML::printElement(matrixTraces.getId());
     JsonSerializer jsoneitor;
     jsoneitor.visit(matrixTraces);
-
 }
+
+void JsonRepository::save(UserCaseDiagram userCaseDiagram) {
+    MEMUserCaseDiagram[userCaseDiagram.getId()] = userCaseDiagram;
+    ServicioHTML::printElement(userCaseDiagram.getId());
+    JsonSerializer jsoneitor;
+    jsoneitor.visit(userCaseDiagram);
+}
+
 
 void JsonRepository::save(Trackeable *pTrackeable) {
 
@@ -1057,6 +1137,14 @@ void JsonRepository::save(UserStories userStories) {
     jsoneitor.visit(userStories);
 }
 
+void JsonRepository::save(Index index) {
+    MEMIndex[index.getId()] = index;
+    JsonSerializer jsoneitor;
+    ServicioHTML::printHTML(index.getId());
+    jsoneitor.visit(index);
+}
+
+
 void JsonRepository::saveAll(std::list<Stakeholder> stakeholders) {
     JsonSerializer jsoneitor;
     for (auto &stakeholder: stakeholders) {
@@ -1137,7 +1225,6 @@ json JsonRepository::loadAll(std::string prefix) {
 
     return listaj;
 }
-
 
 
 

@@ -18,6 +18,7 @@
 #define MATRIX_TRACES 11
 #define USER_STORIES 12
 #define USER_CASE_DIAGRAM 13
+#define INDEX 14
 
 
 #include "nlohmann/json.hpp"
@@ -31,6 +32,7 @@
 #include "Dominio/UserStories.h"
 #include "Dominio/Trackeable/MatrixTraces.h"
 #include "Dominio/UserCaseDiagram.h"
+#include "Dominio/Index.h"
 #include <fstream>
 #include <iostream>
 #include <string>
@@ -52,12 +54,14 @@ public:
                                                               {ActorUC::getPrefixID(),ACTOR_UC},
                                                               {InformationRequirement::getPrefixID(),INFORMATION_REQUIREMENT},
                                                               {Organization::getPrefixID(),ORGANIZATION},
+                                                              {UserCaseDiagram::getPrefixID(),USER_CASE_DIAGRAM},
                                                               {SystemObjective::getPrefixID(),SYSTEM_OBJECTIVE},
                                                               {UserCase::getPrefixID(),USER_CASE},
                                                               {Text::getPrefixID(),TEXT},
                                                               {MatrixTraces::getPrefixID(),MATRIX_TRACES},
                                                               {UserStories::getPrefixID(),USER_STORIES},
-                                                              {"UD",USER_CASE_DIAGRAM}};
+                                                              {Index::getPrefixID(),INDEX},
+                                                              };
 
     static Stakeholder loadStakeholder(OID id);
     static RestrictionRequirement loadRestrictionRequirement(OID id);
@@ -72,6 +76,7 @@ public:
     static MatrixTraces loadMatrixTraces(OID id);
     static UserStories loadUserStories(OID id);
     static UserCaseDiagram loadUserCaseDiagram(OID id);
+    static Index loadIndex(OID id);
 
     static Trackeable loadTrackeable(OID id);
     static TrackeableDTO loadTrackeableDTO(OID id);
@@ -91,6 +96,7 @@ public:
     static MatrixTraces loadFileMatrixTraces(OID id);
     static UserStories loadFileUserStories(OID id);
     static UserCaseDiagram loadFileUserCaseDiagram(OID id);
+    static Index loadFileIndex(OID id);
 
     static Trackeable* loadFileTrackeable(OID id);
     static Priority *loadFilePriority(OID oid) ;
@@ -108,6 +114,7 @@ public:
     static std::list<MatrixTraces> loadAllMatrixTraces();
     static std::list<UserStories> loadAllUserStories();
     static std::list<UserCaseDiagram> loadAllUserCaseDiagram();
+    static std::list<Index> loadAllIndex();
     static std::list<Trackeable*> loadAllTrackeable();
 
     static std::list<Stakeholder> loadFileAllStakeholder();
@@ -123,6 +130,7 @@ public:
     static std::list<MatrixTraces> loadFileAllMatrixTraces();
     static std::list<UserStories> loadFileAllUserStories();
     static std::list<UserCaseDiagram> loadFileAllUserCaseDiagram();
+    static std::list<Index> loadFileAllIndex();
     static std::list<Trackeable*> loadFileAllTrackeable();
 
 
@@ -139,6 +147,9 @@ public:
     unsigned lastText();
     static unsigned lastMatrixTraces();
     unsigned lastUserStories();
+    static unsigned lastUserCaseDiagram();
+    static unsigned lastIndex();
+
 
     static void save(json singlejson);
 
@@ -154,10 +165,13 @@ public:
     static void save(Text text);
     static void save(MatrixTraces matrixTraces);
     static void save(UserStories userStories);
+    static void save(UserCaseDiagram userCaseDiagram);
+    static void save(Index index);
+
+
     static void save(Priority* priority);
-
-
     static void save(Trackeable* trackeable);
+
 
     static void saveAll(std::list<Stakeholder> stakeholders);
     static void saveAll(std::list<RestrictionRequirement> restrictionRequirements);
@@ -297,6 +311,18 @@ private:
         }
         return map;
     }();
+
+
+
+    inline static std::map<OID,Index> MEMIndex = []() {
+        std::map<OID,Index> map;
+        for (Index matrixTraces : loadFileAllIndex()) {
+            map.insert(std::pair<OID,Index>(matrixTraces.getId(),matrixTraces));
+        }
+        return map;
+    }();
+
+
     
 
 };

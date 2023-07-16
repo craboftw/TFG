@@ -7,6 +7,7 @@
 #include "Servicio/ServicioUserCase.h"
 
 #include <fstream>
+#include <thread>
 
 
 void UserCaseDiagram::setElements(std::set<OID> userCaseList, std::set<OID> actorUCList) {
@@ -34,12 +35,14 @@ void UserCaseDiagram::addUserCase(OID userCase) {
     packagesUC[servicioUserCase.getPackage(userCase)].insert(userCase);
     packages.insert(servicioUserCase.getPackage(userCase));
     nombres[userCase] = servicioUserCase.getName(userCase);
+    userCaseList.insert(userCase);
     auto steps = servicioUserCase.getSteps(userCase);
     for (auto &step : steps) {
         if (step.getType() == ACTOR and step.getReference() != OID()) {
             packagesActor[servicioActorUC.getPackage(step.getReference())].insert(step.getReference());
             packages.insert(servicioActorUC.getPackage(step.getReference()));
             nombres[step.getReference()] = servicioActorUC.getName(step.getReference());
+            actorUCList.insert(step.getReference());
         }
     }
     update();
@@ -67,12 +70,18 @@ void UserCaseDiagram::visit(Visitor *visitor) {
     visitor->visit(this);
 }
 
+void executeCommandOnAnotherCore(const std::string& command) {
+    std::system(command.c_str());
+}
+
 void UserCaseDiagram::update() {
     ServicioUserCase servicioUserCase;
     ServicioActorUC servicioActorUC;
+    //setup the necessary to load the spanish language
+    setlocale(LC_ALL, "spanish");
     //Create a new file
-    std::ofstream file("TFG/Diagrams/UseCaseDiagram.txt");
-    //Write the header of the file
+    std::ofstream file(getId().operator std::string()+".puml", std::ios::out | std::ios::binary);
+    file.imbue(std::locale(file.getloc(), new std::codecvt_utf8_utf16<char16_t>));    //Write the header of the file
     file << "@startuml" << std::endl;
     file << "left to right direction" << std::endl;
     //Imprimimos los paquetes con sus alias
@@ -100,8 +109,7 @@ void UserCaseDiagram::update() {
         }
     }
 
-
-
+    std::list<std::pair<OID,OID>> UserCaseDoActor;
     for (auto &userCase : userCaseList) {
         for (auto &actorUC : servicioUserCase.getActors(userCase)) {
             file << actorUC.operator std::string() << " --> " << userCase.operator std::string() << std::endl;
@@ -116,10 +124,11 @@ void UserCaseDiagram::update() {
                      << " : <<extend>>" << std::endl;
             }
             if (step.getType() == ACTOR and step.getReference() != OID()) {
-                actorUCList.insert(step.getReference());
+                UserCaseDoActor.push_back(std::make_pair(userCase, step.getReference()));
+                }
             }
 
-        }
+
         for (auto exceptions : servicioUserCase.getExceptions(userCase)) {
             if(exceptions.stepType == INCLUDE) {
                 file << userCase.operator std::string() << " ..> " << exceptions.reference.operator std::string()
@@ -130,22 +139,48 @@ void UserCaseDiagram::update() {
                      << " : <<extend>>" << std::endl;
             }
             if (exceptions.stepType == ACTOR and exceptions.reference != OID()) {
-                actorUCList.insert(exceptions.reference);
+                //search if the combination of userCase and actorUC is already in the set
+                UserCaseDoActor.push_back(std::make_pair(userCase, exceptions.reference));
+                }
             }
-        }
+
+
 
         if (servicioUserCase.getGeneralization(userCase) != OID())
             file <<servicioUserCase.getGeneralization(userCase).operator std::string() << " <|-- " << userCase.operator std::string() << std::endl;
     }
+
     for (auto actorUC : actorUCList) {
         if (actorUC.getPrefix() == ActorUC::getPrefixID() and servicioActorUC.getGeneralization(actorUC) != OID())
             file << servicioActorUC.getGeneralization(actorUC).operator std::string() << " <|-- " << actorUC.operator std::string() << std::endl;
     }
+    std::list<std::pair<OID,OID>> finalList;
+    for(auto it : UserCaseDoActor) {
+        bool found = false;
+        for (auto jt : finalList) {
+            if (it.first == jt.first and it.second == jt.second) {
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            finalList.push_back(it);
+        }
+    }
+    for (auto it : finalList) {
+        file << it.second.operator std::string() << " --> " << it.first.operator std::string() << std::endl;
+    }
     file << "@enduml" << std::endl;
     file.close();
 
-    //Convert the plantuml file to png
-    system("java -jar TFG/plantuml.jar TFG/Diagrams/UseCaseDiagram.txt");
+    std::string comando = "java -jar TFG/plantuml.jar -charset UTF-8 " + getId().operator std::string() + ".puml";
+
+    // Create a thread and execute the command in that thread
+    std::thread executionThread(executeCommandOnAnotherCore, comando);
+
+    // Do other tasks in the main thread
+    executionThread.detach();
+    // Wait for the execution thread to finish
 }
 
 std::set<OID> UserCaseDiagram::getUserCaseList() {

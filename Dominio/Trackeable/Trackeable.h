@@ -50,7 +50,7 @@ public:
     bool operator>(const OID& rhs) const;
     bool operator<=(const OID& rhs) const;
     bool operator>=(const OID& rhs) const;
-    bool operator==(const OID& rhs) const;
+    bool operator==(const OID rhs) const;
     bool operator!=(const OID& rhs) const;
     operator std::string () const {
         return prefixID + std::to_string(id);

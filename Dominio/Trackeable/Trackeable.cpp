@@ -248,7 +248,7 @@ bool OID::operator>(const OID& rhs) const {
     return this->operator std::string() > rhs.operator std::string();
 }
 
-bool OID::operator==(const OID& rhs) const {
+bool OID::operator==(const OID rhs) const {
     return this->operator std::string() == rhs.operator std::string();
 }
 

@@ -17,11 +17,12 @@
 #define TEXT 10
 #define MATRIX_TRACES 11
 #define USER_STORIES 12
-#define NULLTYPE 13
+#define USER_CASE_DIAGRAM 13
+#define NULLTYPE 14
 
 #include "Visitor/HtmlManager.h"
 
-class ServicioHTML {
+class ServicioHTML : public ServicioTrackeable {
     public:
     inline static const std::map<std::string, unsigned> prefixes = {{Stakeholder::getPrefixID(),STAKEHOLDER},
                                                                 {RestrictionRequirement::getPrefixID(),RESTRICTION_REQUIREMENT},
@@ -35,23 +36,29 @@ class ServicioHTML {
                                                                 {Text::getPrefixID(),TEXT},
                                                                 {MatrixTraces::getPrefixID(),MATRIX_TRACES},
                                                                 {UserStories::getPrefixID(),USER_STORIES},
-                                                                {OID().getPrefix(),NULL}};
+                                                                {UserCaseDiagram::getPrefixID(),USER_CASE_DIAGRAM},
+                                                                {OID().getPrefix(),NULLTYPE}};
 
 
 
     static void printElement(OID it);
-    void printHTML();
-    unsigned createIndex(std::string titulo,unsigned id);
-    void deleteIndex(unsigned id);
-    void moveIndex(unsigned id,unsigned pos);
-    std::string printIndex(unsigned id);
-    std::vector<ElementosIndex> getIndex();
-    std::vector<OID> getElements(unsigned id);
-    void addElement(unsigned id, OID oid);
-    void deleteElement(unsigned index,OID id);
-    void moveElementInIndex(unsigned index,OID id,unsigned pos);
+    static void printHTML(OID id);
+    OID createIndex(std::string titulo);
+    unsigned createEntry(OID id, unsigned idnode);
+    unsigned int createEntry(OID id, unsigned int idnode, std::string title);
+    unsigned int createEntry(OID id, std::string title, unsigned int idnode);
+    void deleteEntry(OID id, unsigned idnode);
+    void moveEntry(OID id, unsigned idnode, unsigned newIdnode);
+    std::string printEntry(OID id, unsigned idnode);
+    static std::vector<ElementosIndex> getIndex(OID id);
+    std::vector<OID> getElements(OID id,unsigned idnode);
+    void addElement(OID id,unsigned idnode, OID element);
+    void deleteElement(OID id,unsigned idnode,OID element);
+    void moveElementInIndex(OID id,unsigned idnode,OID element,unsigned newIdnode);
+
 private:
-    Index index;
+
+
 };
 
 

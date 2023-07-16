@@ -344,6 +344,102 @@ void JsonSerializer::visit(InformationRequirement informationRequirement) {
 
     JsonRepository::save(j);
 }
+json JsonSerializer::serializeElementosIndex(ElementosIndex obj)
+{
+    json j;
+    j["id"] = obj.id;
+    j["titulo"] = obj.titulo;
+    j["elementos"] = serializeVectorOfOID(obj.elementos);
+
+    return j;
+}
+
+ElementosIndex JsonSerializer::deserializeElementosIndex(const json& j)
+{
+    ElementosIndex obj;
+    obj.id = j["id"];
+    obj.titulo = j["titulo"];
+    obj.elementos = deserializeVectorOfOID(j["elementos"]);
+
+    return obj;
+}
+
+json JsonSerializer::serializeGeneralTree(const Agen<ElementosIndex>::nodo n)
+{
+    Agen<ElementosIndex> A;
+    json j;
+    if (n != Agen<ElementosIndex>::NODO_NULO)
+    {
+        j["content"] = serializeElementosIndex(A.elemento(n));
+        if (A.hijoIzqdo(n) != Agen<ElementosIndex>::NODO_NULO) {
+            Agen<ElementosIndex>::nodo child = A.hijoIzqdo(n);
+            while (child != Agen<ElementosIndex>::NODO_NULO) {
+                j["childrens"].push_back(serializeGeneralTree(child));
+                child = A.hermDrcho(child);
+            }
+        }
+    }
+    return j;
+}
+
+void JsonSerializer::deserializeChildren(Agen<ElementosIndex>::nodo parent, const json& children)
+{
+    Agen<ElementosIndex> A;
+    Agen<ElementosIndex>::nodo child = Agen<ElementosIndex>::NODO_NULO;
+    for (const json& childJson : children) {
+        ElementosIndex element = deserializeElementosIndex(childJson["content"]);
+        if (child == Agen<ElementosIndex>::NODO_NULO) {
+            A.insertarHijoIzqdo(parent, element);
+            child = A.hijoIzqdo(parent);
+            if (childJson.contains("childrens") && childJson["childrens"].is_array())
+            deserializeChildren(child, childJson["childrens"]);
+        } else {
+            A.insertarHermDrcho(child, element);
+            child = A.hijoIzqdo(parent);
+            if (childJson.contains("childrens") && childJson["childrens"].is_array())
+            deserializeChildren(child, childJson["childrens"]);
+        }
+    }
+}
+
+Agen<ElementosIndex> JsonSerializer::deserializeGeneralTree(const json& j)
+{
+    Agen<ElementosIndex> A;
+    A.insertarRaiz(deserializeElementosIndex(j["content"]));
+    if (j.contains("childrens") && j["childrens"].is_array()) {
+        const json& children = j["childrens"];
+        if (!children.empty()) {
+            Agen<ElementosIndex>::nodo root = A.raiz();
+            deserializeChildren(root, children);
+        }
+    }
+    return A;
+}
+
+
+
+
+void JsonSerializer::visit(Index index) {
+
+    json j;
+    j = trackeablePart(&index,j);
+    j["tree"] = serializeGeneralTree(index.getIndexTree().raiz());
+    j["lastID"] = index.getLastID();
+    JsonRepository::save(j);
+}
+
+Index JsonSerializer::deserializeIndex(json j) {
+
+        Index index(deserializeGeneralTree(j["tree"]),deserializeOID(j["id"]).getId());
+        index.setLastID(j["lastID"]);
+        setTrackeablePart(deserializeTrackeableDTO(j), &index);
+        return index;
+}
+
+
+
+
+
 
 InformationRequirement JsonSerializer::deserializeInformationRequirement(json j) {
 
@@ -828,11 +924,6 @@ UserCaseDiagram JsonSerializer::deserializerUserCaseDiagram(json j)
 
     return u;
 }
-
-
-
-
-
 
 
 

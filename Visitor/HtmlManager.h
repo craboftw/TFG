@@ -39,6 +39,8 @@ public:
     std::string generateTableUserStory(OID id);
 
 
+    std::string generateUserCaseDiagram(OID id);
+
 private:
     ServicioTrackeable servicioTrackeable;
     ServicioPriority servicioPriority;
@@ -60,38 +62,6 @@ private:
     std::string generateHead(OID id);
 
 
-};
-
-typedef struct {
-    unsigned id;
-    std::string titulo;
-    std::string indice;
-    std::vector<OID> elementos;
-}ElementosIndex;
-
-class Index {
-public:
-    Index(){index.insertarRaiz({lastID++,"INDICE","",std::vector<OID>()});}
-    unsigned createIndex(std::string titulo,unsigned id);
-    void deleteIndex(unsigned id);
-    void moveIndex(unsigned id,unsigned pos);
-    std::string printIndex(unsigned id);
-    std::vector<ElementosIndex> getIndex();
-    std::vector<OID> getElements(unsigned id);
-    void addElement(unsigned id, OID oid);
-    void deleteElement(unsigned index,OID id);
-    void moveElementInIndex(unsigned index,OID id,unsigned pos);
-
-
-private:
-    Agen<ElementosIndex> index;
-    unsigned lastID = 0;
-
-    Agen<ElementosIndex>::nodo buscarNodo(Agen<ElementosIndex>::nodo n, unsigned int id);
-
-    std::string printRecursive(std::string print, Agen<ElementosIndex>::nodo n);
-
-    Agen<ElementosIndex>::nodo buscarNodo(Agen<ElementosIndex>::nodo n, OID id);
 };
 
 #endif //TFG_HTMLMANAGER_H

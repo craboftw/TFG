@@ -12,6 +12,7 @@
 #include "Dominio/Trackeable/MatrixTraces.h"
 #include "Servicio/ServicioMatrixTraces.h"
 #include "Servicio/ServicioHTML.h"
+#include "Servicio/ServicioDiagramUC.h"
 
 std::string generateHTML(InformationRequirement& requirement) {
     std::string html;
@@ -368,15 +369,15 @@ void pruebaServicioUserCase()
         // Obtener propiedades de un paso específico
         bool isAbstractStep = servicio.getAbstractStep(id, 1);
         std::cout << "Abstracto: " << std::boolalpha << isAbstractStep << std::endl;
-        std::string condition = servicio.getConditionStep(id, 0);
+        std::string condition = servicio.getConditionStep(id, 1);
         std::cout << "Condición: " << condition << std::endl;
         std::string comments = servicio.getCommentsStep(id, 1);
         std::cout << "Comentarios: " << comments << std::endl;
         std::string description = servicio.getDescriptionStep(id, 1);
         std::cout << "Descripción: " << description << std::endl;
-        type type = servicio.getTypeStep(id, 0);
+        type type = servicio.getTypeStep(id, 1);
         std::cout << "Tipo: " << type << std::endl;
-        OID reference = servicio.getReferenceStep(id, 0);
+        OID reference = servicio.getReferenceStep(id, 1);
         std::cout << "Referencia: " << reference.operator std::string() << std::endl;
 
         // Eliminar propiedades de un paso específico
@@ -782,6 +783,7 @@ void prueba()
 {
  ServicioHTML servicioHTML;
  ServicioText servicioText;
+ auto idIndice = servicioHTML.createIndex("DERS Esparto web");
  auto idTexto1 = servicioText.createText("Introduccion");
  servicioText.setDescription(idTexto1,"\n"
                                       "El objetivo principal del sistema de Venta de Espartos a desarrollar es crear una plataforma digital en forma de página web para la comercialización y venta de los variados productos de espartos que fabrica el artesano Antonio López. Se trata de una solución moderna y efectiva que permitirá a los clientes personalizar sus pedidos a su gusto, ya sea en el tamaño de las persianas, las dimensiones de las cabezas de toro o la apariencia de los bolsos, entre otros. De esta manera, se podrán satisfacer las necesidades específicas de cada cliente, incrementando así la satisfacción del cliente y aumentando su fidelidad a la empresa. Este sistema será un impulso para el negocio de Antonio López, ya que simplificará la forma en que se gestionan los pedidos y se adaptarán a las necesidades de cada cliente. Asimismo, permitirá la exposición de sus productos a un público mucho más amplio, permitiendo que más personas se familiaricen con su trabajo, aumentando así la visibilidad y la reputación de su empresa en el mercado. \n"
@@ -792,8 +794,8 @@ void prueba()
                                       "\n"
                                       "En el resto del documento describiremos en profundidad los requisitos necesarios para llevar a cabo el prototipo, los objetivos del sistema y todo lo necesario para llevar a cabo este proyecto. \n""\n"
                                       "");
- auto indiceIntroduccion = servicioHTML.createIndex("Introduccion",0);
- servicioHTML.addElement(indiceIntroduccion,idTexto1);
+ auto indiceIntroduccion = servicioHTML.createEntry(idIndice,"Introduccion",     0);
+ servicioHTML.addElement(idIndice,indiceIntroduccion,idTexto1);
 
  ServicioStakeholder servicioStakeholder;
  ServicioOrganization servicioOrganization;
@@ -804,26 +806,27 @@ servicioOrganization.setContactInfo(idOrg2,"Escuela Superior de Ingeniería, Uni
 auto idStakeholder1 = servicioStakeholder.createStakeholder("Antonio López");
 servicioStakeholder.setWorksForOrganization(idStakeholder1,idOrg1);
 servicioStakeholder.setStakeholderRole(idStakeholder1,"Cliente");
+
 auto idStakeholder2 = servicioStakeholder.createStakeholder("Francisco López Guerrero");
 servicioStakeholder.setWorksForOrganization(idStakeholder2,idOrg2);
 servicioStakeholder.setStakeholderRole(idStakeholder2,"Ingeniero de Software");
 auto idStakeholder3 = servicioStakeholder.createStakeholder("Miriam Armario Cantos");
 servicioStakeholder.setWorksForOrganization(idStakeholder3,idOrg2);
 servicioStakeholder.setStakeholderRole(idStakeholder3,"Ingeniera de Software");
-auto indiceParticipantes = servicioHTML.createIndex("Participantes",0);
-servicioHTML.addElement(indiceParticipantes,idStakeholder1);
-servicioHTML.addElement(indiceParticipantes,idStakeholder2);
-servicioHTML.addElement(indiceParticipantes,idStakeholder3);
-servicioHTML.addElement(indiceParticipantes,idOrg1);
-servicioHTML.addElement(indiceParticipantes,idOrg2);
+auto indiceParticipantes = servicioHTML.createEntry(idIndice,"Participantes",     0);
+servicioHTML.addElement(idIndice,indiceParticipantes,idStakeholder1);
+servicioHTML.addElement(idIndice,indiceParticipantes,idStakeholder2);
+servicioHTML.addElement(idIndice,indiceParticipantes,idStakeholder3);
+servicioHTML.addElement(idIndice,indiceParticipantes,idOrg1);
+servicioHTML.addElement(idIndice,indiceParticipantes,idOrg2);
 
 auto idDescripcion = servicioText.createText("Descripcion");
 
         servicioText.setDescription(idDescripcion,"El negocio del esparto al que nos referimos está solo llevado por Antonio López, un hombre que trabaja solo y no está del todo acostumbrado a las nuevas tecnologías. Esto hace que su sistema de venta de productos de espartos se limite solo a la comunicación por WhatsApp o llamada, haciendo que sea más lenta la venta. Es decir, el cliente contacta con Antonio López, éste hace un boceto del pedido, lo manda, espera confirmación, y si todo está bien se procede a la venta. Si son necesarios cambios este proceso se retrasa más de lo necesario. \n"
                             "\n"
                             "Nos encontramos también con el problema de que todos los datos se guardan a papel, o en los contactos de Antonio López, lo que acaba siendo muy confuso también para él. Hay que buscar manualmente a todos los contactos en caso de haber algún problema. Si pasase cualquier cosa con el móvil de Antonio López todos los clientes estarían perdidos. " );
-auto indiceDescripcion = servicioHTML.createIndex("Descripcion del sistema actual",0);
-servicioHTML.addElement(indiceDescripcion,idDescripcion);
+auto indiceDescripcion = servicioHTML.createEntry(idIndice,"Descripcion del sistema actual",     0);
+servicioHTML.addElement(idIndice,indiceDescripcion,idDescripcion);
 
     ServicioSystemObjective servicioSystemObjective;
 auto idObjetivo1 = servicioSystemObjective.createSystemObjective("Generador de hojas de pedido.");
@@ -893,13 +896,13 @@ servicioSystemObjective.setUrgencyLevel(idObjetivo6, Priority::HIGH);
 servicioSystemObjective.setPhase(idObjetivo6, Priority::DEVELOPMENT);
 servicioSystemObjective.setEstability(idObjetivo6, Priority::STABLE);
 
-auto indiceObjetivos = servicioHTML.createIndex("Objetivos del sistema",0);
-servicioHTML.addElement(indiceObjetivos,idObjetivo1);
-servicioHTML.addElement(indiceObjetivos,idObjetivo2);
-servicioHTML.addElement(indiceObjetivos,idObjetivo3);
-servicioHTML.addElement(indiceObjetivos,idObjetivo4);
-servicioHTML.addElement(indiceObjetivos,idObjetivo5);
-servicioHTML.addElement(indiceObjetivos,idObjetivo6);
+auto indiceObjetivos = servicioHTML.createEntry(idIndice,"Objetivos del sistema",     0);
+servicioHTML.addElement(idIndice,indiceObjetivos,idObjetivo1);
+servicioHTML.addElement(idIndice,indiceObjetivos,idObjetivo2);
+servicioHTML.addElement(idIndice,indiceObjetivos,idObjetivo3);
+servicioHTML.addElement(idIndice,indiceObjetivos,idObjetivo4);
+servicioHTML.addElement(idIndice,indiceObjetivos,idObjetivo5);
+servicioHTML.addElement(idIndice,indiceObjetivos,idObjetivo6);
 
 ServicioInformationRequirement servicioInformationRequirement;
 auto idrequisito1 = servicioInformationRequirement.createInformationRequirement("Tipos de productos");
@@ -989,13 +992,13 @@ servicioInformationRequirement.setUrgencyLevel(idrequisito5, Priority::HIGH);
 servicioInformationRequirement.setPhase(idrequisito5, Priority::DEVELOPMENT);
 //PENDIENTES LAS RESTRICCIONES
 
-auto indiceRequisitos = servicioHTML.createIndex("Catalogo de Requisitos del Sistema",0);
-auto indiceRequisitosInformacion = servicioHTML.createIndex("Requisitos de Informacion",indiceRequisitos);
-servicioHTML.addElement(indiceRequisitosInformacion,idrequisito1);
-servicioHTML.addElement(indiceRequisitosInformacion,idrequisito2);
-servicioHTML.addElement(indiceRequisitosInformacion,idrequisito3);
-servicioHTML.addElement(indiceRequisitosInformacion,idrequisito4);
-servicioHTML.addElement(indiceRequisitosInformacion,idrequisito5);
+auto indiceRequisitos = servicioHTML.createEntry(idIndice,"Catalogo de Requisitos del Sistema",     0);
+auto indiceRequisitosInformacion = servicioHTML.createEntry(idIndice,"Requisitos de Informacion",indiceRequisitos);
+servicioHTML.addElement(idIndice,indiceRequisitosInformacion,idrequisito1);
+servicioHTML.addElement(idIndice,indiceRequisitosInformacion,idrequisito2);
+servicioHTML.addElement(idIndice,indiceRequisitosInformacion,idrequisito3);
+servicioHTML.addElement(idIndice,indiceRequisitosInformacion,idrequisito4);
+servicioHTML.addElement(idIndice,indiceRequisitosInformacion,idrequisito5);
 
 ServicioFunctionalRequirement servicioFunctionalRequirement;
 auto idfrequsito1 = servicioFunctionalRequirement.createFunctionalRequirement("Boton de acceso directo a redes sociales");
@@ -1039,11 +1042,11 @@ servicioRestrictionRequirement.setPhase(idrestriccion2, Priority::DEVELOPMENT);
 
 
 
-auto indicerequisitosfun = servicioHTML.createIndex("Requisitos Funcionales",indiceRequisitos);
-servicioHTML.addElement(indiceRequisitos,idfrequsito1);
-servicioHTML.addElement(indiceRequisitos,idfrequsito2);
-servicioHTML.addElement(indiceRequisitos,idrestriccion1);
-servicioHTML.addElement(indiceRequisitos,idrestriccion2);
+auto indicerequisitosfun = servicioHTML.createEntry(idIndice,"Requisitos Funcionales",indiceRequisitos);
+servicioHTML.addElement(idIndice,indiceRequisitos,idfrequsito1);
+servicioHTML.addElement(idIndice,indiceRequisitos,idfrequsito2);
+servicioHTML.addElement(idIndice,indiceRequisitos,idrestriccion1);
+servicioHTML.addElement(idIndice,indiceRequisitos,idrestriccion2);
 
 ServicioActorUC servicioActor;
 auto idActor1 = servicioActor.createActorUC("Cliente");
@@ -1060,10 +1063,10 @@ servicioActor.addAuthor(idActor2,idStakeholder2);
 servicioActor.addAuthor(idActor2,idStakeholder3);
 servicioActor.setDescription(idActor2, "El asistente de artesano es el usuario que accede a la aplicación para gestionar los pedidos. Debido a que el artesano no tiene conocimientos informáticos, el asistente de artesano es el encargado de gestionar los pedidos.");
 
-auto indiceDigramasCU = servicioHTML.createIndex("Diagramas de Casos de Uso",indicerequisitosfun);
-auto indiceActorUC = servicioHTML.createIndex("Definicion de actores",indicerequisitosfun);
-servicioHTML.addElement(indiceActorUC,idActor1);
-servicioHTML.addElement(indiceActorUC,idActor2);
+auto indiceDigramasCU = servicioHTML.createEntry(idIndice,"Diagramas de Casos de Uso",indicerequisitosfun);
+auto indiceActorUC = servicioHTML.createEntry(idIndice,"Definicion de actores",indicerequisitosfun);
+servicioHTML.addElement(idIndice,indiceActorUC,idActor1);
+servicioHTML.addElement(idIndice,indiceActorUC,idActor2);
 
 ServicioUserCase servicioUseCase;
 
@@ -1220,7 +1223,7 @@ servicioUseCase.setPackage(idUC4,"Gestion de clientes");
 servicioUseCase.setPackage(idUC5,"Gestion de clientes");
 
 
-auto idUC6 = servicioUseCase.createUserCase();
+auto idUC6 = servicioUseCase.createUserCase("Añadir nuevo producto");
 servicioUseCase.setPrecondition(idUC6,"El producto no está registrado en el sistema.");
 servicioUseCase.setPrecondition(idUC6,"El Asistente ha iniciado sesión en el sistema y es reconocido como tal.");
 servicioUseCase.addAuthor(idUC6,idStakeholder2);
@@ -1252,7 +1255,7 @@ servicioUseCase.addTraceTo(idUC6, idObjetivo4);
 servicioUseCase.setPackage(idUC6,"Gestion de productos");
 
 
-auto idUC7 = servicioUseCase.createUserCase();
+auto idUC7 = servicioUseCase.createUserCase("Eliminar producto");
 servicioUseCase.setPrecondition(idUC7,"El producto a eliminar existe en el sistema.");
 servicioUseCase.setPrecondition(idUC7,"El Asistente ha iniciado sesión en el sistema y es reconocido como tal.");
 servicioUseCase.addAuthor(idUC7,idStakeholder3);
@@ -1286,7 +1289,7 @@ servicioUseCase.addException(idUC7,exception7uc);
 servicioUseCase.addTraceTo(idUC7, idObjetivo4);
 servicioUseCase.setPackage(idUC7,"Gestion de productos");
 
-auto idUC8 = servicioUseCase.createUserCase();
+auto idUC8 = servicioUseCase.createUserCase("Consultar producto");
 servicioUseCase.setPrecondition(idUC8,"El Asistente tiene que estar registrado e identificado como tal. El producto debe estar registrado en el sistema.");
 servicioUseCase.addAuthor(idUC8,idStakeholder3);
 servicioUseCase.addAuthor(idUC8,idStakeholder2);
@@ -1311,8 +1314,8 @@ servicioUseCase.addTraceTo(idUC8, idObjetivo4);
 servicioUseCase.setPackage(idUC8,"Gestion de productos");
 
 
-auto idUC9 = servicioUseCase.createUserCase();
-servicioUseCase.setPrecondition(idUC9,"El Cliente tiene que estar registrado en la página web y haber iniciado sesión.");
+auto idUC9 = servicioUseCase.createUserCase("Crear hoja de pedido customizado");
+        servicioUseCase.setPrecondition(idUC9,"El Cliente tiene que estar registrado en la página web y haber iniciado sesión.");
 servicioUseCase.addAuthor(idUC9,idStakeholder1);
 servicioUseCase.addAuthor(idUC9,idStakeholder2);
 servicioUseCase.setDescription(idUC9,"El sistema deberá comportarse tal como se describe en el siguiente caso de uso cuando el Cliente quiere realizar un pedido customizado.");
@@ -1337,7 +1340,7 @@ servicioUseCase.addTraceTo(idUC9, idObjetivo2);
 
 servicioUseCase.setPackage(idUC9,"Gestion de pedidos");
 
-auto idUC10 = servicioUseCase.createUserCase();
+auto idUC10 = servicioUseCase.createUserCase("Realizar pedido");
 servicioUseCase.setPrecondition(idUC10,"El Cliente tiene que estar registrado en la página web y haber iniciado sesión.");
 servicioUseCase.addAuthor(idUC10,idStakeholder1);
 servicioUseCase.addAuthor(idUC10,idStakeholder2);
@@ -1371,22 +1374,41 @@ servicioUseCase.addTraceTo(idUC10, idObjetivo2);
 
 servicioUseCase.setPackage(idUC10,"Gestion de pedidos");
 
-auto indiceCU = servicioHTML.createIndex("Casos de uso",indicerequisitosfun);
-auto indiceCU1 = servicioHTML.createIndex("Casos de uso del subsistema de gestion de clientes",indiceCU);
-auto indiceCU2 = servicioHTML.createIndex("Casos de uso del subsistema de gestion de productos",indiceCU);
-auto indiceCU3 = servicioHTML.createIndex("Casos de uso del subsistema de gestion de pedidos",indiceCU);
-servicioHTML.addElement(indiceCU1,idUC1);
-servicioHTML.addElement(indiceCU1,idUC2);
-servicioHTML.addElement(indiceCU1,idUC3);
-servicioHTML.addElement(indiceCU1,idUC4);
-servicioHTML.addElement(indiceCU1,idUC5);
+auto indiceCU = servicioHTML.createEntry(idIndice,"Casos de uso",indicerequisitosfun);
+auto indiceCU1 = servicioHTML.createEntry(idIndice,"Casos de uso del subsistema de gestion de clientes",indiceCU);
+auto indiceCU2 = servicioHTML.createEntry(idIndice,"Casos de uso del subsistema de gestion de productos",indiceCU);
+auto indiceCU3 = servicioHTML.createEntry(idIndice,"Casos de uso del subsistema de gestion de pedidos",indiceCU);
+    ServicioDiagramUC servicioDiagramUC;
+auto diagrama1 =  servicioDiagramUC.createDiagramUC("Diagrama de casos de uso de la gestion de clientes");
+servicioDiagramUC.addUserCase(diagrama1,idUC1);
+servicioDiagramUC.addUserCase(diagrama1,idUC2);
+servicioDiagramUC.addUserCase(diagrama1,idUC3);
+servicioDiagramUC.addUserCase(diagrama1,idUC4);
+servicioDiagramUC.addUserCase(diagrama1,idUC5);
 
-servicioHTML.addElement(indiceCU2,idUC6);
-servicioHTML.addElement(indiceCU2,idUC7);
-servicioHTML.addElement(indiceCU2,idUC8);
 
-servicioHTML.addElement(indiceCU3,idUC9);
-servicioHTML.addElement(indiceCU3,idUC10);
+servicioHTML.addElement(idIndice,indiceCU1,idUC1);
+servicioHTML.addElement(idIndice,indiceCU1,idUC2);
+servicioHTML.addElement(idIndice,indiceCU1,idUC3);
+servicioHTML.addElement(idIndice,indiceCU1,idUC4);
+servicioHTML.addElement(idIndice,indiceCU1,idUC5);
+servicioHTML.addElement(idIndice,indiceCU1,diagrama1);
+
+auto diagrama2 =  servicioDiagramUC.createDiagramUC("Diagrama de casos de uso de la gestion de productos");
+servicioDiagramUC.addUserCase(diagrama2,idUC6);
+servicioDiagramUC.addUserCase(diagrama2,idUC7);
+servicioDiagramUC.addUserCase(diagrama2,idUC8);
+servicioHTML.addElement(idIndice,indiceCU2,idUC6);
+servicioHTML.addElement(idIndice,indiceCU2,idUC7);
+servicioHTML.addElement(idIndice,indiceCU2,idUC8);
+servicioHTML.addElement(idIndice,indiceCU2,diagrama2);
+
+auto diagrama3 =  servicioDiagramUC.createDiagramUC("Diagrama de casos de uso de la gestion de pedidos");
+servicioDiagramUC.addUserCase(diagrama3,idUC9);
+servicioDiagramUC.addUserCase(diagrama3,idUC10);
+servicioHTML.addElement(idIndice,indiceCU3,idUC9);
+servicioHTML.addElement(idIndice,indiceCU3,idUC10);
+servicioHTML.addElement(idIndice,indiceCU3,diagrama3);
 
 ServicioNonFunctionalRequirement servicioNFR;
 
@@ -1408,9 +1430,9 @@ servicioNFR.setUrgencyLevel(idnf2,Priority::HIGH);
 servicioNFR.setEstability(idnf2,Priority::STABLE);
 servicioNFR.setPhase(idnf2,Priority::DEVELOPMENT);
 
-auto indiceRequisitosNoFuncionales = servicioHTML.createIndex("Requisitos no funcionales",indiceRequisitos);
-servicioHTML.addElement(indiceRequisitosNoFuncionales,idnf1);
-servicioHTML.addElement(indiceRequisitosNoFuncionales,idnf2);
+auto indiceRequisitosNoFuncionales = servicioHTML.createEntry(idIndice,"Requisitos no funcionales",indiceRequisitos);
+servicioHTML.addElement(idIndice,indiceRequisitosNoFuncionales,idnf1);
+servicioHTML.addElement(idIndice,indiceRequisitosNoFuncionales,idnf2);
 
 ServicioMatrixTraces servicioMatrixTraces;
 auto idm = servicioMatrixTraces.createMatrixTraces("Matriz de rastreabilidad Objetivos/Requisitos");
@@ -1451,16 +1473,16 @@ servicioMatrixTraces.addTrackeable(idm, idfrequsito2);
     servicioFunctionalRequirement.addTraceTo(idfrequsito1, idObjetivo3);
     servicioFunctionalRequirement.addTraceTo(idfrequsito2, idObjetivo2);
 
-auto indiceMatrix = servicioHTML.createIndex("Matriz de rastreabilidad Objetivos/Requisitos",0);
-servicioHTML.addElement(indiceMatrix,idm);
+auto indiceMatrix = servicioHTML.createEntry(idIndice,"Matriz de rastreabilidad Objetivos/Requisitos",     0);
+servicioHTML.addElement(idIndice,indiceMatrix,idm);
 
 auto idGlosario = servicioText.createText("Glosario");
 servicioText.setDescription(idGlosario,"Esparto: Hoja de esta planta, radical, larga, dura, resistente y tan arrollada sobre sí que parece tener forma de hilo.\n"
                                        "\n"
                                        "Pleita: Faja o tira de esparto, palma, pita u otros ramales entretejidos que, cosida con otras, se utiliza para hacer sombreros, esteras, etc.\n"
                                        "");
-auto indiceGlo = servicioHTML.createIndex("Glosario de terminos",0);
-servicioHTML.addElement(indiceGlo,idGlosario);
+auto indiceGlo = servicioHTML.createEntry(idIndice,"Glosario de terminos",     0);
+servicioHTML.addElement(idIndice,indiceGlo,idGlosario);
     auto idEntrevista = servicioText.createText("Entrevista");
 
 servicioText.setDescription(idEntrevista,"Esta es la entrevista para Ingeniería de Requisitos, él es Antonio López, el espartero de Chiclana, y vamos a realizarle algunas preguntas para analizar el posible software a desarrollar. Empezamos por la primera. \n"
@@ -1534,9 +1556,8 @@ servicioText.setDescription(idEntrevista,"Esta es la entrevista para Ingeniería
                                          "-Pues nada, muchas gracias. \n"
                                          "\n"
                                          "A ustedes.");
-    auto indiceEntrevista = servicioHTML.createIndex("Entrevista",0);
-    servicioHTML.addElement(indiceEntrevista,idEntrevista);
-
+    auto indiceEntrevista = servicioHTML.createEntry(idIndice,"Entrevista",     0);
+    servicioHTML.addElement(idIndice,indiceEntrevista,idEntrevista);
 
 servicioInformationRequirement.addTraceTo(idrequisito1, idObjetivo4);
 servicioInformationRequirement.addTraceTo(idrequisito2, idObjetivo3);
@@ -1590,73 +1611,84 @@ void PruebaSinCrearObjetos(){
     auto idUC7 = OID("UC", 7);
     auto idUC8 = OID("UC", 8);
     auto idUC9 = OID("UC", 9);
-    auto idUC10 = OID("UC", 10);
+    auto idUC10 = OID("UC", 11);
     auto idnf1 = OID("NF", 1);
     auto idnf2 = OID("NF", 2);
     auto idm = OID("MT", 1);
     auto idGlosario = OID("TX", 3);
     auto idEntrevista = OID("TX", 4);
+    auto idDiagrama = OID("UD", 1);
+    auto idDiagrama2 = OID("UD", 2);
+    auto idDiagrama3 = OID("UD", 3);
+    auto idIndice = OID("IX", 1);
 
-    auto indiceIntroduccion = servicioHTML.createIndex("Introduccion", 0);
-    servicioHTML.addElement(indiceIntroduccion, idTexto1);
-    auto indiceParticipantes = servicioHTML.createIndex("Participantes", 0);
-    servicioHTML.addElement(indiceParticipantes, idStakeholder1);
-    servicioHTML.addElement(indiceParticipantes, idStakeholder2);
-    servicioHTML.addElement(indiceParticipantes, idStakeholder3);
-    servicioHTML.addElement(indiceParticipantes, idOrg1);
-    servicioHTML.addElement(indiceParticipantes, idOrg2);
-    auto indiceDescripcion = servicioHTML.createIndex("Descripcion del sistema actual", 0);
-    servicioHTML.addElement(indiceDescripcion, idDescripcion);
-    auto indiceObjetivos = servicioHTML.createIndex("Objetivos del sistema", 0);
-    servicioHTML.addElement(indiceObjetivos, idObjetivo1);
-    servicioHTML.addElement(indiceObjetivos, idObjetivo2);
-    servicioHTML.addElement(indiceObjetivos, idObjetivo3);
-    servicioHTML.addElement(indiceObjetivos, idObjetivo4);
-    servicioHTML.addElement(indiceObjetivos, idObjetivo5);
-    servicioHTML.addElement(indiceObjetivos, idObjetivo6);
-    auto indiceRequisitos = servicioHTML.createIndex("Catalogo de Requisitos del Sistema", 0);
-    auto indiceRequisitosInformacion = servicioHTML.createIndex("Requisitos de Informacion", indiceRequisitos);
-    servicioHTML.addElement(indiceRequisitosInformacion, idrequisito1);
-    servicioHTML.addElement(indiceRequisitosInformacion, idrequisito2);
-    servicioHTML.addElement(indiceRequisitosInformacion, idrequisito3);
-    servicioHTML.addElement(indiceRequisitosInformacion, idrequisito4);
-    servicioHTML.addElement(indiceRequisitosInformacion, idrequisito5);
-    auto indicerequisitosfun = servicioHTML.createIndex("Requisitos Funcionales", indiceRequisitos);
-    servicioHTML.addElement(indiceRequisitos, idfrequsito1);
-    servicioHTML.addElement(indiceRequisitos, idfrequsito2);
-    servicioHTML.addElement(indiceRequisitos, idrestriccion1);
-    servicioHTML.addElement(indiceRequisitos, idrestriccion2);
-    auto indiceDigramasCU = servicioHTML.createIndex("Diagramas de Casos de Uso", indicerequisitosfun);
-    auto indiceActorUC = servicioHTML.createIndex("Definicion de actores", indicerequisitosfun);
-    servicioHTML.addElement(indiceActorUC, idActor1);
-    servicioHTML.addElement(indiceActorUC, idActor2);
-    auto indiceCU = servicioHTML.createIndex("Casos de uso", indicerequisitosfun);
-    auto indiceCU1 = servicioHTML.createIndex("Casos de uso del subsistema de gestion de clientes", indiceCU);
-    auto indiceCU2 = servicioHTML.createIndex("Casos de uso del subsistema de gestion de productos", indiceCU);
-    auto indiceCU3 = servicioHTML.createIndex("Casos de uso del subsistema de gestion de pedidos", indiceCU);
-    servicioHTML.addElement(indiceCU1, idUC1);
-    servicioHTML.addElement(indiceCU1, idUC2);
-    servicioHTML.addElement(indiceCU1, idUC3);
-    servicioHTML.addElement(indiceCU1, idUC4);
-    servicioHTML.addElement(indiceCU1, idUC5);
-    servicioHTML.addElement(indiceCU2, idUC6);
-    servicioHTML.addElement(indiceCU2, idUC7);
-    servicioHTML.addElement(indiceCU2, idUC8);
-    servicioHTML.addElement(indiceCU3, idUC9);
-    servicioHTML.addElement(indiceCU3, idUC10);
-    auto indiceRequisitosNoFuncionales = servicioHTML.createIndex("Requisitos no funcionales", indiceRequisitos);
-    servicioHTML.addElement(indiceRequisitosNoFuncionales, idnf1);
-    servicioHTML.addElement(indiceRequisitosNoFuncionales, idnf2);
-    auto indiceMatrix = servicioHTML.createIndex("Matriz de rastreabilidad Objetivos/Requisitos", 0);
-    servicioHTML.addElement(indiceMatrix, idm);
-    auto indiceGlo = servicioHTML.createIndex("Glosario de terminos", 0);
-    servicioHTML.addElement(indiceGlo, idGlosario);
-    auto indiceEntrevista = servicioHTML.createIndex("Entrevista", 0);
-    servicioHTML.addElement(indiceEntrevista, idEntrevista);
+    auto indiceIntroduccion = servicioHTML.createEntry(idIndice,"Introduccion", 0);
+    servicioHTML.addElement(idIndice,indiceIntroduccion, idTexto1);
+    auto indiceParticipantes = servicioHTML.createEntry(idIndice,"Participantes", 0);
+    servicioHTML.addElement(idIndice,indiceParticipantes, idStakeholder1);
+    servicioHTML.addElement(idIndice,indiceParticipantes, idStakeholder2);
+    servicioHTML.addElement(idIndice,indiceParticipantes, idStakeholder3);
+    servicioHTML.addElement(idIndice,indiceParticipantes, idOrg1);
+    servicioHTML.addElement(idIndice,indiceParticipantes, idOrg2);
+    auto indiceDescripcion = servicioHTML.createEntry(idIndice,"Descripcion del sistema actual", 0);
+    servicioHTML.addElement(idIndice,indiceDescripcion, idDescripcion);
+    auto indiceObjetivos = servicioHTML.createEntry(idIndice,"Objetivos del sistema", 0);
+    servicioHTML.addElement(idIndice,indiceObjetivos, idObjetivo1);
+    servicioHTML.addElement(idIndice,indiceObjetivos, idObjetivo2);
+    servicioHTML.addElement(idIndice,indiceObjetivos, idObjetivo3);
+    servicioHTML.addElement(idIndice,indiceObjetivos, idObjetivo4);
+    servicioHTML.addElement(idIndice,indiceObjetivos, idObjetivo5);
+    servicioHTML.addElement(idIndice,indiceObjetivos, idObjetivo6);
+    auto indiceRequisitos = servicioHTML.createEntry(idIndice,"Catalogo de Requisitos del Sistema", 0);
+    auto indiceRequisitosInformacion = servicioHTML.createEntry(idIndice,"Requisitos de Informacion", indiceRequisitos);
+    servicioHTML.addElement(idIndice,indiceRequisitosInformacion, idrequisito1);
+    servicioHTML.addElement(idIndice,indiceRequisitosInformacion, idrequisito2);
+    servicioHTML.addElement(idIndice,indiceRequisitosInformacion, idrequisito3);
+    servicioHTML.addElement(idIndice,indiceRequisitosInformacion, idrequisito4);
+    servicioHTML.addElement(idIndice,indiceRequisitosInformacion, idrequisito5);
+    auto indicerequisitosfun = servicioHTML.createEntry(idIndice,"Requisitos Funcionales", indiceRequisitos);
+    servicioHTML.addElement(idIndice,indiceRequisitos, idfrequsito1);
+    servicioHTML.addElement(idIndice,indiceRequisitos, idfrequsito2);
+    servicioHTML.addElement(idIndice,indiceRequisitos, idrestriccion1);
+    servicioHTML.addElement(idIndice,indiceRequisitos, idrestriccion2);
+    auto indiceDigramasCU = servicioHTML.createEntry(idIndice,"Diagramas de Casos de Uso", indicerequisitosfun);
+    auto indiceActorUC = servicioHTML.createEntry(idIndice,"Definicion de actores", indicerequisitosfun);
+    servicioHTML.addElement(idIndice,indiceActorUC, idActor1);
+    servicioHTML.addElement(idIndice,indiceActorUC, idActor2);
+    auto indiceCU = servicioHTML.createEntry(idIndice,"Casos de uso", indicerequisitosfun);
+    auto indiceCU1 = servicioHTML.createEntry(idIndice,"Casos de uso del subsistema de gestion de clientes", indiceCU);
+    auto indiceCU2 = servicioHTML.createEntry(idIndice,"Casos de uso del subsistema de gestion de productos", indiceCU);
+    auto indiceCU3 = servicioHTML.createEntry(idIndice,"Casos de uso del subsistema de gestion de pedidos", indiceCU);
+    servicioHTML.addElement(idIndice,indiceCU1, idUC1);
+    servicioHTML.addElement(idIndice,indiceCU1, idUC2);
+    servicioHTML.addElement(idIndice,indiceCU1, idUC3);
+    servicioHTML.addElement(idIndice,indiceCU1, idUC4);
+    servicioHTML.addElement(idIndice,indiceCU1, idUC5);
+    servicioHTML.addElement(idIndice,indiceCU1,idDiagrama);
+    servicioHTML.addElement(idIndice,indiceCU2, idUC6);
+    servicioHTML.addElement(idIndice,indiceCU2, idUC7);
+    servicioHTML.addElement(idIndice,indiceCU2, idUC8);
+    servicioHTML.addElement(idIndice,indiceCU2, idDiagrama2);
+    servicioHTML.addElement(idIndice,indiceCU3, idUC9);
+    servicioHTML.addElement(idIndice,indiceCU3, idUC10);
+    servicioHTML.addElement(idIndice,indiceCU3, idDiagrama3);
+    auto indiceRequisitosNoFuncionales = servicioHTML.createEntry(idIndice,"Requisitos no funcionales", indiceRequisitos);
+    servicioHTML.addElement(idIndice,indiceRequisitosNoFuncionales, idnf1);
+    servicioHTML.addElement(idIndice,indiceRequisitosNoFuncionales, idnf2);
+    auto indiceMatrix = servicioHTML.createEntry(idIndice,"Matriz de rastreabilidad Objetivos/Requisitos", 0);
+    servicioHTML.addElement(idIndice,indiceMatrix, idm);
+    auto indiceGlo = servicioHTML.createEntry(idIndice,"Glosario de terminos", 0);
+    servicioHTML.addElement(idIndice,indiceGlo, idGlosario);
+    auto indiceEntrevista = servicioHTML.createEntry(idIndice,"Entrevista", 0);
+    servicioHTML.addElement(idIndice,indiceEntrevista, idEntrevista);
 }
 
 int main() {
+    prueba();
     PruebaSinCrearObjetos();
+    std::cout << "Stop it!" << std::endl;
+    int parar;
+    std::cin >> parar;
 
     return 0;
 }

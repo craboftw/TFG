@@ -34,7 +34,7 @@ add_library(TFG_Library
         Servicio/ServicioUserStories.cpp
         Visitor/LinkedGeneralTree.cpp
         Servicio/ServicioDiagramUC.cpp
-        Dominio/Index.cpp Dominio/Index.h)
+        Dominio/Index.cpp Dominio/Index.h Dominio/Persona.cpp Dominio/Persona.h Servicio/ServicioPersona.cpp Servicio/ServicioPersona.h)
 
 add_executable(TFG_Executable main.cpp)
 

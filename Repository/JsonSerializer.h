@@ -11,6 +11,7 @@
 #include "Dominio/Trackeable/Organization.h"
 #include "Dominio/Trackeable/Stakeholder.h"
 #include "Dominio/Index.h"
+#include "Dominio/Persona.h"
 
 
 
@@ -40,6 +41,7 @@ public:
     void visit(UserStories userStories) override;
     void visit(UserCaseDiagram userCaseDiagram);
     void visit(Index index);
+    void visit(Persona persona);
 
     void visit(Trackeable* trackeable) override;
     void visit(Priority *priority);
@@ -60,6 +62,7 @@ public:
     UserStories deserializeUserStories(json j);
     UserCaseDiagram deserializerUserCaseDiagram(json j);
     Index deserializeIndex(json j);
+    Persona deserializePersona(json j);
 
 
     Trackeable *deserializeTrackeable(json j);

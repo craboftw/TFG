@@ -37,6 +37,7 @@ public:
     std::string generateUserStory(OID id);
     std::string generateUserStory(const std::list<OID>& listID);
     std::string generateTableUserStory(OID id);
+    std::string generateTablePersona(OID id);
 
 
     std::string generateUserCaseDiagram(OID id);

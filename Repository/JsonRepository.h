@@ -19,6 +19,7 @@
 #define USER_STORIES 12
 #define USER_CASE_DIAGRAM 13
 #define INDEX 14
+#define PERSONA 15
 
 
 #include "nlohmann/json.hpp"
@@ -33,6 +34,7 @@
 #include "Dominio/Trackeable/MatrixTraces.h"
 #include "Dominio/UserCaseDiagram.h"
 #include "Dominio/Index.h"
+#include "Dominio/Persona.h"
 #include <fstream>
 #include <iostream>
 #include <string>
@@ -61,6 +63,7 @@ public:
                                                               {MatrixTraces::getPrefixID(),MATRIX_TRACES},
                                                               {UserStories::getPrefixID(),USER_STORIES},
                                                               {Index::getPrefixID(),INDEX},
+                                                              {Persona::getPrefixID(),PERSONA}
                                                               };
 
     static Stakeholder loadStakeholder(OID id);
@@ -77,6 +80,7 @@ public:
     static UserStories loadUserStories(OID id);
     static UserCaseDiagram loadUserCaseDiagram(OID id);
     static Index loadIndex(OID id);
+    static Persona loadPersona(OID id);
 
     static Trackeable loadTrackeable(OID id);
     static TrackeableDTO loadTrackeableDTO(OID id);
@@ -97,6 +101,7 @@ public:
     static UserStories loadFileUserStories(OID id);
     static UserCaseDiagram loadFileUserCaseDiagram(OID id);
     static Index loadFileIndex(OID id);
+    static Persona loadFilePersona(OID id);
 
     static Trackeable* loadFileTrackeable(OID id);
     static Priority *loadFilePriority(OID oid) ;
@@ -115,6 +120,7 @@ public:
     static std::list<UserStories> loadAllUserStories();
     static std::list<UserCaseDiagram> loadAllUserCaseDiagram();
     static std::list<Index> loadAllIndex();
+    static std::list<Persona> loadAllPersona();
     static std::list<Trackeable*> loadAllTrackeable();
 
     static std::list<Stakeholder> loadFileAllStakeholder();
@@ -131,6 +137,7 @@ public:
     static std::list<UserStories> loadFileAllUserStories();
     static std::list<UserCaseDiagram> loadFileAllUserCaseDiagram();
     static std::list<Index> loadFileAllIndex();
+    static std::list<Persona> loadFileAllPersona();
     static std::list<Trackeable*> loadFileAllTrackeable();
 
 
@@ -149,6 +156,7 @@ public:
     unsigned lastUserStories();
     static unsigned lastUserCaseDiagram();
     static unsigned lastIndex();
+    static unsigned lastPersona();
 
 
     static void save(json singlejson);
@@ -167,6 +175,8 @@ public:
     static void save(UserStories userStories);
     static void save(UserCaseDiagram userCaseDiagram);
     static void save(Index index);
+    static void save(Persona persona);
+
 
 
     static void save(Priority* priority);
@@ -183,6 +193,11 @@ public:
     static void saveAll(std::list<SystemObjective> systemObjectives);
     static void saveAll(std::list<UserCase> userCases);
     static void saveAll(std::list<Text> texts);
+    static void saveAll(std::list<MatrixTraces> matrixTraces);
+    static void saveAll(std::list<UserStories> userStories);
+    static void saveAll(std::list<UserCaseDiagram> userCaseDiagrams);
+    static void saveAll(std::list<Index> index);
+    static void saveAll(std::list<Persona> personas);
     static bool exist(OID id);
 
 
@@ -318,6 +333,15 @@ private:
         std::map<OID,Index> map;
         for (Index matrixTraces : loadFileAllIndex()) {
             map.insert(std::pair<OID,Index>(matrixTraces.getId(),matrixTraces));
+        }
+        return map;
+    }();
+
+    inline static std::map<OID,Persona> MEMPersona = []() {
+        std::map<OID,Persona> map;
+        for (auto persona : loadFileAllPersona()) {
+            Persona persona1 = Persona(persona);
+            map.insert(std::pair<OID,Persona>(persona1.getId(),persona1));
         }
         return map;
     }();

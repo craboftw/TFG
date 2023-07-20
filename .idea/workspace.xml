@@ -22,56 +22,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="717b5343-998e-4acd-bfc6-e19a8feecd69" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Dominio/Index.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dominio/Index.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dominio/Persona.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dominio/Persona.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Servicio/ServicioPersona.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Servicio/ServicioPersona.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dominio/Trackeable/Trackeable.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/Trackeable/Trackeable.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dominio/Trackeable/Trackeable.h" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/Trackeable/Trackeable.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dominio/UserCaseDiagram.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Dominio/UserCaseDiagram.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Repository/JsonRepository.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Repository/JsonRepository.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Repository/JsonRepository.h" beforeDir="false" afterPath="$PROJECT_DIR$/Repository/JsonRepository.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Repository/JsonSerializer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Repository/JsonSerializer.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Repository/JsonSerializer.h" beforeDir="false" afterPath="$PROJECT_DIR$/Repository/JsonSerializer.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Servicio/ServicioDiagramUC.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Servicio/ServicioDiagramUC.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Servicio/ServicioDiagramUC.h" beforeDir="false" afterPath="$PROJECT_DIR$/Servicio/ServicioDiagramUC.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Servicio/ServicioHTML.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Servicio/ServicioHTML.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Servicio/ServicioHTML.h" beforeDir="false" afterPath="$PROJECT_DIR$/Servicio/ServicioHTML.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Visitor/HtmlManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Visitor/HtmlManager.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Visitor/HtmlManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/Visitor/HtmlManager.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/cache-v2-b6ac339e49cae9d8b798.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-18f8cd0a1f3cd31a0848.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2023-07-12T18-31-20-0583.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/target-TFG_Executable-Debug-1978d28655992025f0aa.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/target-TFG_Library-Debug-cc7ccd588b8afb74e13e.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/AC1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/AC10.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/AC11.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/AC12.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/AC13.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/AC14.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/AC2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/AC3.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/AC4.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/AC5.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/AC6.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/AC7.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/AC8.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/AC9.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Executable.dir/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Executable.dir/main.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Dominio/Generic.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Dominio/Generic.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Dominio/InformationRequirement.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Dominio/InformationRequirement.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Dominio/Priority/Priority.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Dominio/Priority/Priority.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Dominio/Trackeable/MatrixTraces.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Dominio/Trackeable/MatrixTraces.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Dominio/Trackeable/Organization.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Dominio/Trackeable/Organization.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Dominio/Trackeable/Stakeholder.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Dominio/Trackeable/Stakeholder.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Dominio/Trackeable/Trackeable.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Dominio/Trackeable/Trackeable.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Dominio/UserCase.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Dominio/UserCase.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Dominio/UserCaseDiagram.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Dominio/UserCaseDiagram.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Dominio/UserStories.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Dominio/UserStories.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Repository/JsonRepository.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Repository/JsonRepository.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Repository/JsonSerializer.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Repository/JsonSerializer.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Servicio/ServicioActorUC.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Servicio/ServicioActorUC.cpp.obj" afterDir="false" />
@@ -86,244 +53,11 @@
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Servicio/ServicioUserCase.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Servicio/ServicioUserCase.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Servicio/ServicioUserStories.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Servicio/ServicioUserStories.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Visitor/HtmlManager.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TFG_Library.dir/Visitor/HtmlManager.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/rules.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/rules.ninja" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/FR1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/FR10.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/FR11.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/FR12.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/FR13.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/FR14.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/FR2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/FR3.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/FR4.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/FR5.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/FR6.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/FR7.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/FR8.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/FR9.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/IR1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/IR10.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/IR11.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/IR12.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/IR13.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/IR14.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/IR15.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/IR16.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/IR17.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/IR18.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/IR19.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/IR2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/IR20.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/IR21.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/IR22.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/IR23.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/IR24.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/IR25.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/IR26.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/IR27.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/IR28.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/IR29.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/IR3.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/IR30.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/IR31.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/IR32.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/IR33.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/IR34.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/IR35.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/IR4.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/IR5.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/IR6.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/IR7.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/IR8.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/IR9.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/MT1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/NF1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/NF2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/NF3.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/NF4.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/NF5.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/NF6.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/OR1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/OR10.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/OR11.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/OR12.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/OR13.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/OR14.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/OR2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/OR3.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/OR4.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/OR5.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/OR6.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/OR7.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/OR8.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/OR9.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/RR1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/RR10.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/RR11.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/RR12.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/RR13.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/RR14.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/RR2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/RR3.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/RR4.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/RR5.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/RR6.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/RR7.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/RR8.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/RR9.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SH1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SH10.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SH11.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SH12.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SH13.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SH14.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SH15.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SH16.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SH17.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SH18.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SH19.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SH2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SH20.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SH21.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SH3.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SH4.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SH5.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SH6.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SH7.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SH8.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SH9.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SO1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SO10.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SO11.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SO12.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SO13.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SO14.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SO15.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SO16.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SO17.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SO18.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SO19.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SO2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SO20.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SO21.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SO22.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SO23.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SO24.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SO25.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SO26.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SO27.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SO28.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SO29.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SO3.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SO30.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SO31.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SO32.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SO33.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SO34.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SO35.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SO36.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SO37.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SO38.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SO39.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SO4.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SO40.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SO41.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SO42.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SO5.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SO6.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SO7.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SO8.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SO9.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TFG/Jsons/AC.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TFG/Jsons/FR.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TFG/Jsons/IR.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TFG/Jsons/MT.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TFG/Jsons/NF.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TFG/Jsons/OR.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TFG/Jsons/RR.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TFG/Jsons/SH.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TFG/Jsons/SO.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TFG/Jsons/TX.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TFG/Jsons/UC.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TFG/Jsons/UD.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TFG/Jsons/US.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/TFG_Executable.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/TFG_Executable.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TX1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TX10.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TX11.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TX12.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TX13.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TX14.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TX15.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TX16.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TX17.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TX18.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TX19.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TX2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TX20.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TX3.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TX4.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TX5.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TX6.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TX7.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TX8.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TX9.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/UC1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/UC10.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/UC11.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/UC12.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/UC13.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/UC14.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/UC15.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/UC16.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/UC17.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/UC18.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/UC19.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/UC2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/UC20.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/UC21.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/UC22.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/UC23.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/UC24.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/UC25.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/UC26.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/UC27.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/UC28.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/UC29.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/UC3.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/UC30.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/UC31.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/UC32.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/UC33.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/UC34.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/UC35.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/UC36.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/UC37.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/UC38.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/UC39.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/UC4.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/UC40.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/UC41.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/UC42.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/UC43.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/UC44.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/UC45.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/UC46.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/UC47.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/UC48.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/UC49.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/UC5.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/UC50.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/UC6.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/UC7.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/UC8.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/UC9.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/build.ninja" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/index.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/libTFG_Library.a" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/libTFG_Library.a" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usercase.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -407,6 +141,11 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="CMake Application.TFG_Executable" />
       <item itemvalue="CMake Application.TFG_Library" />
@@ -453,6 +192,10 @@
       <workItem from="1689418851664" duration="3275000" />
       <workItem from="1689486792234" duration="12609000" />
       <workItem from="1689531085991" duration="4000" />
+      <workItem from="1689531599405" duration="63000" />
+      <workItem from="1689712966031" duration="1598000" />
+      <workItem from="1689826578977" duration="981000" />
+      <workItem from="1689827619408" duration="1617000" />
     </task>
     <servers />
   </component>
@@ -530,11 +273,6 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/Dominio/Trackeable/MatrixTraces.cpp</url>
-          <line>29</line>
-          <option name="timeStamp" value="267" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Dominio/Trackeable/MatrixTraces.cpp</url>
           <line>37</line>
           <option name="timeStamp" value="284" />
         </line-breakpoint>
@@ -589,21 +327,6 @@
           <option name="timeStamp" value="322" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Servicio/ServicioHTML.cpp</url>
-          <line>242</line>
-          <option name="timeStamp" value="330" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Dominio/Index.cpp</url>
-          <line>165</line>
-          <option name="timeStamp" value="331" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Dominio/Index.cpp</url>
-          <line>30</line>
-          <option name="timeStamp" value="332" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/main.cpp</url>
           <line>809</line>
           <option name="timeStamp" value="333" />
@@ -619,59 +342,19 @@
           <option name="timeStamp" value="342" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Servicio/ServicioHTML.cpp</url>
-          <line>278</line>
-          <option name="timeStamp" value="343" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Dominio/Index.h</url>
-          <line>22</line>
-          <option name="timeStamp" value="353" />
+          <url>file://$PROJECT_DIR$/main.cpp</url>
+          <line>1690</line>
+          <option name="timeStamp" value="368" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/main.cpp</url>
-          <line>785</line>
-          <option name="timeStamp" value="354" />
+          <line>1647</line>
+          <option name="timeStamp" value="370" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/main.cpp</url>
-          <line>797</line>
-          <option name="timeStamp" value="356" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Repository/JsonRepository.cpp</url>
-          <line>1143</line>
-          <option name="timeStamp" value="361" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Repository/JsonRepository.cpp</url>
-          <line>1142</line>
-          <option name="timeStamp" value="362" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Dominio/Index.cpp</url>
-          <line>48</line>
-          <option name="timeStamp" value="363" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Servicio/ServicioHTML.cpp</url>
-          <line>11</line>
-          <option name="timeStamp" value="364" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Dominio/Index.cpp</url>
-          <line>128</line>
-          <option name="timeStamp" value="365" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Dominio/Index.cpp</url>
-          <line>133</line>
-          <option name="timeStamp" value="366" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Dominio/Index.cpp</url>
-          <line>142</line>
-          <option name="timeStamp" value="367" />
+          <line>1674</line>
+          <option name="timeStamp" value="371" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

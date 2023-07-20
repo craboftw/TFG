@@ -799,6 +799,12 @@ std::string HtmlManager::generateUserCaseDiagram(OID id)
     return html;
 }
 
+std::string HtmlManager::generateTablePersona(OID id) {
+
+}
+
+
+
 
 
 

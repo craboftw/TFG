@@ -1685,9 +1685,11 @@ void PruebaSinCrearObjetos(){
 
 int main() {
     prueba();
-    PruebaSinCrearObjetos();
     std::cout << "Stop it!" << std::endl;
     int parar;
+    std::cin >> parar;
+    PruebaSinCrearObjetos();
+    std::cout << "Stop it 2!" << std::endl;
     std::cin >> parar;
 
     return 0;

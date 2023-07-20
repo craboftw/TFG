@@ -925,5 +925,73 @@ UserCaseDiagram JsonSerializer::deserializerUserCaseDiagram(json j)
     return u;
 }
 
+void JsonSerializer::visit(Persona persona) {
+    json j;
+
+    /*｡o°✥✤✣TRACKEABLE PART✣✤✥°o｡*/
+    j= trackeablePart(&persona,j);
+
+    /*｡o°✥✤✣PERSONA PART✣✤✥°o｡*/
+    j["age"] = persona.getAge();
+    j["gender"] = persona.getGender();
+    j["location"] = persona.getLocation();
+    j["occupation"] = persona.getOccupation();
+    j["background"] = persona.getBackground();
+    j["goals"] = persona.getGoals();
+    j["challenges"] = persona.getChallenges();
+    j["behavior"] = persona.getBehavior();
+    j["communicationStyle"] = persona.getCommunicationStyle();
+    j["technologyAdoption"] = persona.getTechnologyAdoption();
+    j["influences"] = persona.getInfluences();
+    j["informationSources"] = persona.getInformationSources();
+
+    JsonRepository::save(j);
+}
+
+Persona JsonSerializer::deserializePersona(json j) {
+
+    /*｡o°✥✤✣TRACKEABLE PART✣✤✥°o｡*/
+    TrackeableDTO trackeableDTO = deserializeTrackeableDTO(j);
+
+    /*｡o°✥✤✣PERSONA GET✣✤✥°o｡*/
+    unsigned age = j["age"];
+    std::string gender = j["gender"];
+    std::string location = j["location"];
+    std::string occupation = j["occupation"];
+    std::string background = j["background"];
+    std::string goals = j["goals"];
+    std::string challenges = j["challenges"];
+    std::string behavior = j["behavior"];
+    std::string communicationStyle = j["communicationStyle"];
+    std::string technologyAdoption = j["technologyAdoption"];
+    std::string influences = j["influences"];
+    std::string informationSources = j["informationSources"];
+
+    /*｡o°✥✤✣TRACKEABLE SET✣✤✥°o｡*/
+    Persona p(trackeableDTO.id.getId());
+    setTrackeablePart(trackeableDTO, &p);
+
+    /*｡o°✥✤✣PERSONA SET✣✤✥°o｡*/
+    p.setAge(age);
+    p.setGender(gender);
+    p.setLocation(location);
+    p.setOccupation(occupation);
+    p.setBackground(background);
+    p.setGoals(goals);
+    p.setChallenges(challenges);
+    p.setBehavior(behavior);
+    p.setCommunicationStyle(communicationStyle);
+    p.setTechnologyAdoption(technologyAdoption);
+    p.setInfluences(influences);
+    p.setInformationSources(informationSources);
+
+    return p;
+}
+
+
+
+
+
+
 
 

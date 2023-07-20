@@ -359,6 +359,14 @@ Index JsonRepository::loadIndex(OID id) {
     return MEMIndex[id];
 }
 
+Persona JsonRepository::loadPersona(OID id) {
+    if (MEMPersona.find(id) == MEMPersona.end()) {
+        throw std::invalid_argument("No existe el Persona, loadPersona");
+    }
+    return MEMPersona[id];
+}
+
+
 
 
 
@@ -793,6 +801,22 @@ std::list<Index> JsonRepository::loadFileAllIndex() {
     return indexes;
 }
 
+Persona JsonRepository::loadFilePersona(OID id) {
+    json j = load(id);
+    JsonSerializer jsoneitor;
+    return jsoneitor.deserializePersona(j);
+}
+
+std::list<Persona> JsonRepository::loadFileAllPersona() {
+    std::list<Persona> personas;
+    json j = loadAll(Persona::getPrefixID());
+    JsonSerializer jsoneitor;
+    for (auto &element: j) {
+        personas.push_back(jsoneitor.deserializePersona(element));
+    }
+    return personas;
+}
+
 
 unsigned JsonRepository::lastStakeholder() {
     unsigned last = 0;
@@ -920,6 +944,15 @@ unsigned JsonRepository::lastIndex() {
     }
     return last;
 
+}
+
+unsigned JsonRepository::lastPersona() {
+    unsigned last = 0;
+    for (auto &element: MEMPersona) {
+        if (last < element.first.getId())
+            last = element.first.getId();
+    }
+    return last;
 }
 
 
@@ -1144,6 +1177,13 @@ void JsonRepository::save(Index index) {
     jsoneitor.visit(index);
 }
 
+void JsonRepository::save(Persona persona) {
+    MEMPersona[persona.getId()] = persona;
+    JsonSerializer jsoneitor;
+    ServicioHTML::printElement(persona.getId());
+    jsoneitor.visit(persona);
+}
+
 
 void JsonRepository::saveAll(std::list<Stakeholder> stakeholders) {
     JsonSerializer jsoneitor;
@@ -1225,6 +1265,7 @@ json JsonRepository::loadAll(std::string prefix) {
 
     return listaj;
 }
+
 
 
 

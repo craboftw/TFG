@@ -8,11 +8,12 @@
 #include "Dominio/InformationRequirement.h"
 #include "Dominio/UserCaseDiagram.h"
 #include "Servicio/ServicioUserCase.h"
-#include "Visitor/HtmlManager.h"
+#include "HTML/HtmlManager.h"
 #include "Dominio/Trackeable/MatrixTraces.h"
 #include "Servicio/ServicioMatrixTraces.h"
-#include "Servicio/ServicioHTML.h"
+#include "HTML/ServicioHTML.h"
 #include "Servicio/ServicioDiagramUC.h"
+#include "Servicio/ServicioInterview.h"
 
 std::string generateHTML(InformationRequirement& requirement) {
     std::string html;
@@ -1485,59 +1486,23 @@ auto indiceGlo = servicioHTML.createEntry(idIndice,"Glosario de terminos",     0
 servicioHTML.addElement(idIndice,indiceGlo,idGlosario);
     auto idEntrevista = servicioText.createText("Entrevista");
 
-servicioText.setDescription(idEntrevista,"Esta es la entrevista para Ingeniería de Requisitos, él es Antonio López, el espartero de Chiclana, y vamos a realizarle algunas preguntas para analizar el posible software a desarrollar. Empezamos por la primera. \n"
-                                         "\n"
-                                         "-¿Cuál es el problema o necesidad específica que está buscando solucionar con una aplicación? \n"
-                                         "\n"
-                                         "Pues lo que es el tema de cómo arreglaría tantas preguntas, como todo el mundo me pregunta, ¿qué artículo tiene usted? Pues poderlo llevar a redes sociales que no me hagan la pregunta, que simplemente lo veáis, y sigan, evidentemente, a lo que es el artículo que le interese. \n"
-                                         "\n"
-                                         "-¿Hay algún otro intento previo de solucionar este problema o de una aplicación? Si es así, ¿por qué falló? \n"
-                                         "\n"
-                                         "Se hizo, pero se hizo de cuatro artículos, nada más, o cinco artículos, después se hizo mal. No se detallaron los precios, no, en fin, falló el completo. Estaba mal hecho, cuando una cosa está mal hecha, está mal hecha. Y entonces, ya luego hemos ido rebotando a todo el mundo por WhatsApp, y es donde no hemos defendido, pero que por WhatsApp tampoco es. \n"
-                                         "\n"
-                                         "-Es decir, ¿que la comunicación de pasarle los productos va por WhatsApp? \n"
-                                         "\n"
-                                         "Sí, ahora mismo sí, es la solución que hay. A no ser que hubiera lo que es una buena página web, una buena fórmula de que el cliente directamente lo hubiera, pero claro, siempre tendría que contactar conmigo, puesto que somos una persona no más fabricando, no tenemos capacidad de vender por encima de la web, si no nos saturan. \n"
-                                         "\n"
-                                         "-¿Cómo describiría el proceso del trabajo del artesano? \n"
-                                         "\n"
-                                         "Eso es manual, eso no tiene más historia, aguja y cuerda y vámonos. \n"
-                                         "\n"
-                                         "-Quiero decir, pero desde que el cliente te contacta a ti hasta que llega, ¿cómo el cliente te llega a contactar a ti? ¿Cómo haces tú que el producto le llega al cliente? ¿Cuál es todo el proceso ahí? \n"
-                                         "\n"
-                                         "\n"
-                                         "Simplemente, mensajería, empaqueto, preparo, mensajería, envío, dirección de envío, lo que es con los códigos postales y demás hoy en día no se pierde ningún producto, además, todos, todos, todos quedan grabados y si hay una incidencia, lo recuperas en 30 segundos. \n"
-                                         "\n"
-                                         "\n"
-                                         "\n"
-                                         "-¿Hay algún otro usuario, otra persona que debe interactuar con la página, además de tú? \n"
-                                         "\n"
-                                         "Ahora mismo, cuando me hace falta lo que es el tema de facturación o algo, yo tengo la agencia, o sea, la agencia, la gestoría que ellos mismos me gestionan la parte de documento o si me hiciera falta de que por ejemplo cualquier proyecto que me pidieran de ingenería por algo, me hicieran falta de que me la aclararan, tengo mi gestoría que me hace lo que me hiciera falta. Es la parte técnica. \n"
-                                         "\n"
-                                         "-Pero entonces la gestoría que es la que lleva los papeles legales, ¿es la que tú querrías que te rellenara los tipos de productos en la página web? \n"
-                                         "\n"
-                                         "Es que hoy en día, para ser el proveedor de muchas empresas, te piden cosas que a mí me suenan los nombres a chino. Entonces lo mejor que hago cuando me entro en una empresa, por ejemplo, como ha pasado últimamente con televisión. Televisión Española me pedía hasta mi fecha de nacimiento pero de todo. ¿Qué hice? Mire usted, tome usted el número de teléfono de mi gestoría y las chavalas en las gestorías se encargaron de todo y no hubo problema ninguno. Cuando nos ha tocado el extranjero que lleva números de clave de exportación distinto, pues me ha pasado igual y hemos podido lamentar que me han pedido al mundo entero, le hemos podido enviar lo que pasa que hay ciertos puntos del mundo que son más caros o menos caros pero por enviarlo puedes enviar donde quieras. \n"
-                                         "\n"
-                                         "-¿Cómo querría que fuese el acceso a la web desde tu parte? ¿Es decir como administrador y dueño de ello o simplemente como usuario más? \n"
-                                         "\n"
-                                         "No, por la parte de lo que es de administrador te vuelvo a decir lo mismo en la web, simplemente me haría falta a mí, informativa con idea de que automáticamente hiciera igual que hace todo lo poquito que tengo de redes sociales. Hable usted con Antonio por WhatsApp. A mi me gusta que me llegue a mí y me explique porque si no no hay forma de llevar, porque esto es totalmente construido a mano todos son diferentes pero todos son parecidos. \n"
-                                         "\n"
-                                         "-Claro, pero ponte que en un año no aparece en la página web, por ejemplo, un producto nuevo y tienes que añadirlo tú. \n"
-                                         "\n"
-                                         "Sí. Socorro. Socorro. Buscaría la gestoría o buscaría alguien. \n"
-                                         "\n"
-                                         "-Ok. Cuando me atasco hay que pedir socorro, eso es muy lógico en la vida. \n"
-                                         "\n"
-                                         "-¿Hay algo en concreto, alguna característica que quieres que la aplicación o la página web pueda hacer por ti más que lo comentado hasta ahora de que informe al cliente hay algo más aparte de eso? \n"
-                                         "\n"
-                                         "La verdad es que lo desconozco por el tema que yo no sé si la página web se podría enviar lo que eran vídeos constructivos, o sea, vídeos de como enlazar que como lo desconozco el tema de las redes sociales, esa parte sería a la par que vas haciendo, fraccionar este tramo. Y después, unirlo todo para mandárselo al cliente. De conocimiento ahí no llego, pero sería muy bonito poder hacer cuadros enteros de la elaboración. La elaboración completa de su trabajo. O sea, que el cliente tenga un seguimiento de producto exacto. \n"
-                                         "\n"
-                                         "\n"
-                                         "-¿Hay alguna restricción en cuanto al costo o tiempo necesario para desarrollar la aplicación o la página web? \n"
-                                         "\n"
-                                         "No. Simplemente no. Ni por requisitos ni por poder o no poder no tengo problema. \n"
-                                         "\n"
-                                         "-¿Te interesa que en la aplicación haya un perfil de comunicaciones para este tipo de cosas como una revista, un certamen, un concurso? \n"
+    ServicioInterview servicioInterview;
+    auto idInterview = servicioInterview.createInterview("Entrevista a Antonio López, espartero de Chiclana");
+    servicioInterview.addQuestion(idInterview,"¿Cuál es el problema o necesidad específica que está buscando solucionar con una aplicación?", "Pues lo que es el tema de cómo arreglaría tantas preguntas, como todo el mundo me pregunta, ¿qué artículo tiene usted? Pues poderlo llevar a redes sociales que no me hagan la pregunta, que simplemente lo veáis, y sigan, evidentemente, a lo que es el artículo que le interese.");
+    servicioInterview.addQuestion(idInterview,"¿Hay algún otro intento previo de solucionar este problema o de una aplicación? Si es así, ¿por qué falló?","Se hizo, pero se hizo de cuatro artículos, nada más, o cinco artículos, después se hizo mal. No se detallaron los precios, no, en fin, falló el completo. Estaba mal hecho, cuando una cosa está mal hecha, está mal hecha. Y entonces, ya luego hemos ido rebotando a todo el mundo por WhatsApp, y es donde no hemos defendido, pero que por WhatsApp tampoco es. \n" );
+    servicioInterview.addQuestion(idInterview,"Es decir, ¿que la comunicación de pasarle los productos va por WhatsApp?", "Sí, ahora mismo sí, es la solución que hay. A no ser que hubiera lo que es una buena página web, una buena fórmula de que el cliente directamente lo hubiera, pero claro, siempre tendría que contactar conmigo, puesto que somos una persona no más fabricando, no tenemos capacidad de vender por encima de la web, si no nos saturan. \n" );
+    servicioInterview.addQuestion(idInterview,"¿Cómo describiría el proceso del trabajo del artesano?","Eso es manual, eso no tiene más historia, aguja y cuerda y vámonos." );
+    servicioInterview.addQuestion(idInterview,"Quiero decir, pero desde que el cliente te contacta a ti hasta que llega, ¿cómo el cliente te llega a contactar a ti? ¿Cómo haces tú que el producto le llega al cliente? ¿Cuál es todo el proceso ahí?", "Simplemente, mensajería, empaqueto, preparo, mensajería, envío, dirección de envío, lo que es con los códigos postales y demás hoy en día no se pierde ningún producto, además, todos, todos, todos quedan grabados y si hay una incidencia, lo recuperas en 30 segundos." );
+    servicioInterview.addQuestion(idInterview,"¿Hay algún otro usuario, otra persona que debe interactuar con la página, además de tú?","Ahora mismo, cuando me hace falta lo que es el tema de facturación o algo, yo tengo la agencia, o sea, la agencia, la gestoría que ellos mismos me gestionan la parte de documento o si me hiciera falta de que por ejemplo cualquier proyecto que me pidieran de ingenería por algo, me hicieran falta de que me la aclararan, tengo mi gestoría que me hace lo que me hiciera falta. Es la parte técnica. \n" );
+    servicioInterview.addQuestion(idInterview,"Pero entonces la gestoría que es la que lleva los papeles legales, ¿es la que tú querrías que te rellenara los tipos de productos en la página web?", "Es que hoy en día, para ser el proveedor de muchas empresas, te piden cosas que a mí me suenan los nombres a chino. Entonces lo mejor que hago cuando me entro en una empresa, por ejemplo, como ha pasado últimamente con televisión. Televisión Española me pedía hasta mi fecha de nacimiento pero de todo. ¿Qué hice? Mire usted, tome usted el número de teléfono de mi gestoría y las chavalas en las gestorías se encargaron de todo y no hubo problema ninguno. Cuando nos ha tocado el extranjero que lleva números de clave de exportación distinto, pues me ha pasado igual y hemos podido lamentar que me han pedido al mundo entero, le hemos podido enviar lo que pasa que hay ciertos puntos del mundo que son mas caros pero enviar donde quieres." );
+    servicioInterview.addQuestion(idInterview,"¿Cómo querría que fuese el acceso a la web desde tu parte? ¿Es decir como administrador y dueño de ello o simplemente como usuario más?","No, por la parte de lo que es de administrador te vuelvo a decir lo mismo en la web, simplemente me haría falta a mí, informativa con idea de que automáticamente hiciera igual que hace todo lo poquito que tengo de redes sociales. Hable usted con Antonio por WhatsApp. A mi me gusta que me llegue a mí y me explique porque si no no hay forma de llevar, porque esto es totalmente construido a mano todos son diferentes pero todos son parecidos. \n" );
+    servicioInterview.addQuestion(idInterview,"¿Hay algo en concreto, alguna característica que quieres que la aplicación o la página web pueda hacer por ti más que lo comentado hasta ahora de que informe al cliente hay algo más aparte de eso?","La verdad es que lo desconozco por el tema que yo no sé si la página web se podría enviar lo que eran vídeos constructivos, o sea, vídeos de como enlazar que como lo desconozco el tema de las redes sociales, esa parte sería a la par que vas haciendo, fraccionar este tramo. Y después, unirlo todo para mandárselo al cliente. De conocimiento ahí no llego." );
+    servicioInterview.addQuestion(idInterview, "Claro, pero ponte que en un año no aparece en la página web, por ejemplo, un producto nuevo y tienes que añadirlo tú.", "Sí. Socorro. Socorro. Buscaría la gestoría o buscaría alguien. cuando me atasco hay que pedir socorro, eso es muy lógico en la vida. \n" );
+    servicioInterview.addQuestion(idInterview,"Hay alguna restricción en cuanto al costo o tiempo necesario para desarrollar la aplicación o la página web?","No. Simplemente no. Ni por requisitos ni por poder o no poder no tengo problema. \n" );
+    servicioInterview.addQuestion(idInterview,"¿Te interesa que en la aplicación haya un perfil de comunicaciones para este tipo de cosas como una revista, un certamen, un concurso?","Ah, si me gusta pero al final no hago caso nunca. Me gusta que me inviten a todos lados a todos los certamenes, de España entera de todos lados y no voy a ningún lado. \n" );
+    servicioInterview.addQuestion()
+    /*
+                                        "-¿Te interesa que en la aplicación haya un perfil de comunicaciones para este tipo de cosas como una revista, un certamen, un concurso? \n"
                                          "\n"
                                          "Ah, si me gusta pero al final no hago caso nunca. Me gusta que me inviten a todos lados a todos los certamenes, de España entera de todos lados y no voy a ningún lado. \n"
                                          "\n"
@@ -1556,6 +1521,7 @@ servicioText.setDescription(idEntrevista,"Esta es la entrevista para Ingeniería
                                          "-Pues nada, muchas gracias. \n"
                                          "\n"
                                          "A ustedes.");
+                                         */
     auto indiceEntrevista = servicioHTML.createEntry(idIndice,"Entrevista",     0);
     servicioHTML.addElement(idIndice,indiceEntrevista,idEntrevista);
 
@@ -1681,7 +1647,9 @@ void PruebaSinCrearObjetos(){
     servicioHTML.addElement(idIndice,indiceGlo, idGlosario);
     auto indiceEntrevista = servicioHTML.createEntry(idIndice,"Entrevista", 0);
     servicioHTML.addElement(idIndice,indiceEntrevista, idEntrevista);
+
 }
+
 
 int main() {
     prueba();

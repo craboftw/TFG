@@ -11,15 +11,16 @@
 #define ACTOR_UC 4
 #define INFORMATION_REQUIREMENT 5
 #define ORGANIZATION 6
-#define ROL_STAKEHOLDER 7
+#define INDEX 7
 #define SYSTEM_OBJECTIVE 8
 #define USER_CASE 9
 #define TEXT 10
 #define MATRIX_TRACES 11
 #define USER_STORIES 12
 #define USER_CASE_DIAGRAM 13
-#define INDEX 14
-#define PERSONA 15
+#define PERSONA 14
+#define INTERVIEW 15
+#define NULLTYPE 16
 
 
 #include "nlohmann/json.hpp"
@@ -35,6 +36,7 @@
 #include "Dominio/UserCaseDiagram.h"
 #include "Dominio/Index.h"
 #include "Dominio/Persona.h"
+#include "Dominio/Interview.h"
 #include <fstream>
 #include <iostream>
 #include <string>
@@ -81,6 +83,7 @@ public:
     static UserCaseDiagram loadUserCaseDiagram(OID id);
     static Index loadIndex(OID id);
     static Persona loadPersona(OID id);
+    static Interview loadInterview(OID id);
 
     static Trackeable loadTrackeable(OID id);
     static TrackeableDTO loadTrackeableDTO(OID id);
@@ -102,6 +105,7 @@ public:
     static UserCaseDiagram loadFileUserCaseDiagram(OID id);
     static Index loadFileIndex(OID id);
     static Persona loadFilePersona(OID id);
+    static Interview loadFileInterview(OID id);
 
     static Trackeable* loadFileTrackeable(OID id);
     static Priority *loadFilePriority(OID oid) ;
@@ -121,6 +125,8 @@ public:
     static std::list<UserCaseDiagram> loadAllUserCaseDiagram();
     static std::list<Index> loadAllIndex();
     static std::list<Persona> loadAllPersona();
+    static std::list<Interview> loadAllInterview();
+
     static std::list<Trackeable*> loadAllTrackeable();
 
     static std::list<Stakeholder> loadFileAllStakeholder();
@@ -138,6 +144,8 @@ public:
     static std::list<UserCaseDiagram> loadFileAllUserCaseDiagram();
     static std::list<Index> loadFileAllIndex();
     static std::list<Persona> loadFileAllPersona();
+    static std::list<Interview> loadFileAllInterview();
+
     static std::list<Trackeable*> loadFileAllTrackeable();
 
 
@@ -157,6 +165,7 @@ public:
     static unsigned lastUserCaseDiagram();
     static unsigned lastIndex();
     static unsigned lastPersona();
+    static unsigned lastInterview();
 
 
     static void save(json singlejson);
@@ -176,6 +185,7 @@ public:
     static void save(UserCaseDiagram userCaseDiagram);
     static void save(Index index);
     static void save(Persona persona);
+    static void save(Interview interview);
 
 
 
@@ -198,6 +208,7 @@ public:
     static void saveAll(std::list<UserCaseDiagram> userCaseDiagrams);
     static void saveAll(std::list<Index> index);
     static void saveAll(std::list<Persona> personas);
+    static void saveAll(std::list<Interview> interviews);
     static bool exist(OID id);
 
 
@@ -210,7 +221,8 @@ public:
 
 private:
     static json loadAll(std::string prefix);
-    //lambda to turn a list of Stakeholder into a map of id and RestrictionRequirement
+
+
     inline static std::map<OID,Stakeholder> MEMStakeholder =  []() {
         std::map<OID,Stakeholder> map;
         for (auto stakeholder : loadFileAllStakeholder()) {
@@ -345,9 +357,15 @@ private:
         }
         return map;
     }();
+    inline static std::map<OID,Interview> MEMInterview = []() {
+        std::map<OID,Interview> map;
+        for (auto interview : loadFileAllInterview()) {
+            Interview interview1 = Interview(interview);
+            map.insert(std::pair<OID,Interview>(interview1.getId(),interview1));
+        }
+        return map;
+    }();
 
-
-    
 
 };
 

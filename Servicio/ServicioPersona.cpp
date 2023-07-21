@@ -19,6 +19,17 @@ void ServicioPersona::setAge(OID id, unsigned age) {
     JsonRepository::save(persona);
 }
 
+void ServicioPersona::setPhoto(OID id, const std::string& photo) {
+    if (id.getPrefix() != Persona::getPrefixID()) throw std::invalid_argument("El id a modificar no es de una Persona, setPhoto");
+    if (!JsonRepository::exist(id)) throw std::invalid_argument("El id a modificar no existe, setPhoto");
+    //try if the photo is a path that exists
+    std::ifstream f(photo.c_str());
+    if (!f.good()) throw std::invalid_argument("La foto no existe, setPhoto");
+    Persona persona = JsonRepository::loadPersona(id);
+    persona.setPhoto(photo);
+    JsonRepository::save(persona);
+}
+
 void ServicioPersona::setGender(OID id, const std::string& gender) {
     if (id.getPrefix() != Persona::getPrefixID()) throw std::invalid_argument("El id a modificar no es de una Persona, setGender");
     if (!JsonRepository::exist(id)) throw std::invalid_argument("El id a modificar no existe, setGender");
@@ -130,6 +141,23 @@ unsigned ServicioPersona::getAge(OID id) {
     return persona.getAge();
 }
 
+std::string ServicioPersona::getPhoto(OID id)
+{
+    if (id.getPrefix() != Persona::getPrefixID()) throw std::invalid_argument("El id a leer no es de una Persona, getPhoto");
+    if (!JsonRepository::exist(id)) throw std::invalid_argument("El id a leer no existe, getPhoto");
+    //if the photo is not a valid path, save it empty and return empty
+    std::string photo = JsonRepository::loadPersona(id).getPhoto();
+    std::ifstream f(photo.c_str());
+    if (!f.good()) {
+        Persona persona = JsonRepository::loadPersona(id);
+        persona.setPhoto("");
+        JsonRepository::save(persona);
+        return "";
+    }
+    Persona persona = JsonRepository::loadPersona(id);
+    return persona.getPhoto();
+}
+
 std::string ServicioPersona::getGender(OID id) {
     if (id.getPrefix() != Persona::getPrefixID()) throw std::invalid_argument("El id a leer no es de una Persona, getGender");
     if (!JsonRepository::exist(id)) throw std::invalid_argument("El id a leer no existe, getGender");
@@ -220,3 +248,4 @@ std::string ServicioPersona::getBrandRelationship(OID id) {
     Persona persona = JsonRepository::loadPersona(id);
     return persona.getBrandRelationship();
 }
+

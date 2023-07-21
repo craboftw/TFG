@@ -12,6 +12,7 @@
 #include "Dominio/Trackeable/Stakeholder.h"
 #include "Dominio/Index.h"
 #include "Dominio/Persona.h"
+#include "Dominio/Interview.h"
 
 
 
@@ -42,6 +43,7 @@ public:
     void visit(UserCaseDiagram userCaseDiagram);
     void visit(Index index);
     void visit(Persona persona);
+    void visit(Interview interview);
 
     void visit(Trackeable* trackeable) override;
     void visit(Priority *priority);
@@ -63,6 +65,7 @@ public:
     UserCaseDiagram deserializerUserCaseDiagram(json j);
     Index deserializeIndex(json j);
     Persona deserializePersona(json j);
+    Interview deserializeInterview(json j);
 
 
     Trackeable *deserializeTrackeable(json j);
@@ -99,16 +102,15 @@ public:
     json serializeElementosIndex(ElementosIndex obj);
     json serializeGeneralTree(Agen<ElementosIndex>::nodo n);
 
-    void deserializeGeneralTree(Agen<ElementosIndex>&A, const json &j);
-
-    void recurDeserializeGeneralTree(const json &j, Agen<ElementosIndex>::nodo n);
-
     ElementosIndex deserializeElementosIndex(const json &j);
 
     Agen<ElementosIndex> deserializeGeneralTree(const json &j);
 
     void deserializeChildren(Agen<ElementosIndex>::nodo parent, const json &children);
 
+    json serializeVectorOfQuestions(std::vector<Question> questions);
+
+    std::vector<Question> deserializeVectorOfQuestions(json j);
 };
 
 

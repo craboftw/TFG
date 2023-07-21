@@ -56,6 +56,9 @@ class ServicioPersona : public ServicioTrackeable{
     std::string getUserJourney(OID id);
     std::string getBrandRelationship(OID id);
 
+    std::string getPhoto(OID id);
+
+    void setPhoto(OID id, const std::string &photo);
 };
 
 

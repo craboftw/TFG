@@ -948,6 +948,7 @@ void JsonSerializer::visit(Persona persona) {
     JsonRepository::save(j);
 }
 
+
 Persona JsonSerializer::deserializePersona(json j) {
 
     /*｡o°✥✤✣TRACKEABLE PART✣✤✥°o｡*/
@@ -986,6 +987,68 @@ Persona JsonSerializer::deserializePersona(json j) {
     p.setInformationSources(informationSources);
 
     return p;
+}
+
+json JsonSerializer::serializeVectorOfQuestions(std::vector<Question> questions) {
+    json j;
+    for (auto &question : questions) {
+        json jQuestion;
+        jQuestion["question"] = question.question;
+        jQuestion["answer"] = question.answer;
+        j.push_back(jQuestion);
+    }
+    return j;
+}
+
+void JsonSerializer::visit(Interview interview) {
+    json j;
+
+    /*｡o°✥✤✣TRACKEABLE PART✣✤✥°o｡*/
+    j= trackeablePart(&interview,j);
+
+    /*｡o°✥✤✣INTERVIEW PART✣✤✥°o｡*/
+    j["questions"] = serializeVectorOfQuestions(interview.getQuestions());
+    j["stakeholdersAsking"] = serializeSetOfOID(interview.getStakeholdersAsking());
+    j["stakeholdersInterviewed"] = serializeSetOfOID(interview.getStakeholdersInterviewed());
+    j["place"] = interview.getPlace();
+
+
+    JsonRepository::save(j);
+}
+
+Interview JsonSerializer::deserializeInterview(json j) {
+
+        /*｡o°✥✤✣TRACKEABLE PART✣✤✥°o｡*/
+        TrackeableDTO trackeableDTO = deserializeTrackeableDTO(j);
+
+        /*｡o°✥✤✣INTERVIEW GET✣✤✥°o｡*/
+        std::vector<Question> questions = deserializeVectorOfQuestions(j["questions"]);
+        std::set<OID> stakeholdersAsking = deserializeSetOfOID(j["stakeholdersAsking"]);
+        std::set<OID> stakeholdersInterviewed = deserializeSetOfOID(j["stakeholdersInterviewed"]);
+        std::string place = j["place"];
+
+        /*｡o°✥✤✣TRACKEABLE SET✣✤✥°o｡*/
+        Interview i(trackeableDTO.id.getId());
+        setTrackeablePart(trackeableDTO, &i);
+
+        /*｡o°✥✤✣INTERVIEW SET✣✤✥°o｡*/
+        i.setQuestions(questions);
+        i.setStakeholdersAsking(stakeholdersAsking);
+        i.setStakeholdersInterviewed(stakeholdersInterviewed);
+        i.setPlace(place);
+
+        return i;
+}
+
+std::vector<Question> JsonSerializer::deserializeVectorOfQuestions(json j) {
+    std::vector<Question> questions;
+    for (auto &question : j) {
+        Question q;
+        q.question = question["question"];
+        q.answer = question["answer"];
+        questions.push_back(q);
+    }
+    return questions;
 }
 
 

@@ -4,11 +4,11 @@
 
 #include "Persona.h"
 
-int Persona::getAge() const {
+unsigned Persona::getAge() const {
     return age;
 }
 
-void Persona::setAge(int age) {
+void Persona::setAge(unsigned age) {
     Persona::age = age;
 }
 
@@ -114,4 +114,12 @@ const std::string &Persona::getBrandRelationship() const {
 
 void Persona::setBrandRelationship(const std::string &brandRelationship) {
     Persona::brandRelationship = brandRelationship;
+}
+
+const std::string &Persona::getPhoto() const {
+    return photo;
+}
+
+void Persona::setPhoto(const std::string &photo) {
+    Persona::photo = photo;
 }

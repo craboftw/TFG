@@ -9,11 +9,13 @@
 #include "Dominio/Trackeable/Trackeable.h"
 
 class Persona : public Trackeable{
+
+
 private:
     unsigned age;
     std::string gender;
     std::string location;
-    std::string occupation;
+    std::string photo;    std::string occupation;
     std::string background;
     std::string goals;
     std::string challenges;
@@ -27,8 +29,11 @@ private:
     inline static std::string prefix = "PS";
 
 public:
-    Persona(unsigned id): Trackeable(prefix, id){};
+    Persona(unsigned id): Trackeable(prefix, id),age(0){};
     Persona(): Trackeable(){};
+    const std::string &getPhoto() const;
+    void setPhoto(const std::string &photo);
+
 
     unsigned getAge() const;
 

@@ -4,7 +4,7 @@
 
 #include <list>
 #include "JsonRepository.h"
-#include "Servicio/ServicioHTML.h"
+#include "HTML/ServicioHTML.h"
 
 
 void JsonRepository::save(json singlejson) {
@@ -365,6 +365,14 @@ Persona JsonRepository::loadPersona(OID id) {
     }
     return MEMPersona[id];
 }
+
+Interview JsonRepository::loadInterview(OID id) {
+    if (MEMInterview.find(id) == MEMInterview.end()) {
+        throw std::invalid_argument("No existe el Interview, loadInterview");
+    }
+    return MEMInterview[id];
+}
+
 
 
 
@@ -817,6 +825,16 @@ std::list<Persona> JsonRepository::loadFileAllPersona() {
     return personas;
 }
 
+std::list<Interview> JsonRepository::loadFileAllInterview() {
+    std::list<Interview> interviews;
+    json j = loadAll(Interview::getPrefixID());
+    JsonSerializer jsoneitor;
+    for (auto &element: j) {
+        interviews.push_back(jsoneitor.deserializeInterview(element));
+    }
+    return interviews;
+}
+
 
 unsigned JsonRepository::lastStakeholder() {
     unsigned last = 0;
@@ -949,6 +967,15 @@ unsigned JsonRepository::lastIndex() {
 unsigned JsonRepository::lastPersona() {
     unsigned last = 0;
     for (auto &element: MEMPersona) {
+        if (last < element.first.getId())
+            last = element.first.getId();
+    }
+    return last;
+}
+
+unsigned JsonRepository::lastInterview() {
+    unsigned last = 0;
+    for (auto &element: MEMInterview) {
         if (last < element.first.getId())
             last = element.first.getId();
     }
@@ -1185,6 +1212,15 @@ void JsonRepository::save(Persona persona) {
 }
 
 
+void JsonRepository::save(Interview interview) {
+    MEMInterview[interview.getId()] = interview;
+    JsonSerializer jsoneitor;
+    ServicioHTML::printElement(interview.getId());
+    jsoneitor.visit(interview);
+}
+
+
+
 void JsonRepository::saveAll(std::list<Stakeholder> stakeholders) {
     JsonSerializer jsoneitor;
     for (auto &stakeholder: stakeholders) {
@@ -1265,7 +1301,6 @@ json JsonRepository::loadAll(std::string prefix) {
 
     return listaj;
 }
-
 
 
 

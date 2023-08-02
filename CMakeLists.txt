@@ -28,14 +28,22 @@ add_library(TFG_Library
         Repository/JsonSerializer.cpp
         Dominio/Trackeable/MatrixTraces.cpp
         Servicio/ServicioMatrixTraces.cpp
-        Servicio/ServicioMatrixTraces.h
         Dominio/UserStories.cpp
         HTML/ServicioHTML.cpp
         Servicio/ServicioUserStories.cpp
         Visitor/LinkedGeneralTree.cpp
         Servicio/ServicioDiagramUC.cpp
+<<<<<<< HEAD
+        Dominio/Index.cpp
+        Dominio/Persona.cpp
+        Servicio/ServicioPersona.cpp
+        Dominio/Interview.cpp
+        Servicio/ServicioInterview.cpp
+        Dominio/Clases/Class.cpp)
+=======
         Dominio/Index.cpp Dominio/Index.h Dominio/Persona.cpp Dominio/Persona.h Servicio/ServicioPersona.cpp Servicio/ServicioPersona.h Dominio/Interview.cpp Dominio/Interview.h Servicio/ServicioInterview.cpp Servicio/ServicioInterview.h)
+>>>>>>> main
 
-add_executable(TFG_Executable main.cpp)
+add_executable(TFG_Executable main.cpp Servicio/ServicioClass/ServicioClass.cpp Servicio/ServicioClass/ServicioClass.h)
 
 target_link_libraries(TFG_Executable PRIVATE TFG_Library)

@@ -20,7 +20,13 @@
 #define USER_CASE_DIAGRAM 13
 #define PERSONA 14
 #define INTERVIEW 15
+<<<<<<< HEAD
+#define CLASS 16
+#define ASOCIATION 17
+#define NULLTYPE 30
+=======
 #define NULLTYPE 16
+>>>>>>> main
 
 
 #include "nlohmann/json.hpp"
@@ -37,6 +43,10 @@
 #include "Dominio/Index.h"
 #include "Dominio/Persona.h"
 #include "Dominio/Interview.h"
+<<<<<<< HEAD
+#include "Dominio/Clases/Class.h"
+=======
+>>>>>>> main
 #include <fstream>
 #include <iostream>
 #include <string>
@@ -65,7 +75,10 @@ public:
                                                               {MatrixTraces::getPrefixID(),MATRIX_TRACES},
                                                               {UserStories::getPrefixID(),USER_STORIES},
                                                               {Index::getPrefixID(),INDEX},
-                                                              {Persona::getPrefixID(),PERSONA}
+                                                              {Persona::getPrefixID(),PERSONA},
+                                                              {Interview::getPrefixID(),INTERVIEW},
+                                                              {Class::getPrefixID(),CLASS},
+                                                              {Asociation::getPrefixID(),ASOCIATION}
                                                               };
 
     static Stakeholder loadStakeholder(OID id);
@@ -84,6 +97,11 @@ public:
     static Index loadIndex(OID id);
     static Persona loadPersona(OID id);
     static Interview loadInterview(OID id);
+<<<<<<< HEAD
+    static Class loadClass(OID id);
+    static Asociation loadAsociation(OID id);
+=======
+>>>>>>> main
 
     static Trackeable loadTrackeable(OID id);
     static TrackeableDTO loadTrackeableDTO(OID id);
@@ -106,6 +124,11 @@ public:
     static Index loadFileIndex(OID id);
     static Persona loadFilePersona(OID id);
     static Interview loadFileInterview(OID id);
+<<<<<<< HEAD
+    static Class loadFileClass(OID id);
+    static Asociation loadFileAsociation(OID id);
+=======
+>>>>>>> main
 
     static Trackeable* loadFileTrackeable(OID id);
     static Priority *loadFilePriority(OID oid) ;
@@ -126,6 +149,11 @@ public:
     static std::list<Index> loadAllIndex();
     static std::list<Persona> loadAllPersona();
     static std::list<Interview> loadAllInterview();
+<<<<<<< HEAD
+    static std::list<Class> loadAllClass();
+    static std::list<Asociation> loadAllAsociation();
+=======
+>>>>>>> main
 
     static std::list<Trackeable*> loadAllTrackeable();
 
@@ -145,6 +173,11 @@ public:
     static std::list<Index> loadFileAllIndex();
     static std::list<Persona> loadFileAllPersona();
     static std::list<Interview> loadFileAllInterview();
+<<<<<<< HEAD
+    static std::list<Class> loadFileAllClass();
+    static std::list<Asociation> loadFileAllAsociation();
+=======
+>>>>>>> main
 
     static std::list<Trackeable*> loadFileAllTrackeable();
 
@@ -155,7 +188,7 @@ public:
     unsigned lastNonFunctionalRequirement();
     static unsigned lastActorUC();
     static unsigned lastInformationRequirement();
-    unsigned lastOrganization();
+    static unsigned lastOrganization();
     unsigned lastRolStakeholder();
     unsigned lastSystemObjective();
     static unsigned lastUserCase();
@@ -166,6 +199,11 @@ public:
     static unsigned lastIndex();
     static unsigned lastPersona();
     static unsigned lastInterview();
+<<<<<<< HEAD
+    static unsigned lastClass();
+    static unsigned lastAsociation();
+=======
+>>>>>>> main
 
 
     static void save(json singlejson);
@@ -186,6 +224,11 @@ public:
     static void save(Index index);
     static void save(Persona persona);
     static void save(Interview interview);
+<<<<<<< HEAD
+    static void save(Class clas);
+    static void save(Asociation asociation);
+=======
+>>>>>>> main
 
 
 
@@ -209,6 +252,11 @@ public:
     static void saveAll(std::list<Index> index);
     static void saveAll(std::list<Persona> personas);
     static void saveAll(std::list<Interview> interviews);
+<<<<<<< HEAD
+    static void saveAll(std::list<Class> classes);
+    static void saveAll(std::list<Asociation> asociations);
+=======
+>>>>>>> main
     static bool exist(OID id);
 
 
@@ -366,7 +414,28 @@ private:
         return map;
     }();
 
+    inline static std::map<OID,Class> MEMClass = []() {
+        std::map<OID,Class> map;
+        for (auto class1 : loadFileAllClass()) {
+            Class class2 = Class(class1);
+            map.insert(std::pair<OID,Class>(class2.getId(),class2));
+        }
+        return map;
+    }();
 
+    inline static std::map<OID,Asociation> MEMAsociation = []() {
+        std::map<OID,Asociation> map;
+        for (auto asociation : loadFileAllAsociation()) {
+            Asociation asociation1 = Asociation(asociation);
+            map.insert(std::pair<OID,Asociation>(asociation1.getId(),asociation1));
+        }
+        return map;
+    }();
+
+<<<<<<< HEAD
+
+=======
+>>>>>>> main
 };
 
 

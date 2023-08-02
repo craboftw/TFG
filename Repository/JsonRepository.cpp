@@ -180,6 +180,27 @@ bool JsonRepository::exist(OID id) {
                 return false;
             }
             break;
+            case INTERVIEW:
+            if (MEMInterview.find(id) == MEMInterview.end()) {
+                return false;
+            }
+            break;
+            case PERSONA:
+            if (MEMPersona.find(id) == MEMPersona.end()) {
+                return false;
+            }
+            break;
+        case ASOCIATION:
+            if (MEMAsociation.find(id) == MEMAsociation.end()) {
+                return false;
+            }
+            break;
+            case CLASS:
+                if (MEMClass.find(id) == MEMClass.end()) {
+                    return false;
+                }
+                break;
+                                                                                                                                                                                                                                break;
         default:
             throw std::invalid_argument(
                     "No existe el Trackeable con el prefijo: " + id.getPrefix() + ", exist");
@@ -373,6 +394,23 @@ Interview JsonRepository::loadInterview(OID id) {
     return MEMInterview[id];
 }
 
+<<<<<<< HEAD
+Class JsonRepository::loadClass(OID id) {
+    if (MEMClass.find(id) == MEMClass.end()) {
+        throw std::invalid_argument("No existe el Class, loadClass");
+    }
+    return MEMClass[id];
+}
+
+Asociation JsonRepository::loadAsociation(OID id) {
+    if (MEMAsociation.find(id) == MEMAsociation.end()) {
+        throw std::invalid_argument("No existe el Asociation, loadAsociation");
+    }
+    return MEMAsociation[id];
+}
+
+=======
+>>>>>>> main
 
 
 
@@ -394,13 +432,16 @@ Trackeable JsonRepository::loadTrackeable(OID id) {
     UserStories userStories;
     UserCaseDiagram userCaseDiagram;
     Index index;
+    Persona persona;
+    Interview interview;
+    Class class_;
+    Asociation asociation;
 
     switch (prefixes[id.getPrefix()]) {
         case STAKEHOLDER:
             stakeholder = loadStakeholder(id);
             trackeable = stakeholder;
             break;
-
         case RESTRICTION_REQUIREMENT:
             restrictionRequirement = loadRestrictionRequirement(id);
             trackeable = restrictionRequirement;
@@ -410,22 +451,18 @@ Trackeable JsonRepository::loadTrackeable(OID id) {
             trackeable = functionalRequirement;
             break;
         case NON_FUNCTIONAL_REQUIREMENT:
-
             nonFunctionalRequirement = loadNonFunctionalRequirement(id);
             trackeable = nonFunctionalRequirement;
             break;
         case ACTOR_UC:
-
             actorUC = loadActorUC(id);
             trackeable = actorUC;
             break;
         case INFORMATION_REQUIREMENT:
-
             informationRequirement = loadInformationRequirement(id);
             trackeable = informationRequirement;
             break;
         case ORGANIZATION:
-
             organization = loadOrganization(id);
             trackeable = organization;
             break;
@@ -434,26 +471,21 @@ Trackeable JsonRepository::loadTrackeable(OID id) {
             trackeable = systemObjective;
             break;
         case USER_CASE:
-
             userCase = loadUserCase(id);
             trackeable = userCase;
             break;
         case TEXT:
-
             text = loadText(id);
             trackeable = text;
             break;
         case MATRIX_TRACES:
-
             matrixTraces = loadMatrixTraces(id);
             trackeable = matrixTraces;
             break;
         case USER_STORIES:
-
             userStories = loadUserStories(id);
             trackeable = userStories;
             break;
-
         case USER_CASE_DIAGRAM:
             userCaseDiagram = loadUserCaseDiagram(id);
             trackeable = userCaseDiagram;
@@ -462,9 +494,25 @@ Trackeable JsonRepository::loadTrackeable(OID id) {
             index = loadIndex(id);
             trackeable = index;
             break;
+        case PERSONA:
+            persona = loadPersona(id);
+            trackeable = persona;
+            break;
+        case INTERVIEW:
+            interview = loadInterview(id);
+            trackeable = interview;
+            break;
+        case CLASS:
+            class_ = loadClass(id);
+            trackeable = class_;
+            break;
+        case ASOCIATION:
+            asociation = loadAsociation(id);
+            trackeable = asociation;
+            break;
         default:
             throw std::invalid_argument(
-                    "No existe el Trackeable con el prefijo: " + id.getPrefix() + ", loadTrackeable");
+                "No existe el Trackeable con el prefijo: " + id.getPrefix() + ", loadTrackeable");
 
 
     }
@@ -835,6 +883,29 @@ std::list<Interview> JsonRepository::loadFileAllInterview() {
     return interviews;
 }
 
+<<<<<<< HEAD
+std::list<Class> JsonRepository::loadFileAllClass() {
+    std::list<Class> classes;
+    json j = loadAll(Class::getPrefixID());
+    JsonSerializer jsoneitor;
+    for (auto &element: j) {
+        classes.push_back(jsoneitor.deserializeClass(element));
+    }
+    return classes;
+}
+
+std::list<Asociation> JsonRepository::loadFileAllAsociation() {
+    std::list<Asociation> asociations;
+    json j = loadAll(Asociation::getPrefixID());
+    JsonSerializer jsoneitor;
+    for (auto &element: j) {
+        asociations.push_back(jsoneitor.deserializeAsociation(element));
+    }
+    return asociations;
+}
+
+=======
+>>>>>>> main
 
 unsigned JsonRepository::lastStakeholder() {
     unsigned last = 0;
@@ -982,6 +1053,18 @@ unsigned JsonRepository::lastInterview() {
     return last;
 }
 
+<<<<<<< HEAD
+unsigned JsonRepository::lastClass() {
+    unsigned last = 0;
+    for (auto &element: MEMClass) {
+        if (last < element.first.getId())
+            last = element.first.getId();
+    }
+    return last;
+}
+
+=======
+>>>>>>> main
 
 
 void JsonRepository::save(Stakeholder stakeholder) {
@@ -1085,6 +1168,12 @@ void JsonRepository::save(Trackeable *pTrackeable) {
     Text text;
     MatrixTraces matrixTraces;
     UserStories userStories;
+    Persona persona;
+    Interview interview;
+    UserCaseDiagram userCaseDiagram;
+    Index index;
+    Class class_;
+    Asociation asociation;
 
     auto tipo = pTrackeable->getId().getPrefix();
     JsonSerializer jsoneitor;
@@ -1149,6 +1238,36 @@ void JsonRepository::save(Trackeable *pTrackeable) {
             userStories = MEMUserStories[pTrackeable->getId()];
             userStories.setTrackeablePart(pTrackeable);
             MEMUserStories[pTrackeable->getId()] = userStories;
+            break;
+        case PERSONA:
+            persona = MEMPersona[pTrackeable->getId()];
+            persona.setTrackeablePart(pTrackeable);
+            MEMPersona[pTrackeable->getId()] = persona;
+            break;
+        case INDEX:
+            index = MEMIndex[pTrackeable->getId()];
+            index.setTrackeablePart(pTrackeable);
+            MEMIndex[pTrackeable->getId()] = index;
+            break;
+        case INTERVIEW:
+            interview = MEMInterview[pTrackeable->getId()];
+            interview.setTrackeablePart(pTrackeable);
+            MEMInterview[pTrackeable->getId()] = interview;
+            break;
+        case USER_CASE_DIAGRAM:
+            userCaseDiagram = MEMUserCaseDiagram[pTrackeable->getId()];
+            userCaseDiagram.setTrackeablePart(pTrackeable);
+            MEMUserCaseDiagram[pTrackeable->getId()] = userCaseDiagram;
+            break;
+        case CLASS:
+            class_ = MEMClass[pTrackeable->getId()];
+            class_.setTrackeablePart(pTrackeable);
+            MEMClass[pTrackeable->getId()] = class_;
+            break;
+        case ASOCIATION:
+            asociation = MEMAsociation[pTrackeable->getId()];
+            asociation.setTrackeablePart(pTrackeable);
+            MEMAsociation[pTrackeable->getId()] = asociation;
             break;
         default:
             throw std::invalid_argument("Tipo de Trackeable no reconocido, save Trackeable*");
@@ -1219,7 +1338,23 @@ void JsonRepository::save(Interview interview) {
     jsoneitor.visit(interview);
 }
 
+<<<<<<< HEAD
+void JsonRepository::save(Class class_) {
+    MEMClass[class_.getId()] = class_;
+    JsonSerializer jsoneitor;
+    ServicioHTML::printElement(class_.getId());
+    jsoneitor.visit(class_);
+}
 
+void JsonRepository::save(Asociation asociation) {
+    MEMAsociation[asociation.getId()] = asociation;
+    JsonSerializer jsoneitor;
+    ServicioHTML::printElement(asociation.getId());
+    jsoneitor.visit(asociation);
+}
+=======
+
+>>>>>>> main
 
 void JsonRepository::saveAll(std::list<Stakeholder> stakeholders) {
     JsonSerializer jsoneitor;

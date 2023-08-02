@@ -26,8 +26,13 @@ std::string ServicioOrganization::getContactInfo(OID id) {
     return organization.getContactInfo();*/
 
 OID ServicioInterview::createInterview(std::string name = "") {
+<<<<<<< HEAD
+    Interview interview(JsonRepository::lastInterview() + 1);
+    if (name.empty()) name = interview.getId().operator std::string();
+=======
     if (name.empty()) name = std::to_string(JsonRepository::lastInterview()+1);
     Interview interview(JsonRepository::lastInterview()+1);
+>>>>>>> main
     interview.setName(name);
     JsonRepository::save(interview);
     return interview.getId();

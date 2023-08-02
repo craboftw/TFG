@@ -61,7 +61,7 @@ void ServicioTrackeable::setAuthors(OID id, std::set<OID> &setauthors) {
     if(!JsonRepository::exist(id)) throw std::invalid_argument("El id a modificar no existe, setComments");
     for(auto it = setauthors.begin(); it != setauthors.end(); ++it){
         if(!JsonRepository::exist(*it)) throw std::invalid_argument("Uno de los id de autor no existe, setComments");
-        if(it->getPrefix() != "SH") throw std::invalid_argument("Uno de los id de autor no es de tipo Stakeholder, setComments"     );
+        if(it->getPrefix() != Stakeholder::getPrefixID()) throw std::invalid_argument("Uno de los id de autor no es de tipo Stakeholder, setComments"     );
     }
     auto obj =  JsonRepository::loadTrackeable(id);
     obj.setAuthors(setauthors);
@@ -71,7 +71,7 @@ void ServicioTrackeable::setAuthors(OID id, std::set<OID> &setauthors) {
 void ServicioTrackeable::addAuthor(OID id, OID author) {
     if (!JsonRepository::exist(id)) throw std::invalid_argument("El id a modificar no existe, addAuthor");
     if (!JsonRepository::exist(author)) throw std::invalid_argument("El id de autor no existe, addAuthor");
-    if (author.getPrefix() != "SH") throw std::invalid_argument("El id de autor no es de tipo Stakeholder, addAuthor");
+    if (author.getPrefix() != Stakeholder::getPrefixID()) throw std::invalid_argument("El id de autor no es de tipo Stakeholder, addAuthor");
     auto obj = JsonRepository::loadTrackeable(id);
     obj.addAuthor(author);
     JsonRepository::save(&obj);
@@ -80,7 +80,7 @@ void ServicioTrackeable::addAuthor(OID id, OID author) {
 void ServicioTrackeable::removeAuthor(OID id, OID author) {
     if (!JsonRepository::exist(id)) throw std::invalid_argument("El id a modificar no existe, removeAuthor");
     if (!JsonRepository::exist(author)) throw std::invalid_argument("El id de autor no existe, removeAuthor");
-    if (author.getPrefix() != "SH") throw std::invalid_argument("El id de autor no es de tipo Stakeholder, removeAuthor");
+    if (author.getPrefix() != Stakeholder::getPrefixID()) throw std::invalid_argument("El id de autor no es de tipo Stakeholder, removeAuthor");
     auto obj = JsonRepository::loadTrackeable(id);
     obj.removeAuthor(author);
     JsonRepository::save(&obj);

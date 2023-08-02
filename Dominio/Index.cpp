@@ -129,7 +129,7 @@ std::vector<ElementosIndex> Index::getIndex()
     unsigned int i = 1;
     unsigned int encontrados = 1;
     unsigned cantidadElementos = getNumberOfElements(nodo);
-    while (encontrados < cantidadElementos)
+    while (encontrados <= cantidadElementos)
     {
         if (nodo != Agen<ElementosIndex>::NODO_NULO) {
             auto elemento = index.elemento(nodo);

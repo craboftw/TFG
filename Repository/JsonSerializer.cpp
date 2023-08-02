@@ -1016,6 +1016,12 @@ void JsonSerializer::visit(Interview interview) {
     JsonRepository::save(j);
 }
 
+<<<<<<< HEAD
+
+
+
+=======
+>>>>>>> main
 Interview JsonSerializer::deserializeInterview(json j) {
 
         /*｡o°✥✤✣TRACKEABLE PART✣✤✥°o｡*/
@@ -1051,6 +1057,190 @@ std::vector<Question> JsonSerializer::deserializeVectorOfQuestions(json j) {
     return questions;
 }
 
+<<<<<<< HEAD
+
+json JsonSerializer::serializeVectorOfAsociationEnd(std::vector<AsociationEnd> associationEnds) {
+    json j;
+    for (auto &associationEnd : associationEnds) {
+        json jAssociationEnd;
+        jAssociationEnd["classID"] = serializeOID(associationEnd.classID);
+        jAssociationEnd["name"] = associationEnd.name;
+        jAssociationEnd["min"] = associationEnd.min;
+        jAssociationEnd["max"] = associationEnd.max;
+        jAssociationEnd["description"] = associationEnd.description;
+        jAssociationEnd["comentario"] = associationEnd.comentario;
+
+        j.push_back(jAssociationEnd);
+    }
+    return j;
+}
+
+std::vector<AsociationEnd> JsonSerializer::deserializeVectorOfAsociationEnd(json j) {
+    std::vector<AsociationEnd> associationEnds;
+    for (auto &associationEnd : j) {
+        AsociationEnd a;
+        a.classID = deserializeOID(associationEnd["classID"]);
+        a.name = associationEnd["name"];
+        a.min = associationEnd["min"];
+        a.max = associationEnd["max"];
+        a.description = associationEnd["description"];
+        a.comentario = associationEnd["comentario"];
+
+        associationEnds.push_back(a);
+    }
+    return associationEnds;
+}
+
+json JsonSerializer::serializeVectorOfAttribute(std::vector<Attribute> attributevector) {
+    json j;
+    for (auto &attribute : attributevector) {
+        json jAttribute;
+        jAttribute["name"] = attribute.name;
+        jAttribute["componentClass"] = serializeOID(attribute.componentClass);
+        jAttribute["type"] = attribute.type;
+        jAttribute["min"] = attribute.min;
+        jAttribute["max"] = attribute.max;
+        jAttribute["defaultValue"] = attribute.defaultValue;
+        jAttribute["description"] = attribute.description;
+        jAttribute["comentario"] = attribute.comentario;
+
+        j.push_back(jAttribute);
+    }
+    return j;
+}
+
+json JsonSerializer::serializeVectorOfInvariants(std::vector<Invariant> invariants) {
+    json j;
+    for (auto &invariant : invariants) {
+        json jInvariant;
+        jInvariant["name"] = invariant.name;
+        jInvariant["description"] = invariant.description;
+        jInvariant["OCL"] = invariant.OCL;
+        jInvariant["comentario"] = invariant.comentario;
+
+        j.push_back(jInvariant);
+    }
+    return j;
+}
+
+void JsonSerializer::visit(Class class1)
+{
+    json j;
+
+    /*｡o°✥✤✣TRACKEABLE PART✣✤✥°o｡*/
+    j= trackeablePart(&class1,j);
+
+    /*｡o°✥✤✣CLASS PART✣✤✥°o｡*/
+    j["abstract"] = class1.getAbstract();
+    j["superClasses"] = serializeSetOfOID(class1.getSuperClasses());
+    j["specializationType1"] = class1.getSpecialization1();
+    j["specializationType2"] = class1.getSpecialization2();
+    j["attributes"] = serializeVectorOfAttribute(class1.getAttributes());
+    j["invariants"] = serializeVectorOfInvariants(class1.getInvariants());
+    j["components"] = serializeVectorOfAttribute(class1.getComponents());
+
+    JsonRepository::save(j);
+}
+
+Class JsonSerializer::deserializeClass(json j)
+{
+    /*｡o°✥✤✣TRACKEABLE PART✣✤✥°o｡*/
+    TrackeableDTO trackeableDTO = deserializeTrackeableDTO(j);
+
+    /*｡o°✥✤✣CLASS GET✣✤✥°o｡*/
+    bool abstract = j["abstract"];
+    std::set<OID> superClasses = deserializeSetOfOID(j["superClasses"]);
+    specializationType1 specializationType1 = j["specializationType1"];
+    specializationType2 specializationType2 = j["specializationType2"];
+    std::vector<Attribute> attributes = deserializeVectorOfAttribute(j["attributes"]);
+    std::vector<Invariant> invariants = deserializeVectorOfInvariants(j["invariants"]);
+    std::vector<Attribute> components = deserializeVectorOfAttribute(j["components"]);
+
+    /*｡o°✥✤✣TRACKEABLE SET✣✤✥°o｡*/
+    Class class1(trackeableDTO.id.getId());
+    setTrackeablePart(trackeableDTO, &class1);
+
+    /*｡o°✥✤✣CLASS SET✣✤✥°o｡*/
+    class1.setAbstract(abstract);
+    class1.setSuperClasses(superClasses);
+    class1.setSpecialization1(specializationType1);
+    class1.setSpecialization2(specializationType2);
+    class1.setAttributes(attributes);
+    class1.setInvariants(invariants);
+    class1.setComponents(components);
+
+    return class1;
+}
+
+std::vector<Attribute> JsonSerializer::deserializeVectorOfAttribute(json reference) {
+    std::vector<Attribute> attributes;
+    for (auto &attribute : reference) {
+        Attribute a;
+        a.name = attribute["name"];
+        a.componentClass = deserializeOID(attribute["componentClass"]);
+        a.type = attribute["type"];
+        a.min = attribute["min"];
+        a.max = attribute["max"];
+        a.defaultValue = attribute["defaultValue"];
+        a.description = attribute["description"];
+        a.comentario = attribute["comentario"];
+
+        attributes.push_back(a);
+    }
+    return attributes;
+}
+
+std::vector<Invariant> JsonSerializer::deserializeVectorOfInvariants(json reference) {
+    std::vector<Invariant> invariants;
+    for (auto &invariant : reference) {
+        Invariant i;
+        i.name = invariant["name"];
+        i.description = invariant["description"];
+        i.OCL = invariant["OCL"];
+        i.comentario = invariant["comentario"];
+
+        invariants.push_back(i);
+    }
+    return invariants;
+}
+
+void JsonSerializer::visit(Asociation asociation) {
+    json j;
+
+    /*｡o°✥✤✣TRACKEABLE PART✣✤✥°o｡*/
+    j= trackeablePart(&asociation,j);
+
+    /*｡o°✥✤✣ASOCIATION PART✣✤✥°o｡*/
+
+    j["asociationEnds"] = serializeVectorOfAsociationEnd(asociation.getAsociationEnds());
+    j["attributes"] = serializeVectorOfAttribute(asociation.getAttributes());
+    j["invariants"] = serializeVectorOfInvariants( asociation.getInvariants());
+
+    JsonRepository::save(j);
+}
+
+Asociation JsonSerializer::deserializeAsociation(json j) {
+    /*｡o°✥✤✣TRACKEABLE PART✣✤✥°o｡*/
+    TrackeableDTO trackeableDTO = deserializeTrackeableDTO(j);
+
+    /*｡o°✥✤✣ASOCIATION GET✣✤✥°o｡*/
+    std::vector<AsociationEnd> asociationEnds = deserializeVectorOfAsociationEnd(j["asociationEnds"]);
+    std::vector<Attribute> attributes = deserializeVectorOfAttribute(j["attributes"]);
+    std::vector<InvariantAsociation> invariants = deserializeVectorOfInvariants(j["invariants"]);
+
+    /*｡o°✥✤✣TRACKEABLE SET✣✤✥°o｡*/
+    Asociation asociation(trackeableDTO.id.getId());
+    setTrackeablePart(trackeableDTO, &asociation);
+
+    /*｡o°✥✤✣ASOCIATION SET✣✤✥°o｡*/
+    asociation.setAsociationEnds(asociationEnds);
+    asociation.setAttributes(attributes);
+    asociation.setInvariants(invariants);
+
+    return asociation;
+}
+=======
+>>>>>>> main
 
 
 

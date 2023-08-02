@@ -25,7 +25,7 @@ class ServicioPersona : public ServicioTrackeable{
     std::string brandRelationship*/
 
     public:
-    OID createPersona();
+    OID createPersona(std::string nombre);
     void setAge(OID id, unsigned age);
     void setGender(OID id, const std::string &gender);
     void setLocation(OID id, const std::string &location);

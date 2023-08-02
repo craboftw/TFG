@@ -53,7 +53,8 @@ void ServicioStakeholder::setWorksForOrganization(OID id, OID _worksForOrganizat
 }
 
 std::string ServicioStakeholder::getEmail(OID id) {
-    if (id.getPrefix() != Stakeholder::getPrefixID()) throw std::invalid_argument("El id a leer no es de un Stakeholder, getEmail");
+    if (id.getPrefix() != Stakeholder::getPrefixID())
+        throw std::invalid_argument("El id a leer no es de un Stakeholder, getEmail");
     if (!fileJsonManager.exist(id)) throw std::invalid_argument("El id a leer no existe, getEmail");
     Stakeholder stakeholder = fileJsonManager.loadStakeholder(id);
     return stakeholder.getEmail();

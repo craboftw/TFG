@@ -13,6 +13,10 @@
 #include "Dominio/Index.h"
 #include "Dominio/Persona.h"
 #include "Dominio/Interview.h"
+<<<<<<< HEAD
+#include "Dominio/Clases/Class.h"
+=======
+>>>>>>> main
 
 
 
@@ -44,6 +48,11 @@ public:
     void visit(Index index);
     void visit(Persona persona);
     void visit(Interview interview);
+<<<<<<< HEAD
+    void visit(Class class1);
+    void visit(Asociation asociation);
+=======
+>>>>>>> main
 
     void visit(Trackeable* trackeable) override;
     void visit(Priority *priority);
@@ -66,6 +75,11 @@ public:
     Index deserializeIndex(json j);
     Persona deserializePersona(json j);
     Interview deserializeInterview(json j);
+<<<<<<< HEAD
+    Class deserializeClass(json j);
+    Asociation deserializeAsociation(json j);
+=======
+>>>>>>> main
 
 
     Trackeable *deserializeTrackeable(json j);
@@ -111,6 +125,26 @@ public:
     json serializeVectorOfQuestions(std::vector<Question> questions);
 
     std::vector<Question> deserializeVectorOfQuestions(json j);
+<<<<<<< HEAD
+
+    json serializeVectorOfAsociationEnd(std::vector<AsociationEnd> associationEnds);
+
+    json serializeVectorOfAttribute(Attribute attribute);
+
+    json serializeVectorOfAttribute(std::vector<Attribute> attributevector);
+
+    json serializeVectorOfInvariants(std::vector<Invariant> invariants);
+
+    void serializeClass(json j);
+
+
+    std::vector<Attribute> deserializeVectorOfAttribute(json reference);
+
+    std::vector<Invariant> deserializeVectorOfInvariants(json reference);
+
+    std::vector<AsociationEnd> deserializeVectorOfAsociationEnd(json j);
+=======
+>>>>>>> main
 };
 
 

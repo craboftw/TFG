@@ -6,6 +6,7 @@
 #include "ServicioHTML.h"
 #include "Servicio/ServicioPersona.h"
 #include "Servicio/ServicioInterview.h"
+#include "OID.h"
 
 
 // Color constants or variables as std::string
@@ -16,8 +17,41 @@ const std::string COLOR_STEP_SEPARATOR = "#ccc";
 const std::string COLOR_EXCEPTION_SEPARATOR = "#000000";
 const std::string COLOR_BORDER = "#08088A";
 const std::string COLOR_NAME = "#191970";
-const std::string headHtml = "<html><meta charset=\"UTF-8\"><style>table { width: 100%; border-collapse: collapse; border: 3px solid " + COLOR_BORDER + "; }th, td { padding: 10px; text-align: left; border-bottom: 1px solid " + COLOR_STEP_SEPARATOR + "; font-family: Arial; }th { background-color: "+COLOR_HEADER_BG+"; color: " + COLOR_HEADER_TEXT + "; }td { background-color: " + COLOR_CELL_BG + "; }.step-separator {border-bottom: 1px dashed " + COLOR_STEP_SEPARATOR + ";margin-bottom: 10px;padding-bottom: 10px;}</style><table>";
+const std::string headHtml = R"(
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 8px;
+      border: 3px solid )" + COLOR_BORDER + R"(;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid )" + COLOR_STEP_SEPARATOR + R"(;
+      font-family: Arial;
+    }
+    th {
+      background-color: )" + COLOR_HEADER_BG + R"(;
+      color: )" + COLOR_HEADER_TEXT + R"(;
+    }
+    td {
+      background-color: )" + COLOR_CELL_BG + R"(;
+    }
+    .step-separator {
+      border-bottom: 1px dashed )" + COLOR_STEP_SEPARATOR + R"(;
+      margin-bottom: 10px;
+      padding-bottom: 10px;
 
+    }
+  </style>
+</head>
+<body>
+  <table>
+)";
 
 
 std::string HtmlManager::generateHead(OID id){
@@ -38,6 +72,7 @@ std::string HtmlManager::generateTablePriority(OID id) {
 
 std::string obtenerTipoTrackeable(OID id)
 {
+
     std::map<std::string ,std::string > mapa;
     mapa[ActorUC::getPrefixID()] = "Actor de caso de uso";
     mapa[UserCase::getPrefixID()] = "Caso de uso";
@@ -50,7 +85,10 @@ std::string obtenerTipoTrackeable(OID id)
     mapa[SystemObjective::getPrefixID()] = "Objetivo del sistema";
     mapa[MatrixTraces::getPrefixID()] = "Matriz de trazabilidad";
     mapa[UserStories::getPrefixID()] = "Historia de usuario";
-
+    mapa[Interview::getPrefixID()] = "Entrevista";
+    mapa[Persona::getPrefixID()] = "Persona";
+    if (mapa.find(id) != mapa.end())
+        return "Tipo por determinar";
     return mapa[id.getPrefix()];
 }
 
@@ -154,6 +192,12 @@ std::string HtmlManager::generateTableChanges(OID id) {
         html += "</td></tr>";
     }
 
+    // ImprimirLosComentarios
+    auto comments = servicioTrackeable.getComments(id);
+    if (!comments.empty()) {
+        html += "<tr><th >Comentarios</th><td colspan=3>" + comments + "</td></tr>";
+    }
+
 
     return html;
 
@@ -200,8 +244,11 @@ std::string HtmlManager::generateTableUserCase(OID id) {
 
     // Agregar el campo abstracto en una fila
     html += "<tr><th >Abstracto</th>";
-    std::string abstract = servicioUserCase.getAbstract(id) ? "Sí" : "No<td colspan=3>" + abstract + "</td></tr>";
-
+    bool abstracto = servicioUserCase.getAbstract(id);
+    if (abstracto)
+        html += "<td colspan=3>Si</td></tr>";
+    else
+        html += "<td colspan=3>No</td></tr>";
     // Agregar la precondición en una fila
     html += "<tr><th >Precondición</th><td colspan=3>" + servicioUserCase.getPrecondition(id) + "</td></tr>";
 
@@ -489,8 +536,8 @@ std::string HtmlManager::generateTableRestrictionRequirement(OID requirement) {
 std::string HtmlManager::generateTableOrganization(OID organization) {
     std::string html = generateHead(organization) ;
 
-    html += generateTableChanges(organization);
     html += "<tr><th >Informacion de Contacto</th><td colspan=3>" + servicioOrganization.getContactInfo(organization) + "</td></tr>";
+    html += generateTableChanges(organization);
 
     html += "</table>";    html += "</html>";
 
@@ -628,105 +675,82 @@ std::string HtmlManager::generateTablePersona(OID id) {
     std::string gender = servicioPersona.getGender(id);
     unsigned age = servicioPersona.getAge(id);
     std::string ageString = std::to_string(age);
-    //if both are not empty then we put them in the same row
-    if (!gender.empty() and age!=0)
-    {
-        html += "<tr><th >Edad</th><td >" + ageString + "</td><th >Genero</th><td >" + gender + "</td></tr>";
-    }
-    else
-    {
-        if(gender.empty() and age != 0)
-        {
-            html += "<tr> <th >Edad</th> <td colspan=3>" + ageString + "</td> </tr>";
-        }
-        {
-            html += "<tr> <th >Edad</th> <td colspan=3>" + ageString + "</td> </tr>";
-        }
-        if(age != 0 and !gender.empty())
-        {
-            html += "<tr> <th >Genero</th> <td >" + gender + "</td> </tr>";
-        }
-    }
-    std::string location = servicioPersona.getLocation(id);
-    if (!location.empty())
-    {
-        html += "<tr><th >Ubicacion</th><td colspan=3>" + location + "</td></tr>";
-    }
+    // if both are not empty then we put them in the same row
     std::string photo = servicioPersona.getPhoto(id);
-    if (!photo.empty())
-    {
-        html += "<tr><th >Foto</th><td colspan=3>" + photo + "</td></tr>";  }
-    std::string occupation = servicioPersona.getOccupation(id);
-    if (!occupation.empty())
+    if (!photo.empty()) {
+        // photo is the path to the photo with the size of 400 max in any dimension
+        html += "<tr><th>Foto</th><td colspan=3><img src='" + photo + "' alt='Foto de " + servicioPersona.getName(id) + "' style='max-width: 400px; max-height: 400px;'></td></tr>";
 
-    {
-        html += "<tr><th >Ocupacion</th><td colspan=3>" + occupation + "</td></tr>";
+        if (!gender.empty() && age != 0) {
+            html += "<tr><th>Edad</th><td>" + ageString + "</td><th>Género</th><td>" + gender + "</td></tr>";
+        } else {
+            if (gender.empty() && age != 0) {
+                html += "<tr><th>Edad</th><td colspan=3>" + ageString + "</td></tr>";
+            } else if (!gender.empty() && age == 0) {
+                html += "<tr><th>Género</th><td colspan=3>" + gender + "</td></tr>";
+            }
+        }
+    }
+
+    std::string location = servicioPersona.getLocation(id);
+    if (!location.empty()) {
+        html += "<tr><th>Ubicación</th><td colspan=3>" + location + "</td></tr>";
+    }
+
+    std::string occupation = servicioPersona.getOccupation(id);
+    if (!occupation.empty()) {
+        html += "<tr><th>Ocupación</th><td colspan=3>" + occupation + "</td></tr>";
     }
     std::string background = servicioPersona.getBackground(id);
-    if (!background.empty())
-    {
-        html += "<tr><th >Antecedentes</th><td colspan=3>" + background + "</td></tr>";
+    if (!background.empty()) {
+        html += "<tr><th>Antecedentes</th><td colspan=3>" + background + "</td></tr>";
     }
     std::string goals = servicioPersona.getGoals(id);
-    if (!goals.empty())
-    {
-        html += "<tr><th >Metas</th><td colspan=3>" + goals + "</td></tr>";
+    if (!goals.empty()) {
+        html += "<tr><th>Metas</th><td colspan=3>" + goals + "</td></tr>";
     }
     std::string challenges = servicioPersona.getChallenges(id);
-    if (!challenges.empty())
-    {
-        html += "<tr><th >Desafios</th><td colspan=3>" + challenges + "</td></tr>";
+    if (!challenges.empty()) {
+        html += "<tr><th>Desafíos</th><td colspan=3>" + challenges + "</td></tr>";
     }
     std::string behavior = servicioPersona.getBehavior(id);
-    if (!behavior.empty())
-    {
-        html += "<tr><th >Comportamiento</th><td colspan=3>" + behavior + "</td></tr>";
+    if (!behavior.empty()) {
+        html += "<tr><th>Comportamiento</th><td colspan=3>" + behavior + "</td></tr>";
     }
     std::string communicationStyle = servicioPersona.getCommunicationStyle(id);
-    if (!communicationStyle.empty())
-    {
-        html += "<tr><th >Estilo de comunicacion</th><td colspan=3>" + communicationStyle + "</td></tr>";
+    if (!communicationStyle.empty()) {
+        html += "<tr><th>Estilo de comunicación</th><td colspan=3>" + communicationStyle + "</td></tr>";
     }
     std::string technologyAdoption = servicioPersona.getTechnologyAdoption(id);
-    if (!technologyAdoption.empty())
-    {
-        html += "<tr><th >Adopcion de tecnologia</th><td colspan=3>" + technologyAdoption + "</td></tr>";
+    if (!technologyAdoption.empty()) {
+        html += "<tr><th>Adopción de tecnología</th><td colspan=3>" + technologyAdoption + "</td></tr>";
     }
     std::string influences = servicioPersona.getInfluences(id);
-    if (!influences.empty())
-    {
-        html += "<tr><th >Influencias</th><td colspan=3>" + influences + "</td></tr>";
+    if (!influences.empty()) {
+        html += "<tr><th>Influencias</th><td colspan=3>" + influences + "</td></tr>";
     }
     std::string informationSources = servicioPersona.getInformationSources(id);
-    if (!informationSources.empty())
-    {
-        html += "<tr><th >Fuentes de informacion</th><td colspan=3>" + informationSources + "</td></tr>";
+    if (!informationSources.empty()) {
+        html += "<tr><th>Fuentes de información</th><td colspan=3>" + informationSources + "</td></tr>";
     }
     std::string userJourney = servicioPersona.getUserJourney(id);
-    if (!userJourney.empty())
-    {
-        html += "<tr><th >Viaje del usuario</th><td colspan=3>" + userJourney + "</td></tr>";
+    if (!userJourney.empty()) {
+        html += "<tr><th>Viaje del usuario</th><td colspan=3>" + userJourney + "</td></tr>";
     }
     std::string brandRelationship = servicioPersona.getBrandRelationship(id);
-    if (!brandRelationship.empty())
-    {
-        html += "<tr><th >Relacion con la marca</th><td colspan=3>" + brandRelationship + "</td></tr>";
+    if (!brandRelationship.empty()) {
+        html += "<tr><th>Relación con la marca</th><td colspan=3>" + brandRelationship + "</td></tr>";
     }
-    html+= generateTableChanges(id);
+    html += generateTableChanges(id);
     html += "</table></html>";
 
-
-
-      return html;
+    return html;
 }
+
 
 std::string HtmlManager::generateTableInterview( OID id) {
     std::string html = generateHead(id);
     ServicioInterview servicioInterview;
-    /*    std::vector<Question> questions;
-    std::set<OID> stakeholdersAsking;
-    std::set<OID> stakeholdersInterviewed;
-    std::string place;*/
     std::vector<Question> questions = servicioInterview.getQuestions(id);
     std::set<OID> stakeholdersAsking = servicioInterview.getStakeholdersAsking(id);
     std::set<OID> stakeholdersInterviewed = servicioInterview.getStakeholdersInterviewed(id);
@@ -740,33 +764,40 @@ if (!place.empty())
         html += "<tr><th >Stakeholders preguntando</th><td colspan=3>";
         for (auto stakeholder : stakeholdersAsking)
         {
-            html += servicioTrackeable.getName(stakeholder) + "<br>";
+            html += servicioTrackeable.getName(stakeholder) + ", ";
         }
+        //delete last space and comma and add .
+        html.pop_back();
+        html.pop_back();
+        html += ".";
         html += "</td></tr>";
     }
     if (!stakeholdersInterviewed.empty())
     {
-        html += "<tr><th >Stakeholders entrevistados</th><td colspan=3>";
+        html += "<tr><th >Stakeholders entrevistados</th><td colspan=9>";
         for (auto stakeholder : stakeholdersInterviewed)
         {
-            html += servicioTrackeable.getName(stakeholder) + "<br>";
+            html += servicioTrackeable.getName(stakeholder) + ", ";
         }
+        //delete last space and comma and add .
+        html.pop_back();
+        html.pop_back();
+        html += ".";
         html += "</td></tr>";
     }
     if (!questions.empty())
     {
-        html += "<tr><th >Preguntas</th><td colspan=3>";
         //question.question and question.answer
         for (auto question : questions)
         {
-         //color the question
+         //caracter circle solid blue : &#9898;
+            html += "<tr><td colspan=9>";
             html += "<span style=\"color:blue\">" + question.question + "</span><br>";
             html += question.answer + "<br>";
         }
         html += "</td></tr>";
     }
-
-
+    
     return html; 
 
 }

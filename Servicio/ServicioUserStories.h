@@ -11,6 +11,7 @@
 #include "Repository/JsonRepository.h"
 #include "ServicioTrackeable.h"
 #include "ServicioPriority.h"
+#include "OID.h"
 
 class ServicioUserStories : public ServicioTrackeable, public ServicioPriority{
 public:

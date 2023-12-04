@@ -9,6 +9,7 @@
 #include "Dominio/Trackeable/Stakeholder.h"
 #include "Dominio/Trackeable/MatrixTraces.h"
 #include "Dominio/UserCaseDiagram.h"
+#include "OID.h"
 
 using json = nlohmann::json;
 
@@ -1016,12 +1017,9 @@ void JsonSerializer::visit(Interview interview) {
     JsonRepository::save(j);
 }
 
-<<<<<<< HEAD
 
 
 
-=======
->>>>>>> main
 Interview JsonSerializer::deserializeInterview(json j) {
 
         /*｡o°✥✤✣TRACKEABLE PART✣✤✥°o｡*/
@@ -1057,7 +1055,6 @@ std::vector<Question> JsonSerializer::deserializeVectorOfQuestions(json j) {
     return questions;
 }
 
-<<<<<<< HEAD
 
 json JsonSerializer::serializeVectorOfAsociationEnd(std::vector<AsociationEnd> associationEnds) {
     json j;
@@ -1239,8 +1236,6 @@ Asociation JsonSerializer::deserializeAsociation(json j) {
 
     return asociation;
 }
-=======
->>>>>>> main
 
 
 

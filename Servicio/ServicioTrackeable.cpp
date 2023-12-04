@@ -4,6 +4,7 @@
 
 #include "ServicioTrackeable.h"
 #include "ServicioMatrixTraces.h"
+#include "OID.h"
 
 void ServicioTrackeable::setName(OID id, std::string objName) {
     if(objName.empty()) throw std::invalid_argument("Nombre vacio, setName");

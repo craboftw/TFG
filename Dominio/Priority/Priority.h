@@ -3,7 +3,7 @@
 
 #include <string>
 #include "Dominio/Trackeable/Trackeable.h"
-
+#include "OID.h"
 
 
 class Priority : virtual public Trackeable{

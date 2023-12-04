@@ -1,787 +1,25 @@
-#include <iostream>
-#include <fstream>
+#include "Servicio/ServicioActorUC.h"
+#include "Servicio/ServicioGeneric.h"
+#include "Servicio/ServicioInformationRequirement.h"
+#include "dialog.h"
+
+#include <QApplication>
+#include "Servicio/ServicioOrganization.h"
+#include "HTML/ServicioHTML.h"
 #include "Dominio/Generic.h"
-#include "Repository/JsonSerializer.h"
-#include "Dominio/Trackeable/Stakeholder.h"
-#include "nlohmann/json.hpp"
-#include "Dominio/Trackeable/Organization.h"
 #include "Dominio/InformationRequirement.h"
-#include "Dominio/UserCaseDiagram.h"
 #include "Servicio/ServicioUserCase.h"
-#include "HTML/HtmlManager.h"
-#include "Dominio/Trackeable/MatrixTraces.h"
 #include "Servicio/ServicioMatrixTraces.h"
 #include "HTML/ServicioHTML.h"
 #include "Servicio/ServicioDiagramUC.h"
 #include "Servicio/ServicioInterview.h"
-
-std::string generateHTML(InformationRequirement& requirement) {
-    std::string html;
-
-    // Estilos CSS para la tabla
-    html += "<style>";
-    html += "table { width: 100%; border-collapse: collapse; }";
-    html += "th, td { padding: 10px; text-align: left; }";
-    html += "th { background-color: #333; color: #fff; }";
-    html += "td { background-color: #f1f1f1; }";
-    html += "</style>";
-
-    // Abrir la tabla
-    html += "<table>";
-
-    // Agregar el ID del requerimiento en una fila de encabezado
-    html += "<tr>";
-    html += "<th style='font-family: Arial, sans-serif;'>ID</th>";
-    html += "<td colspan='3' style='font-family: Arial, sans-serif;'>" + static_cast<std::string>(requirement.getId()) + "</td>";
-    html += "</tr>";
-
-    // Agregar el nombre del requerimiento en una fila
-    html += "<tr>";
-    html += "<th style='font-family: Arial, sans-serif;'>Nombre</th>";
-    html += "<td colspan='3' style='font-family: Arial, sans-serif;'>" + requirement.getName() + "</td>";
-    html += "</tr>";
-
-    // Agregar la descripción del requerimiento en una fila
-    html += "<tr>";
-    html += "<th style='font-family: Arial, sans-serif;'>Descripción</th>";
-    html += "<td colspan='3' style='font-family: Arial, sans-serif;'>" + requirement.getDescription() + "</td>";
-    html += "</tr>";
-    // Agregar Max Simultaneous Occurrence y Avg Simultaneous Occurrence en la misma fila
-    html += "<tr>";
-    html += "<th style='font-family: Arial, sans-serif;'>Max Simultaneous Occurrence</th>";
-    html += "<td colspan='3' style='font-family: Arial, sans-serif;'>" + std::to_string(requirement.getMaxSimultaneousOccurrence()) + "</td>";
-    html += "</tr>";
-
-    // Agregar Tiempo estimado máximo de vida y Tiempo estimado promedio de vida en la misma fila
-    html += "<tr>";
-    html += "<th style='font-family: Arial, sans-serif;'>Tiempo estimado máximo de vida</th>";
-    html += "<td colspan='3' style='font-family: Arial, sans-serif;'>" + requirement.strLifeMaxEstimate() + "</td>";
-    html += "</tr>";
-
-    html += "<tr>";
-    html += "<th style='font-family: Arial, sans-serif;'>Tiempo estimado promedio de vida</th>";
-    html += "<td colspan='3' style='font-family: Arial, sans-serif;'>" + requirement.strLifeAvgEstimate() + "</td>";
-    html += "</tr>";
-
-    // Agregar la importancia y urgencia del requerimiento en una fila
-    html += "<tr>";
-    html += "<th style='font-family: Arial, sans-serif;'>Importancia</th>";
-    html += "<td style='font-family: Arial, sans-serif;'>" + requirement.strImportanceLevel() + "</td>";
-    html += "<th style='font-family: Arial, sans-serif;'>Urgencia</th>";
-    html += "<td style='font-family: Arial, sans-serif;'>" + requirement.strUrgencyLevel() + "</td>";
-    html += "</tr>";
-
-    // Agregar la fase de desarrollo y estabilidad del requerimiento en una fila
-    html += "<tr>";
-    html += "<th style='font-family: Arial, sans-serif;'>Fase de desarrollo</th>";
-    html += "<td style='font-family: Arial, sans-serif;'>" + requirement.strPhase() + "</td>";
-    html += "<th style='font-family: Arial, sans-serif;'>Estabilidad</th>";
-    html += "<td style='font-family: Arial, sans-serif;'>" + requirement.strEstability() + "</td>";
-    html += "</tr>";
-
-    // Cerrar la tabla
-    html += "</table>";
-
-    return html;
-}
-
-
-
-
-
-
-// for convenience
-using json = nlohmann::json;
-
-void crearstakeholder(){
-
-
-    Stakeholder stakeholder(1);
-    stakeholder.setName("Fran");
-    stakeholder.setDescription("Soy Fran");
-    stakeholder.setVersionMajor("1");
-    stakeholder.setVersionMinor("0");
-    stakeholder.setComments("Comentario");
-    stakeholder.setEmail("fran.lo@pe.z");
-    stakeholder.setPhone("123456789");
-    stakeholder.setAddress("Calle falsa 123");
-    stakeholder.setStakeholderRole("Jefazo");
-
-
-    JsonSerializer jsoneitor;
-    jsoneitor.visit(stakeholder);
-
-}
-
-void print(Stakeholder a)
-{
-    //Quiero imprimir las tildes y las ñ
-    std::cout << "ID: " << a.getId().operator std::string() << std::endl;
-    std::cout << "Name: " << a.getName() << std::endl;
-    std::cout << "Description: " << a.getDescription() << std::endl;
-    std::cout << "Version: " << a.getVersionMajor() << "." << a.getVersionMinor() << std::endl;
-    std::cout << "Comments: " << a.getComments() << std::endl;
-    std::cout << "Email: " << a.getEmail() << std::endl;
-    std::cout << "Phone: " << a.getPhone() << std::endl;
-    std::cout << "Address: " << a.getAddress() << std::endl;
-    std::cout << "Stakeholder Role: " << a.getStakeholderRole() << std::endl;
-    std::cout << "Works for Organization: " << a.getWorksForOrganization().operator std::string() << std::endl;
-    //prueba de los set y list
-auto set1 = a.getTracesFrom();
-auto set2 = a.getTracesTo();
-auto list = a.getChanges();
-auto set3 = a.getAuthors();
-std::cout << "Traces From: " << std::endl;
-for(auto i : set1)
-{
-    std::cout << i.operator std::string() << std::endl;
-}
-std::cout << "Traces To: " << std::endl;
-for(auto i : set2)
-{
-    std::cout << i.operator std::string() << std::endl;
-}
-std::cout << "Changes: " << std::endl;
-for(auto i : list)
-{
-    std::cout << i.getVersion() << std::endl;
-    std::cout << i.getDate().toString() << std::endl;
-    std::cout << i.getComments() << std::endl;
-}
-std::cout << "Authors: " << std::endl;
-for(auto i : set3)
-{
-    std::cout << i.operator std::string() << std::endl;
-}
-
-}
-
-void crearOrganization(){
-    Organization organization(1);
-    organization.setName("Megacorp");
-    organization.setDescription("Fabricante de Protomascotas");
-    organization.setVersionMajor("1");
-    organization.setVersionMinor("0");
-    organization.setComments("Comunicacion por correo electronico");
-    //la informacion de contacto tiene que ser un string muy largo y explayado.
-    organization.setContactInfo("Nombre de la empresa: Megacorp\nTipo de empresa: Megacorp es una empresa ficticia especializada en tecnología y servicios innovadores.\nDirección: Avenida Tecnológica 1234, Ciudad Futura, País Imaginario.\nTeléfono: +1 (555) 123-4567\nCorreo electrónico: info@megacorp.com\nSitio web: www.megacorp.com\nRedes sociales:\nFacebook: www.facebook.com/megacorp\nTwitter: www.twitter.com/megacorp\nInstagram: www.instagram.com/megacorp\nHorario de atención al cliente: \nLunes a viernes: 9:00 a.m. - 6:00 p.m.\nSábados: 9:00 a.m. - 1:00 p.m.\n\nNota: Esta información es completamente ficticia y no corresponde a ninguna empresa real.");
-    //prueba de traces, changes y authors
-    organization.addAuthor({"SH",1});
-    JsonSerializer jsoneitor;
-    jsoneitor.visit(organization);
-
-}
-
-void print(Organization a){
-    setlocale(LC_ALL, "spanish");
-    std::cout << "ID: " << a.getId().operator std::string() << std::endl;
-    std::cout << "Name: " << a.getName() << std::endl;
-    std::cout << "Description: " << a.getDescription() << std::endl;
-    std::cout << "Version: " << a.getVersionMajor() << "." << a.getVersionMinor() << std::endl;
-    std::cout << "Comments: " << a.getComments() << std::endl;
-    std::cout << "Contact Info: " << a.getContactInfo() << std::endl;
-    //prueba de los set y list
-}
-
-
-void print(UserCase userCase)
-{
-    setlocale(LC_ALL, "spanish");
-    std::cout << "ID: " << userCase.getId().operator std::string() << std::endl;
-    std::cout << "Name: " << userCase.getName() << std::endl;
-    std::cout << "Description: " << userCase.getDescription() << std::endl;
-    std::cout << "Version: " << userCase.getVersionMajor() << "." << userCase.getVersionMinor() << std::endl;
-    std::cout << "Comments: " << userCase.getComments() << std::endl;
-    std::cout << "Precondition: " << userCase.getPrecondition() << std::endl;
-    std::cout << "Postcondition: " << userCase.getPostcondition() << std::endl;
-
-    std::cout << "Urgency Level: " << userCase.getUrgencyLevel() << std::endl;
-    std::cout << "Importance Level: " << userCase.getImportanceLevel() << std::endl;
-    std::cout << "Urgency Level: " << userCase.getImportanceLevel() << std::endl;
-    std::cout << "Phase level: " << userCase.getPhase() << std::endl;
-
-    std::cout << "Abstract: " << userCase.isAbstract() << std::endl;
-    std::cout << "Precondition: " << userCase.getPrecondition() << std::endl;
-    std::cout << "Postcondition: " << userCase.getPostcondition() << std::endl;
-    for (auto objective : userCase.getObjectives())
-    {
-        std::cout << "Objective: " << objective.operator std::string() << std::endl;
-    }
-    for (auto author : userCase.getAuthors())
-    {
-        std::cout << "Author: " << author.operator std::string() << std::endl;
-    }
-    for (auto actor : userCase.getActors())
-    {
-        std::cout << "Actor: " << actor.operator std::string() << std::endl;
-    }
-    int i = 0;
-
-    for (auto steps : userCase.getSteps())
-    {
-        std::cout << "\n";
-        std::cout << "Step " << ++i << std::endl;
-        std::cout << "Step: " << steps.getDescription() << std::endl;
-        std::cout << "Abstract: " << steps.getAbstract() << std::endl;
-        std::cout << "Condition: " << steps.getCondition() << std::endl;
-        std::cout << "Comments: " << steps.getComments() << std::endl;
-        std::cout << "Type: " << steps.getType() << std::endl;
-        std::cout << "Reference: " << steps.getReference().operator std::string() << std::endl;
-    }
-}
-
-InformationRequirement crearInformationRequirement()
-{
-    InformationRequirement informationRequirement(1) ;
-    informationRequirement.setName("Nombre");
-    informationRequirement.setDescription("Descripcion");
-    informationRequirement.setVersionMajor("1");
-    informationRequirement.setVersionMinor("1");
-    informationRequirement.setComments("Comentarios");
-
-    informationRequirement.setUrgencyLevel(static_cast<Priority::Importance>(1));
-    informationRequirement.setImportanceLevel(static_cast<Priority::Importance>(1));
-    informationRequirement.setPhase(static_cast<Priority::Development_phase>(1));
-    informationRequirement.setEstability(static_cast<Priority::Estability>(1));
-
-    informationRequirement.setMaxSimultaneousOccurrence(1);
-    informationRequirement.setAvgSimultaneousOccurrence(1);
-    informationRequirement.setLifeAvgEstimate(TimeQuantity(1,TimeQuantity::DAY));
-    informationRequirement.setLifeMaxEstimate(TimeQuantity(1,TimeQuantity::WEEK));
-
-
-    JsonSerializer jsoneitor;
-    jsoneitor.visit(informationRequirement);
-    return informationRequirement;
-}
-
-void print(InformationRequirement i)
-{
-    setlocale(LC_ALL, "spanish");
-    std::cout << "ID: " << i.getId().operator std::string() << std::endl;
-    std::cout << "Name: " << i.getName() << std::endl;
-    std::cout << "Description: " << i.getDescription() << std::endl;
-    std::cout << "Version: " << i.getVersionMajor() << "." << i.getVersionMinor() << std::endl;
-    std::cout << "Comments: " << i.getComments() << std::endl;
-
-    std::cout << "Urgency Level: " << i.getUrgencyLevel() << std::endl;
-    std::cout << "Importance Level: " << i.getImportanceLevel() << std::endl;
-    std::cout << "Urgency Level: " << i.getImportanceLevel() << std::endl;
-    std::cout << "Phase level: " << i.getPhase() << std::endl;
-
-    std::cout << "MaxSimultaneousOccurrence: " << i.getMaxSimultaneousOccurrence() << std::endl;
-    std::cout << "AvgSimultaneousOccurrence: " << i.getAvgSimultaneousOccurrence() << std::endl;
-    std::cout << "LifeAvgEstimate: " << i.getLifeAvgEstimate().getQuantity() << std::endl;
-    std::cout << "LifeMaxEstimate: " << i.getLifeMaxEstimate().getQuantity() << std::endl;
-}
-
-void crearRestrictionRequirement()
-{
-    RestrictionRequirement restrictionRequirement(1) ;
-    restrictionRequirement.setName("Nombre");
-    restrictionRequirement.setDescription("Descripcion");
-    restrictionRequirement.setVersionMajor("1");
-    restrictionRequirement.setVersionMinor("1");
-    restrictionRequirement.setComments("Comentarios");
-
-    restrictionRequirement.setUrgencyLevel(static_cast<Priority::Importance>(1));
-    restrictionRequirement.setImportanceLevel(static_cast<Priority::Importance>(1));
-    restrictionRequirement.setPhase(static_cast<Priority::Development_phase>(1));
-    restrictionRequirement.setEstability(static_cast<Priority::Estability>(1));
-
-    JsonSerializer jsoneitor;
-    jsoneitor.visit(restrictionRequirement);
-
-    HtmlManager htmlManager;
-    //std::cout<<htmlManager.generateTable(restrictionRequirement.getId())<<std::endl;
-
-}
-
-void pruebaServicioUserCase()
-{
-        ServicioUserCase servicio;
-
-        // Crear un UserCase y obtener su ID
-        OID id = servicio.createUserCase();
-        std::cout << "ID del UserCase creado: " << id.operator std::string() << std::endl;
-
-        // Establecer propiedades del UserCase
-        servicio.setAbstract(id, true);
-        servicio.setPrecondition(id, "Precondición del UserCase");
-        servicio.setPostcondition(id, "Postcondición del UserCase");
-
-        servicio.setFrequency(id, TimeQuantity(5, TimeQuantity::DAY));
-        std::vector<Step> steps = {Step(true, "Descripción del paso 1"), Step(false, "Descripción del paso 2")};
-        servicio.setSteps(id, steps);
-        Step newStep(false, "Nuevo paso");
-        servicio.addStep(id, newStep);
-
-        // Obtener propiedades del UserCase
-        bool isAbstract = servicio.getAbstract(id);
-        std::cout << "Abstracto: " << std::boolalpha << isAbstract << std::endl;
-        std::string precondition = servicio.getPrecondition(id);
-        std::cout << "Precondición: " << precondition << std::endl;
-        std::string postcondition = servicio.getPostcondition(id);
-        std::cout << "Postcondición: " << postcondition << std::endl;
-        std::list<OID> retrievedObjectives = servicio.getObjectives(id);
-        std::cout << "Objetivos:";
-        for (const auto& objective : retrievedObjectives) {
-            std::cout << " " << objective.operator std::string();
-        }
-        std::cout << std::endl;
-        TimeQuantity frequency = servicio.getFrequency(id);
-        std::cout << "Frecuencia: " << frequency.getQuantity() << " " << frequency.getUnit() << std::endl;
-        std::vector<Step> retrievedSteps = servicio.getSteps(id);
-        std::cout << "Pasos:";
-        for (const auto& step : retrievedSteps) {
-            std::cout << " " << step.getDescription();
-        }
-        std::cout << std::endl;
-        std::list<OID> retrievedActors = servicio.getActors(id);
-        std::cout << "Actores:";
-        for (const auto& actor : retrievedActors) {
-            std::cout << " " << actor.operator std::string();
-        }
-        OID id4 = {"UC",id.getId()-3};
-        servicio.setGeneralization(id, id4);
-
-    std::cout << std::endl;
-        std::string package = servicio.getPackage(id);
-        std::cout << "Paquete: " << package << std::endl;
-        OID generalization = servicio.getGeneralization(id);
-        std::cout << "Generalización: " << generalization.operator std::string() << std::endl;
-
-        // Modificar propiedades de un paso específico
-        servicio.setAbstractStep(id, 1, true);
-        servicio.setConditionStep(id, 0, "Condición modificada");
-        servicio.setCommentsStep(id, 1, "Comentarios modificados");
-        servicio.setDescriptionStep(id, 1, "Descripción modificada");
-
-        // Establecer propiedades de un paso específico
-        servicio.setTypeStep(id, 0, INCLUDE);
-        OID id2 = {"UC",id.getId()-1};
-        servicio.setReferenceStep(id, 0, OID(id2));
-
-    OID id3 = {"UC",id.getId()-2};
-        servicio.setTypeStep(id, 1, EXTEND);
-        servicio.setReferenceStep(id, 1, OID(id3));
-
-
-        // Obtener propiedades de un paso específico
-        bool isAbstractStep = servicio.getAbstractStep(id, 1);
-        std::cout << "Abstracto: " << std::boolalpha << isAbstractStep << std::endl;
-        std::string condition = servicio.getConditionStep(id, 1);
-        std::cout << "Condición: " << condition << std::endl;
-        std::string comments = servicio.getCommentsStep(id, 1);
-        std::cout << "Comentarios: " << comments << std::endl;
-        std::string description = servicio.getDescriptionStep(id, 1);
-        std::cout << "Descripción: " << description << std::endl;
-        type type = servicio.getTypeStep(id, 1);
-        std::cout << "Tipo: " << type << std::endl;
-        OID reference = servicio.getReferenceStep(id, 1);
-        std::cout << "Referencia: " << reference.operator std::string() << std::endl;
-
-        // Eliminar propiedades de un paso específico
-        //UserCaseDiagram diagramManager;
-        JsonRepository fileJsonManager;
-        std::list<UserCase> userCases = fileJsonManager.loadAllUserCase();
-        auto actores = fileJsonManager.loadAllActorUC();
-        //diagramManager.visit(userCases,actores);
-
-    }
-
-    void pruebaInformationRequirement()
-    {
-        InformationRequirement requirement(1);
-        requirement.setName("Requerimiento de prueba");
-        requirement.setDescription("Este es un requerimiento de prueba")    ;
-        std::set<OID> authors = {OID{"SH", 1}};
-        requirement.setAuthors(authors);
-        requirement.setDescription("Poesia sobre la primavera\n"
-                                  "La primavera la sangre altera\n"
-                                  "y yo me altero cuando te veo\n"
-                                  "y tu te alteras cuando me ves\n"
-                                  "y nos alteramos porque nos queremos");
-        requirement.setImportanceLevel(Priority::HIGH);
-        requirement.setUrgencyLevel(Priority::MEDIUM);
-        requirement.setPhase(Priority::IMPLEMENTATION);
-        requirement.setEstability(Priority::STABLE);
-        requirement.setMaxSimultaneousOccurrence(5);
-        requirement.setAvgSimultaneousOccurrence(3);
-        requirement.setLifeMaxEstimate(TimeQuantity(10, TimeQuantity::DAY));
-        requirement.setLifeAvgEstimate(TimeQuantity(5, TimeQuantity::DAY));
-        requirement.addChange(Change(1,"Cambiado numero máximo de ocurrencias",Fecha(),"Se establece a 5 el número máximo de ocurrencias simultáneas"));
-        requirement.addSpecificInformation("Información específica de prueba", "Esta es la información específica de prueba");
-        requirement.addSpecificInformation("Información específica de prueba 2", "Esta es la información específica de prueba 2");
-        requirement.addSpecificInformation("Información específica de prueba 3", "Esta es la información específica de prueba 3");
-        HtmlManager htmlManager;
-        //crea un fichero prueba html
-        std::ofstream file;
-        file.open("prueba.html");
-        file<<htmlManager.generateTableInformationRequirement(requirement.getId());
-    }
-
-
-void crearUserCase(){
-    UserCase userCase2(1);
-    userCase2.setName("Hervir agua");
-    userCase2.setDescription("Hervir agua en una cacerola");
-    userCase2.setVersionMajor("1");
-    userCase2.setVersionMinor("0");
-    userCase2.setComments("Que util");
-    userCase2.setPrecondition("Precondiciones");
-    userCase2.setPostcondition("Postcondiciones");
-    userCase2.setEstability(Priority::STABLE);
-    userCase2.setUrgencyLevel(Priority::HIGH);
-    userCase2.setImportanceLevel(Priority::MEDIUM);
-    userCase2.setEstability(Priority::STABLE);
-
-    //UserCasePart
-    userCase2.setAbstract(false);
-    userCase2.setPrecondition("Precondiciones");
-    userCase2.setPostcondition("Postcondiciones");
-    userCase2.addObjective({"OS",1});
-    userCase2.addAuthor({"SH",1});
-
-    userCase2.setPackage("Cocina");
-    userCase2.setFrequency({1,TimeQuantity::HOUR});
-
-    Step stp1;
-    stp1.setDescription("Encender la cocina");
-    stp1.setCondition("La cocina esta apagada");
-    stp1.setComments("No se puede encender la cocina si esta encendida");
-    stp1.setType(ACTOR);
-    stp1.setReference(OID({"AC",1}));
-
-    Step stp2;
-    stp2.setDescription("Poner la cacerola con agua");
-    stp2.setCondition("La cacerola esta vacia");
-    stp2.setComments("No se puede poner la cacerola si ya hay una");
-    stp2.setType(SYSTEM);
-
-    Step stp3;
-    stp3.setDescription("Esperar a que hierva");
-    stp3.setCondition("");
-    stp3.setComments("");
-    stp3.setType(SYSTEM);
-
-    userCase2.addStep(stp1);
-    userCase2.addStep(stp2);
-    userCase2.addStep(stp3);
-
-
-
-
-
-    UserCase userCase(2);
-    userCase.setName("Cocinar espaguetis con tomate");
-    userCase.setDescription("Realizacion culinaria de un plato de pasta con la salsa de tomate");
-    userCase.setVersionMajor("1");
-    userCase.setVersionMinor("0");
-    userCase.setComments("Que rico");
-    userCase.setPrecondition("Precondiciones");
-    userCase.setPostcondition("Postcondiciones");
-    userCase.setEstability(Priority::STABLE);
-    userCase.setUrgencyLevel(Priority::HIGH);
-    userCase.setImportanceLevel(Priority::MEDIUM);
-    userCase.setEstability(Priority::STABLE);
-
-    //UserCasePart
-    userCase.setAbstract(false);
-    userCase.setPrecondition("Precondiciones");
-    userCase.setPostcondition("Postcondiciones");
-    userCase.addObjective({"OS",1});
-    userCase.addAuthor({"SH",1});
-    userCase.addActor({"AC",1});
-    userCase.setPackage("Menu");
-    userCase.setFrequency({4,TimeQuantity::WEEK});
-
-    Step step1;
-    step1.setAbstract(false);
-    step1.setDescription("Poner a hervir agua");
-    step1.setCondition("Tener agua");
-    step1.setComments("No se puede hervir agua sin agua");
-    step1.setType(INCLUDE);
-    step1.setReference({"UC",1});
-
-    Step step2;
-    step2.setAbstract(false);
-    step2.setDescription("Agregar sal");
-    step2.setCondition("Tener sal");
-    step2.setComments("No se puede agregar sal sin sal");
-    step2.setType(SYSTEM);
-
-    Step step3;
-    step3.setAbstract(false);
-    step3.setDescription("Agregar spaghetti");
-    step3.setCondition("Tener spaghetti");
-    step3.setComments("No se puede agregar spaghetti sin spaghetti");
-    step3.setType(SYSTEM);
-
-    Step step4;
-    step4.setAbstract(false);
-    step4.setDescription("Esperar 10 minutos");
-    step4.setCondition("Tener tiempo");
-    step4.setComments("No se puede esperar sin tiempo");
-    step4.setType(SYSTEM);
-
-    Step step5;
-    step5.setAbstract(false);
-    step5.setDescription("Colar spaghetti");
-    step5.setCondition("Tener colador");
-    step5.setComments("No se puede colar sin colador");
-    step5.setType(SYSTEM);
-
-    Step step6;
-    step6.setAbstract(false);
-    step6.setDescription("Agregar salsa de tomate");
-    step6.setCondition("Tener salsa de tomate");
-    step6.setComments("No se puede agregar salsa de tomate sin salsa de tomate");
-            step6.setType(ACTOR);
-    step6.setReference(OID({"AC",1}));
-
-    /*Add one exception of type Exception
-    struct Exception{
-        unsigned id;
-        unsigned step;
-        type stepType;
-        std::string description;
-        std::string condition;
-        std::string comments;
-        OID reference;
-    };*/
-
-    userCase.addException({1,INCLUDE,"No hay agua","No hay agua","No hay agua",{"UC",1}});
-    userCase.addException({2,EXTEND,"No hay sal","No hay sal","No hay sal",{"UC",1}});
-    userCase.addException({3,ACTOR,"No hay spaghetti","No hay spaghetti","No hay spaghetti",{"AC",1}});
-    userCase.addException({4,SYSTEM,"No hay tiempo","No hay tiempo","No hay tiempo",{"UC",1}});
-
-
-    Step step7;
-    step7.setAbstract(false);
-    step7.setDescription("Servir");
-    step7.setCondition("Tener plato");
-    step7.setComments("No se puede servir sin plato");
-    step7.setType(ACTOR);
-    step7.setReference(OID({"AC",1}));
-
-    userCase.addStep(step1);
-    userCase.addStep(step2);
-    userCase.addStep(step3);
-    userCase.addStep(step4);
-    userCase.addStep(step5);
-    userCase.addStep(step6);
-    userCase.addStep(step7);
-
-    ActorUC actorUC(1);
-    actorUC.setName("Cocinero");
-    actorUC.setDescription("Persona que cocina");
-    actorUC.setVersionMajor("1");
-    actorUC.setVersionMinor("0");
-    actorUC.setComments("Que rico");
-    actorUC.setPackage("Cocina");
-
-
-    JsonSerializer jsoneitor;
-    jsoneitor.visit(actorUC);
-    jsoneitor.visit(userCase2) ;
-    jsoneitor.visit(userCase);
-
-    std::list<UserCase> userCases;
-    userCases.push_back(userCase);
-    userCases.push_back(userCase2);
-
-    HtmlManager htmlManager;
-    //in file userCase.html htmlManager.generateTable(userCase)
-
-}
-
-OID pruebaServicioStakeholder()
-{
-    ServicioStakeholder servicioStakeholder;
-    auto id = servicioStakeholder.createStakeholder("Pakito");
-    servicioStakeholder.setName(id,"Pakito");
-    servicioStakeholder.setDescription(id,"El mejor");
-    servicioStakeholder.setVersionMajor(id,"2");
-    servicioStakeholder.setVersionMinor(id,"0");
-    servicioStakeholder.setComments(id,"Que rico");
-    servicioStakeholder.setEmail(id,"pa@ki.to");
-    servicioStakeholder.setPhone(id,"123456789");
-    servicioStakeholder.setAddress(id,"Calle de la piruleta");
-    servicioStakeholder.setWorksForOrganization(id,{"OR",1});
-    servicioStakeholder.setStakeholderRole(id,"Autor de la aplicacion");
-    return id;
-}
-
-OID pruebaServicioOrganitacion()
-{
-    //make megacorp company, the most important company in the world
-    ServicioOrganization servicioOrganizacion;
-    auto id = servicioOrganizacion.createOrganization("Megacorp");
-    servicioOrganizacion.setName(id,"Megacorp");
-    servicioOrganizacion.setDescription(id,"La mejor empresa del mundo");
-    servicioOrganizacion.setVersionMajor(id,"1");
-    servicioOrganizacion.setVersionMinor(id,"0");
-    servicioOrganizacion.setComments(id,"Son ricos");
-    servicioOrganizacion.setContactInfo(id,"www.megacorp.com");
-
-
-    return id;
-}
-
-void pruebaServicioMatrix()
-{
-    /*   MatrixTraces matrixTraces(1);
-    matrixTraces.addPrefixFrom("UC");
-    matrixTraces.addPrefixFrom("OR");
-    matrixTraces.addPrefixFrom("IR");
-    matrixTraces.addPrefixTo("UC");
-    matrixTraces.addPrefixTo("FR");
-    matrixTraces.addPrefixTo("SO");
-    matrixTraces.addPrefixTo("NF");
-    matrixTraces.addPrefixTo("TX");
-    matrixTraces.addPrefixTo("IR");
-    matrixTraces.addPrefixTo("AC");
-    matrixTraces.addPrefixTo("SH");
-    matrixTraces.addPrefixTo("OR");
-    matrixTraces.addPrefixTo("IN");
-    matrixTraces.addPrefixTo("TE");
-    matrixTraces.addPrefixTo("PR");
-
-    matrixTraces.addTrackeable(uc);
-    matrixTraces.addTrackeable(fr);
-    matrixTraces.addTrackeable(so);
-    matrixTraces.addTrackeable(nf);
-    matrixTraces.addTrackeable(tx);
-    matrixTraces.addTrackeable(ir);
-    matrixTraces.addTrackeable(ac);
-    matrixTraces.addTrackeable(sh);
-    matrixTraces.addTrackeable({"OR",1});
-    matrixTraces.addTrackeable({"UC",2});*/
-
-    ServicioMatrixTraces servicioMatrixTraces;
-    auto id = servicioMatrixTraces.createMatrixTraces("la matriz");
-    servicioMatrixTraces.addPrefixFrom(id,"UC");
-    servicioMatrixTraces.addPrefixFrom(id,"OR");
-    servicioMatrixTraces.addPrefixFrom(id,"IR");
-    servicioMatrixTraces.addPrefixTo(id,"UC");
-    servicioMatrixTraces.addPrefixTo(id,"FR");
-    servicioMatrixTraces.addPrefixTo(id,"SO");
-    servicioMatrixTraces.addPrefixTo(id,"NF");
-    servicioMatrixTraces.addPrefixTo(id,"TX");
-    servicioMatrixTraces.addPrefixTo(id,"IR");
-    servicioMatrixTraces.addPrefixTo(id,"AC");
-    servicioMatrixTraces.addPrefixTo(id,"SH");
-    servicioMatrixTraces.addPrefixTo(id,"OR");
-    servicioMatrixTraces.addPrefixTo(id,"IN");
-    servicioMatrixTraces.addPrefixTo(id,"TE");
-    servicioMatrixTraces.addPrefixTo(id,"PR");
-    OID fr = {"FR",1};
-    OID so = {"SO",1};
-    OID nf = {"NF",1};
-    OID tx = {"TX",1} ;
-    OID ir = {"IR",1} ;
-    OID uc = {"UC",1} ;
-    OID uc2 = {"UC",2} ;
-    OID ac = {"AC",1} ;
-    OID sh = {"SH",1} ;
-
-    servicioMatrixTraces.addTrackeable(id,uc);
-    servicioMatrixTraces.addTrackeable(id,fr);
-    servicioMatrixTraces.addTrackeable(id,so);
-    servicioMatrixTraces.addTrackeable(id,nf);
-    servicioMatrixTraces.addTrackeable(id,tx);
-    servicioMatrixTraces.addTrackeable(id,ir);
-    servicioMatrixTraces.addTrackeable(id,ac);
-    servicioMatrixTraces.addTrackeable(id,sh);
-    servicioMatrixTraces.addTrackeable(id,{"OR",1});
-    servicioMatrixTraces.addTrackeable(id,{"UC",2});
-    servicioMatrixTraces.addTrackeable(id,{"IR",1});
-    servicioMatrixTraces.addTrackeable(id,{"IN",1});
-
-
-
-}
-
-void pruebashtml()
-{
-    ServicioStakeholder servicioStakeholder;
-    ServicioOrganization servicioOrganization;
-    ServicioUserCase servicioUserCase;
-    ServicioFunctionalRequirement servicioFunctionalRequirement;
-    ServicioSystemObjective servicioSystemObjective;
-    ServicioInformationRequirement servicioInformationRequirement;
-    ServicioActorUC servicioActorUC;
-    ServicioUserStories servicioUserStories;
-
-
-
-
-
-    OID fr = {"FR",1};
-    OID so = {"SO",1};
-    OID nf = {"NF",1};
-    OID tx = {"TX",1} ;
-    OID ir = {"IR",1} ;
-    OID uc = {"UC",1} ;
-    OID uc2 = {"UC",2} ;
-    OID ac = {"AC",1} ;
-    OID sh = {"SH",1} ;
-    auto setVacio = std::set<OID>();
-
-    HtmlManager htmlManager;
-    std::list <OID> userCases;
-    //insert iduc in the list usercases
-    userCases = {{"UC",1},{"UC",2}};
-    auto htmlir = htmlManager.generateTableInformationRequirement(ir);
-    std::ofstream file;
-    file.open("usercase.html");
-    std::list<ActorUC> listaActores;
-   // UserCaseDiagram diagramGenerator;
-    //diagramGenerator.visit(userCases, {{"AC", 1}});
-    //diagramGenerator.visit(userCases);
-    for (auto &uc : userCases) {
-        file << htmlManager.generateTableUserCase(uc);
-        //make a separator between the tables
-        file << "<br>";
-    }
-    //auto adjust the size of the image to the size of the window make the width 100%
-    file<< "<html><body><img src=\"TFG\\Diagrams\\UseCaseDiagram.png\" alt=\"diagram\"  width=\"100%\" height=\"auto\"></body></html>";
-    file<<"<br>";
-    file<<htmlir ;
-    file<<"<br>";
-    file<<htmlManager.generateTableStakeholder({"SH",1});
-    file<<"<br>";
-    file<<htmlManager.generateTableActorUC({"AC",1});
-    file<<"<br>";
-    file<<htmlManager.generateTableText(tx) ;
-    file<<"<br>";
-    file<<htmlManager.generateTableNonFunctionalRequirement(nf) ;
-    file<<"<br>";
-    file<<htmlManager.generateTableFunctionalRequirement(fr) ;
-    file<<"<br>";
-    file<<htmlManager.generateTableSystemObjetive(so) ;
-    pruebaServicioMatrix();
-
-    auto matrix = OID {"MT",1};
-
-    file<<"<br>";
-    file<<htmlManager.generateMatrixTraces(matrix);
-    file<<"<br>";
-    std::list<OID> listaus; //hasta el 11
-    listaus = {{"US",1},{"US",2}, {"US",4}, {"US",5}, {"US",6}};
-    for (auto &us : listaus) {
-        file << htmlManager.generateTableUserStory(us);
-        //make a separator between the tables
-        file << "<br>";
-    }
-    file<<htmlManager.generateUserStory(listaus);
-
-
-}
+#include "Servicio/ServicioPersona.h"
+#include "Servicio/ServicioStakeholder.h"
+#include "OID.h"
 
 void prueba()
 {
+
  ServicioHTML servicioHTML;
  ServicioText servicioText;
  auto idIndice = servicioHTML.createIndex("DERS Esparto web");
@@ -820,6 +58,10 @@ servicioHTML.addElement(idIndice,indiceParticipantes,idStakeholder2);
 servicioHTML.addElement(idIndice,indiceParticipantes,idStakeholder3);
 servicioHTML.addElement(idIndice,indiceParticipantes,idOrg1);
 servicioHTML.addElement(idIndice,indiceParticipantes,idOrg2);
+
+    servicioHTML.addAuthor(idIndice, idStakeholder2);
+    servicioHTML.addAuthor(idIndice, idStakeholder3);
+
 
 auto idDescripcion = servicioText.createText("Descripcion");
 
@@ -1041,7 +283,28 @@ servicioRestrictionRequirement.setImportanceLevel(idrestriccion2, Priority::HIGH
 servicioRestrictionRequirement.setUrgencyLevel(idrestriccion2, Priority::HIGH);
 servicioRestrictionRequirement.setPhase(idrestriccion2, Priority::DEVELOPMENT);
 
+ServicioPersona servicioPersona;
+    OID antonioId = servicioPersona.createPersona("Antonio López");
 
+    // Configuramos los atributos de Antonio López
+    servicioPersona.setAge(antonioId, 60);
+   // servicioPersona.setPhoto(antonioId, "fotonMano.jpg")      ;
+    servicioPersona.setGender(antonioId, "Masculino"); // Género asumido masculino
+    servicioPersona.setLocation(antonioId, "Chiclana");
+    servicioPersona.setOccupation(antonioId, "Espartero");
+    servicioPersona.setBackground(antonioId, "Artesano");
+    servicioPersona.setGoals(antonioId, "Poder llevar sus productos a redes sociales para que los clientes puedan verlos y seguirlos.");
+    servicioPersona.setChallenges(antonioId, "Encontrar una solución que permita mostrar sus productos en redes sociales sin que lo saturen de preguntas.");
+    servicioPersona.setBehavior(antonioId, "Realiza trabajos manuales de espartería.");
+    servicioPersona.setCommunicationStyle(antonioId, "Prefiere que los clientes le contacten por WhatsApp.");
+    servicioPersona.setTechnologyAdoption(antonioId, "No tiene mucha experiencia en tecnología.");
+    servicioPersona.setInfluences(antonioId, "Su gestoría le ayuda en temas legales y de facturación.");
+    servicioPersona.setInformationSources(antonioId, "Desconoce cómo funcionan las redes sociales.");
+    servicioPersona.setUserJourney(antonioId, "Los clientes le contactan por WhatsApp, él prepara y envía los productos por mensajería.");
+    servicioPersona.setBrandRelationship(antonioId, "Le gustaría tener una web informativa y una página de redes sociales para mostrar sus productos.");
+
+    auto idPersona = servicioHTML.createEntry(idIndice,"Antonio López",0);
+    servicioHTML.addElement(idIndice,idPersona,antonioId);
 
 auto indicerequisitosfun = servicioHTML.createEntry(idIndice,"Requisitos Funcionales",indiceRequisitos);
 servicioHTML.addElement(idIndice,indiceRequisitos,idfrequsito1);
@@ -1476,17 +739,8 @@ servicioMatrixTraces.addTrackeable(idm, idfrequsito2);
 
 auto indiceMatrix = servicioHTML.createEntry(idIndice,"Matriz de rastreabilidad Objetivos/Requisitos",     0);
 servicioHTML.addElement(idIndice,indiceMatrix,idm);
-
-auto idGlosario = servicioText.createText("Glosario");
-servicioText.setDescription(idGlosario,"Esparto: Hoja de esta planta, radical, larga, dura, resistente y tan arrollada sobre sí que parece tener forma de hilo.\n"
-                                       "\n"
-                                       "Pleita: Faja o tira de esparto, palma, pita u otros ramales entretejidos que, cosida con otras, se utiliza para hacer sombreros, esteras, etc.\n"
-                                       "");
-auto indiceGlo = servicioHTML.createEntry(idIndice,"Glosario de terminos",     0);
-servicioHTML.addElement(idIndice,indiceGlo,idGlosario);
-    auto idEntrevista = servicioText.createText("Entrevista");
-
     ServicioInterview servicioInterview;
+
     auto idInterview = servicioInterview.createInterview("Entrevista a Antonio López, espartero de Chiclana");
     servicioInterview.addQuestion(idInterview,"¿Cuál es el problema o necesidad específica que está buscando solucionar con una aplicación?", "Pues lo que es el tema de cómo arreglaría tantas preguntas, como todo el mundo me pregunta, ¿qué artículo tiene usted? Pues poderlo llevar a redes sociales que no me hagan la pregunta, que simplemente lo veáis, y sigan, evidentemente, a lo que es el artículo que le interese.");
     servicioInterview.addQuestion(idInterview,"¿Hay algún otro intento previo de solucionar este problema o de una aplicación? Si es así, ¿por qué falló?","Se hizo, pero se hizo de cuatro artículos, nada más, o cinco artículos, después se hizo mal. No se detallaron los precios, no, en fin, falló el completo. Estaba mal hecho, cuando una cosa está mal hecha, está mal hecha. Y entonces, ya luego hemos ido rebotando a todo el mundo por WhatsApp, y es donde no hemos defendido, pero que por WhatsApp tampoco es. \n" );
@@ -1500,30 +754,23 @@ servicioHTML.addElement(idIndice,indiceGlo,idGlosario);
     servicioInterview.addQuestion(idInterview, "Claro, pero ponte que en un año no aparece en la página web, por ejemplo, un producto nuevo y tienes que añadirlo tú.", "Sí. Socorro. Socorro. Buscaría la gestoría o buscaría alguien. cuando me atasco hay que pedir socorro, eso es muy lógico en la vida. \n" );
     servicioInterview.addQuestion(idInterview,"Hay alguna restricción en cuanto al costo o tiempo necesario para desarrollar la aplicación o la página web?","No. Simplemente no. Ni por requisitos ni por poder o no poder no tengo problema. \n" );
     servicioInterview.addQuestion(idInterview,"¿Te interesa que en la aplicación haya un perfil de comunicaciones para este tipo de cosas como una revista, un certamen, un concurso?","Ah, si me gusta pero al final no hago caso nunca. Me gusta que me inviten a todos lados a todos los certamenes, de España entera de todos lados y no voy a ningún lado. \n" );
-    servicioInterview.addQuestion()
-    /*
-                                        "-¿Te interesa que en la aplicación haya un perfil de comunicaciones para este tipo de cosas como una revista, un certamen, un concurso? \n"
-                                         "\n"
-                                         "Ah, si me gusta pero al final no hago caso nunca. Me gusta que me inviten a todos lados a todos los certamenes, de España entera de todos lados y no voy a ningún lado. \n"
-                                         "\n"
-                                         "-¿Y cuándo es que tú vas? \n"
-                                         "\n"
-                                         "No voy. Cuando es que voy es porque tengo a veces necesidad de salir del agobio del taller, simplemente programo cualquier cliente en la entrega y hago la entrega en cualquier punto de España o en cualquier punto de... Cuidado, que capaz de hacerla hasta afuera por decir, me voy un poquito. \n"
-                                         "\n"
-                                         "-Te hace falta una aplicación que cosa esparto. \n"
-                                         "\n"
-                                         "No, hombre. \n"
-                                         "\n"
-                                         "-Este es el final de la entrevista a Antonio López. Muchas gracias por colaborar. \n"
-                                         "\n"
-                                         "Para mi no ha sido problema ninguno al revés. Para lo que queráis. \n"
-                                         "\n"
-                                         "-Pues nada, muchas gracias. \n"
-                                         "\n"
-                                         "A ustedes.");
-                                         */
+    servicioInterview.addQuestion(idInterview,"¿Y cuándo es que tú vas?","No voy. Cuando es que voy es porque tengo a veces necesidad de salir del agobio del taller, simplemente programo cualquier cliente en la entrega y hago la entrega en cualquier punto de España o en cualquier punto de... Cuidado, que capaz de hacerla hasta afuera por decir, me voy un poquito. \n" );
+    servicioInterview.addQuestion(idInterview,"Te hace falta una aplicación que cosa esparto.","No, hombre. \n" );
+    servicioInterview.addQuestion(idInterview,"Este es el final de la entrevista a Antonio López. Muchas gracias por colaborar.", "Para mi no ha sido problema ninguno al revés. Para lo que queráis. \n" );
+    servicioInterview.addQuestion(idInterview,"Pues nada, muchas gracias.", "A ustedes." );
+    servicioInterview.addStakeholderAsking(idInterview,idStakeholder2);
+    servicioInterview.addStakeholderAsking(idInterview,idStakeholder3);
+    servicioInterview.addStakeholderInterviewed(idInterview,idStakeholder1);
     auto indiceEntrevista = servicioHTML.createEntry(idIndice,"Entrevista",     0);
-    servicioHTML.addElement(idIndice,indiceEntrevista,idEntrevista);
+    servicioHTML.addElement(idIndice,indiceEntrevista,idInterview);
+auto idGlosario = servicioText.createText("Glosario");
+servicioText.setDescription(idGlosario,"Esparto: Hoja de esta planta, radical, larga, dura, resistente y tan arrollada sobre sí que parece tener forma de hilo.\n"
+                                       "\n"
+                                       "Pleita: Faja o tira de esparto, palma, pita u otros ramales entretejidos que, cosida con otras, se utiliza para hacer sombreros, esteras, etc.\n"
+                                       "");
+auto indiceGlo = servicioHTML.createEntry(idIndice,"Glosario de terminos",     0);
+    servicioHTML.addElement(idIndice,indiceGlo,idGlosario);
+
 
 servicioInformationRequirement.addTraceTo(idrequisito1, idObjetivo4);
 servicioInformationRequirement.addTraceTo(idrequisito2, idObjetivo3);
@@ -1537,129 +784,16 @@ servicioRestrictionRequirement.addTraceTo(idrestriccion2, idObjetivo6);
 servicioFunctionalRequirement.addTraceTo(idfrequsito1, idObjetivo3);
 servicioFunctionalRequirement.addTraceTo(idfrequsito2, idObjetivo2);
 
+ServicioHTML::printHTML(idIndice);
 
 
 }
 
-void PruebaSinCrearObjetos(){
-    ServicioHTML servicioHTML;
-
-    auto idTexto1 = OID("TX", 1);
-    auto idStakeholder1 = OID("SH", 1);
-    auto idStakeholder2 = OID("SH", 2);
-    auto idStakeholder3 = OID("SH", 3);
-    auto idOrg1 = OID("OR", 1);
-    auto idOrg2 = OID("OR", 2);
-    auto idDescripcion = OID("TX", 2);
-    auto idObjetivo1 = OID("SO", 1);
-    auto idObjetivo2 = OID("SO", 2);
-    auto idObjetivo3 = OID("SO", 3);
-    auto idObjetivo4 = OID("SO", 4);
-    auto idObjetivo5 = OID("SO", 5);
-    auto idObjetivo6 = OID("SO", 6);
-    auto idrequisito1 = OID("IR", 1);
-    auto idrequisito2 = OID("IR", 2);
-    auto idrequisito3 = OID("IR", 3);
-    auto idrequisito4 = OID("IR", 4);
-    auto idrequisito5 = OID("IR", 5);
-    auto idfrequsito1 = OID("FR", 1);
-    auto idfrequsito2 = OID("FR", 2);
-    auto idrestriccion1 = OID("RR", 1);
-    auto idrestriccion2 = OID("RR", 2);
-    auto idActor1 = OID("AC", 1);
-    auto idActor2 = OID("AC", 2);
-    auto idUC1 = OID("UC", 1);
-    auto idUC2 = OID("UC", 2);
-    auto idUC3 = OID("UC", 3);
-    auto idUC4 = OID("UC", 4);
-    auto idUC5 = OID("UC", 5);
-    auto idUC6 = OID("UC", 6);
-    auto idUC7 = OID("UC", 7);
-    auto idUC8 = OID("UC", 8);
-    auto idUC9 = OID("UC", 9);
-    auto idUC10 = OID("UC", 11);
-    auto idnf1 = OID("NF", 1);
-    auto idnf2 = OID("NF", 2);
-    auto idm = OID("MT", 1);
-    auto idGlosario = OID("TX", 3);
-    auto idEntrevista = OID("TX", 4);
-    auto idDiagrama = OID("UD", 1);
-    auto idDiagrama2 = OID("UD", 2);
-    auto idDiagrama3 = OID("UD", 3);
-    auto idIndice = OID("IX", 1);
-
-    auto indiceIntroduccion = servicioHTML.createEntry(idIndice,"Introduccion", 0);
-    servicioHTML.addElement(idIndice,indiceIntroduccion, idTexto1);
-    auto indiceParticipantes = servicioHTML.createEntry(idIndice,"Participantes", 0);
-    servicioHTML.addElement(idIndice,indiceParticipantes, idStakeholder1);
-    servicioHTML.addElement(idIndice,indiceParticipantes, idStakeholder2);
-    servicioHTML.addElement(idIndice,indiceParticipantes, idStakeholder3);
-    servicioHTML.addElement(idIndice,indiceParticipantes, idOrg1);
-    servicioHTML.addElement(idIndice,indiceParticipantes, idOrg2);
-    auto indiceDescripcion = servicioHTML.createEntry(idIndice,"Descripcion del sistema actual", 0);
-    servicioHTML.addElement(idIndice,indiceDescripcion, idDescripcion);
-    auto indiceObjetivos = servicioHTML.createEntry(idIndice,"Objetivos del sistema", 0);
-    servicioHTML.addElement(idIndice,indiceObjetivos, idObjetivo1);
-    servicioHTML.addElement(idIndice,indiceObjetivos, idObjetivo2);
-    servicioHTML.addElement(idIndice,indiceObjetivos, idObjetivo3);
-    servicioHTML.addElement(idIndice,indiceObjetivos, idObjetivo4);
-    servicioHTML.addElement(idIndice,indiceObjetivos, idObjetivo5);
-    servicioHTML.addElement(idIndice,indiceObjetivos, idObjetivo6);
-    auto indiceRequisitos = servicioHTML.createEntry(idIndice,"Catalogo de Requisitos del Sistema", 0);
-    auto indiceRequisitosInformacion = servicioHTML.createEntry(idIndice,"Requisitos de Informacion", indiceRequisitos);
-    servicioHTML.addElement(idIndice,indiceRequisitosInformacion, idrequisito1);
-    servicioHTML.addElement(idIndice,indiceRequisitosInformacion, idrequisito2);
-    servicioHTML.addElement(idIndice,indiceRequisitosInformacion, idrequisito3);
-    servicioHTML.addElement(idIndice,indiceRequisitosInformacion, idrequisito4);
-    servicioHTML.addElement(idIndice,indiceRequisitosInformacion, idrequisito5);
-    auto indicerequisitosfun = servicioHTML.createEntry(idIndice,"Requisitos Funcionales", indiceRequisitos);
-    servicioHTML.addElement(idIndice,indiceRequisitos, idfrequsito1);
-    servicioHTML.addElement(idIndice,indiceRequisitos, idfrequsito2);
-    servicioHTML.addElement(idIndice,indiceRequisitos, idrestriccion1);
-    servicioHTML.addElement(idIndice,indiceRequisitos, idrestriccion2);
-    auto indiceDigramasCU = servicioHTML.createEntry(idIndice,"Diagramas de Casos de Uso", indicerequisitosfun);
-    auto indiceActorUC = servicioHTML.createEntry(idIndice,"Definicion de actores", indicerequisitosfun);
-    servicioHTML.addElement(idIndice,indiceActorUC, idActor1);
-    servicioHTML.addElement(idIndice,indiceActorUC, idActor2);
-    auto indiceCU = servicioHTML.createEntry(idIndice,"Casos de uso", indicerequisitosfun);
-    auto indiceCU1 = servicioHTML.createEntry(idIndice,"Casos de uso del subsistema de gestion de clientes", indiceCU);
-    auto indiceCU2 = servicioHTML.createEntry(idIndice,"Casos de uso del subsistema de gestion de productos", indiceCU);
-    auto indiceCU3 = servicioHTML.createEntry(idIndice,"Casos de uso del subsistema de gestion de pedidos", indiceCU);
-    servicioHTML.addElement(idIndice,indiceCU1, idUC1);
-    servicioHTML.addElement(idIndice,indiceCU1, idUC2);
-    servicioHTML.addElement(idIndice,indiceCU1, idUC3);
-    servicioHTML.addElement(idIndice,indiceCU1, idUC4);
-    servicioHTML.addElement(idIndice,indiceCU1, idUC5);
-    servicioHTML.addElement(idIndice,indiceCU1,idDiagrama);
-    servicioHTML.addElement(idIndice,indiceCU2, idUC6);
-    servicioHTML.addElement(idIndice,indiceCU2, idUC7);
-    servicioHTML.addElement(idIndice,indiceCU2, idUC8);
-    servicioHTML.addElement(idIndice,indiceCU2, idDiagrama2);
-    servicioHTML.addElement(idIndice,indiceCU3, idUC9);
-    servicioHTML.addElement(idIndice,indiceCU3, idUC10);
-    servicioHTML.addElement(idIndice,indiceCU3, idDiagrama3);
-    auto indiceRequisitosNoFuncionales = servicioHTML.createEntry(idIndice,"Requisitos no funcionales", indiceRequisitos);
-    servicioHTML.addElement(idIndice,indiceRequisitosNoFuncionales, idnf1);
-    servicioHTML.addElement(idIndice,indiceRequisitosNoFuncionales, idnf2);
-    auto indiceMatrix = servicioHTML.createEntry(idIndice,"Matriz de rastreabilidad Objetivos/Requisitos", 0);
-    servicioHTML.addElement(idIndice,indiceMatrix, idm);
-    auto indiceGlo = servicioHTML.createEntry(idIndice,"Glosario de terminos", 0);
-    servicioHTML.addElement(idIndice,indiceGlo, idGlosario);
-    auto indiceEntrevista = servicioHTML.createEntry(idIndice,"Entrevista", 0);
-    servicioHTML.addElement(idIndice,indiceEntrevista, idEntrevista);
-
+int main(int argc, char *argv[])
+{
+prueba();
+    QApplication a(argc, argv);
+    Dialog w;
+    w.show();
+    return a.exec();
 }
-
-
-int main() {
-    prueba();
-    std::cout << "Stop it!" << std::endl;
-    int parar;
-    std::cin >> parar;
-    PruebaSinCrearObjetos();
-    std::cout << "Stop it 2!" << std::endl;
-    std::cin >> parar;
-
-    return 0;
-}
-

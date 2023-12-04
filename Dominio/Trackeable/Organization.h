@@ -2,7 +2,6 @@
 #define ORGANIZATION_H
 
 #include <string>
-#include <iostream>
 #include <set>
 #include "Trackeable.h"
 

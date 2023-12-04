@@ -3,6 +3,7 @@
 //
 
 #include "ServicioUserCase.h"
+#include "OID.h"
 
 OID ServicioUserCase::createUserCase(std::string nombre) {
     UserCase userCase(JsonRepository::lastUserCase()+1);

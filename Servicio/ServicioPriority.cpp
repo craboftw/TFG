@@ -4,6 +4,7 @@
 
 #include "ServicioPriority.h"
 #include "Repository/JsonRepository.h"
+#include "OID.h"
 
 std::string ServicioPriority::strImportanceLevel(OID id) {
     if (id.getPrefix() == "XX" ) throw std::invalid_argument("El id a modificar no corresponde a un objeto valido, strImportanceLevel");

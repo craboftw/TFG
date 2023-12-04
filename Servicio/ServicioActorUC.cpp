@@ -3,6 +3,7 @@
 //
 
 #include "ServicioActorUC.h"
+#include "OID.h"
 
 std::string ServicioActorUC::getPackage(OID oid) {
     if (oid.getPrefix() != ActorUC::getPrefixID()) throw std::invalid_argument("El id no es de un actor, getPackage");

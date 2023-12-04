@@ -8,6 +8,7 @@
 #include <string>
 #include <vector>
 #include "Dominio/Trackeable/Trackeable.h"
+#include "OID.h"
 
 struct Question{
     std::string question;

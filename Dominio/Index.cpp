@@ -295,3 +295,4 @@ void Index::setLastID(unsigned int last) {
 }
 
 #include "Index.h"
+#include "OID.h"

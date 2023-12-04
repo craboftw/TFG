@@ -9,6 +9,7 @@
 #include "Dominio/Trackeable/Trackeable.h"
 #include "ServicioTrackeable.h"
 #include "ServicioPriority.h"
+#include "OID.h"
 
 class ServicioTrackeable;
 

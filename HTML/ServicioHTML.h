@@ -5,30 +5,14 @@
 #ifndef TFG_SERVICIOHTML_H
 #define TFG_SERVICIOHTML_H
 
-#define STAKEHOLDER 0
-#define RESTRICTION_REQUIREMENT 1
-#define FUNCTIONAL_REQUIREMENT 2
-#define NON_FUNCTIONAL_REQUIREMENT 3
-#define ACTOR_UC 4
-#define INFORMATION_REQUIREMENT 5
-#define ORGANIZATION 6
-#define INDEX 7
-#define SYSTEM_OBJECTIVE 8
-#define USER_CASE 9
-#define TEXT 10
-#define MATRIX_TRACES 11
-#define USER_STORIES 12
-#define USER_CASE_DIAGRAM 13
-#define PERSONA 14
-#define INTERVIEW 15
-#define NULLTYPE 16
 
-#include "HTML/HtmlManager.h"
+#include "Servicio/ServicioTrackeable.h"
 #include "Dominio/Interview.h"
+#include "OID.h"
 
 class ServicioHTML : public ServicioTrackeable {
     public:
-    inline static const std::map<std::string, unsigned> prefixes = {{Stakeholder::getPrefixID(),STAKEHOLDER},
+    inline static  std::map<std::string, unsigned> prefijos = {{Stakeholder::getPrefixID(),STAKEHOLDER},
                                                                 {RestrictionRequirement::getPrefixID(),RESTRICTION_REQUIREMENT},
                                                                 {FunctionalRequirement::getPrefixID(),FUNCTIONAL_REQUIREMENT},
                                                                 {NonFunctionalRequirement::getPrefixID(),NON_FUNCTIONAL_REQUIREMENT},
@@ -43,6 +27,8 @@ class ServicioHTML : public ServicioTrackeable {
                                                                 {UserCaseDiagram::getPrefixID(),USER_CASE_DIAGRAM},
                                                                 {Persona::getPrefixID(),PERSONA},
                                                                 {Interview::getPrefixID(),INTERVIEW},
+                                                                {Class::getPrefixID(),CLASS},
+                                                                {Asociation::getPrefixID(),ASOCIATION},
                                                                 {OID().getPrefix(),NULLTYPE}};
 
 

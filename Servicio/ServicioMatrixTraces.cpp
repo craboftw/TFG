@@ -3,6 +3,7 @@
 //
 
 #include "ServicioMatrixTraces.h"
+#include "OID.h"
 
 void ServicioMatrixTraces::addPrefixFrom(OID id, std::string prefix) {
     if (!JsonRepository::exist(id)) throw std::invalid_argument("El id a modificar no existe, addPrefixFrom");

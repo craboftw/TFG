@@ -3,6 +3,7 @@
 //
 
 #include "Interview.h"
+#include "OID.h"
 
 void Interview::addQuestion(std::string question, std::string answer) {
     questions.push_back({question, answer});

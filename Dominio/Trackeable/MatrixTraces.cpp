@@ -5,6 +5,7 @@
 #include "MatrixTraces.h"
 #include "Servicio/ServicioTrackeable.h"
 #include "HTML/ServicioHTML.h"
+#include "OID.h"
 
 void MatrixTraces::update()
 {

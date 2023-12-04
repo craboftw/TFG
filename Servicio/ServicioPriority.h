@@ -7,6 +7,7 @@
 
 
 #include "Dominio/Priority/Priority.h"
+#include "OID.h"
 
 class ServicioPriority {
 public:

@@ -7,6 +7,7 @@
 
 #include "Dominio/Trackeable/Trackeable.h"
 #include "Dominio/Priority/Priority.h"
+#include "OID.h"
 #include <string>
 
 struct SpecificInformation

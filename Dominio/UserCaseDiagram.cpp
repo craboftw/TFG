@@ -5,6 +5,13 @@
 #include "UserCaseDiagram.h"
 #include "Servicio/ServicioActorUC.h"
 #include "Servicio/ServicioUserCase.h"
+#include "OID.h"
+//include qstring and qstring list and qcoreapplication
+#include <QString>
+#include <QStringList>
+#include <QCoreApplication>
+#include <QProcess>
+
 
 #include <fstream>
 #include <thread>
@@ -172,14 +179,26 @@ void UserCaseDiagram::update() {
     }
     file << "@enduml" << std::endl;
     file.close();
+    //make sure it doesn't show in the console
 
-    std::string comando = "java -jar TFG/plantuml.jar -charset UTF-8 " + getId().operator std::string() + ".puml";
+    // Define the command to run the JAR file
+    QString program = "java";
+    QStringList arguments;
+    std::string stringArg = "-jar TFG/plantuml.jar -charset UTF-8" + getId().operator std::string() + ".puml";
+    QString qstringArg = QString::fromStdString(stringArg);
+    arguments << qstringArg;
 
-    // Create a thread and execute the command in that thread
-    std::thread executionThread(executeCommandOnAnotherCore, comando);
+    // Create a QProcess object to run the command
+    QProcess process;
+    process.start(program, arguments);
 
-    // Do other tasks in the main thread
-    executionThread.detach();
+    // Wait for the process to finish
+    if (process.waitForFinished(-1)) {
+        // Process finished successfully
+        int exitCode = process.exitCode();
+    } else {
+        // Error handling if the process fails
+    }
     // Wait for the execution thread to finish
 }
 

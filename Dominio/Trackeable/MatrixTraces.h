@@ -11,6 +11,7 @@
 #include <vector>
 #include <map>
 #include "Trackeable.h"
+#include "OID.h"
 
 class JsonRepository;
 

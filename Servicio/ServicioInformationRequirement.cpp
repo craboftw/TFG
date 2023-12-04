@@ -3,6 +3,7 @@
 //
 
 #include "ServicioInformationRequirement.h"
+#include "OID.h"
 
 OID ServicioInformationRequirement::createInformationRequirement(std::string nombre)
 {

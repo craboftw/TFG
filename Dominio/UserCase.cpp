@@ -2,6 +2,7 @@
 // Created by Fran- on 21/06/2023.
 //
 #include "UserCase.h"
+#include "OID.h"
 
 
 void UserCase::setAbstract(bool _abstract) {

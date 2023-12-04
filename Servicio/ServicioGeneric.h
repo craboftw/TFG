@@ -6,10 +6,10 @@
 #define TFG_SERVICIOGENERIC_H
 
 
-#include "Dominio/Trackeable/Trackeable.h"
 #include "Repository/JsonRepository.h"
 #include "ServicioPriority.h"
 #include "ServicioTrackeable.h"
+#include "OID.h"
 
 class ServicioGeneric : public ServicioTrackeable{
 public:

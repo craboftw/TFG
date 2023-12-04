@@ -8,6 +8,7 @@
 
 #include "Dominio/Trackeable/Trackeable.h"
 #include "Repository/JsonRepository.h"
+#include "OID.h"
 
 class ServicioTrackeable {
 public:

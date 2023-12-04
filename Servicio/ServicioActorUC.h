@@ -4,10 +4,8 @@
 
 #ifndef TFG_SERVICIOACTORUC_H
 #define TFG_SERVICIOACTORUC_H
-#include "Dominio/Trackeable/Trackeable.h"
-#include "Dominio/Generic.h"
 #include "ServicioTrackeable.h"
-#include "Repository/JsonRepository.h"
+#include "OID.h"
 
 class ServicioActorUC : public ServicioTrackeable{
 

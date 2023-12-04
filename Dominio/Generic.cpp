@@ -4,14 +4,6 @@
 
 #include "Generic.h"
 
-/*
-${workspaceFolder}/**
-${workspaceFolder}/Visitor
-${workspaceFolder}/Dominio/Trackeable
-${workspaceFolder}/Dominio/Priority
-${workspaceFolder}/Dominio/
-*/
-
 void FunctionalRequirement::accept(Visitor* visitor)
 {
     visitor->visit(*this);

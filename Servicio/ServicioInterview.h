@@ -8,6 +8,7 @@
 
 #include "ServicioTrackeable.h"
 #include "Dominio/Interview.h"
+#include "OID.h"
 
 class ServicioInterview : public ServicioTrackeable{
 

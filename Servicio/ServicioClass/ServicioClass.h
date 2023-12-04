@@ -8,6 +8,7 @@
 
 #include <string>
 #include "Servicio/ServicioTrackeable.h"
+#include "OID.h"
 
 class ServicioClass : public ServicioTrackeable{
     public:

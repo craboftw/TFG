@@ -8,6 +8,7 @@
 
 #include <vector>
 #include "Dominio/Trackeable/Trackeable.h"
+#include "OID.h"
 
 struct Invariant{
     std::string name;

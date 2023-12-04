@@ -7,6 +7,7 @@
 
 
 #include "Dominio/Trackeable/Trackeable.h"
+#include "Dominio/Trackeable/OID.h"
 #include <map>
 class ServicioActorUC;
 class ServicioUserCase;

@@ -5,7 +5,8 @@
 #include <stack>
 #include <thread>
 #include "ServicioHTML.h"
-
+#include "HtmlManager.h"
+#include "OID.h"
 
 
 void ServicioHTML::printHTML(OID id) {
@@ -16,81 +17,94 @@ void ServicioHTML::printHTML(OID id) {
     file.open("index.html");
     std::string authors;
     auto authorsid = servicioTrackeable.getAuthors(id);
-    for (auto it : authorsid) {
+    for (auto it: authorsid) {
         authors += servicioTrackeable.getName(it) + ", ";
     }
-    authors = authors.substr(0, authors.size() - 2) + ".";
+    if (authorsid.size() > 0) {
+        authors = authors.substr(0, authors.size() - 2);
+    }
     html += "<!DOCTYPE html>\n"
             "<html>\n"
             "<head>\n"
-            "<title>"+servicioTrackeable.getName(id)+"</title>\n"
-            "<meta charset=\"UTF-8\">\n"
-            "<style>\n"
-            ".header {\n"
-            "  background-color: #f2f2f2;\n"
-            "  padding: 20px;\n"
-            "}\n"
-            "\n"
-            ".title {\n"
-            "  font-size: 24px;\n"
-            "  font-weight: bold;\n"
-            "  margin-bottom: 10px;\n"
-            "}\n"
-            "\n"
-            ".authors {\n"
-            "  font-size: 18px;\n"
-            "  font-style: italic;\n"
-            "  margin-bottom: 10px;\n"
-            "}\n"
-            "\n"
-            ".date {\n"
-            "  font-size: 18px;\n"
-            "  margin-bottom: 10px;\n"
-            "}\n"
-            "\n"
-            ".description {\n"
-            "  font-size: 18px;\n"
-            "}\n"
-            "\n"
-            ".content {\n"
-            "  margin-bottom: 20px;\n"
-            "  border: 1px solid #ccc;\n"
-            "  padding: 10px;\n"
-            "}\n"
-            "\n"
-            "ul {\n"
-            "  font-family: Arial, sans-serif;\n"
-            "}\n"
-            "</style>\n"
-            "</head>\n"
-            "<body>\n"
-            "<div class=\"header\">\n"
-            "  <div class=\"title\">"+servicioTrackeable.getName(id)+"</div>\n"
-            "  <div class=\"authors\">"+authors+"</div>\n"
+            "<title>" + servicioTrackeable.getName(id) +
+            "</title>\n"
+             "<meta charset=\"UTF-8\">\n"
+             "<style>\n"
+             "  .header {\n"
+             "    background-color: #f2f2f2;\n"
+             "    padding: 20px;\n"
+             "    border: 1px solid #ccc;\n"
+             "    border-radius: 8px;\n"
+             "    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);\n"
+             "    max-width: 500px;\n"
+             "    margin: 0 auto;\n"
+             "  }"
+             "\n"
+             ".title {\n"
+             "  font-size: 24px;\n"
+             "  font-weight: bold;\n"
+             "  margin-bottom: 10px;\n"
+             "}\n"
+             "\n"
+             ".authors {\n"
+             "  font-size: 18px;\n"
+             "  font-style: italic;\n"
+             "  margin-bottom: 10px;\n"
+             "}\n"
+             "\n"
+             ".date {\n"
+             "  font-size: 18px;\n"
+             "  margin-bottom: 10px;\n"
+             "}\n"
+             "\n"
+             ".description {\n"
+             "  font-size: 18px;\n"
+             "}\n"
+             "\n"
+             ".content {\n"
+             "      border: 2px solid )\" + COLOR_BORDER + R\"(;\n"
+            "      border-radius: 8px;\n"
+            "      padding: 10px;\n"
+            "      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);\n"
+            "      margin-bottom: 20px;"
+             "}\n"
+             "\n"
+             "ul {\n"
+             "  font-family: Arial, sans-serif;\n"
+             "}\n"
+             "</style>\n"
+             "</head>\n"
+             "<body>\n"
+             "<div class=\"header\">\n"
+             "  <div class=\"title\">" + servicioTrackeable.getName(id) +
             "</div>\n"
-            "  <div class=\"date\">"+servicioTrackeable.getDate(id).toString()+"</div>\n"
-            "  <div class=\"description\">"+servicioTrackeable.getDescription(id)+".</div>\n"
-            "</div>";
+            "  <div class=\"authors\">" + authors + "</div>\n"
+                                                    "  <div class=\"date\">" +
+            servicioTrackeable.getDate(id).toString() + "</div>\n"
+                                                        "  <div class=\"description\">" +
+            servicioTrackeable.getDescription(id) + "</div>\n"
+                                                    "</div>";
     auto vec = getIndex(id);
-for (auto it = vec.begin(); it != vec.end(); ++it) {
+    for (auto it = vec.begin(); it != vec.end(); ++it) {
         html += "<li><a href=\"#" + it->indice + "\">" + it->indice + " " + it->titulo + "</a></li>\n";
     }
-    
+
     std::list<std::string> list;
     for (auto it = vec.begin(); it != vec.end(); ++it) {
         unsigned headertype = std::count(it->indice.begin(), it->indice.end(), '.');
-        html += "<h" + std::to_string(headertype) + " id=\"" + it->indice + "\">" + it->indice + " " + it->titulo + "</h" + std::to_string(headertype) + ">\n";
-        for (auto id : it->elementos) {
+        html += "<h" + std::to_string(headertype) + " id=\"" + it->indice + "\">" + it->indice + " " + it->titulo +
+                "</h" + std::to_string(headertype) + ">\n";
+        for (auto id: it->elementos) {
             std::string str;
-            str = "<div id=\"" + id.operator std::string()+"\"></div>\n";
+            str = "<div id=\"" + id.operator std::string() + "\"></div>\n";
             html += str;
             html += "<br>\n";
-            list.push_back("'"+id.operator std::string()+".html'");
+            list.push_back("'" + id.operator std::string() + ".html'");
         }
     }
     html += "<script>\n";
     html += "var files = [";
-for (auto it = list.begin(); it != list.end(); ++it) {
+    for (auto it = list.begin(); it != list.end(); ++it) {
         html += *it;
         if (std::next(it) != list.end()) {
             html += ",";
@@ -115,77 +129,76 @@ for (auto it = list.begin(); it != list.end(); ++it) {
             "    });\n"
             "</script>\n"
             "</body>\n"
-            "</html>\n" ;
+            "</html>\n";
     file << html;
     file.close();
 }
 
+void ServicioHTML::printElement(OID it) {
+    if (it.getPrefix() == Index::getPrefixID())
+        return;
 
-void ServicioHTML::printElement(OID it){
-    std::map<std::string, unsigned> prefijos = {{Stakeholder::getPrefixID(),STAKEHOLDER},
-                                                {RestrictionRequirement::getPrefixID(),RESTRICTION_REQUIREMENT},
-                                                {FunctionalRequirement::getPrefixID(),FUNCTIONAL_REQUIREMENT},
-                                                {NonFunctionalRequirement::getPrefixID(),NON_FUNCTIONAL_REQUIREMENT},
-                                                {ActorUC::getPrefixID(),ACTOR_UC},
-                                                {InformationRequirement::getPrefixID(),INFORMATION_REQUIREMENT},
-                                                {Organization::getPrefixID(),ORGANIZATION},
-                                                {SystemObjective::getPrefixID(),SYSTEM_OBJECTIVE},
-                                                {UserCase::getPrefixID(),USER_CASE},
-                                                {Text::getPrefixID(),TEXT},
-                                                {MatrixTraces::getPrefixID(),MATRIX_TRACES},
-                                                {UserCaseDiagram::getPrefixID(),USER_CASE_DIAGRAM},
-                                                {UserStories::getPrefixID(),USER_STORIES},
-                                                {OID().getPrefix(),NULL}};
     HtmlManager htmlManager;
     std::string html;
     std::ofstream file;
-    file.open(it.operator std::string()+".html");
-    switch (prefijos[it.getPrefix()]) {
+    file.open(it.operator std::string() + ".html");
+    std::string tipo = it.getPrefix();
+    switch (prefijos[tipo]) {
         case STAKEHOLDER:
-            file<<htmlManager.generateTableStakeholder(it);
+            file << htmlManager.generateTableStakeholder(it);
             break;
         case RESTRICTION_REQUIREMENT:
-            file<<htmlManager.generateTableRestrictionRequirement(it);
+            file << htmlManager.generateTableRestrictionRequirement(it);
             break;
         case FUNCTIONAL_REQUIREMENT:
-            file<<htmlManager.generateTableFunctionalRequirement(it);
+            file << htmlManager.generateTableFunctionalRequirement(it);
             break;
         case NON_FUNCTIONAL_REQUIREMENT:
-            file<<htmlManager.generateTableNonFunctionalRequirement(it);
+            file << htmlManager.generateTableNonFunctionalRequirement(it);
             break;
         case ACTOR_UC:
-            file<<htmlManager.generateTableActorUC(it);
+            file << htmlManager.generateTableActorUC(it);
             break;
         case INFORMATION_REQUIREMENT:
-            file<<htmlManager.generateTableInformationRequirement(it);
+            file << htmlManager.generateTableInformationRequirement(it);
             break;
         case ORGANIZATION:
-            file<<htmlManager.generateTableOrganization(it);
+            file << htmlManager.generateTableOrganization(it);
             break;
         case SYSTEM_OBJECTIVE:
-            file<<htmlManager.generateTableSystemObjetive(it);
+            file << htmlManager.generateTableSystemObjetive(it);
             break;
         case USER_CASE:
-            file<<htmlManager.generateTableUserCase(it);
+            file << htmlManager.generateTableUserCase(it);
             break;
         case TEXT:
-            file<<htmlManager.generateTableText(it);
+            file << htmlManager.generateTableText(it);
             break;
         case MATRIX_TRACES:
-            file<<htmlManager.generateMatrixTraces(it);
+            file << htmlManager.generateMatrixTraces(it);
             break;
         case USER_CASE_DIAGRAM:
-            file<<htmlManager.generateUserCaseDiagram(it);
+            file << htmlManager.generateUserCaseDiagram(it);
+            break;
+        case USER_STORIES:
+            file << htmlManager.generateUserStory(it);
+            break;
+        case INTERVIEW:
+            file << htmlManager.generateTableInterview(it);
+            break;
+        case PERSONA:
+            file << htmlManager.generateTablePersona(it);
             break;
         case NULLTYPE:
-            file<<"";
+            file << "";
+            break;
         default:
-            throw std::invalid_argument("Invalid prefix");
+            throw std::invalid_argument("Invalid prefix, printElement");
     }
 }
 
 OID ServicioHTML::createIndex(std::string titulo) {
-    Index index(JsonRepository::lastIndex() +1);
+    Index index(JsonRepository::lastIndex() + 1);
     if (titulo.empty()) titulo = index.getId().operator std::string();
     index.setName(titulo);
     JsonRepository::save(index);
@@ -208,13 +221,13 @@ void ServicioHTML::deleteEntry(OID id, unsigned idnode) {
     Index index = JsonRepository::loadIndex(id);
     index.deleteIndex(idnode);
     JsonRepository::save(index);
-} 
+}
 
 void ServicioHTML::moveEntry(OID id, unsigned idnode, unsigned newIdnode) {
     if (id.getPrefix() != Index::getPrefixID()) throw std::invalid_argument("El id no es un indice,moveEntry");
     if (!JsonRepository::exist(id)) throw std::invalid_argument("El id no existe,moveEntry");
     Index index = JsonRepository::loadIndex(id);
-    index.moveIndex(idnode,newIdnode);
+    index.moveIndex(idnode, newIdnode);
     JsonRepository::save(index);
 }
 
@@ -244,7 +257,7 @@ void ServicioHTML::addElement(OID id, unsigned idnode, OID element) {
     if (!JsonRepository::exist(id)) throw std::invalid_argument("El id no existe,addElement");
     if (!JsonRepository::exist(element)) throw std::invalid_argument("El elemento no existe,addElement");
     Index index = JsonRepository::loadIndex(id);
-    index.addElement(idnode,element);
+    index.addElement(idnode, element);
     JsonRepository::save(index);
 }
 
@@ -253,7 +266,7 @@ void ServicioHTML::deleteElement(OID id, unsigned idnode, OID element) {
     if (!JsonRepository::exist(id)) throw std::invalid_argument("El id no existe,deleteElement");
     if (!JsonRepository::exist(element)) throw std::invalid_argument("El elemento no existe,deleteElement");
     Index index = JsonRepository::loadIndex(id);
-    index.deleteElement(idnode,element);
+    index.deleteElement(idnode, element);
     JsonRepository::save(index);
 }
 
@@ -261,16 +274,16 @@ unsigned ServicioHTML::createEntry(OID id, unsigned int idnode) {
     if (id.getPrefix() != Index::getPrefixID()) throw std::invalid_argument("El id no es un indice,createEntry");
     if (!JsonRepository::exist(id)) throw std::invalid_argument("El id no existe,createEntry");
     Index index = JsonRepository::loadIndex(id);
-    auto entry = index.createIndex("",idnode);
+    auto entry = index.createIndex("", idnode);
     JsonRepository::save(index);
     return entry;
 }
 
-unsigned     ServicioHTML::createEntry(OID id, unsigned int idnode, std::string title) {
+unsigned ServicioHTML::createEntry(OID id, unsigned int idnode, std::string title) {
     if (id.getPrefix() != Index::getPrefixID()) throw std::invalid_argument("El id no es un indice,createEntry");
     if (!JsonRepository::exist(id)) throw std::invalid_argument("El id no existe,createEntry");
     Index index = JsonRepository::loadIndex(id);
-    auto entry = index.createIndex(title,idnode);
+    auto entry = index.createIndex(title, idnode);
     JsonRepository::save(index);
     return entry;
 }
@@ -279,7 +292,7 @@ unsigned int ServicioHTML::createEntry(OID id, std::string title, unsigned int i
     if (id.getPrefix() != Index::getPrefixID()) throw std::invalid_argument("El id no es un indice,createEntry");
     if (!JsonRepository::exist(id)) throw std::invalid_argument("El id no existe,createEntry");
     Index index = JsonRepository::loadIndex(id);
-    auto entry = index.createIndex(title,idnode);
+    auto entry = index.createIndex(title, idnode);
     JsonRepository::save(index);
     return entry;
 }

@@ -8,6 +8,7 @@
 
 #include "Repository/JsonRepository.h"
 #include "ServicioTrackeable.h"
+#include "OID.h"
 
 class ServicioStakeholder : public ServicioTrackeable{
 public:

@@ -4,6 +4,7 @@
 
 #include "ServicioPersona.h"
 #include "Dominio/Persona.h"
+#include "OID.h"
 
 OID ServicioPersona::createPersona(std::string nombre) {
 
@@ -27,7 +28,7 @@ void ServicioPersona::setPhoto(OID id, const std::string& photo) {
     if (!JsonRepository::exist(id)) throw std::invalid_argument("El id a modificar no existe, setPhoto");
     //try if the photo is a path that exists
     std::ifstream f(photo.c_str());
-    if (!f.good()) throw std::invalid_argument("La foto no existe, setPhoto");
+    if (!f.good()) throw std::invalid_argument("La foto no existe " + photo +", setPhoto");
     Persona persona = JsonRepository::loadPersona(id);
     persona.setPhoto(photo);
     JsonRepository::save(persona);
@@ -148,7 +149,6 @@ std::string ServicioPersona::getPhoto(OID id)
 {
     if (id.getPrefix() != Persona::getPrefixID()) throw std::invalid_argument("El id a leer no es de una Persona, getPhoto");
     if (!JsonRepository::exist(id)) throw std::invalid_argument("El id a leer no existe, getPhoto");
-<<<<<<< HEAD
     std::string photo = JsonRepository::loadPersona(id).getPhoto();
     if (photo != "") {
         std::ifstream f(photo.c_str());
@@ -160,19 +160,6 @@ std::string ServicioPersona::getPhoto(OID id)
         }
     }
     return photo;
-=======
-    //if the photo is not a valid path, save it empty and return empty
-    std::string photo = JsonRepository::loadPersona(id).getPhoto();
-    std::ifstream f(photo.c_str());
-    if (!f.good()) {
-        Persona persona = JsonRepository::loadPersona(id);
-        persona.setPhoto("");
-        JsonRepository::save(persona);
-        return "";
-    }
-    Persona persona = JsonRepository::loadPersona(id);
-    return persona.getPhoto();
->>>>>>> main
 }
 
 std::string ServicioPersona::getGender(OID id) {

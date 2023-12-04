@@ -3,6 +3,7 @@
 //
 
 #include "Class.h"
+#include "OID.h"
 
 bool Class::getAbstract() const {
     return abstract;

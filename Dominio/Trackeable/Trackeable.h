@@ -5,9 +5,9 @@
 #include <string>
 #include <set>
 #include <utility>
-#include <iostream>
 #include <list>
 #include "./Fecha.h"
+#include "OID.h"
 
 class Visitor;
 
@@ -34,39 +34,6 @@ public:
 
 };
 
-class OID {
-private:
-    std::string prefixID;
-    unsigned id;
-
-public:
-    OID(std::string prefixID, unsigned id): prefixID(std::move(prefixID)), id(id) {}
-
-    OID(): prefixID("XX"), id(0) {}
-
-    std::string getPrefix() const;
-    unsigned getId() const;
-    bool operator<(const OID& rhs) const;
-    bool operator>(const OID& rhs) const;
-    bool operator<=(const OID& rhs) const;
-    bool operator>=(const OID& rhs) const;
-    bool operator==(const OID rhs) const;
-    bool operator!=(const OID& rhs) const;
-    operator std::string () const {
-        return prefixID + std::to_string(id);
-    }
-    OID operator = (const OID& rhs) {
-        prefixID = rhs.prefixID;
-        id = rhs.id;
-        return *this;
-    }
-
-
-
-
-};
-
-OID operator+(const std::string& rhs, unsigned lhs);
 
 struct TrackeableDTO{
     OID id;

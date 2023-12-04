@@ -4,10 +4,10 @@
 
 #include "ServicioGeneric.h"
 #include "Dominio/Generic.h"
+#include "OID.h"
 
 
-
-    OID ServicioGeneric::createActorUC(std::string nombre) {
+OID ServicioGeneric::createActorUC(std::string nombre) {
     ActorUC actorUC (fileJsonManager.lastActorUC()+1);
     if (nombre.empty()) nombre = actorUC.getId().operator std::string();
     actorUC.setName(nombre);

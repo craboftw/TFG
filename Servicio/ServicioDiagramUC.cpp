@@ -4,6 +4,8 @@
 
 #include "ServicioDiagramUC.h"
 #include "Repository/JsonRepository.h"
+#include "OID.h"
+
 void update(UserCaseDiagram obj) {
     auto list = obj.getUserCaseList();
     for (auto it = list.begin(); it != list.end(); ++it) {

@@ -3,6 +3,7 @@
 //
 
 #include "ServicioStakeholder.h"
+#include "OID.h"
 
 OID ServicioStakeholder::createStakeholder(std::string name) {
     Stakeholder stakeholder(fileJsonManager.lastStakeholder()+1);

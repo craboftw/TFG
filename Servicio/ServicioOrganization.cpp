@@ -4,6 +4,7 @@
 
 #include "ServicioOrganization.h"
 #include "Dominio/Trackeable/Organization.h"
+#include "OID.h"
 
 OID ServicioOrganization::createOrganization(std::string name) {
     Organization organization(JsonRepository::lastOrganization()+1);

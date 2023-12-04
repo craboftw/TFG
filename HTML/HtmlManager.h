@@ -18,6 +18,7 @@
 #include "Servicio/ServicioMatrixTraces.h"
 #include "Servicio/ServicioUserStories.h"
 #include "Visitor/LinkedGeneralTree.cpp"
+#include "OID.h"
 
 class HtmlManager {
 public:
@@ -38,6 +39,7 @@ public:
     std::string generateUserStory(const std::list<OID>& listID);
     std::string generateTableUserStory(OID id);
     std::string generateTablePersona(OID id);
+    std::string generateTableInterview(OID id);
 
 
     std::string generateUserCaseDiagram(OID id);
@@ -63,7 +65,6 @@ private:
     std::string generateHead(OID id);
 
 
-    std::string generateTableInterview(OID id);
 };
 
 #endif //TFG_HTMLMANAGER_H

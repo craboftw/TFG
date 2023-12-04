@@ -4,7 +4,7 @@
 
 #ifndef TFG_SERVICIODIAGRAMUC_H
 #define TFG_SERVICIODIAGRAMUC_H
-#include "Dominio/UserCaseDiagram.h"
+#include "OID.h"
 
 class ServicioDiagramUC {
 public:

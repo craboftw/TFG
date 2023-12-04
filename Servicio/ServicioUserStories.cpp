@@ -3,6 +3,7 @@
 //
 
 #include "ServicioUserStories.h"
+#include "OID.h"
 
 OID ServicioUserStories::createUserStories(std::string name) {
     UserStories userStories(filejsonManager.lastUserStories()+1);

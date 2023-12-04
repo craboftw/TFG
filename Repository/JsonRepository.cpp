@@ -4,7 +4,9 @@
 
 #include <list>
 #include "JsonRepository.h"
+#include "JsonSerializer.h"
 #include "HTML/ServicioHTML.h"
+#include "OID.h"
 
 
 void JsonRepository::save(json singlejson) {
@@ -394,7 +396,6 @@ Interview JsonRepository::loadInterview(OID id) {
     return MEMInterview[id];
 }
 
-<<<<<<< HEAD
 Class JsonRepository::loadClass(OID id) {
     if (MEMClass.find(id) == MEMClass.end()) {
         throw std::invalid_argument("No existe el Class, loadClass");
@@ -409,8 +410,6 @@ Asociation JsonRepository::loadAsociation(OID id) {
     return MEMAsociation[id];
 }
 
-=======
->>>>>>> main
 
 
 
@@ -883,7 +882,6 @@ std::list<Interview> JsonRepository::loadFileAllInterview() {
     return interviews;
 }
 
-<<<<<<< HEAD
 std::list<Class> JsonRepository::loadFileAllClass() {
     std::list<Class> classes;
     json j = loadAll(Class::getPrefixID());
@@ -904,8 +902,6 @@ std::list<Asociation> JsonRepository::loadFileAllAsociation() {
     return asociations;
 }
 
-=======
->>>>>>> main
 
 unsigned JsonRepository::lastStakeholder() {
     unsigned last = 0;
@@ -1053,7 +1049,6 @@ unsigned JsonRepository::lastInterview() {
     return last;
 }
 
-<<<<<<< HEAD
 unsigned JsonRepository::lastClass() {
     unsigned last = 0;
     for (auto &element: MEMClass) {
@@ -1063,8 +1058,16 @@ unsigned JsonRepository::lastClass() {
     return last;
 }
 
-=======
->>>>>>> main
+
+unsigned JsonRepository::lastAsociation() {
+    unsigned last = 0;
+    for (auto &element: MEMAsociation) {
+        if (last < element.first.getId())
+            last = element.first.getId();
+    }
+    return last;
+}
+
 
 
 void JsonRepository::save(Stakeholder stakeholder) {
@@ -1338,7 +1341,6 @@ void JsonRepository::save(Interview interview) {
     jsoneitor.visit(interview);
 }
 
-<<<<<<< HEAD
 void JsonRepository::save(Class class_) {
     MEMClass[class_.getId()] = class_;
     JsonSerializer jsoneitor;
@@ -1352,9 +1354,6 @@ void JsonRepository::save(Asociation asociation) {
     ServicioHTML::printElement(asociation.getId());
     jsoneitor.visit(asociation);
 }
-=======
-
->>>>>>> main
 
 void JsonRepository::saveAll(std::list<Stakeholder> stakeholders) {
     JsonSerializer jsoneitor;
@@ -1436,7 +1435,6 @@ json JsonRepository::loadAll(std::string prefix) {
 
     return listaj;
 }
-
 
 
 template<class T>

@@ -9,6 +9,7 @@
 #include "Dominio/Generic.h"
 #include "Servicio/ServicioTrackeable.h"
 #include "Servicio/ServicioPriority.h"
+#include "OID.h"
 
 class ServicioInformationRequirement : public ServicioTrackeable, public ServicioPriority {
 public:

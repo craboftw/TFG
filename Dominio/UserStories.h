@@ -8,6 +8,7 @@
 
 #include "Dominio/Trackeable/Trackeable.h"
 #include "Dominio/Priority/Priority.h"
+#include "OID.h"
 
 class UserStories : virtual public Trackeable, public Priority{
 public:

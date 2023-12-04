@@ -3,6 +3,7 @@
 //
 
 #include "ServicioClass.h"
+#include "OID.h"
 
 OID ServicioClass::createClass(std::string name) {
      Class cless(JsonRepository::lastClass() +1);
@@ -191,7 +192,7 @@ void ServicioClass::setSuperClasses(OID id, std::set<OID> superClasses) {
 //Now implement the methods of the class ServicioAsociacion exactly as you did for ServicioClass
 OID ServicioAsociacion::createAsociation(std::string name) {
     Asociation asociation(JsonRepository::lastAsociation()+1);
-    if (name.empty()) name = asociation.getId().toString();
+    if (name.empty()) name = asociation.getId().operator std::string();
     asociation.setName(name);
     JsonRepository::save(asociation);
     return asociation.getId();

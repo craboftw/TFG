@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QSplitter" name="splitter">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <widget class="QTreeWidget" name="treeWidget">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Maximum" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="autoExpandDelay">
+       <number>1</number>
+      </property>
+      <property name="uniformRowHeights">
+       <bool>true</bool>
+      </property>
+      <property name="animated">
+       <bool>true</bool>
+      </property>
+      <property name="allColumnsShowFocus">
+       <bool>true</bool>
+      </property>
+      <attribute name="headerCascadingSectionResizes">
+       <bool>true</bool>
+      </attribute>
+      <attribute name="headerHighlightSections">
+       <bool>true</bool>
+      </attribute>
+      <attribute name="headerShowSortIndicator" stdset="0">
+       <bool>true</bool>
+      </attribute>
+      <column>
+       <property name="text">
+        <string notr="true">Apartado</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Elemento</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>OID</string>
+       </property>
+      </column>
+     </widget>
+     <widget class="QTextBrowser" name="textBrowser"/>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
